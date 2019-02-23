@@ -77,4 +77,36 @@
     </el-date-picker>
   </el-form-item>
   ```
+#### v-if vs v-show
+1. v-if确保在切换过程中，条件块内的舰艇器和子组件适当地被销毁和重建。惰性，直到条件第一次为真菜开始渲染条件块
+2. v-show 不管初始条件如何，元素总是会被渲染，只是简单的css切换
+3. v-if有更高的切换开销，v-show有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用v-show较好；如果在运行时条件很少改变，使用v-if较好。
+***
+
+
+#### 列表渲染
+1. 用v-for通过一个属性的对象迭代
+  ```
+  <div v-for="(value, key) in object">
+    {{ key }}: {{ value }}
+  </div>
+  ```
+  ```
+  new Vue({
+    el: '#v-for-object',
+    data: {
+      object: {
+        firstName: 'John',
+        lastName: 'Doe',
+        age: 30
+      }
+    }
+  })
+  ```
+2. v-for为了给Vue一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一key属性。理想的key值是每项都有的唯一id。
+3. 不要使用对象或数组之类的非原始类型值作为 v-for 的 key。用**字符串或数类型**的值取而代之。
+4. Vue不能检测以下变动的数组
+  + 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+  + 当你修改数组的长度时，例如：vm.items.length = newLength
+***
 
