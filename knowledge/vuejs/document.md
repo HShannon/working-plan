@@ -106,7 +106,7 @@
 2. v-for为了给Vue一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一key属性。理想的key值是每项都有的唯一id。
 3. 不要使用对象或数组之类的非原始类型值作为 v-for 的 key。用**字符串或数类型**的值取而代之。
 4. Vue不能检测以下变动的数组
-  + 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
-  + 当你修改数组的长度时，例如：vm.items.length = newLength
+    + 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+    + 当你修改数组的长度时，例如：vm.items.length = newLength
 ***
 
