@@ -50,4 +50,31 @@
 
 #### v-if
 1. 如果想切换多个元素，可以把一个template元素当做不可见的包裹信息，并在上面使用v-if
-2. 
+2. 当多个模版使用相同的元素时，但两个元素是完全独立的，不要复用它们，**只需添加一个具有唯一值的key的属性即可**
+  ```
+  <el-form-item label="时间范围" v-if="formData.cycle === 'day'" key="day">
+    <el-date-picker type="daterange" placeholder="选择日期范围" size="small"
+      :clearable="false" :editable="false"
+      v-model="formData.date" :picker-options="pickerOptions">
+    </el-date-picker>
+  </el-form-item>
+  <el-form-item label="时间范围" v-if="formData.cycle === 'week'" key="week">
+    <el-date-picker v-model="formData.startWeek" type="week" size="small"
+      format="yyyy 第 WW 周" placeholder="选择起始周" :picker-options="weekpickerOptions">
+    </el-date-picker>
+    <span>至</span>
+    <el-date-picker v-model="formData.endWeek" type="week" size="small"
+      format="yyyy 第 WW 周" placeholder="选择末尾周" :picker-options="weekpickerOptions">
+    </el-date-picker>
+  </el-form-item>
+  <el-form-item label="时间范围" v-if="formData.cycle === 'month'" key="month">
+    <el-date-picker v-model="formData.startMonth" type="month" size="small"
+      format="yyyy 第 MM 月" placeholder="选择起始月" :picker-options="weekpickerOptions">
+    </el-date-picker>
+    <span>至</span>
+    <el-date-picker v-model="formData.endMonth" type="month" size="small"
+      format="yyyy 第 MM 月" placeholder="选择末尾月" :picker-options="weekpickerOptions">
+    </el-date-picker>
+  </el-form-item>
+  ```
+
