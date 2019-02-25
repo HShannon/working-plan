@@ -108,5 +108,23 @@
 4. Vue不能检测以下变动的数组
     + 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
     + 当你修改数组的长度时，例如：vm.items.length = newLength
+  ```
+  // Vue.set
+  Vue.set(vm.items, indexOfItem, newValue)
+  ```
+  ```
+  // Array.prototype.splice
+  vm.items.splice(indexOfItem, 1, newValue)
+  ```
+  也可以使用vm.$set
+5. Vue 不能动态添加根级别的响应式属性，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性。
+6. 为已有对象赋予多个新属性，应该用两个对象的属性创建一个新的对象，
+  ```
+  vm.userProfile = Object.assign({}, vm.userProfile, {
+    age: 27,
+    favoriteColor: 'Vue Green'
+  })
+```
 ***
 
+#### 列表渲染
