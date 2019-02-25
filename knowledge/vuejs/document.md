@@ -127,4 +127,20 @@
 ```
 ***
 
-#### 列表渲染
+#### 组件
+1. 组件注册
+    + 局部注册
+        + 局部注册的组件在其自组建中不可用
+        ```
+        import ComponentA from './ComponentA.vue'
+
+        export default {
+          components: {
+            ComponentA
+          },
+          // ...
+        }
+        ```
+    + 全局注册
+2. prop验证
+    + 基础类型检测
