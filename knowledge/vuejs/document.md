@@ -144,3 +144,71 @@
     + 全局注册
 2. prop验证
     + 基础类型检测
+    + 必填字段检测
+    + 默认值检测
+    ```
+    props: {
+      // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+      propA: Number,
+      // 多个可能的类型
+      propB: [String, Number],
+      // 必填的字符串
+      propC: {
+        type: String,
+        required: true
+      },
+      // 带有默认值的数字
+      propD: {
+        type: Number,
+        default: 100
+      },
+      // 带有默认值的对象
+      propE: {
+        type: Object,
+        // 对象或数组默认值必须从一个工厂函数获取
+        default: function () {
+          return { message: 'hello' }
+        }
+      },
+      // 自定义验证函数
+      propF: {
+        validator: function (value) {
+          // 这个值必须匹配下列字符串中的一个
+          return ['success', 'warning', 'danger'].indexOf(value) !== -1
+        }
+      }
+    }
+    ```
+
+#### 插槽
+1. 如果自定义组件内没有包含一个 <slot> 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃。
+
+2. 该插槽跟模板的其它地方一样可以访问相同的实例属性 (也就是相同的“作用域”)，而不能访问 <navigation-link> 的作用域。例如 url 是访问不到的
+    + **具名插槽**
+        + <current-user>组件中
+        ```
+        <span>
+          <slot v-bind:user="user">
+            {{ user.lastName }}
+          </slot>
+        </span>
+        ```
+        + 
+        ```
+        <current-user>
+          <template v-slot:default="slotProps">
+            {{ slotProps.user.firstName }}
+          </template>
+        </current-user>
+        ```
+
+3. **父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。**
+
+4. 有时为一个插槽设置具体的后备 (也就是默认的) 内容是很有用的，它只会在没有提供内容的时候被渲染。
+
+#### 具名插槽
+1. <slot>元素有一个特殊的特性：name，在向具名插槽提供内容的时候，在一个<template>元素上使用c-slot指令，并以 v-slot 的参数的形式提供其名称
+
+2. v-slot:的缩写为字符#
+
+
