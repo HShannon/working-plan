@@ -27,11 +27,11 @@
 6. PerformanceObserver构造函数
 		+ PerformanceObserver.observe(),当performance entry被记录并且是制定的entryTypes之一的时候，性能观察者对象的回调函数会被调用
 		+ 性能监测回调停止接收 性能条目
-		```
-    const obs = new PerformanceObserver((items) => {
-      _this.xhrSource.push(items.getEntries()[0]);
-      // performance.clearMarks();
-    });
+```
+const obs = new PerformanceObserver((items) => {
+	_this.xhrSource.push(items.getEntries()[0]);
+	// performance.clearMarks();
+});
 
-    obs.observe({ entryTypes: ['measure'] });
-		```
+obs.observe({ entryTypes: ['measure'] });
+```
