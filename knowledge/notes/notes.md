@@ -36,5 +36,5 @@ const obs = new PerformanceObserver((items) => {
 obs.observe({ entryTypes: ['measure'] });
 ```
 
-7. 卸载从node官网下载的nodes
-		**udo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
+7. 卸载从node官网下载的node
+		**sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
