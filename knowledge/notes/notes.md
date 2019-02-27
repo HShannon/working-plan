@@ -37,4 +37,4 @@ obs.observe({ entryTypes: ['measure'] });
 ```
 
 7. 卸载从node官网下载的nodes
-	**udo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
+		**udo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
