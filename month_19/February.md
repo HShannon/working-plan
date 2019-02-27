@@ -29,9 +29,9 @@
   - 外部流量结算报表  上线bug修复
   - 监控报警平台一期优化  已上线
 2. 学习
-  - slot 监控数据实例 
-  - typescript
-  - performance
+  - slot 监控报警平台实例   完成、vuestudy
+  - performance 
+      + axios([axios](https://github.com/axios/axios))
+      + ([performanceAPI](https://developer.mozilla.org/zh-CN/docs/Web/API/Performance))
   - webpack实例
-  - tig([tig官网](http://jonas.github.io/tig/))
 ***
