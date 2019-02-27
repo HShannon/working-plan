@@ -15,13 +15,13 @@
 5. performance([performance文档](https://www.cnblogs.com/bldxh/p/6857324.html))
 
 | 属性指      | 描述                                 |
-| :--------: | :---------------------------------: |
+| :--------: | :---------------------------------:  |
 | mark       | 通过 mark() 方法添加到数组中的对象       |
 | measure    | 通过 measure() 方法添加到数组中的对象    |
 | resource   | 通过 mark() 所有资源加载时间，用处最多    |
 | navigation | 现除chrome和Opera外均不支持，导航相关信息 |
 | frame      | 现浏览器均未支持                        |
-| server     | 未查到相关资料                          |
+| server     | 未查到相关资料                         |
 
 
 6. PerformanceObserver构造函数
@@ -35,3 +35,5 @@ const obs = new PerformanceObserver((items) => {
 
 obs.observe({ entryTypes: ['measure'] });
 ```
+
+7. 卸载从node官网下载的nodes：**udo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
