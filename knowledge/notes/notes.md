@@ -37,11 +37,11 @@ obs.observe({ entryTypes: ['measure'] });
 ```
 
 7. 卸载从node官网下载的node
-		**sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
+    **sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
 
 8. 去掉eslint检测，在webpack.base.config文件中
     ```
     ...(config.dev.useEslint ? [createLintingRule()] : []),x
     ```
 9. intro.js的实践方法
-+ 
+			import 'element-ui/lib/theme-chalk/index.css'
