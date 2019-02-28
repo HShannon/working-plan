@@ -42,6 +42,6 @@ obs.observe({ entryTypes: ['measure'] });
 8. 去掉eslint检测，在webpack.base.config文件中
     ```
     ...(config.dev.useEslint ? [createLintingRule()] : []),x
-
     ```
 9. intro.js的实践方法
++ 
