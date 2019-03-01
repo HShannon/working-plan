@@ -34,6 +34,8 @@
       + axios([axios](https://github.com/axios/axios))
       + ([performanceAPI](https://developer.mozilla.org/zh-CN/docs/Web/API/Performance))
   - koa实践([koa网上资料](http://i5ting.github.io/stuq-koa/koa-getting-start/exercises.html))
-  - intro.js([intro.js网上材料](https://codesandbox.io/s/x2rl0v1054))
-  
+  - intro.js([intro.js网上材料](https://codesandbox.io/s/x2rl0v1054))(0)
+  - axios([axios](https://github.com/axios/axios))
+  - web服务器
+
 ***
