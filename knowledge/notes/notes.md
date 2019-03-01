@@ -49,3 +49,9 @@ obs.observe({ entryTypes: ['measure'] });
 + vue-introjs
 
 10. web服务器-使用Node.js
+
+11. 权限认证cookie VS token
++ cookie cookie登录是有状态的，服务端维护一个session客户端维护一个cookie, cookie只保存sessionID服务端要保存并跟踪所有活动的session
++ token oken 的认证方式是无状态的，服务端不保存登陆状态，也不关心哪些客户端签发了 token ，每个请求都会携带 token 通常在 header 中，也可以出现在 body 和 query
+
+

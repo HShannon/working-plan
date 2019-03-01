@@ -12,9 +12,15 @@
 ***
 
 #### module模块
-1. 模块在第一次加载后会被缓存，如果想要多次执行一个模块，可以导出一个函数，然后调用该函数。当没有以 '/'、 './' 或 '../' 开头来表示文件时，这个模块必须是一个核心模块或加载自 node_modules 目录。
+1. 模块在第一次加载后会被缓存，如果想要多次执行一个模块，可以导出一个函数，然后调用该函数。如何清除require缓存delete require.cache
+```
+delete require.cache[require.resolve('./server.js')];
+app = require('./server.js');
+```
 
-2. __dirname: 当前模块的目录名，__filename: 当前模块的文件名
+2. 当没有以 '/'、 './' 或 '../' 开头来表示文件时，这个模块必须是一个核心模块或加载自 node_modules 目录。
+
+3. __dirname: 当前模块的目录名，__filename: 当前模块的文件名
 ```
 从 /Users/mjr 运行 node example.js
 console.log(__filename);
@@ -23,4 +29,10 @@ console.log(__dirname);
 // 打印: /Users/mjr
 ```
 
-3. 
+4. require.resolve
+```
+fs.readFileSync(path.join(__dirname, './assets/some-file.txt))
+fs.readFileSync(require.resolve('./assets/some-file.txt))
+```
+
+5. 
