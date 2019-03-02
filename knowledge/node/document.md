@@ -34,5 +34,20 @@ console.log(__dirname);
 fs.readFileSync(path.join(__dirname, './assets/some-file.txt))
 fs.readFileSync(require.resolve('./assets/some-file.txt))
 ```
+***
 
-5. 
+#### HTTP
+1. HTTP持久连接 与 HTTPClient连接池
+    + Keep-Alive: 使用HTTP/1.0的客户端在首部中加上”Connection:Keep-Alive”，请求服务端将一条连接保持在打开状态。服务端如果愿意将这条连接保持在打开状态，就会在响应中包含同样的首部。如果响应中没有包含”Connection:Keep-Alive”首部，则客户端会认为服务端不支持keep-alive，会在发送完响应报文之后关闭掉当前连接。 
+		+ HTTP/1.1采取持久连接的方式替代了Keep-Alive。
+2. 连接池
+
+#### Express
+1. Express托管静态文件
+```
+函数	express.static(root, [options])，
+app.use(express.static('public'))
+app.use('/static', express.static('public'))
+app.use('/static', express.static(path.join(__dirname, 'public')))
+```
+2. 
