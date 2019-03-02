@@ -50,4 +50,55 @@ app.use(express.static('public'))
 app.use('/static', express.static('public'))
 app.use('/static', express.static(path.join(__dirname, 'public')))
 ```
-2. 
+2. Response methods
+
+| Method           | Description                        |  
+| :--------------: | :--------------------------------: |
+| res.download()   | Prompt a file to be downloaded.    |
+| res.end()        | End the response process.          |
+| res.json()       | Send a JSON response.              |
+| res.redirect()   | Redirect a request.                |
+| res.render()     | Render a view template.            |
+| res.send()       | Send a response of various types.  | 
+| res.sendStatus() | Set the response status code       |
+| res.sendFile()   | 	Send a file as an octet stream.   |
+
+3. express.Router
+create a router file named birds.js in the app directory
+```
+var express = require('express')
+var router = express.Router()
+
+// middleware that is specific to this router
+router.use(function timeLog (req, res, next) {
+  console.log('Time: ', Date.now())
+  next()
+})
+
+//  const TimeLog = (req, res, next) => {
+//   console.log('Time: ', new Date())
+//   next()
+// }
+
+// router.use(TimeLog)
+
+// define the home page route
+router.get('/', function (req, res) {
+  res.send('Birds home page')
+})
+// define the about route
+router.get('/about', function (req, res) {
+  res.send('About birds')
+})
+
+module.exports = router
+```
+load the router module in the app
+```
+var birds = require('./birds')
+
+// ...
+
+app.use('/birds', birds)
+```
+
