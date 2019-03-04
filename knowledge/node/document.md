@@ -169,6 +169,6 @@ app.use('/admin', admin);
 
 #### app settings table
 
-##### case sensitive routing
+1. case sensitive routing
 
-##### env ([相关文档](https://juejin.im/post/5a4ed5306fb9a01cbc6e2ee2))
+2. env ([相关文档](https://juejin.im/post/5a4ed5306fb9a01cbc6e2ee2))
