@@ -172,3 +172,8 @@ app.use('/admin', admin);
 1. case sensitive routing
 
 2. env ([相关文档](https://juejin.im/post/5a4ed5306fb9a01cbc6e2ee2))
+
+3. ETag
+		+ 服务器使用ETag HTTP标头传递验证令牌
+		+ 验证令牌可实现高效的资源更新检查：资源未发生变化时不会传送任何数据。
+![etag](./public/image/etag.jpg "etag流程图")
