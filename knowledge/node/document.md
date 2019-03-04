@@ -41,9 +41,10 @@ fs.readFileSync(require.resolve('./assets/some-file.txt))
     + Keep-Alive: 使用HTTP/1.0的客户端在首部中加上”Connection:Keep-Alive”，请求服务端将一条连接保持在打开状态。服务端如果愿意将这条连接保持在打开状态，就会在响应中包含同样的首部。如果响应中没有包含”Connection:Keep-Alive”首部，则客户端会认为服务端不支持keep-alive，会在发送完响应报文之后关闭掉当前连接。 
 		+ HTTP/1.1采取持久连接的方式替代了Keep-Alive。
 2. 连接池
+***
 
 #### Express
-1. Express托管静态文件
+1. Express托管静态文件([express.static](http://www.expressjs.com.cn/4x/api.html))
 ```
 函数	express.static(root, [options])，
 app.use(express.static('public'))
@@ -100,5 +101,50 @@ var birds = require('./birds')
 // ...
 
 app.use('/birds', birds)
+```
+
+4. To load the middleware function, call app.use()
+```
+var myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
+
+app.use(myLogger)
+```
+***
+
+#### 使用模版引擎
+> Define: A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. 
+
+> Popular template engines: Pug, Mustache, EJS, Jade
+```
+app.set('view engine', 'jsx')
+
+app.set('views', [
+  path.join(__dirname, './views')
+])
+```
+
+#### Application
+1. app.locals: Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
+
+2. app.mountpath
+```
+var admin = express();
+
+admin.get('/', function (req, res) {
+  console.log(admin.mountpath); // [ '/adm*n', '/manager' ]
+  res.send('Admin Homepage');
+});
+
+var secret = express();
+secret.get('/', function (req, res) {
+  console.log(secret.mountpath); // /secr*t
+  res.send('Admin Secret');
+});
+
+admin.use('/secr*t', secret); // load the 'secret' router on '/secr*t', on the 'admin' sub app
+app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
 ```
 
