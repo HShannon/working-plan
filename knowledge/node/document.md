@@ -148,3 +148,27 @@ admin.use('/secr*t', secret); // load the 'secret' router on '/secr*t', on the '
 app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
 ```
 
+3. app.on('mount', callback(parent))  **parent**
+```
+var admin = express();
+
+admin.on('mount', function (parent) {
+  console.log('Admin Mounted');
+  console.log(parent); // refers to the parent app
+});
+
+admin.get('/', function (req, res) {
+  res.send('Admin Homepage');
+});
+
+app.use('/admin', admin);
+```
+
+4. app.engine
+***
+
+#### app settings table
+
+##### case sensitive routing
+
+##### env ([相关文档](https://juejin.im/post/5a4ed5306fb9a01cbc6e2ee2))
