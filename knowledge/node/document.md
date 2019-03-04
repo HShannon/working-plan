@@ -177,3 +177,45 @@ app.use('/admin', admin);
 		+ 服务器使用ETag HTTP标头传递验证令牌
 		+ 验证令牌可实现高效的资源更新检查：资源未发生变化时不会传送任何数据。
 ![window](../../public/image/etag.jpg "etag流程图")
+
+4. jsonp callback name
+
+5. trust proxy 涉及 X-Forwarded-Proto ([相关文档](http://www.expressjs.com.cn/4x/api.html#app.settings.table))
+***
+
+#### Request
+1. If you follow the pattern in which you create a module that just exports a middleware function and require() it in your main file, **then the middleware can access the Express instance via req.app**
+
+2. req.body
+```
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+```
+
+3. req.cookie
+```
+var express = require('express')
+var cookieParser = require('cookie-parser')
+
+var app = express()
+app.use(cookieParser())
+```
+**Example**
+```
+var express = require('express')
+var cookieParser = require('cookie-parser')
+
+var app = express()
+app.use(cookieParser())
+
+app.get('/', function (req, res) {
+  // Cookies that have not been signed
+  console.log('Cookies: ', req.cookies)
+
+  // Cookies that have been signed
+  console.log('Signed Cookies: ', req.signedCookies)
+})
+
+app.listen(8080)
+```
+
