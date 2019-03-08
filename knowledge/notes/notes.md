@@ -4,6 +4,7 @@
 2. 切换npm版本
     npm install -g npm@版本号
     npm install npm@latest -g
+
 3. vue init webpack <项目名称>
 
 4. vuejs项目搭建
@@ -53,5 +54,13 @@ obs.observe({ entryTypes: ['measure'] });
 11. 权限认证cookie VS token
 + cookie cookie登录是有状态的，服务端维护一个session客户端维护一个cookie, cookie只保存sessionID服务端要保存并跟踪所有活动的session
 + token oken 的认证方式是无状态的，服务端不保存登陆状态，也不关心哪些客户端签发了 token ，每个请求都会携带 token 通常在 header 中，也可以出现在 body 和 query
+
+12. 删除远程分支 
+		+ git push origin :serverfix 
+		+ ([相关](https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF))
+
+13. 调换数组两个元素的位置
+
+14. 
 
 

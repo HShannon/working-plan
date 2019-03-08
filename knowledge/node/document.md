@@ -181,6 +181,8 @@ app.use('/admin', admin);
 4. jsonp callback name
 
 5. trust proxy 涉及 X-Forwarded-Proto ([相关文档](http://www.expressjs.com.cn/4x/api.html#app.settings.table))
+		+ req.hostname
+		+ req.ip
 ***
 
 #### Request
@@ -218,4 +220,27 @@ app.get('/', function (req, res) {
 
 app.listen(8080)
 ```
+
+4. req.path req.originalUrl req.path
+```
+app.use('/admin', function(req, res, next) {  // GET 'http://www.example.com/admin/new'
+  console.log(req.originalUrl); // '/admin/new'
+  console.log(req.baseUrl); // '/admin'
+  console.log(req.path); // '/new'
+  next();
+});
+```
+
+5. req.xhr **X-Requested-With** header fields is 'XMLHttpRequest'
+
+**HTTP Header**
+
+6. req.accepts()
+		+ MIME type string
+		+ an extension name
+		+ a commma-delimited list
+		+ an array
+
+#### Response
+1. 
 
