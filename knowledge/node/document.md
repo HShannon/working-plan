@@ -114,7 +114,7 @@ app.use(myLogger)
 ```
 ***
 
-#### 使用模版引擎
+##### 使用模版引擎
 > Define: A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. 
 
 > Popular template engines: Pug, Mustache, EJS, Jade
@@ -125,6 +125,7 @@ app.set('views', [
   path.join(__dirname, './views')
 ])
 ```
+常用的模版引擎([资料](https://segmentfault.com/a/1190000000502743))
 
 #### Application
 1. app.locals: Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
@@ -167,7 +168,7 @@ app.use('/admin', admin);
 4. app.engine
 ***
 
-#### app settings table
+##### app settings table
 
 1. case sensitive routing
 
@@ -185,7 +186,7 @@ app.use('/admin', admin);
 		+ req.ip
 ***
 
-#### Request
+##### Request
 1. If you follow the pattern in which you create a module that just exports a middleware function and require() it in your main file, **then the middleware can access the Express instance via req.app**
 
 2. req.body
@@ -241,6 +242,35 @@ app.use('/admin', function(req, res, next) {  // GET 'http://www.example.com/adm
 		+ a commma-delimited list
 		+ an array
 
-#### Response
-1. 
+##### Response
+1. res.cookie(name, value [, options])
+
+2. res.format(object) **Content-Type**
+```
+res.format({
+  text: function(){
+    res.send('hey');
+  },
+
+  html: function(){
+    res.send('<p>hey</p>');
+  },
+
+  json: function(){
+    res.send({ message: 'hey' });
+  }
+});
+```
+
+2. res.redirect([status,] path)
+```
+res.redirect(`${_config.loginUrl}/logout?callback=${_config.callbackUrl}`)
+```
+3. res.send([body]) 
+    + The body parameter can be a Buffer object, a String, an object, or an Array.
+
+4. res.sendFile(path [, options] [, fn])
+    + res.sendFile(path.join(__dirname, '../public/index2.html'))
+
+
 
