@@ -241,6 +241,7 @@ app.use('/admin', function(req, res, next) {  // GET 'http://www.example.com/adm
 		+ an extension name
 		+ a commma-delimited list
 		+ an array
+***
 
 ##### Response
 1. res.cookie(name, value [, options])
