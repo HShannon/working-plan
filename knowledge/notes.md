@@ -59,9 +59,42 @@ obs.observe({ entryTypes: ['measure'] });
 		+ git push origin :serverfix 
 		+ ([相关](https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF))
 
-13. 模版引擎
-		+ 通过模版引擎函数把数据塞入
-		
-1. 
+13. intro.js
+		+ Basic Usage
+				+ npm install intro.js
+				+ import 'intro.js/minified/introjs.min.css'
+				+ const introJS = require("intro.js")
+				+ introJS.introJs().start()
+				+ data-intro="This is a table"
+		+ Improved Usage
+				+ **dateset** HTMLElement.dataset属性允许无论是在读取模式和写入模式下访问在 HTML或 DOM中的元素上设置的所有自定义数据属性(data-*)集
+				```
+				activeName(newVal, oldVal) {
+					let intro_index = localStorage.getItem("edit_intro_index")
+						? localStorage.getItem("edit_intro_index")
+						: 0;
+					if (intro_index < intros.length && newVal === "second") {
+						// 组件添加指引
+						intros.forEach((intro, index) => {
+							const element = document.querySelector(intro.el);
+							element.dataset.step = index + 1;
+							element.dataset.intro = intro.content;
+						});
+
+						localStorage.setItem("edit_intro_index", intros.length);
+						introJs()
+							.setOptions({
+								nextLabel: "前进",
+								prevLabel: "后退",
+								doneLabel: "结束",
+								skipLabel: "跳过",
+								showBullets: false
+							})
+							.goToStepNumber(++intro_index)
+							.start();
+					}
+				}
+				```
+
 
 

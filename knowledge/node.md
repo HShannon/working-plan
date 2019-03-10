@@ -125,6 +125,7 @@ app.set('views', [
   path.join(__dirname, './views')
 ])
 ```
+模版引擎 通过模版引擎函数把数据塞入
 常用的模版引擎([资料](https://segmentfault.com/a/1190000000502743))
 
 #### Application
