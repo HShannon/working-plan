@@ -21,3 +21,8 @@ for(var i = 0; i < lis.length ; i++){
 
 2. NodeList 对象、HTMLCollection 对象 ([相关资料知乎](https://www.zhihu.com/question/24702250))
 
+#### 弹性布局
+1. flex布局，子元素的float、clear和vertical-align属性会失效
+
+2. 
+
