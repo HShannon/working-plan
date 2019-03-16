@@ -61,7 +61,17 @@ obs.observe({ entryTypes: ['measure'] });
 		+ git push origin :serverfix 
 		+ ([相关](https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF))
 
-13. 在export default前定义函数
+13. 删除本地分支
+		git branch -d <BranchName>
+
+14. 在export default前定义函数 from project-Site
+
+15. gitLab密码修改
+    git config --global credential.helper store
+
+16. console.log('Koa server with `koa-body` parser start listening to port %s', port)  **%s**
+
+17. 
 
 
 

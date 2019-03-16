@@ -25,4 +25,10 @@
   - 从最开始的地方开始思考问题 by introduce.js
   - Font Awesome([Font Awesome官网](https://www.thinkcmf.com/font/font_awesome/getstarted.html))
   - dragula.js
+
+3. ToDOList
+  - log4js
+  - pm2.js
+  - fetch
+  - script对象内的传参
 ***

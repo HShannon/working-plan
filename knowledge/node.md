@@ -273,6 +273,60 @@ res.redirect(`${_config.loginUrl}/logout?callback=${_config.callbackUrl}`)
 
 4. res.sendFile(path [, options] [, fn])
     + res.sendFile(path.join(__dirname, '../public/index2.html'))
+***
+
+##### Node util
+util 是一个Node.js 核心模块，提供常用函数的集合
+
++ util.callbackify
+
++ util.inherits
+```
+var util = require('util'); 
+function Base() { 
+    this.name = 'base'; 
+    this.base = 1991; 
+    this.sayHello = function() { 
+    console.log('Hello ' + this.name); 
+    }; 
+} 
+Base.prototype.showName = function() { 
+    console.log(this.name);
+}; 
+function Sub() { 
+    this.name = 'sub'; 
+}
+```
+Sub 仅仅继承了Base 在原型中定义的函数，而构造函数内部创造的 base 属 性和 sayHello 函数都没有被 Sub 继承。
+
++ util.inspect(object[, option])
+    将任意对象转换为字符串
+```
+var util = require('util'); 
+function Person() { 
+    this.name = 'byvoid'; 
+    this.toString = function() { 
+    return this.name; 
+    }; 
+} 
+var obj = new Person(); 
+console.log(util.inspect(obj)); 
+console.log(util.inspect(obj, true)); 
+```
+
+```
+Person { name: 'byvoid', toString: [Function] }
+Person {
+  name: 'byvoid',
+  toString: 
+   { [Function]
+     [length]: 0,
+     [name]: '',
+     [arguments]: null,
+     [caller]: null,
+     [prototype]: { [constructor]: [Circular] } } }
+```
+
 
 
 
