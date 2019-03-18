@@ -19,4 +19,34 @@ http.createServer(function(req, res){
 }).listen(3000);
 ```
 
-2. 
+2. formidadable的简单使用
+    + 创建form对象
+    ```
+    const form = new formidable.IncomingForm()
+    ```
+    + 使用form.parse()函数接受数据, fields接受的数据
+    ```
+    form.parse(req,function(err,fields,files){
+      console.log(fields);
+    });
+    ```
+
+3. 使用post上传文件
+```
+app.post('/api/images', (req, res, next) => {
+  const form = new formidable.IncomingForm()
+  form.uploadDir = path.join(__dirname, './upload')
+  form.parse(req, (err, fields, files) => {
+    if (err) console.log(err)
+    console.log(files)
+  })
+  res.json({
+    code: 200,
+    msg: ''
+  })
+})
+```
++ 设置form.parse前需设置保存地址
+```
+form.uploadDir = path.join(__dirname, './upload')
+```

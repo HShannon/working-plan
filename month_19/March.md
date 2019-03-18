@@ -10,7 +10,7 @@
   - express
 ***
 
-#### 2019-03-12 —— 2019-03-19
+#### 2019-03-12 —— 2019-03-18
 1. 工作
   - 外部对接-DSP报表优化PRD  已提测
   - 客户健康度报表   已提测
@@ -25,10 +25,26 @@
   - 从最开始的地方开始思考问题 by introduce.js
   - Font Awesome([Font Awesome官网](https://www.thinkcmf.com/font/font_awesome/getstarted.html))
   - dragula.js
+  - formidable 处理文件上传
+  - koa-body
+
 
 3. ToDOList
   - log4js
   - pm2.js
   - fetch
   - script对象内的传参
+***
+
+#### 2019-03-19 —— 2019-03-
+1. 工作
+  - 外部对接-DSP报表优化PRD  已提测
+  - 客户健康度报表   已提测
+  - 广告数详情分析报表    开发中
+
+2. 学习
+
+
+3. ToDOList
+
 ***
