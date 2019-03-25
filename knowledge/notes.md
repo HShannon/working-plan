@@ -71,7 +71,6 @@ obs.observe({ entryTypes: ['measure'] });
 
 16. console.log('Koa server with `koa-body` parser start listening to port %s', port)  **%s**
 
-17. 
 
 
 
