@@ -51,6 +51,7 @@ function compose (middleware) {
   }
 }
 ```
+![window](./public/image/compose.png "koa-compose")
 
 2. 
 ***
