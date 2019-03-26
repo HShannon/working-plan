@@ -64,12 +64,30 @@ obs.observe({ entryTypes: ['measure'] });
 13. 删除本地分支
 		git branch -d <BranchName>
 
-14. 在export default前定义函数 from project-Site
+14. 在export default前定义函数 [from project-Site]
 
 15. gitLab密码修改
     git config --global credential.helper store
 
 16. console.log('Koa server with `koa-body` parser start listening to port %s', port)  **%s**
+
+17. 在开发dsp报表优化时的小细节
+		+ 用 isNaN() 过滤数字字符串、以及数字 
+		+ Object.keys() 会对属性名进行排序, 数字(数字字符串)优先 ([网上资料](http://jartto.wang/2016/10/25/does-js-guarantee-object-property-order/))
+				解决方案: Map
+
+18. slice(0) always returns a new array,  the array returned by slice(0) is identical to the input, which basicallly means it's cheap way to duplicate any array
+```
+let arr = ['wangyaru', 'tuwanqiong', 'wangdacheng']
+let arr1 = arr.slice(0)
+let arr2 = arr
+arr[0] = 'shannon'
+
+console.log(arr)  // ["shannon", "tuwanqiong", "wangdacheng"]
+console.log(arr1) // ["wangyaru", "tuwanqiong", "wangdacheng"]
+console.log(arr2) // ["shannon", "tuwanqiong", "wangdacheng"]
+```
+
 
 
 
