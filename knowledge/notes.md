@@ -71,12 +71,12 @@ obs.observe({ entryTypes: ['measure'] });
 
 16. console.log('Koa server with `koa-body` parser start listening to port %s', port)  **%s**
 
-18. 在开发dsp报表优化时的小细节
+17. 在开发dsp报表优化时的小细节
 		+ 用 isNaN() 过滤数字字符串、以及数字 
 		+ Object.keys() 会对属性名进行排序, 数字(数字字符串)优先 ([网上资料](http://jartto.wang/2016/10/25/does-js-guarantee-object-property-order/))
 				解决方案: Map
 
-19. slice(0) always returns a new array,  the array returned by slice(0) is identical to the input, which basicallly means it's cheap way to duplicate any array
+18. slice(0) always returns a new array,  the array returned by slice(0) is identical to the input, which basicallly means it's cheap way to duplicate any array
 ```
 let arr = ['wangyaru', 'tuwanqiong', 'wangdacheng']
 let arr1 = arr.slice(0)
@@ -88,10 +88,10 @@ console.log(arr1) // ["wangyaru", "tuwanqiong", "wangdacheng"]
 console.log(arr2) // ["shannon", "tuwanqiong", "wangdacheng"]
 ```
 
-20. weChat-server 的学习笔记
+19. weChat-server 的学习笔记
 
 
-21. the usage of qs
+20. the usage of qs
 ```
 var qs = require('qs')
 var assert = require('assert')
@@ -103,7 +103,7 @@ var str = qs.stringify(obj)
 assert.equal(str, 'a=c')
 ```
 
-22. log4js
+21. log4js
 		+ 日志分级, 级别由低到高
 		```
 		{
@@ -158,14 +158,14 @@ assert.equal(str, 'a=c')
 				+ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
 				+ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
 
-23. **safari 浏览器**
+22. **safari 浏览器**
 	+ 在开发客户度报表时, safari显示日期异常,原因追踪是
 		```
 		let firstDay = new Date(dateDetail[0] + '-1' + '-1')
 		```
 		+ it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
 
-24. 小数点加和的问题		
+23. 小数点加和的问题		
 
 
 
