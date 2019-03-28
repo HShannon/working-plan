@@ -117,7 +117,7 @@ assert.equal(str, 'a=c')
 			MARK: new Level(9007199254740992, "MARK"), // 2^53
 			OFF: new Level(Number.MAX_VALUE, "OFF")
 		}
-```
+		```
 		- 日志分类 Logger 实例的类型，区分日志的维度, **getLogger()的参数**
 
 		- 日志落盘 Appender, 默认打印到控制台
@@ -161,8 +161,7 @@ assert.equal(str, 'a=c')
 		```
 		let firstDay = new Date(dateDetail[0] + '-1' + '-1')
 		```
-		it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))
-		因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
+		it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
 
 + 小数点加和的问题		
 
