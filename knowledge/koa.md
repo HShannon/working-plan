@@ -1,7 +1,7 @@
 #### koa-body
 1. koa-body版本问题。koa-body v3和v4之前通过ctx.request.body捕获文件。而v3.v4终才是通过ctx.request.files.file进行获取。
 
-2. 
+2. koa-body使用实例
 ```
 router.post('/file', async (ctx, next) => {
   console.log(ctx.request.files.file)
@@ -54,7 +54,6 @@ function compose (middleware) {
 
 ![window](../public/image/compose.jpg "koa-compose")
 
-2. 
 ***
 
 #### koa-router
