@@ -134,35 +134,36 @@ let logger = log4js.getLogger('custom-appender')
 logger.debug("Time:", new Date())
 ```
 提供的其他的appender: DateFile、 STMP、 MailGun、levelFilter(通过level过滤)
-		+ DateFile 注意log4js.config()的配置数据格式，详情见官网(['官网'](https://github.com/log4js-node/log4js-node))
-		```
-		const log4js = require('log4js')
-		log4js.configure({
-			appenders: {
-				DateFile: {type: 'DateFile', filename: 'shannon', pattern: '-yyyy-MM-dd.log'},
-				console: {type: 'console'}
-			},
-			categories: {
-				DateFile: {appenders: ['DateFile'], level: 'info'},
-				default: {appenders: ['console'], level: 'info'}
-			}
-		})
-		var logger = log4js.getLogger('DateFile')
-		logger.info('this is datefile')
-		```
+
++ DateFile 注意log4js.config()的配置数据格式，详情见官网([官网](https://github.com/log4js-node/log4js-node))
+```
+const log4js = require('log4js')
+log4js.configure({
+	appenders: {
+		DateFile: {type: 'DateFile', filename: 'shannon', pattern: '-yyyy-MM-dd.log'},
+		console: {type: 'console'}
+	},
+	categories: {
+		DateFile: {appenders: ['DateFile'], level: 'info'},
+		default: {appenders: ['console'], level: 'info'}
+	}
+})
+var logger = log4js.getLogger('DateFile')
+logger.info('this is datefile')
+```
 
 + Layout
-		+ messagePassThrough: 仅仅输出日志的内容
-		+ basic: 在日志的内容前面会加上时间、日志的级别和类别，通常日志的默认 layout
-		+ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
-		+ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
++ messagePassThrough: 仅仅输出日志的内容
++ basic: 在日志的内容前面会加上时间、日志的级别和类别，通常日志的默认 layout
++ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
++ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
 
 + **safari 浏览器**
-		+ 在开发客户度报表时, safari显示日期异常,原因追踪是
-		```
-		let firstDay = new Date(dateDetail[0] + '-1' + '-1')
-		```
-		+ it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
++ 在开发客户度报表时, safari显示日期异常,原因追踪是
+```
+let firstDay = new Date(dateDetail[0] + '-1' + '-1')
+```
++ it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
 
 + 小数点加和的问题		
 
