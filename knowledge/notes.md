@@ -156,7 +156,7 @@ assert.equal(str, 'a=c')
 				+ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
 				+ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
 
-22. **safari 浏览器**
++ **safari 浏览器**
 		在开发客户度报表时, safari显示日期异常,原因追踪是
 		```
 		let firstDay = new Date(dateDetail[0] + '-1' + '-1')
@@ -164,7 +164,7 @@ assert.equal(str, 'a=c')
 		it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))
 		因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
 
-23. 小数点加和的问题		
++ 小数点加和的问题		
 
 
 
