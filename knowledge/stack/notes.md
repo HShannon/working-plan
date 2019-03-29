@@ -105,7 +105,7 @@ assert.equal(str, 'a=c')
 ![window](../../public/image/web_structure.jpg "koa-compose")
 	
 + 1.DNS域名解析器  
-对方的
+	对方的
 
 
 
