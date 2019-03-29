@@ -104,8 +104,15 @@ assert.equal(str, 'a=c')
 20. web架构
 ![window](../../public/image/web_structure.jpg "koa-compose")
 	
-+ 1. DNS域名解析器  
-	对方的
++ DNS域名解析器  
++ 负载均衡: 垂直. 水平
++ web应用服务器  
+	user's brower <----> web app server <----> 后端基础设备
+	+ 应用服务器的实现(Node.js)
+	+ 后端语言MVC框架(koa、express)
++ 数据库服务器
++ cache 缓存(redis, Memcache)
++ CDN 内容分发网络 
 
 
 
