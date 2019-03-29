@@ -101,7 +101,7 @@ assert.equal(str, 'a=c')
 	+ ([增加ProcessOn免费文件数](https://github.com/96chh/Upgrade-ProcessOn))
 
 21. web架构
-![window](./../public/image/web_structure.jpg "koa-compose")
+![window](../../public/image/web_structure.jpg "koa-compose")
 
 
 
