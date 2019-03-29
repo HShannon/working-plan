@@ -1,4 +1,4 @@
-### dashboard 的学习笔记
+### dashboard 学习笔记
 
 #### safari浏览器 日期异常
 + 在开发客户度报表时, safari显示日期异常,原因追踪是
