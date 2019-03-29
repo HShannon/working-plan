@@ -40,7 +40,7 @@ obs.observe({ entryTypes: ['measure'] });
 ```
 
 7. 卸载从node官网下载的node
-    **sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
+  + **sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}**
 
 8. 去掉eslint检测，在webpack.base.config文件中
     ```
@@ -71,10 +71,6 @@ obs.observe({ entryTypes: ['measure'] });
 
 16. console.log('Koa server with `koa-body` parser start listening to port %s', port)  **%s**
 
-17. 在开发dsp报表优化时的小细节
-		+ 用 isNaN() 过滤数字字符串、以及数字 
-		+ Object.keys() 会对属性名进行排序, 数字(数字字符串)优先 ([网上资料](http://jartto.wang/2016/10/25/does-js-guarantee-object-property-order/))
-				解决方案: Map
 
 18. slice(0) always returns a new array,  the array returned by slice(0) is identical to the input, which basicallly means it's cheap way to duplicate any array
 ```
@@ -88,10 +84,7 @@ console.log(arr1) // ["wangyaru", "tuwanqiong", "wangdacheng"]
 console.log(arr2) // ["shannon", "tuwanqiong", "wangdacheng"]
 ```
 
-19. weChat-server 的学习笔记
-
-
-20. the usage of qs
+19. the usage of qs
 ```
 var qs = require('qs')
 var assert = require('assert')
@@ -103,74 +96,9 @@ var str = qs.stringify(obj)
 assert.equal(str, 'a=c')
 ```
 
-21. log4js
-	+ 日志分级, 级别由低到高
-	```
-	{
-		ALL: new Level(Number.MIN_VALUE, "ALL"),
-		TRACE: new Level(5000, "TRACE"),
-		DEBUG: new Level(10000, "DEBUG"),
-		INFO: new Level(20000, "INFO"),
-		WARN: new Level(30000, "WARN"),
-		ERROR: new Level(40000, "ERROR"),
-		FATAL: new Level(50000, "FATAL"),
-		MARK: new Level(9007199254740992, "MARK"), // 2^53
-		OFF: new Level(Number.MAX_VALUE, "OFF")
-	}
-	```
-		
-	+ 日志分类 Logger 实例的类型，区分日志的维度, **getLogger()的参数**
 
-	+ 日志落盘 Appender, 默认打印到控制台
-	```
-	let log4js = require('log4js');
-	log4js.configure({
-		appenders: [{
-			type: 'file',
-			filename: 'default.log'
-		}]
-	})
-	let logger = log4js.getLogger('custom-appender')
-	logger.debug("Time:", new Date())
-	```
-	提供的其他的appender: DateFile、 STMP、 MailGun、levelFilter(通过level过滤)
 
-	+ DateFile 注意log4js.config()的配置数据格式，详情见官网([官网](https://github.com/log4js-node/log4js-node))
-	```
-	const log4js = require('log4js')
-	log4js.configure({
-		appenders: {
-			DateFile: {type: 'DateFile', filename: 'shannon', pattern: '-yyyy-MM-dd.log'},
-			console: {type: 'console'}
-		},
-		categories: {
-			DateFile: {appenders: ['DateFile'], level: 'info'},
-			default: {appenders: ['console'], level: 'info'}
-		}
-	})
-	var logger = log4js.getLogger('DateFile')
-	logger.info('this is datefile')
-		```
 
-22. Layout
-	+ messagePassThrough: 仅仅输出日志的内容
-	+ basic: 在日志的内容前面会加上时间、日志的级别和类别，通常日志的默认 layout
-	+ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
-	+ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
-
-23. **safari 浏览器**
-	+ 在开发客户度报表时, safari显示日期异常,原因追踪是
-		```
-		let firstDay = new Date(dateDetail[0] + '-1' + '-1')
-		```
-	+ it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 
-		```
-		let firstDay = new Date(dateDetail[0] + '/1' + '/1')
-		```
-
-24. 小数点加和的问题
-	+ 在修复流量漏斗过程中，发现了类似1.1 + 1.21 = 2.3099999999 的现象，查询资料发现计算机的基础的确欠缺的
-	+ 阿博同学的csdn([浮点数的存储方式](https://blog.csdn.net/weixin_43243484/article/details/88872146))
 
 
 
