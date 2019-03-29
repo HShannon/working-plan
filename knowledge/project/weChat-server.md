@@ -1,6 +1,6 @@
-#### weChat-server 的学习笔记
+### weChat-server 的学习笔记
 
-##### log4js
+#### log4js
 + 日志分级, 级别由低到高
 ```
 {
