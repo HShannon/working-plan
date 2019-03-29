@@ -103,8 +103,9 @@ assert.equal(str, 'a=c')
 
 20. web架构
 ![window](../../public/image/web_structure.jpg "koa-compose")
-
-
+	
++ 1.DNS域名解析器  
+对方的
 
 
 
