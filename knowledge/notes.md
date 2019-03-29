@@ -165,8 +165,9 @@ assert.equal(str, 'a=c')
 		```
 	+ it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 let firstDay = new Date(dateDetail[0] + '/1' + '/1')
 
-24. 小数点加和的问题		
-
+24. 小数点加和的问题
+	+ 在修复流量漏斗过程中，发现了类似1.1 + 1.21 = 2.3099999999 的现象，查询资料发现计算机的基础的确欠缺的
+	+ 阿博同学的csdn([浮点数的存储方式](https://blog.csdn.net/weixin_43243484/article/details/88872146))
 
 
 
