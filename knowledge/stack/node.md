@@ -1,14 +1,14 @@
 #### node
 1. node能够做的事情
-    + 网站（如express/koa等）
-    + im即时聊天(socket.io)
-    + api（移动端，pc，h5）
-    + http proxy（淘宝首页）
-    + 前端构建工具(grunt/gulp/bower/webpack/fis3...)
-    + 写操作系统（NodeOS）
-    + 跨平台打包工具（以前叫Node-WebKit现在叫nw.js,electron）
-    + 命令行工具（比如cordova）
-    + 编辑器（atom，vscode）
+  + 网站（如express/koa等）
+  + im即时聊天(socket.io)
+  + api（移动端，pc，h5）
+  + http proxy（淘宝首页）
+  + 前端构建工具(grunt/gulp/bower/webpack/fis3...)
+  + 写操作系统（NodeOS）
+  + 跨平台打包工具（以前叫Node-WebKit现在叫nw.js,electron）
+  + 命令行工具（比如cordova）
+  + 编辑器（atom，vscode）
 ***
 
 #### module模块
@@ -38,8 +38,8 @@ fs.readFileSync(require.resolve('./assets/some-file.txt))
 
 #### HTTP
 1. HTTP持久连接 与 HTTPClient连接池
-    + Keep-Alive: 使用HTTP/1.0的客户端在首部中加上”Connection:Keep-Alive”，请求服务端将一条连接保持在打开状态。服务端如果愿意将这条连接保持在打开状态，就会在响应中包含同样的首部。如果响应中没有包含”Connection:Keep-Alive”首部，则客户端会认为服务端不支持keep-alive，会在发送完响应报文之后关闭掉当前连接。 
-		+ HTTP/1.1采取持久连接的方式替代了Keep-Alive。
+  + Keep-Alive: 使用HTTP/1.0的客户端在首部中加上”Connection:Keep-Alive”，请求服务端将一条连接保持在打开状态。服务端如果愿意将这条连接保持在打开状态，就会在响应中包含同样的首部。如果响应中没有包含”Connection:Keep-Alive”首部，则客户端会认为服务端不支持keep-alive，会在发送完响应报文之后关闭掉当前连接。 
+  + HTTP/1.1采取持久连接的方式替代了Keep-Alive。
 2. 连接池
 ***
 
@@ -114,7 +114,7 @@ app.use(myLogger)
 ```
 ***
 
-##### 使用模版引擎
+#### 使用模版引擎
 > Define: A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. 
 
 > Popular template engines: Pug, Mustache, EJS, Jade
@@ -129,7 +129,8 @@ app.set('views', [
 常用的模版引擎([资料](https://segmentfault.com/a/1190000000502743))
 
 #### Application
-1. app.locals: Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
+1. app.locals
++ Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
 
 2. app.mountpath
 ```
@@ -169,25 +170,25 @@ app.use('/admin', admin);
 4. app.engine
 ***
 
-##### app settings table
+#### app settings table
 
 1. case sensitive routing
 
 2. env ([相关文档](https://juejin.im/post/5a4ed5306fb9a01cbc6e2ee2))
 
 3. ETag
-		+ 服务器使用ETag HTTP标头传递验证令牌
-		+ 验证令牌可实现高效的资源更新检查：资源未发生变化时不会传送任何数据。
+  + 服务器使用ETag HTTP标头传递验证令牌
+  + 验证令牌可实现高效的资源更新检查：资源未发生变化时不会传送任何数据。
 ![window](../../public/image/etag.jpg "etag流程图")
 
 4. jsonp callback name
 
 5. trust proxy 涉及 X-Forwarded-Proto ([相关文档](http://www.expressjs.com.cn/4x/api.html#app.settings.table))
-		+ req.hostname
-		+ req.ip
+  + req.hostname
+  + req.ip
 ***
 
-##### Request
+#### Request
 1. If you follow the pattern in which you create a module that just exports a middleware function and require() it in your main file, **then the middleware can access the Express instance via req.app**
 
 2. req.body
@@ -238,16 +239,17 @@ app.use('/admin', function(req, res, next) {  // GET 'http://www.example.com/adm
 **HTTP Header**
 
 6. req.accepts()
-		+ MIME type string
-		+ an extension name
-		+ a commma-delimited list
-		+ an array
+  + MIME type string
+  + an extension name
+  + a commma-delimited list
+  + an array
 ***
 
-##### Response
+#### Response
 1. res.cookie(name, value [, options])
 
-2. res.format(object) **Content-Type**
+2. res.format(object) 
++ **Content-Type**
 ```
 res.format({
   text: function(){
@@ -269,13 +271,13 @@ res.format({
 res.redirect(`${_config.loginUrl}/logout?callback=${_config.callbackUrl}`)
 ```
 3. res.send([body]) 
-    + The body parameter can be a Buffer object, a String, an object, or an Array.
+  + The body parameter can be a Buffer object, a String, an object, or an Array.
 
 4. res.sendFile(path [, options] [, fn])
-    + res.sendFile(path.join(__dirname, '../public/index2.html'))
+  + res.sendFile(path.join(__dirname, '../public/index2.html'))
 ***
 
-##### Node util
+#### Node util
 util 是一个Node.js 核心模块，提供常用函数的集合
 
 + util.callbackify
@@ -297,35 +299,35 @@ function Sub() {
     this.name = 'sub'; 
 }
 ```
-Sub 仅仅继承了Base 在原型中定义的函数，而构造函数内部创造的 base 属 性和 sayHello 函数都没有被 Sub 继承。
+Sub 仅仅继承了Base 在原型中定义的函数，而构造函数内部创造的 base 属性和 sayHello 函数都没有被 Sub 继承。
 
 + util.inspect(object[, option])
-    将任意对象转换为字符串
-```
-var util = require('util'); 
-function Person() { 
-    this.name = 'byvoid'; 
-    this.toString = function() { 
-    return this.name; 
-    }; 
-} 
-var obj = new Person(); 
-console.log(util.inspect(obj)); 
-console.log(util.inspect(obj, true)); 
-```
+  + 将任意对象转换为字符串
+  ```
+  var util = require('util'); 
+  function Person() { 
+      this.name = 'byvoid'; 
+      this.toString = function() { 
+      return this.name; 
+      }; 
+  } 
+  var obj = new Person(); 
+  console.log(util.inspect(obj)); 
+  console.log(util.inspect(obj, true)); 
+  ```
 
-```
-Person { name: 'byvoid', toString: [Function] }
-Person {
-  name: 'byvoid',
-  toString: 
-   { [Function]
-     [length]: 0,
-     [name]: '',
-     [arguments]: null,
-     [caller]: null,
-     [prototype]: { [constructor]: [Circular] } } }
-```
+  ```
+  Person { name: 'byvoid', toString: [Function] }
+  Person {
+    name: 'byvoid',
+    toString: 
+    { [Function]
+      [length]: 0,
+      [name]: '',
+      [arguments]: null,
+      [caller]: null,
+      [prototype]: { [constructor]: [Circular] } } }
+  ```
 
 
 

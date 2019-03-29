@@ -24,5 +24,4 @@ for(var i = 0; i < lis.length ; i++){
 #### 弹性布局
 1. flex布局，子元素的float、clear和vertical-align属性会失效
 
-2. 
 

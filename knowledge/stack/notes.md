@@ -15,7 +15,7 @@
 	+ cd <项目目录>
 	+ npm run dev
 
-5. performance[performance文档](https://www.cnblogs.com/bldxh/p/6857324.html)
+5. performance [performance文档](https://www.cnblogs.com/bldxh/p/6857324.html)
 
 | 属性指      | 描述                                 |
 | :--------: | :---------------------------------:  |

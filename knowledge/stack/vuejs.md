@@ -104,10 +104,12 @@
   })
   ```
 2. v-for为了给Vue一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一key属性。理想的key值是每项都有的唯一id。
+
 3. 不要使用对象或数组之类的非原始类型值作为 v-for 的 key。用**字符串或数类型**的值取而代之。
+
 4. Vue不能检测以下变动的数组
-    + 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
-    + 当你修改数组的长度时，例如：vm.items.length = newLength
+  + 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+  + 当你修改数组的长度时，例如：vm.items.length = newLength
   ```
   // Vue.set
   Vue.set(vm.items, indexOfItem, newValue)
@@ -118,8 +120,9 @@
   ```
   也可以使用vm.$set
 5. Vue 不能动态添加根级别的响应式属性，可以使用 Vue.set(object, key, value) 方法向嵌套对象添加响应式属性。
+
 6. 为已有对象赋予多个新属性，应该用两个对象的属性创建一个新的对象，
-  ```
+```
   vm.userProfile = Object.assign({}, vm.userProfile, {
     age: 27,
     favoriteColor: 'Vue Green'
@@ -129,78 +132,78 @@
 
 #### 组件
 1. 组件注册
-    + 局部注册
-        + 局部注册的组件在其自组建中不可用
-        ```
-        import ComponentA from './ComponentA.vue'
-
-        export default {
-          components: {
-            ComponentA
-          },
-          // ...
-        }
-        ```
-    + 全局注册
-2. prop验证
-    + 基础类型检测
-    + 必填字段检测
-    + 默认值检测
+  + 局部注册
+    + 局部注册的组件在其自组建中不可用
     ```
-    props: {
-      // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
-      propA: Number,
-      // 多个可能的类型
-      propB: [String, Number],
-      // 必填的字符串
-      propC: {
-        type: String,
-        required: true
+    import ComponentA from './ComponentA.vue'
+
+    export default {
+      components: {
+        ComponentA
       },
-      // 带有默认值的数字
-      propD: {
-        type: Number,
-        default: 100
-      },
-      // 带有默认值的对象
-      propE: {
-        type: Object,
-        // 对象或数组默认值必须从一个工厂函数获取
-        default: function () {
-          return { message: 'hello' }
-        }
-      },
-      // 自定义验证函数
-      propF: {
-        validator: function (value) {
-          // 这个值必须匹配下列字符串中的一个
-          return ['success', 'warning', 'danger'].indexOf(value) !== -1
-        }
+      // ...
+    }
+      ```
+  + 全局注册
+2. prop验证
+  + 基础类型检测
+  + 必填字段检测
+  + 默认值检测
+  ```
+  props: {
+    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 必填的字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 带有默认值的数字
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // 带有默认值的对象
+    propE: {
+      type: Object,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // 自定义验证函数
+    propF: {
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
       }
     }
-    ```
+  }
+  ```
 
 #### 插槽
 1. 如果自定义组件内没有包含一个 <slot> 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃。
 
 2. 该插槽跟模板的其它地方一样可以访问相同的实例属性 (也就是相同的“作用域”)，而不能访问 <navigation-link> 的作用域。例如 url 是访问不到的
-    + **具名插槽**
-        + <current-user>组件中
-        ```
-        <span>
-          <slot v-bind:user="user">
-            {{ user.lastName }}
-          </slot>
-        </span>
-        ```
-        + 
-        ```
-        <current-user>
-          <template v-slot:default="slotProps">
-            {{ slotProps.user.firstName }}
-          </template>
-        </current-user>
-        ```
+  + **具名插槽**
+    + <current-user>组件中
+    ```
+    <span>
+      <slot v-bind:user="user">
+        {{ user.lastName }}
+      </slot>
+    </span>
+    ```
+  + 
+    ```
+    <current-user>
+      <template v-slot:default="slotProps">
+        {{ slotProps.user.firstName }}
+      </template>
+    </current-user>
+    ```
 
 3. **父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。**
 
