@@ -52,7 +52,7 @@ function compose (middleware) {
 }
 ```
 
-![window](../public/image/compose.jpg "koa-compose")
+![window](./../public/image/compose.jpg "koa-compose")
 
 ***
 
