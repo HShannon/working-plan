@@ -164,9 +164,9 @@ assert.equal(str, 'a=c')
 		let firstDay = new Date(dateDetail[0] + '-1' + '-1')
 		```
 	+ it seems that YYYY-MM-DD is included in the standard, but for some reason, Safari doesn't support it.([资料](https://stackoverflow.com/questions/4310953/invalid-date-in-safari))，因此按照资料应该改成 
-	```
-	let firstDay = new Date(dateDetail[0] + '/1' + '/1')
-	```
+		```
+		let firstDay = new Date(dateDetail[0] + '/1' + '/1')
+		```
 
 24. 小数点加和的问题
 	+ 在修复流量漏斗过程中，发现了类似1.1 + 1.21 = 2.3099999999 的现象，查询资料发现计算机的基础的确欠缺的
