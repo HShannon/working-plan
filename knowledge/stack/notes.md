@@ -116,7 +116,7 @@ assert.equal(str, 'a=c')
 	**redis**, Memcache
 + CDN 内容分发网络
 
-21. web架构II
+21. web架构II  
 ![window](../../public/image/web_structure1.jpg "koa-compose")
 
 + [反向代理服务](https://cloud.tencent.com/developer/article/1160241)  
