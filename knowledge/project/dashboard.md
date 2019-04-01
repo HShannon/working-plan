@@ -19,3 +19,16 @@
 #### 在开发dsp报表优化时的小细节
 + 用 isNaN() 过滤数字字符串、以及数字 
 + Object.keys() 会对属性名进行排序, 数字(数字字符串)优先 ([网上资料](http://jartto.wang/2016/10/25/does-js-guarantee-object-property-order/))。解决方案: Map
+***
+
+#### 在线广告详情数 Array.prototype.push
+```
+let animals = ['pigs', 'goats', 'sheep'];
+
+console.log(animals.push('cows'));
+// expected output: 4
+
+console.log(animals);
+// expected output: Array ['pigs', 'goats', 'sheep', 'cows']
+```
+so young so navie 😢
