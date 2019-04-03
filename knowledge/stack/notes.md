@@ -121,9 +121,12 @@ assert.equal(str, 'a=c')
 
 + [反向代理服务](https://cloud.tencent.com/developer/article/1160241)  
 	负责接受用户的接入请求
-	+ 连接管理
-	+ 攻击检查和安全隔离
-	+ 负载均衡
+	+ 连接管理	
+		分别维护客户端和应用服务器的连接池，管理并关闭已超时的长链接
+	+ 攻击检查和安全隔离	
+		通常使用轮转（Round Robin）或最少连接数优先等策略完成基于客户请求的负载均衡；也可以使用 SSI 等技术将一个客户请求拆分成若干并行计算部分分别提交到多个应用服务器。
+	+ 负载均衡	
+		可以将反向代理分组部署在距离热点地区地理位置较近的网络边界上。通过在位于客户较近的位置提供缓冲服务来加速网络应用。这实际上就构成了 CDN 网络。
 	+ CDN(分布式的cache加速)
 	+ 静态文件伺服  
 		收到静态文件请求，直接返回该文件无需将该请求提交至后端应用服务器
@@ -135,10 +138,26 @@ assert.equal(str, 'a=c')
 	+ 完成用户登录和会话建立
 	+ url别名
 	+ 应用搭配
-	+ 协议转换  
+	+ 协议转换
 	常见的反向代理服务包括：Apache httpd+mod_proxy / IIS+ARR / Squid / Apache Traffic Server / **Nginx** / Cherokee / Lighttpd / HAProxy 以及 Varnish 
 
-22. 
+22. reduce
+```
+let arr = [1, 2, 3, 4]
+let obj1 = {
+  1: 'w',
+  2: 's',
+  3: 'd',
+  4: 'q',
+  5: 'r',
+  6: 't'
+}
+let urls = arr.reduce((pre, cur, curindex, arr) => {
+  pre = pre.concat(obj1[cur])
+  return pre
+}, [])
+console.log(urls)
+```
 
 
 
