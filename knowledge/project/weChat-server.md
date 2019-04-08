@@ -53,3 +53,5 @@ logger.info('this is datefile')
 	+ basic: 在日志的内容前面会加上时间、日志的级别和类别，通常日志的默认 layout
 	+ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
 	+ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
+***
+

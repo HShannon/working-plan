@@ -131,6 +131,15 @@ app.set('views', [
 #### Application
 1. app.locals
 + Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
+```
+router.get('/config', (req, res, next) => {
+  res.json({
+    code: 0,
+    msg: '',
+    data: Object.assign({}, req.app.locals.config, req.app.locals.apollo.config)
+  })
+})
+```
 
 2. app.mountpath
 ```

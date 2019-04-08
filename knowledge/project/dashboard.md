@@ -64,6 +64,7 @@ lxsession: cf942f05e8d12a3c7ffe87ed0786a84d
   + url直接访问  
 
 + requestify
+***
 
 #### logger
 ```
@@ -83,6 +84,8 @@ let level = process.env.NODE_ENV === 'development' ? 'TRACE' : 'INFO'
 let logger = log4js.getLogger('report')
 logger.setLevel(level)
 ```
+***
+
 #### AUTH_LIST
 + 数据结构
 ```
@@ -116,5 +119,53 @@ logger.setLevel(level)
   ]
 },
 ``` 
-![window](../../public/image/Login_Auth.jpg "koa-compose")
+***
+
+#### 登录 认证
+
+![window](../../public/image/Login_Auth.jpg "Login_Auth")
+
+***
+
+#### 后端获取
+```
+const fetch = require('node-fetch')
+
+let defaultConfig = {
+  interval: 1000 * 60 * 60 * 2,
+  fresh: false,
+  urls: []
+}
+
+let grabber = (app, config = {}) => {
+  config = Object.assign({}, defaultConfig, config)
+  let { interval, urls } = config
+
+  urls.forEach(url => {
+    garb(app, url)()
+    if (!config.fresh) {
+      setInterval(garb(app, url), interval)
+    }
+  })
+}
+
+// url 格式: {address:'', title:''}
+let garb = (app, url) => () => {
+  fetch(url.address)
+  .then(res => res.json())
+  .then(data => {
+    if (!app.locals.config) {
+      app.locals.config = {}
+    }
+    app.locals.config[url.title] = data
+    console.log('请求配置成功')
+  })
+  .catch(err => {
+    console.log('请求配置失败', err)
+  })
+}
+module.exports = grabber
+```
+
+
 

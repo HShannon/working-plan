@@ -159,6 +159,14 @@ let urls = arr.reduce((pre, cur, curindex, arr) => {
 console.log(urls)
 ```
 
+23. node-fetch	
+	**Common Usage**
+	```
+	fetch('https://api.github.com/users/github')
+    .then(res => res.json())
+    .then(json => console.log(json));
+	```
+
 
 
 
