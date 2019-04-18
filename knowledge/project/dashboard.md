@@ -167,5 +167,110 @@ let garb = (app, url) => () => {
 module.exports = grabber
 ```
 
+#### 系统打包
+```
+app.use('/api', (req, res, next) => {
+  if (buildTimeStamp && env !== 'development' && env !== 'utest') {
+    const { _ts } = req.query
+    // 下载接口不处理
+    if (!/download/i.test(req.path)) {
+      console.log('\n\n_ts:', _ts, buildTimeStamp)
+      // 验证如果页面请求之前上线版本的请求，那么需要刷新页面
+      if (typeof _ts === 'undefined' || _ts < buildTimeStamp) {
+        console.log('\n\n refresh browser: api\n\n')
+        return res.json({
+          code: 401,
+          msg: '',
+          data: {
+            redirectUrl: '/'
+          }
+        })
+      }
+    }
+  }
+  next()
+})
+```
+buildTimeStamp 主要用于保证前端代码与服务器版本一致
+```
+const buildTimeStampFilePath = path.resolve(__dirname, '../server/config/buildTimeStamp.js')
+// 此文件不能人为修改，需要由打包工具保证前端代码的打包版本与服务器版本是一致的，
+// 否则前端页面会产生循环刷新的 bug
+fs.writeFileSync(buildTimeStampFilePath, `module.exports = ${buildTimeStamp}`);
+```
+
+***
+
+#### 系统打包
+```
+app.use('/api', (req, res, next) => {
+  if (buildTimeStamp && env !== 'development' && env !== 'utest') {
+    const { _ts } = req.query
+    // 下载接口不处理
+    if (!/download/i.test(req.path)) {
+      console.log('\n\n_ts:', _ts, buildTimeStamp)
+      // 验证如果页面请求之前上线版本的请求，那么需要刷新页面
+      if (typeof _ts === 'undefined' || _ts < buildTimeStamp) {
+        console.log('\n\n refresh browser: api\n\n')
+        return res.json({
+          code: 401,
+          msg: '',
+          data: {
+            redirectUrl: '/'
+          }
+        })
+      }
+    }
+  }
+  next()
+})
+```
+***
+
+#### build.js
 
 
+#### 数字加，号
+```
+const commaFormat = (value = 0) => {
+  value += ''
+  
+  let arr = value.split('.')
+  return arr[0].replace(/\B(?=(?:\d{3})+$)/g, ',') + (arr[1] ? '.' + arr[1] : '')
+}
+
+console.log(commaFormat(1231231.21313))  //"1,231,231.21313"
+```
+
+#### 过滤器
+- [官网过滤器](https://cn.vuejs.org/v2/guide/filters.html)
+```
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
+
+new Vue({
+  // ...
+})
+```
+- 项目
+```
+for (let [key, value] of Object.entries(filters)) {
+  Vue.filter(key, value)
+}
+```
+#### 拦截
+vue.http.interceptor.push(function(request, next) {
+  // modify request
+
+  next(response => {
+    // modify response
+    return response
+  })
+})
+
+#### location
+http://data.yidianzixun.com:8080/index2.html#/preview-summary
+![window](../../public/image/dashboard_location.jpg "dashboard_location")

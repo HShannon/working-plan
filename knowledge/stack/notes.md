@@ -159,7 +159,7 @@ let urls = arr.reduce((pre, cur, curindex, arr) => {
 console.log(urls)
 ```
 
-23. node-fetch	
+23. [node-fetch](https://github.com/bitinn/node-fetch)
 	**Common Usage**
 	```
 	fetch('https://api.github.com/users/github')
@@ -167,7 +167,19 @@ console.log(urls)
     .then(json => console.log(json));
 	```
 
+24. 普通HTTP请求 && Ajax请求
+- Ajax请求(xmlHttpRequest)	
+	Ajax请求会多一个x-request-with: XMLHttpRequest
+- 普通HTTP请求(xmlHttpRequest)
 
+25. 打包
+
+26. console.log()
+```
+Console.prototype.log = function() {
+  this._stdout.write(util.format.apply(this, arguments) + '\n')
+}
+```
 
 
 

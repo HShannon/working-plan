@@ -33,10 +33,13 @@
     - [x] 根据接口文档更新代码
     - [x] DDLIST 的值
     - [ ] 联调
-  - [ ] 流量漏斗优化v4.0 [wiki文档](http://ydwiki.yidian-inc.com/pages/viewpage.action?pageId=18362689)
+  - [x] 流量漏斗优化v4.0 [wiki文档](http://ydwiki.yidian-inc.com/pages/viewpage.action?pageId=18362689)
     - [x] 正文页位置筛选项 (下载、筛选项)
     - [x] 小需求优化
+    - [ ] 联调
   - [ ] 数据平台整体报表优化
+    - [ ] 总体流量分析报表优化
+    - [ ] 
   - [ ] 客户健康度 cycle 值
 
 2. 学习
@@ -44,9 +47,28 @@
     - [ ] audit
     - [ ] dashboard
       - [ ] fetch 源码
+  - [冒烟测试](https://www.jianshu.com/p/46a2fc4a1d00)
+  - vim 插件挺有意思的，从全都要转变为我需要[知乎资料](https://www.zhihu.com/question/23590572)
 
 3. 思考
   - 合理创建utils.js文件
   - 数据平台 离线下载
   - store、dot-prop
-  
+
+
+#### 2019-04-08 —— 2019-04-15
+1. 工作
+  - [ ] 数据平台整体报表优化
+  - [ ] 客户健康度 cycle 值
+
+2. 学习
+  - [ ] 其他平台学习
+    - [ ] audit
+    - [ ] dashboard
+  - splice方法
+  - 扁平化
+  - reduce
+
+3. 思考
+  - 学会使用 debugger, 提高定位问题的能力
+  - 写代码，首先逻辑、之后方法。两者会相互影响
