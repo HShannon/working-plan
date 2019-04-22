@@ -141,23 +141,14 @@ assert.equal(str, 'a=c')
 	+ 协议转换
 	常见的反向代理服务包括：Apache httpd+mod_proxy / IIS+ARR / Squid / Apache Traffic Server / **Nginx** / Cherokee / Lighttpd / HAProxy 以及 Varnish 
 
-22. reduce
-```
-let arr = [1, 2, 3, 4]
-let obj1 = {
-  1: 'w',
-  2: 's',
-  3: 'd',
-  4: 'q',
-  5: 'r',
-  6: 't'
-}
-let urls = arr.reduce((pre, cur, curindex, arr) => {
-  pre = pre.concat(obj1[cur])
-  return pre
-}, [])
-console.log(urls)
-```
+22. [reduce](https://segmentfault.com/a/1190000010731933)  
+arr.reduce(callback, [initialValue])
+- callback
+	- previousValue 上次调用返回的值，或者是提供的初始化值(initialValue)
+	- currentValue 数组中当前被处理的元素
+	- index 当前元素在数组中的索引
+	- array 调用reduce的数组
+- initialValue 作为第一次调用 callback 的第一个参数
 
 23. [node-fetch](https://github.com/bitinn/node-fetch)
 	**Common Usage**
