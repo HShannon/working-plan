@@ -18,11 +18,11 @@ const store = new Vuex.Store({
 if (module.hot) {
   // 使 action 和 mutation 成为可热重载模块
   module.hot.accept([
-    // ...
+    // ... modules
   ], () => {
     store.hotUpdate({
       mutations,
-      modules
+      modules // [Object]
     })
   })
 }
@@ -49,6 +49,7 @@ new Vue({
   render: (h) => h(App)
 }).$mount('#app')
 ```
+***
 
 #### 组件绑定的辅助函数
 ```
