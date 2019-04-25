@@ -90,6 +90,7 @@
 2. 学习
   - [ ] 其他平台学习
     - [ ] audit
+      - [ ] tracer
     - [ ] dashboard
       - [x] 离线下载
   - [ ] splice方法

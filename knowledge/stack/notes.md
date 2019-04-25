@@ -172,7 +172,35 @@ Console.prototype.log = function() {
 }
 ```
 
+27. 浏览器缓存
+- 旧的策略使用Expires配合Last-Modified（HTTP1.0），检查缓存是否过期文件是否更改
+- 新的策略使用Cache-control配合Etag（HTTP1.1）
 
+28. [跨域](https://github.com/huanqingli/life-note/blob/master/%E5%89%8D%E7%AB%AF/HTTP/%E8%B7%A8%E5%9F%9F.md)
+- 跨域: 从一个域名的网页去请求另一个域名的资源
+- 同源策略: 浏览器会限制从脚本内发起的跨域HTTP请求，例如XMLHttpRequest 和 fetch(域名、协议和端口均相同就称为同源)
+- localhost 和 127.0.0.1 也是跨域
+- 解决方案
+	- 中间层过度(代理): 通过向后端请求，后端再去和其他域的后端通讯
+	- JSONP: 在页面上引入不同域上的js脚本文件却是可以的，JSONP 利用该原理。
+	- H5 window.postMessage: 可以使用它来向其它的window对象发送消息(于 iframe 沟通的好办法)。
+	- CORS: 思路就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
+	- [web sockets](https://github.com/huanqingli/life-note/blob/master/%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0/%E6%8A%80%E6%9C%AF%E7%B1%BB/WebSocket%E8%AF%A6%E8%A7%A3.md): 一种浏览器的API,建立持久化链接，没有同源策略。
 
+29 [权限认证 token vs cookie](https://github.com/huanqingli/life-note/blob/master/%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0/%E6%8A%80%E6%9C%AF%E7%B1%BB/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81(cookie-vs-token).md)
+- cookie
+	- 输入用户名密码登陆
+	- 服务器拿到身份并验证后生成一个session 存到数据库
+	- sessionID 返回给客户端存成一个cookie保存sessionID
+	- 随后的请求会携带这个包含sessionID 的cookie
+	- 服务器拿到sessionID 找到对应session 认证用户是否有对应权限
+	- 退出登录后，服务端销毁session, 客户端销毁cookie
+- token
+	- 输入用户名密码登陆
+	- 服务器拿到身份并签发一个token
+	- 客户端拿到token存起来
+	- 随后的请求会携带token
+	- 服务器接收请求后拿到 token 并解析，拿解析的结果进行权限认证(token中可能已经携带权限信息,能被正常解析的 token 被认为是合法机构签发的) **Authorization**
+	- 登出后，在客户端销毁 token 即可
 
-
+	
