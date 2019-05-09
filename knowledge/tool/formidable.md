@@ -19,7 +19,7 @@ http.createServer(function(req, res){
 }).listen(3000);
 ```
 
-2. formidadable的简单使用
+2. formidable的简单使用
     + 创建form对象
     ```
     const form = new formidable.IncomingForm()

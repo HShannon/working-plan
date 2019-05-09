@@ -73,5 +73,23 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 ```
+***
 
-2. 
+#### koa-socket
+1. url.parse()
+
+- protocol: The protocol scheme of the URL (e.g. http:).
+- slashes: A boolean which indicates whether the protocol is followed by two forward slashes (//).
+- auth: Authentication information portion (e.g. username:password).
+- username: Username of basic authentication.
+- password: Password of basic authentication.
+- host: Host name with port number.
+- hostname: Host name without port number.
+- port: Optional port number.
+- pathname: URL path.
+- query: Parsed object containing query string, unless parsing is set to false.
+- hash: The "fragment" portion of the URL including the pound-sign (#).
+- href: The full URL.
+
+#### context
+
