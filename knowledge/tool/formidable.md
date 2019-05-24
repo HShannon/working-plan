@@ -50,3 +50,18 @@ app.post('/api/images', (req, res, next) => {
 ```
 form.uploadDir = path.join(__dirname, './upload')
 ```
+#### mysql
+** 分号 **
+1. 下载安装: brew install mysql
+2. 设置密码: mysql_secure_installation(**提示:**your password should add special character !)
+3. 密码认证模块: 8.0之前的mysql默认用mysql_native_password, 之后的用caching_sha2_password. 然而node.js 还没支持caching_sha2_password, 需要手动把mysql的认证插件改回mysql_native_password
+  - [参考](https://stackoverflow.com/questions/29866133/cant-connect-to-mysql-with-sequelize)
+4. 常见的操作命令
+  - [参考](https://www.jianshu.com/p/92d47d986a4e)
+  - 本地root登陆: mysql -u root -p   [参考](https://blog.csdn.net/helloxiaozhe/article/details/76229074)
+  - 查看用户: SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
+  - 查看配置参数: show variables like '%skip_networking%'
+  - 查看所有库: show databases
+  - 查看所有表: show tables
+
+#### sequelize
