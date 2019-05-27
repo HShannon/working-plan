@@ -221,4 +221,22 @@ new Vue({
 1. <slot>元素有一个特殊的特性：name，在向具名插槽提供内容的时候，在一个<template>元素上使用c-slot指令，并以 v-slot 的参数的形式提供其名称
 
 2. v-slot:的缩写为字符#
+***
+
+#### Vue.js技术揭秘
+
+##### 认识Flow
+- Flow的工作方式
+  - 类型推断: 通过变量的使用上下文来推断出变量的类型，然后根据这些推断来检查类型
+  - 类型注释: 事先注释好我们期待的类型，Flow会给予这些注释来判断
+类似Flow的工具还有TypeScript
+
+##### Vue.js 源码目录设计
+- src
+  - compiler(编译相关)
+  - core(核心代码)
+  - platforms(不同平台的支持)
+  - server(服务端渲染)
+  - sfc(.vue文件解析)
+  - shared(共享代码)
 

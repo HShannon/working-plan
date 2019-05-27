@@ -242,4 +242,68 @@ Console.prototype.log = function() {
 | 可视化埋点 | 数据埋点部门                                                                  | 业务方工作量小                          | 技术上推广和实现难                        |
 | 无埋点     | 前端自动采集全部事件，上报埋点数据，由后端来过滤和计算出有用的数据 | 前端只要加载埋点脚本 | 前端只要加载埋点脚本                     | 流量和采集的数据过于庞大，服务器性能压力山大 |
 
+31. MVC MVVC MVP
+- MVC
+  - View: 用户界面，View传送指令到Controller
+  - Controller: 业务逻辑, 完成业务逻辑，要求Model改变状态
+  - Model: 数据保存, 将新的数据发送到View，用户得到反馈
+互动模式: 通过View接受指令，传递给Controller; 直接通过controller接受指令
+- MVP 将controller改名为presenter
+  - 各部分之间的通信，双向的
+  - View 与 Model不发生联系，都通过Presenter传递
+- MVVM Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致, 唯一的区别是，它采用双向绑定(data-binding), View的变动，自动反映在 ViewModel
+[参考](https://www.zhihu.com/question/20148405)
+
+32. postcss
+[参考](https://segmentfault.com/a/1190000003909268)
+
+33. [SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
+ @font-face 允许网页开发者为其网页制定在线字体
+- 基本用法
+  - 变量, SASS允许使用变量，所有变量以$开始
+  - 如果变量需要镶嵌在字符串之中，必须写在#{}中
+- 计算功能
+- 嵌套
+- 注释: /* comment */ || //comment // /*! comment */(重要注释)
+- 继承:  @extend
+- Mixin: 使用@mixin命令，定一个代码块。使用@include命令，调用mixin
+  ```
+  @minxin left {
+    float: left;
+    margin-left: 10px
+  } 
+
+  div {
+    @include left
+  }
+  ```
+  - 可以制定参数和缺省值
+  ```
+  @mixin left($value: 10px) {
+    float: left;
+    margin-left: $value;
+  }
+  ```
+- 颜色函数
+- 插入文件: @import
+- 条件语句
+  - @if: 不需要写括号
+  - @else
+  - @while
+  - @for
+- 自定义函数
+```
+@function double($n) {
+  @return $n * 2;
+}
+
+#sidebar {
+  width: double(5px);
+}
+```
+
+
+
+ 
+
 
