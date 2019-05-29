@@ -223,6 +223,49 @@ new Vue({
 2. v-slot:的缩写为字符#
 ***
 
+#### elementUI 组件
+
+##### mixins Emitter
+1. mixins emitter.js 代码 
+- vm.$parent: 父组件
+- vm.$root： 根组件
+- vm.$options: 当前vue实例的初始化选项
+[参考](https://juejin.im/post/5b9730546fb9a05d00459387)
+
+##### vdom VNode
+
+##### 内置组件
+1. component 动态组件
+2. transition 
+3. 插槽  
+this.$slot 访问静态插槽，每个插槽都是一个VNode数组
+```
+render: function (createElement) {
+  // `<div><slot></slot></div>`
+  return createElement('div', this.$slots.default)
+}
+```
+4. 具名插槽  
+通过this.$scopedSlots 访问作用域cha cao
+```
+props: ['message'],
+render: function (createElement) {
+  // `<div><slot :text="message"></slot></div>`
+  return createElement('div', [
+    this.$scopedSlots.default({
+      text: this.message
+    })
+  ])
+}
+```
+
+
+
+
+
+
+
+
 #### Vue.js技术揭秘
 
 ##### 认识Flow

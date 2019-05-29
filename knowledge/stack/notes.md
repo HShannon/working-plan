@@ -302,8 +302,16 @@ Console.prototype.log = function() {
 }
 ```
 
-
-
- 
-
-
+34. typeScript 使用了--strictNullChecks, 可选参数会被自动加上 | undefined
+```
+class C {
+    a: number;
+    b?: number;
+}
+let c = new C();
+c.a = 12;
+c.a = undefined; // error, 'undefined' is not assignable to 'number'
+c.b = 13;
+c.b = undefined; // ok
+c.b = null; // error, 'null' is not assignable to 'number | undefined'
+```

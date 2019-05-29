@@ -104,3 +104,7 @@
 3. 思考
   - 数据平台消息推送
   - v-chart
+  - ELement 组件
+    - props validator: Function
+    - 没有template, 就应当知道是用render来渲染(遇到这种情况目前为止较少)
+    - **每个元素都是一个节点。每段文字也是一个节点。甚至注释也都是节点**
