@@ -236,7 +236,9 @@ new Vue({
 
 ##### 内置组件
 1. component 动态组件
+
 2. transition 
+
 3. 插槽  
 this.$slot 访问静态插槽，每个插槽都是一个VNode数组
 ```
@@ -245,8 +247,9 @@ render: function (createElement) {
   return createElement('div', this.$slots.default)
 }
 ```
+
 4. 具名插槽  
-通过this.$scopedSlots 访问作用域cha cao
+通过this.$scopedSlots 访问作用域插槽
 ```
 props: ['message'],
 render: function (createElement) {
@@ -259,8 +262,49 @@ render: function (createElement) {
 }
 ```
 
+5. createElement 函数
+- return（VNode）
+- 参数
+  - {String | Object | Function} 标签名
+  - {Object} 一个与模板中属性对应的数据对象
+  - {String | Array} 子级虚拟节点 (VNodes)，由 `createElement()` 构建而成，
+```
+// @returns {VNode}
+createElement(
+  // {String | Object | Function}
+  // 一个 HTML 标签名、组件选项对象，或者
+  // resolve 了上述任何一种的一个 async 函数。必填项。
+  'div',
 
+  // {Object}
+  // 一个与模板中属性对应的数据对象。可选。
+  {
+    // (详情见下一节)
+  },
 
+  // {String | Array}
+  // 子级虚拟节点 (VNodes)，由 `createElement()` 构建而成，
+  // 也可以使用字符串来生成“文本虚拟节点”。可选。
+  [
+    '先写一些文字',
+    createElement('h1', '一则头条'),
+    createElement(MyComponent, {
+      props: {
+        someProp: 'foobar'
+      }
+    })
+  ]
+)
+```
+
+6. 数据对象
+
+7. elementUI clickoutside 源码分析
+- directives
+
+8. vm.$isServer 当前 Vue 实例是否运行于服务器
+
+9. 
 
 
 

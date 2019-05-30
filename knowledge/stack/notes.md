@@ -315,3 +315,10 @@ c.b = 13;
 c.b = undefined; // ok
 c.b = null; // error, 'null' is not assignable to 'number | undefined'
 ```
+
+35. tabindex 
+- tabindex 属性用于管理键盘焦点，决定元素是否能被选中，以及按下 tab 键过程中被选中的顺序
+- tabindex = 0: 如果你想让一个不能获取焦点的元素，比如 <span> 或 <div>，也被包含在 tab 键序列表中，那么设置 tabindex = 0 就可以使这些元素按其在源码中的顺序出现在 tab 键序中。
+- tabindex = -1: 可以使一个元素可由代码获取到焦点，但其本身并不在 tab 键序中
+- 避免设置 tabindex=1+
+
