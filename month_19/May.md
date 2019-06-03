@@ -109,3 +109,5 @@
     - 没有template, 就应当知道是用render来渲染(遇到这种情况目前为止较少)
     - **每个元素都是一个节点。每段文字也是一个节点。甚至注释也都是节点**
   - addEventListener attachEvent
+  - !!config.dev.proxyTable (config.dev.proxyTable typeOf undefined)
+  
