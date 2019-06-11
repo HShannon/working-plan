@@ -30,13 +30,13 @@ const logger = tracer.colorConsole({
 
 2. 使用history， 利用history.pushState 来完成URL跳转而不需要重新加载页面。一般都需要服务器配置或支持SSR， 否则服务器返回  
   - 若后台没有正确的配置，当用户直接访问url会返回404  
-  **解决方案: 在服务端增加一个覆盖所有情况的候选资源，当url匹配不到人和静态资源，则会返回同一个index.html**(推荐使用connect-history-apo-fallback)
+  **解决方案: 在服务端增加一个覆盖所有情况的候选资源，当url匹配不到任何静态资源，则会返回同一个index.html**(推荐使用connect-history-apo-fallback)
   - 对于所有的路径都会返回index.html文件
   **解决方案: 在 Vue 应用里面覆盖所有的路由情况，然后在给出一个 404 页面;如果你使用 Node.js 服务器，你可以用服务端路由匹配到来的 URL，并在没有匹配到路由的时候返回 404，以实现回退。**
   ```
   const router = new VueRouter({
-  mode: 'history',
-  routes: [
+    mode: 'history',
+    routes: [
       { path: '*', component: NotFoundComponent }
     ]
   })

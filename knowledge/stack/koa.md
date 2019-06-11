@@ -91,5 +91,10 @@ app
 - hash: The "fragment" portion of the URL including the pound-sign (#).
 - href: The full URL.
 
-#### context
+#### koa2里获取请求参数
+##### 获取get请求数据
+[Koa2里获取请求数据](https://github.com/lensh/koa2-cet/issues/2)
+对于POST请求的处理，koa-bodyparser中间件可以把koa2上下文的formData数据解析到ctx.request.body中。
+
+
 
