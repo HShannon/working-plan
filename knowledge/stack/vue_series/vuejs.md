@@ -262,7 +262,7 @@ render: function (createElement) {
 }
 ```
 
-5. createElement 函数
+5. createElement [渲染函数](https://cn.vuejs.org/v2/guide/render-function.html#JSX)
 - return（VNode）
 - 参数
   - {String | Object | Function} 标签名

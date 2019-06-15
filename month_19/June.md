@@ -43,6 +43,9 @@
 1. 工作
   - [x] 新增按轧辊完成和开始安装指标     待上线
   - [x] 新增开屏SDK流量来源分类    待联调
+  - [ ] 新增客户数据报表、外部结算报表离线下载    待联调
+  - [ ] 外部流量结算报表新增流量方公司、自定义列新增二级账户来源之类的    待联调
+  - [ ] 保量广告、品牌广告合并    刘恒开发
 
 2. 学习
   - [ ] 其他平台学习
@@ -50,3 +53,14 @@
   - Vue源码学习
 
 3. 思考
+  - 昨天遇到gitlab的问题，最开始提示我 commiter's email 应该是公司邮箱，以 yidian-inc.com 结尾
+    - git config --global user.email wangyaru@yidian-inc.com
+    - 按照[官方文档重写历史](https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)
+  - hexo
+  - YAPI
+  - site
+    - [服务器](https://free.aliyun.com/?handle=true)
+    - [域名](https://wanwang.aliyun.com/domain/searchresult/#/?keyword=shannon-wang&suffix=com)
+    - [服务器基础设置](https://roy-cook.tech/%E8%87%AA%E5%8A%A8%E5%8C%96/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/posts/860.html)
+
+    

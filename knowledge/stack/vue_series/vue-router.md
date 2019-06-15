@@ -119,3 +119,11 @@ require.ensure(dependencies: String[], callback: function(require), chunkName: S
 }
 ```
 
+
+#### 路由对象属性
+- $route.path
+- $route.params [路由参数](https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8C%B9%E9%85%8D)
+- $route.query URL 查询参数
+- $route.hash 当前路由的 hash 值 (带 #, 所以通常需要$route.hash.slice(1))
+- $route.fullPath
+- $route.matched 
