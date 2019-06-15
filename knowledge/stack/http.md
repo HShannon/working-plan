@@ -26,7 +26,7 @@
 
 2. formidable
   + A Node.js module for parsing form data especially file uploads
-  
+*** 
 
 ### [浏览器缓存](https://juejin.im/entry/5ad86c16f265da505a77dca4)
 1. 浏览器发送请求
@@ -37,9 +37,10 @@
 	- 三种场景
 		- 不存在该缓存结果和缓存标识，强制缓存失效，则直接向服务器发起请求
 		- 存在该缓存结果和缓存标识，但该结果已失效，强制缓存失效，则使用协商缓存
-		- 存在该缓存结果和缓存标识，且该结果尚未失效，强制缓存生效，直接返回该结果
+		- 存在该缓存结果和缓存标识，且该结果尚未失效，强制缓存生效，直接返回该结果  
 	响应报文的HTTP头中控制强制缓存的字段分别是 Expires 和 Cache-Control, 其中 Cache-Control 优先级比 Expires 高
 	- Expires: 服务器返回该请求结果缓存的到期时间
+	其值为服务器返回该请求结果缓存的到期时间，即再次发起该请求时，如果客户端的时间小于Expires 的值时，则直接读取缓存
 	- Cache-Control: 
 		- public: 所有内容都将被缓存（客户端和代理服务器都可缓存）
 		- private: 所有内容只有客户端可以缓存，Cache-Control的默认取值
