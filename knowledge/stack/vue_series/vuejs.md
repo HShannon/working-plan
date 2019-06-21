@@ -311,7 +311,7 @@ createElement(
 
 #### Vue.js技术揭秘
 
-##### 认识Flow
+##### [认识Flow](https://flow.org/en/docs/getting-started/)
 - Flow的工作方式
   - 类型推断: 通过变量的使用上下文来推断出变量的类型，然后根据这些推断来检查类型
   - 类型注释: 事先注释好我们期待的类型，Flow会给予这些注释来判断
@@ -326,3 +326,7 @@ createElement(
   - sfc(.vue文件解析)
   - shared(共享代码)
 
+##### initMixin(Vue)
+
+```
+```

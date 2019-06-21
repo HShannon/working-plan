@@ -251,7 +251,7 @@ Console.prototype.log = function() {
 - MVP 将controller改名为presenter
   - 各部分之间的通信，双向的
   - View 与 Model不发生联系，都通过Presenter传递
-- MVVM Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致, 唯一的区别是，它采用双向绑定(data-binding), View的变动，自动反映在 ViewModel
+- MVVC  Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致, 唯一的区别是，它采用双向绑定(data-binding), View的变动，自动反映在 ViewModel
 [参考](https://www.zhihu.com/question/20148405)
 
 32. postcss

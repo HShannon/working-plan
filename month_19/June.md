@@ -78,5 +78,7 @@
   - Vue源码学习
 
 3. 思考
+  - Native, Web App, Hybrid\ ReactNative 和 WEEX
+  - Document.documentElement 是一个会返回文档对象的跟元素的只读属性
 
     
