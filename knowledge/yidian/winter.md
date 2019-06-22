@@ -139,12 +139,21 @@ es6 => 箭头函数创建的函数仅仅阐述，无法作为构造器使用
 ***
 
 
-#### 异步执行顺序
-- 首先分析有多少个宏任务
-- 在每个宏任务中，分析有多少个微任务
-- 根据调用次序，确定宏任务中的微任务执行次序
-- 根据宏任务的触发规则和调用次序，确定宏任务的执行次序
-- 确定整个顺序
+#### sleep 新特性async/await
+```
+function sleep(duration) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(resolve,duration);
+    })
+}
+async function foo(){
+    console.log("a")
+    await sleep(2000)
+    console.log("b")
+}
+
+foo()
+```
 ***
 
 

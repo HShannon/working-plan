@@ -326,7 +326,36 @@ createElement(
   - sfc(.vue文件解析)
   - shared(共享代码)
 
-##### initMixin(Vue)
+##### resolveConstructorOptions函数
+作用: 合并构造器及构造器父级上定义的options
+```
+export function resolveConstructorOptions (Ctor: Class<Component>) {
+  let options = Ctor.options
+  // 有super属性，说明Ctor是通过Vue.extend()方法创建的子类
+  if (Ctor.super) {
+    const superOptions = resolveConstructorOptions(Ctor.super)
+    const cachedSuperOptions = Ctor.superOptions
+    if (superOptions !== cachedSuperOptions) {
+      // super option changed,
+      // need to resolve new options.
+      Ctor.superOptions = superOptions
+      // check if there are any late-modified/attached options (#4976)
+      const modifiedOptions = resolveModifiedOptions(Ctor)
+      // update base extend options
+      if (modifiedOptions) {
+        extend(Ctor.extendOptions, modifiedOptions)
+      }
+      options = Ctor.options = mergeOptions(superOptions, Ctor.extendOptions)
+      if (options.name) {
+        options.components[options.name] = Ctor
+      }
+    }
+  }
+  return options
+}
+```
 
-```
-```
+### 参考
+目前发现的几个不错的参考文档
+[参考1](https://github.com/muwoo/blogs/blob/master/src/Vue/2.md)
+[参考2](https://github.com/liutao/vue2.0-source/blob/master/%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A.md)
