@@ -23,54 +23,47 @@ rules: [
     options: {
       formatter: require('eslint-friendly-formatter'),
       emitWarning: !config.dev.showEslintErrorsInOverlay,
-      // 修复
+      // 自动修复规则所报告的问题
       fix: true
     }
   },
   ···
 ]
 ```
-2. 在根目录 .eslintrc.js 文件中添加自定义配置  
+
+2. 在根目录 .eslintrc.js 文件中添加自定义配置(也可在package.json中配置)  
 👉 [ESLint 官方配置](http://eslint.cn/docs/user-guide/configuring)
 ```
 module.exports = {
   ···
-  extends: [
-      "standard",
-      "plugin:vue/essential",
-      "plugin:prettier/recommended",
-      "plugin:vue/base",
-      "plugin:vue/strongly-recommended",
-      "plugin:vue/recommended"
-  ],
-  // required to lint *.vue files
-  plugins: ["vue", "prettier"],
-  // add your custom rules here
   rules: {
-      // allow paren-less arrow functions
-      "arrow-parens": 0,
-      // allow async-await
-      "generator-star-spacing": 0,
-      // allow debugger during development
-      "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-      // prettier
-      "prettier/prettier": "error",
-      // === ==
-      eqeqeq: "off",
-      //
-      "no-useless-escape": "off",
-      // This rule is aimed at preventing the use of v-for directives together with v-if directives on the same element.
-      // "vue/no-use-v-if-with-v-for": ["error", {
-      //   "allowUsingIterationVar": true
-      // }]
-      "vue/no-use-v-if-with-v-for": "off",
-      "no-undef": "error",
-      "vue/require-default-prop": "error"
+    // allow paren-less arrow functions
+    "arrow-parens": 0,
+    // allow async-await
+    "generator-star-spacing": 0,
+    // allow debugger during development
+    "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
   }
 }
 ```
+- 每条规则有三种状态: error、 warning、 off
+  - "off" 或 0 - 关闭规则
+  - "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
+  - "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+- [ESLint 规则](http://eslint.cn/docs/rules/)
+  - 所有的规则默认都是禁用的。在配置文件中，使用 "extends": "eslint:recommended" 来启用推荐的规则
 
-3. 
+3. 使用第三方插件(以 eslint-plugin-vue 为例)
+👉 [eslint-plugin-vue](http://eslint.cn/docs/user-guide/configuring)
+
+- 为了支持 ESLint 对 *.vue 文件的检测，首先需要安装第三方插件
+```
+npm install eslint-plugin-vue
+```
+- 使用 plugins 关键字来存放插件名字的列表
+```
+
+```
 ***
 
 ## 参考
