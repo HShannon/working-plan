@@ -173,7 +173,13 @@ module.exports = {
 
 ## 实践(以 exdata-web)
 1. eslint 设置语法
-![window](http://g.recordit.co/qoMCbiKVCb.gif "静待花开")
+![window](http://g.recordit.co/wennlsOdnk.gif "undefined")
+
+2. 自动格式化
+![window](http://g.recordit.co/0Z6YXep25I.gif "格式化")
+
+3. *.vue文件检测
+![window](http://g.recordit.co/Tcn9B8J5D6.gif "格式化")
 
 
 ## 参考
