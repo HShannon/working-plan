@@ -180,7 +180,7 @@ module.exports = {
 
 3. *.vue文件检测
 ![window](http://g.recordit.co/QHqNXYF6oi.gif "格式化")
-
+***
 
 ## 参考
 1. [eslint-plugin-vue](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
