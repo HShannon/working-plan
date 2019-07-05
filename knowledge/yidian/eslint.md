@@ -49,7 +49,7 @@ module.exports = {
 - .babelrc.js 文件中 rules 属性设置自定义规则     👉 [ESLint 规则](http://eslint.cn/docs/rules/)
   - 在配置文件中，使用 "extends": "eslint:recommended" 来启用推荐的规则
   - 命令行 --fix 选项用来自动修复规则所报告的问题({option: true}})
-  
+
 - 每条规则有三种状态: error、 warning、 off
   - "off" 或 0 - 关闭规则
   - "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
@@ -86,6 +86,19 @@ plugins: ["vue"]
 
 **语法检测级别**
 
+***
+
+## Prettier 是什么
+👉 [Prettier 官网](https://cn.eslint.org/)  
+- 正如英文名所示，让代码更漂亮。
+- ESLint 能自动格式化代码, 为什么还需要Prettier？ 
+> 两者侧重点不同. ESLint 主要检查代码质量并给出提示, 比如某个变量忘了定义；而 Prettier 在格式化代码方面具有更大优势, 能够统一团队的代码风格
+
+## Prettier 怎么用
+1. 引入 Prettier
+```
+npm install 
+```
 ***
 
 ## 参考
