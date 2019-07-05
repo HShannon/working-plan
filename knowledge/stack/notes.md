@@ -327,3 +327,21 @@ c.b = null; // error, 'null' is not assignable to 'number | undefined'
 - webpack-dev-middleware: 
 - webpack-hot-middleware: 
 - html-webpack-plugin: 用于将 webpack 编译打包后的产品文件注入到html模版中, 即自动在index.html里面加上 <link> 和 <script> 标签引用webpack打包后的文件
+
+
+36. 模块概念
+- CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数。由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
+- require && module.exports && export
+- 模块功能主要由两个命令构成: export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。
+```
+// 写法一
+export var m = 1
+
+// 写法二
+var m = 1
+export {m} // import {m} from ${path}
+
+// 写法三
+var n = 1;
+export {n as m}
+```

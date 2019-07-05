@@ -91,7 +91,10 @@
 2. 学习
   - [ ] 其他平台学习
     - [ ] 灵犀II
-    - [ ] 新项目
+    - [ ] 彩票前端
+    - [ ] 彩票管理
   - Vue源码学习
 
-3. 思考  
+3. 思考 
+  - [ ] 跨域
+  - [ ] wondow.navigator.userAgent.toLocaleLowerCase

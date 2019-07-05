@@ -129,6 +129,34 @@ constructor方法是类的默认方法，通过new命令生成对象实例时，
 es6 => 箭头函数创建的函数仅仅阐述，无法作为构造器使用
 ***
 
+#### 对象的深度克隆
+- 遍历对象
+```
+function clone(obj){
+  var newobj = obj.constructor === Array ? [] : {};  // 用 instanceof 判断也可
+  if(typeof obj !== 'object'  || obj === null ){
+    return obj
+  } else {
+    for(var i in obj){
+      newobj[i] = typeof obj[i] === 'object' ? clone(obj[i]) : obj[i]; 
+      // 只考虑 对象和数组， 函数虽然也是引用类型，但直接赋值并不会产生什么副作用，所以函数类型无需深度克隆。
+    }
+  }
+  return newobj;
+};
+```
+在这个地方需要回顾一下typeof方法，
+- null => object 
+- undefined => undefined
+- string => string
+- boolean => boolean
+- number => number
+
+- json 序列化
+```
+let newObj = JSON.parse(JSON.stringify(obj))
+```
+***
 
 #### 异步执行顺序
 - 首先分析有多少个宏任务
@@ -155,8 +183,6 @@ async function foo(){
 foo()
 ```
 ***
-
-
 
 #### HTML
 
