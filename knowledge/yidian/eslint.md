@@ -179,7 +179,7 @@ module.exports = {
 ![window](http://g.recordit.co/0Z6YXep25I.gif "格式化")
 
 3. *.vue文件检测
-![window](http://g.recordit.co/Tcn9B8J5D6.gif "格式化")
+![window](http://g.recordit.co/QHqNXYF6oi.gif "格式化")
 
 
 ## 参考
