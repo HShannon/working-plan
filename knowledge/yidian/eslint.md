@@ -94,14 +94,12 @@ plugins: ["vue"]
 > 两者侧重点不同. ESLint 主要检查代码质量并给出提示, 比如某个变量忘了定义；而 Prettier 在格式化代码方面具有更大优势, 能够统一团队的代码风格
 
 ## Prettier 怎么用
-1. 引入 Prettier  eslint-config-prettier  eslint-plugin-prettier 
+-  引入 Prettier  eslint-config-prettier  eslint-plugin-prettier, Prettier 的格式化可能会跟 ESLint 配置冲突，需要使用 eslint-plugin-prettier 关闭可能会引起冲突的规则
 ```
 npm install prettier eslint-config-prettier eslint-plugin-prettier
 ```
-- Prettier 的格式化可能会跟 ESLint 配置冲突，需要使用 eslint-plugin-prettier 关闭可能会引起冲突的规则
-***
 
-2. .babelrc.js 文件中 plugin 属性中添加 eslint-plugin-prettier 第三方插件
+- .babelrc.js 文件中 plugin 属性中添加 eslint-plugin-prettier 第三方插件
 ```
 {
   plugins: [
@@ -112,7 +110,7 @@ npm install prettier eslint-config-prettier eslint-plugin-prettier
 ```
 ***
 
-3. .babelrc.js 文件中 extends 属性中添加 eslint-plugin-prettier 第三方插件
+- .babelrc.js 文件中 extends 属性中添加 eslint-plugin-prettier 第三方插件
 ```
 {
   "extends": [
@@ -122,7 +120,7 @@ npm install prettier eslint-config-prettier eslint-plugin-prettier
 ```
 ***
 
-4. 在根目录下创建.prettierrc.js 文件(或在package.json文件中配置)     👉 [Prettier 规则](https://prettier.io/docs/en/options.html)  
+- 在根目录下创建.prettierrc.js 文件(或在package.json文件中配置)     👉 [Prettier 规则](https://prettier.io/docs/en/options.html)  
 ```
 // https://prettier.io/docs/en/configuration.html
 
