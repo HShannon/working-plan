@@ -108,7 +108,6 @@ npm install prettier eslint-config-prettier eslint-plugin-prettier
   ]
 }
 ```
-***
 
 - .babelrc.js 文件中 extends 属性中添加 eslint-plugin-prettier 第三方插件
 ```
@@ -118,7 +117,6 @@ npm install prettier eslint-config-prettier eslint-plugin-prettier
   ]
 }
 ```
-***
 
 - 在根目录下创建.prettierrc.js 文件(或在package.json文件中配置)     👉 [Prettier 规则](https://prettier.io/docs/en/options.html)  
 ```
