@@ -53,21 +53,37 @@ module.exports = {
   - "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
 - [ESLint 规则](http://eslint.cn/docs/rules/)
   - 在配置文件中，使用 "extends": "eslint:recommended" 来启用推荐的规则
-  - --fix 选项用来自动修复规则所报告的问题
+  - 命令行 --fix 选项用来自动修复规则所报告的问题({option: true}})
 ***
 
-3. 使用第三方插件(以 eslint-plugin-vue 为例)
+3. 使用第三方插件(以 eslint-plugin-vue 为例)  
 👉 [eslint-plugin-vue](http://eslint.cn/docs/user-guide/configuring)
 
 - 为了支持 ESLint 对 *.vue 文件的检测，首先需要安装第三方插件
 ```
 npm install eslint-plugin-vue
 ```
+
 - 使用 plugins 关键字来存放插件名字的列表
 ```
 // 插件以eslint-plugin-作为前缀，配置时该前缀可省略
-plugins: ["vue", "prettier"],
+plugins: ["vue"]
 ```
+
+- [规则](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/README.md)  
+  - 在 .babelrc.js, 配置对象extends属性中添加需要的规则集
+  ```
+  {
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:vue/recommended",
+      "plugin:vue/base",
+      "plugin:vue/strongly-recommended"
+    ]
+  }
+  ```
+  - 添加规则
+
 ***
 
 ## 参考
