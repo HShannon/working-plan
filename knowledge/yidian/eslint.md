@@ -171,5 +171,10 @@ module.exports = {
 ```
 ***
 
+## 实践(以 exdata-web)
+1. eslint 设置语法
+![window](http://g.recordit.co/qoMCbiKVCb.gif "静待花开")
+
+
 ## 参考
 1. [eslint-plugin-vue](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
