@@ -109,7 +109,7 @@ npm install prettier eslint-config-prettier eslint-plugin-prettier
 }
 ```
 
-- .babelrc.js 文件中 extends 属性中添加 eslint-plugin-prettier 第三方插件
+- .babelrc.js 文件中 extends 属性中添加规则集
 ```
 {
   "extends": [
