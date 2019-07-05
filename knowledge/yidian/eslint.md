@@ -30,6 +30,7 @@ rules: [
   ···
 ]
 ```
+***
 
 2. 在根目录 .eslintrc.js 文件中添加自定义配置(也可在package.json中配置)  
 👉 [ESLint 官方配置](http://eslint.cn/docs/user-guide/configuring)
@@ -53,6 +54,7 @@ module.exports = {
 - [ESLint 规则](http://eslint.cn/docs/rules/)
   - 在配置文件中，使用 "extends": "eslint:recommended" 来启用推荐的规则
   - --fix 选项用来自动修复规则所报告的问题
+***
 
 3. 使用第三方插件(以 eslint-plugin-vue 为例)
 👉 [eslint-plugin-vue](http://eslint.cn/docs/user-guide/configuring)
