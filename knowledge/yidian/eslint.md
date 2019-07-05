@@ -139,11 +139,9 @@ module.exports = {
 
 ## 如何实现 Pre-commit 约束代码提交
 ⁉️
-- 代码
-若要是实现 Pre-commit 约束代码提交, 需要借助husky & lint-staged
-- 
-
-
+- 每次提交对所有的文件进行格式化 和 代码检测, 会造成冲突和不可预知的问题
+- 每次都需要执行类似 npm run format 进行代码格式化, 操作累赘
+因此需要借助husky & lint-staged
 
 ***
 
