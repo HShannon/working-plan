@@ -1,13 +1,15 @@
-## ESLint && prettier && pre-commit
+# ESLint && prettier && pre-commit
 
-### ESLint
+## ESLint 是什么
 1. 对于 ESLint, 大多数人并不陌生，甚至闻者嫌弃。想要搞清楚大家嫌弃的原因，就得知道 ESLint 是什么？ 引用[ESLint官网](https://cn.eslint.org/)的官方描述
 
 > ESLint最初是由Nicholas C. Zakas 于2013年6月创建的开源项目。它的目标是提供一个插件化的javascript代码检测工具。代码检查是一种静态的分析，常用于寻找有问题的模式或者代码，并且不依赖于具体的编码风格
 
 2. ESLint 会根据默认绑定或自定义的规则对代码进行基本语法验证。正是规则的存在，让开发者感到受到掣肘，不能随心所欲，索性关掉。 然而，**存在必有意义**。那ESLint的意义是什么？
 - **没有规矩不成方圆**  团队协作中，统一代码风格
-- **提高代码质量** JavaScript 是一个动态的弱类型语言，在开发中比较容易出错。
+- **提高代码质量** JavaScript 是一个动态的弱类型语言，在开发中比较容易出错
 
-3. 
+## ESLint 配置
+
+***
 
