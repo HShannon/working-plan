@@ -132,3 +132,4 @@ module.exports = {
 ```
 
 ## 参考
+1. [eslint-plugin-vue](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
