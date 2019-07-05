@@ -57,7 +57,7 @@ module.exports = {
 ***
 
 3. 使用第三方插件(以 eslint-plugin-vue 为例)  
-👉 [eslint-plugin-vue](http://eslint.cn/docs/user-guide/configuring)
+👉 [eslint-plugin-vue 官网](http://eslint.cn/docs/user-guide/configuring)
 
 - 为了支持 ESLint 对 *.vue 文件的检测，首先需要安装第三方插件
 ```
@@ -70,19 +70,22 @@ npm install eslint-plugin-vue
 plugins: ["vue"]
 ```
 
-- [规则](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/README.md)  
-  - 在 .babelrc.js, 配置对象extends属性中添加需要的规则集
-  ```
-  {
-    "extends": [
-      "plugin:vue/essential",
-      "plugin:vue/recommended",
-      "plugin:vue/base",
-      "plugin:vue/strongly-recommended"
-    ]
-  }
-  ```
-  - 添加规则
+- .babelrc.js, extends 属性中添加需要的规则集
+```
+{
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:vue/recommended",
+    "plugin:vue/base",
+    "plugin:vue/strongly-recommended"
+  ]
+}
+```
+
+- .babelrc.js rules 设置自定义规则
+👉 [eslint-plugin-vue 规则](https://github.com/vuejs/eslint-plugin-vue/blob/master/docs/rules/README.md) 
+
+**语法检测级别**
 
 ***
 
