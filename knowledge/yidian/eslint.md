@@ -134,8 +134,13 @@ module.exports = {
 ***
 
 ## Pre-commit 是什么  
+运用 ESLint 和 ESLint 进行代码静态检测, 主要针对个人行为。考虑到团队使用 Git 作为代码管理工具，在 git commit 行为前进行检测约束，若不符合规则则阻止提交代码, 因此想到了Git 钩子**Pre-commit**  
+👉 [Git 钩子](https://git-scm.com/book/zh/v2/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git-%E9%92%A9%E5%AD%90)  
 
-## Prettier 是什么  
+## Pre-commit 怎么用
+
+
 ***
+
 ## 参考
 1. [eslint-plugin-vue](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
