@@ -7,10 +7,70 @@
 
 2. ESLint 会根据默认绑定或自定义的规则对代码进行基本语法验证。正是规则的存在，让开发者感到受到掣肘，不能随心所欲，索性关掉。 然而，**存在必有意义**。那ESLint的意义是什么？
 - **没有规矩不成方圆**  团队协作中，统一代码风格
-- **提高代码质量** JavaScript 是一个动态的弱类型语言，在开发中比较容易出错
+- **提高代码质量**  JavaScript 是一个动态的弱类型语言，在开发中比较容易出错
 
 ## ESLint 怎么用
-👉 [ESLint 百科全书](https://cn.eslint.org/)
+**条条大道通罗马**
 
+1. 使用 vue-cli 脚手架创建的项目, 在 webpack 配置中添加ESLint rules
+```
+rules: [
+  {
+    test: /\.(js|vue)$/,
+    loader: 'eslint-loader',
+    enforce: 'pre',
+    include: [resolve('src')],
+    options: {
+      formatter: require('eslint-friendly-formatter'),
+      emitWarning: !config.dev.showEslintErrorsInOverlay,
+      // 修复
+      fix: true
+    }
+  },
+  ···
+]
+```
+2. 在根目录 .eslintrc.js 文件中添加自定义配置
+👉 [ESLint 官方配置](http://eslint.cn/docs/user-guide/configuring)
+```
+module.exports = {
+  ···
+  extends: [
+      "standard",
+      "plugin:vue/essential",
+      "plugin:prettier/recommended",
+      "plugin:vue/base",
+      "plugin:vue/strongly-recommended",
+      "plugin:vue/recommended"
+  ],
+  // required to lint *.vue files
+  plugins: ["vue", "prettier"],
+  // add your custom rules here
+  rules: {
+      // allow paren-less arrow functions
+      "arrow-parens": 0,
+      // allow async-await
+      "generator-star-spacing": 0,
+      // allow debugger during development
+      "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
+      // prettier
+      "prettier/prettier": "error",
+      // === ==
+      eqeqeq: "off",
+      //
+      "no-useless-escape": "off",
+      // This rule is aimed at preventing the use of v-for directives together with v-if directives on the same element.
+      // "vue/no-use-v-if-with-v-for": ["error", {
+      //   "allowUsingIterationVar": true
+      // }]
+      "vue/no-use-v-if-with-v-for": "off",
+      "no-undef": "error",
+      "vue/require-default-prop": "error"
+  }
+}
+```
+
+3. 
 ***
 
+## 参考
