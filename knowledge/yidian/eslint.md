@@ -94,7 +94,8 @@ plugins: ["vue"]
 > 两者侧重点不同. ESLint 主要检查代码质量并给出提示, 比如某个变量忘了定义；而 Prettier 在格式化代码方面具有更大优势, 能够统一团队的代码风格
 
 ## Prettier 怎么用
--  引入 Prettier  eslint-config-prettier  eslint-plugin-prettier, Prettier 的格式化可能会跟 ESLint 配置冲突，需要使用 eslint-plugin-prettier 关闭可能会引起冲突的规则
+-  引入 Prettier  eslint-config-prettier  eslint-plugin-prettier  
+Prettier 的格式化可能会跟 ESLint 配置冲突，需要使用 eslint-plugin-prettier 关闭可能会引起冲突的规则
 ```
 npm install prettier eslint-config-prettier eslint-plugin-prettier
 ```
