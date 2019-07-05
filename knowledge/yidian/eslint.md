@@ -182,5 +182,8 @@ module.exports = {
 ![window](http://g.recordit.co/QHqNXYF6oi.gif "格式化")
 ***
 
+## 后续
+这篇文章针围绕着如何实现展开，后续需要考虑什么样的规则是必须
+
 ## 参考
 1. [eslint-plugin-vue](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
