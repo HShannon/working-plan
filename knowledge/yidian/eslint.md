@@ -30,7 +30,7 @@ rules: [
   ···
 ]
 ```
-2. 在根目录 .eslintrc.js 文件中添加自定义配置
+2. 在根目录 .eslintrc.js 文件中添加自定义配置  
 👉 [ESLint 官方配置](http://eslint.cn/docs/user-guide/configuring)
 ```
 module.exports = {
