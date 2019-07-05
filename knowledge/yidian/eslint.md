@@ -86,19 +86,53 @@ plugins: ["vue"]
 
 **语法检测级别**
 
-***
 
-## Prettier 是什么
+## Prettier 是什么   
 👉 [Prettier 官网](https://cn.eslint.org/)  
 - 正如英文名所示，让代码更漂亮。
 - ESLint 能自动格式化代码, 为什么还需要Prettier？ 
 > 两者侧重点不同. ESLint 主要检查代码质量并给出提示, 比如某个变量忘了定义；而 Prettier 在格式化代码方面具有更大优势, 能够统一团队的代码风格
 
 ## Prettier 怎么用
-1. 引入 Prettier
+1. 引入 Prettier  eslint-config-prettier  eslint-plugin-prettier 
 ```
-npm install 
+npm install prettier eslint-config-prettier eslint-plugin-prettier
+```
+- Prettier 的格式化可能会跟 ESLint 配置冲突，需要使用 eslint-plugin-prettier 关闭可能会引起冲突的规则
+***
+
+2. .babelrc.js 文件中 plugin 属性中添加 eslint-plugin-prettier 第三方插件
+```
+{
+  plugins: [
+    "vue",
+    "prettier"
+  ]
+}
 ```
 ***
+
+3. .babelrc.js 文件中 extends 属性中添加 eslint-plugin-prettier 第三方插件
+```
+{
+  "extends": [
+    "plugin:prettier/recommended"
+  ]
+}
+```
+***
+
+4. 在根目录下创建.prettierrc.js 文件(或在package.json文件中配置)     👉 [Prettier 规则](https://prettier.io/docs/en/options.html)  
+```
+// https://prettier.io/docs/en/configuration.html
+
+module.exports = {
+  tabWidth: 4,     //一个tab代表几个空格数，默认为2
+  trailingComma: "none",     //是否使用尾逗号，有三个可选值"<none|es5|all>",
+  semi: false,     //结尾不加分号
+  arrowParens: "always",     //只有一个参数的箭头函数的参数是否带圆括号（默认avoid）
+  bracketSpacing: true
+}
+```
 
 ## 参考
