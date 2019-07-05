@@ -9,7 +9,8 @@
 - **没有规矩不成方圆**  团队协作中，统一代码风格
 - **提高代码质量** JavaScript 是一个动态的弱类型语言，在开发中比较容易出错
 
-## ESLint 配置
+## ESLint 怎么用
+👉 [ESLint 百科全书](https://cn.eslint.org/)
 
 ***
 
