@@ -171,7 +171,8 @@ module.exports = {
 ```
 ***
 
-## 实践(以 exdata-web)
+## 实践
+✍️ exdata-web branch: eslint
 1. eslint 设置语法
 ![window](http://g.recordit.co/wennlsOdnk.gif "undefined")
 
@@ -186,4 +187,5 @@ module.exports = {
 这篇文章针围绕着如何实现展开，后续需要考虑什么样的规则是必须
 
 ## 参考
-1. [eslint-plugin-vue](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
+1. [eslint-plugin-vue-question](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
+2. [网上参考](https://nice.lovejade.cn/zh/article/beautify-vue-by-eslint-and-prettier.html#%E9%9B%86%E6%88%90-eslint-prettier)
