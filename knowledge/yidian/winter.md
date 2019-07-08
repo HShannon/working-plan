@@ -181,6 +181,7 @@ Js 的基础语言能力，主要由 Js 引擎支撑（v8/javascriptCore 等）�
 
 
 #### sleep 新特性async/await
+1. 
 ```
 function sleep(duration) {
     return new Promise(function(resolve, reject) {
@@ -194,6 +195,33 @@ async function foo(){
 }
 
 foo()
+```
+
+2. 练习题 - Js 核心部分的代码
+```
+let odiv = document.getElementById("traffic-light")
+// odiv.style.background = 'red'
+
+function sleep(duration) {
+    return new Promise((resolve, reject) => {
+      setTimeout(resolve, duration)
+    })
+}
+
+async function changeColor(color, duration) {
+  odiv.style.background = color
+  await sleep(duration)
+}
+
+async function cycle(){
+  while(true){
+    await changeColor('green', 3000)
+    await changeColor('yellow', 1000)
+    await changeColor('red', 2000)
+  }
+}
+
+cycle()
 ```
 ***
 
