@@ -146,39 +146,7 @@ function Fn(){
 let o = new Fn()
 o.getValue() // a = 100, a 是私有的
 ```
-
-***
-
-#### 对象的深度克隆
-- 遍历对象
-```
-function clone(obj){
-  var newobj = obj.constructor === Array ? [] : {};  // 用 instanceof 判断也可
-  if(typeof obj !== 'object'  || obj === null ){
-    return obj
-  } else {
-    for(var i in obj){
-      newobj[i] = typeof obj[i] === 'object' ? clone(obj[i]) : obj[i]; 
-      // 只考虑 对象和数组， 函数虽然也是引用类型，但直接赋值并不会产生什么副作用，所以函数类型无需深度克隆。
-    }
-  }
-  return newobj;
-};
-```
-在这个地方需要回顾一下typeof方法，
-- null => object 
-- undefined => undefined
-- string => string
-- boolean => boolean
-- number => number
-
-- json 序列化
-```
-let newObj = JSON.parse(JSON.stringify(obj))
-```
-***
-
-#### Js 运行机制
+## Js 运行机制
 1. 每个宏观任务中又包含一个微观任务队列, Promise 永远在队列尾部添加微观任务. setTimeOut 等宿主API, 会添加宏观任务
 > 宿主是指 js 的运行环境, 目前主流的 js 的主流运行环境有浏览器、 Node
 - 首先分析有多少个宏任务
