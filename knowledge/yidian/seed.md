@@ -26,7 +26,8 @@ const store = new Vuex.Store({
 })
 ```
 
-2. 
+2. 导航守卫
+
 
 
 

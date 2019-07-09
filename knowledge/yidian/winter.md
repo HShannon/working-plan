@@ -1,6 +1,7 @@
-#### [JavaScript](https://time.geekbang.org/column/article/78884)
+# [JavaScript](https://time.geekbang.org/column/article/78884)
 
-##### 类型
+## JavaScript 类型
+1. 类型
 - Undefined
   JavaScript 的代码 undefined 是一个变量, 而非一个数值， 为了避免无意中篡改，建议使用void 0 来获取undefined 的值
 - Null
@@ -18,7 +19,14 @@
   - .运算符提供了装箱操作，根据基础类型构造一个临时对象，使得能在基础类型上调用对应对象的方法
 ***
 
-##### 类型转换
+2. 类型转换
+|         |  Null        | Undefined     | Boolean(true) | Boolean(false)| Number        | String        | Symbol     | Object|
+| :--:    | :----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :--------: |
+| Boolean | false        | false         | -             | -             | 0/NaN ~ false | '' ~ false    | true       | true | 
+| Number  | 0            | NaN           | 1             | 0             | -             | StringToNumer | TypeError| **拆箱转换** |
+| String  | ‘null'       | 'undefined'   | 'true'        |     'false'   | NumberToString| -            | TypeError | **拆箱转换** |
+| Object  | **TypeError** | **TypeError** | **装箱转换**   | **装箱转换**    | **装箱转换**   | **装箱转换**  | **装箱转换** | -   |
+
 - 装箱转换
 ```
 var symbolObject = (function(){ return this}).call(Symbol('a'))
@@ -27,12 +35,10 @@ console.log(typeOf symbolObject)   // Object
 console.log(symbolObject instanceOf Symbol)   //true
 console.log(symbolObject.constructor == Symbol)   // true
 ```
-
 - 拆箱转换
 对象到String 和 Number 的转换都遵循"先拆箱再转换"的规则, 把对象编程基本类型，再从基本类型转换为对应的String 或者 Number，拆箱转换会尝试调用 valueOf 和 toString 来获得拆箱后的基本类型，如果valueOf 和 toString 都不存在, 或者没有返回基本类型, 则会产生类型错误
-***
 
-##### [什么是面向对象](https://time.geekbang.org/column/article/79319)
+## [什么是面向对象](https://time.geekbang.org/column/article/79319)
 - JavaScript 对象的特性
   - 对象具有唯一标识: 内存
   - 对象有状态: 属性
@@ -47,7 +53,7 @@ console.log(symbolObject.constructor == Symbol)   // true
   - setter: undefined / function
   - enumerable
   - configurable
-可通过Object.getOwnPropertyDescripter获取属性的特性，可通过Object.defineProperty改变属性的特征, 或者定义访问器属性  
+通过 Object.getOwnPropertyDescripter(obj, prop) 获取属性的特性，可通过 Object.defineProperty 改变属性的特征, 或者定义访问器属性  
 **在创建对象时，也可以使用 get 和 set 关键字来创建访访问器属性**
 ```
 var o = { get a() { return 1 } }
