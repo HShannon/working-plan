@@ -11,6 +11,8 @@
 
 ## 种子项目
 
+![window](../../public/image/seed-project.jpg "seed project")
+
 1. Vuex plugin 插件  
 mutation 修改 state 时, 控制台打印 log. 仅在开发环境中使用
 ```
@@ -24,6 +26,7 @@ const store = new Vuex.Store({
 })
 ```
 
+2. 
 
 
 
