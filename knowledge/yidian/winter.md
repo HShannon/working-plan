@@ -21,12 +21,12 @@
 
 2. 类型转换
 
-|         |  Null        | Undefined     | Boolean(true) | Boolean(false)| Number        | String        | Symbol     | Object|
-| :--:    | :----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :--------: |
-| Boolean | false        | false         | -             | -             | 0/NaN ~ false | '' ~ false    | true       | true | 
-| Number  | 0            | NaN           | 1             | 0             | -             | StringToNumer | TypeError| **拆箱转换** |
-| String  | ‘null'       | 'undefined'   | 'true'        |     'false'   | NumberToString| -            | TypeError | **拆箱转换** |
-| Object  | **TypeError** | **TypeError** | **装箱转换**   | **装箱转换**    | **装箱转换**   | **装箱转换**  | **装箱转换** | -   |
+|  |  Null | Undefined | Boolean(true) | Boolean(false) | Number | String | Symbol | Object |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| Boolean | false | false | - | - | 0/NaN ~ false | '' ~ false | true | true | 
+| Number | 0 | NaN | 1 | 0 | - | StringToNumer | TypeError | **拆箱转换** |
+| String | ‘null' | 'undefined' | 'true' | 'false' | NumberToString | - | TypeError | **拆箱转换** |
+| Object | **TypeError** | **TypeError** | **装箱转换** | **装箱转换** | **装箱转换** | **装箱转换** | **装箱转换** | - |
 
 - 装箱转换
 ```
