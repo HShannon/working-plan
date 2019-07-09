@@ -20,6 +20,7 @@
 ***
 
 2. 类型转换
+
 |         |  Null        | Undefined     | Boolean(true) | Boolean(false)| Number        | String        | Symbol     | Object|
 | :--:    | :----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :--------: |
 | Boolean | false        | false         | -             | -             | 0/NaN ~ false | '' ~ false    | true       | true | 
