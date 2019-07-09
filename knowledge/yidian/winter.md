@@ -28,16 +28,30 @@
 | String | ‘null' | 'undefined' | 'true' | 'false' | NumberToString | - | TypeError | **拆箱转换** |
 | Object | **TypeError** | **TypeError** | **装箱转换** | **装箱转换** | **装箱转换** | **装箱转换** | **装箱转换** | - |
 
-- 装箱转换
+- 装箱转换  
+每一种基本类型 Number、String、Boolean、Symbol 在对象中都有对应的类. 把基本类型转换为对应的类
 ```
+// 全局的Symbol 无法使用 new 来调用
 var symbolObject = (function(){ return this}).call(Symbol('a'))
 
 console.log(typeOf symbolObject)   // Object
 console.log(symbolObject instanceOf Symbol)   //true
 console.log(symbolObject.constructor == Symbol)   // true
 ```
-- 拆箱转换
-对象到String 和 Number 的转换都遵循"先拆箱再转换"的规则, 把对象编程基本类型，再从基本类型转换为对应的String 或者 Number，拆箱转换会尝试调用 valueOf 和 toString 来获得拆箱后的基本类型，如果valueOf 和 toString 都不存在, 或者没有返回基本类型, 则会产生类型错误
+- 拆箱转换  
+把对象类型转换到基本类型, 把对象变成基本类型, 再从基本类型转换成对应的 String 或者 Number。拆箱转换会尝试调用 valueOf 和 toString 来获得拆箱后的基本类型，如果valueOf 和 toString 都不存在, 或者没有返回基本类型, 则会产生类型错误
+
+3. typeof
+| example | typeof | 运行时类型 |
+| :--: | :--: | :--: |
+| null | object | null |
+| {} | object | object |
+| function(){}| function | object |
+| void 0 | undefined | undefined |
+| 'shannon' | string | string |
+| 12 | number | number |
+| true | boolean | boolean |
+| symbol('a') | symbol | symbol |
 
 ## [什么是面向对象](https://time.geekbang.org/column/article/79319)
 - JavaScript 对象的特性
