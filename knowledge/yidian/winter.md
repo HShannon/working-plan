@@ -59,10 +59,10 @@ console.log(symbolObject.constructor == Symbol)   // true
 1. JavaScript 对象的特性
   - 对象具有唯一标识: 内存
   - 对象有状态: 属性
-  - 对象具有行为: 属性
+  - 对象具有行为: 方法
 ***
 
-2. 属性区分为 数据属性 和防蚊器属性
+2. 属性区分为 数据属性 和 访问器属性
 -  数据属性(property)具有4个特性(attr)
   - value
   - writable
@@ -164,45 +164,46 @@ var h = Object(undefined), i = Object(null), k = Object(1), l = Object('abc'), m
 
 ## JavaScript 执行
 1. Js 运行机制
-> 宿主是指 js 的运行环境, 目前主流的 js 的主流运行环境有浏览器、 Node
-每个宏观任务中又包含一个微观任务队列, Promise 永远在队列尾部添加微观任务. setTimeOut 等宿主API, 会添加宏观任务
-- 首先分析有多少个宏任务
-- 在每个宏任务中，分析有多少个微任务
-- 根据调用次序，确定宏任务中的微任务执行次序
-- 根据宏任务的触发规则和调用次序，确定宏任务的执行次序
-- 确定整个顺序
-
-
-2. 执行上下文, Js 执行的运行环境, 运行环境主要包括三类，分别包括: 
-- 全局执行上下文/作用域：js代码的默认执行环境（只有一个）
-- 函数执行上下文/作用域：每个函数对应的执行环境（无限多个）
-- eval代码执行上下文：使用eval执行的脚步的执行环境  
-全局作用域中的方法、变量，可以被其它任何函数作用域所访问，函数作用域中的方法变量，在子函数作用域中可以访问，外部无法直接访问
-
-> 通过函数返回的子函数去访问函数作用域的私有变量，也就形成了闭包
-
-Js 的基础语言能力，主要由 Js 引擎支撑（v8/javascriptCore 等），例如数组、函数、对象等基本语法；而 IO 的读写，界面的渲染 Api，都属于宿主的扩展，由宿主统一协调调度
-***
-
-
-## promise && 新特性 async/await
-1. 
+> 宿主是指 js 的运行环境, 目前主流的 js 的主流运行环境有浏览器、 Node。每个宏观任务中又包含一个微观任务队列, Promise 永远在队列尾部添加微观任务. setTimeOut 等宿主API, 会添加宏观任务  
+异步执行的顺序:
+  - 首先分析有多少个宏任务
+  - 在每个宏任务中，分析有多少个微任务
+  - 根据调用次序，确定宏任务中的微任务执行次序
+  - 根据宏任务的触发规则和调用次序，确定宏任务的执行次序
+  - 确定整个顺序
 ```
 function sleep(duration) {
-    return new Promise(function(resolve, reject) {
-        setTimeout(resolve,duration);
-    })
-}
-async function foo(){
-    console.log("a")
-    await sleep(2000)
+  return new Promise(function(resolve, reject) {
     console.log("b")
+    setTimeout(resolve,duration)
+  })
 }
-
-foo()
+console.log("a")
+sleep(5000).then(()=>console.log("c"))
 ```
+***
 
-2. 练习题 - Js 核心部分的代码
+2. promise && 新特性 async/await  
+async 函数必定返回 Promise, 把所有返回 Promise 的函数都可以认为是异步函数
+```
+function sleep(duration) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(resolve,duration);
+  })
+}
+async function foo(name){
+  await sleep(2000)
+  console.log(name)
+}
+async function foo2(){
+  await foo("a")
+  await foo("b")
+}
+foo2()
+```
+***
+
+3. 练习题 - 循环点亮一个方块，3秒绿灯、1秒黄灯、2秒红灯
 ```
 let odiv = document.getElementById("traffic-light")
 // odiv.style.background = 'red'
@@ -228,7 +229,21 @@ async function cycle(){
 
 cycle()
 ```
+
+## 闭包和执行上下文到底是什么
+1. 执行上下文, Js 执行的运行环境, 运行环境主要包括三类，分别包括: 
+- 全局执行上下文/作用域：js代码的默认执行环境（只有一个）
+- 函数执行上下文/作用域：每个函数对应的执行环境（无限多个）
+- eval代码执行上下文：使用eval执行的脚步的执行环境  
+全局作用域中的方法、变量，可以被其它任何函数作用域所访问，函数作用域中的方法变量，在子函数作用域中可以访问，外部无法直接访问
+
+> 通过函数返回的子函数去访问函数作用域的私有变量，也就形成了闭包
+
+Js 的基础语言能力，主要由 Js 引擎支撑（v8/javascriptCore 等），例如数组、函数、对象等基本语法；而 IO 的读写，界面的渲染 Api，都属于宿主的扩展，由宿主统一协调调度
 ***
+
+
+
 
 #### HTML
 
