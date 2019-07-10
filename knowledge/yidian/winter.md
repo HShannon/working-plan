@@ -146,9 +146,26 @@ function Fn(){
 let o = new Fn()
 o.getValue() // a = 100, a 是私有的
 ```
-## Js 运行机制
-1. 每个宏观任务中又包含一个微观任务队列, Promise 永远在队列尾部添加微观任务. setTimeOut 等宿主API, 会添加宏观任务
+***
+
+4. 不使用 new 运算符，尽可能找到获得对象的方法  
+```
+// 利用字面量
+var a = [], b = {}, c = /abc/g
+// 利用dom api (宿主对象)
+var d = document.createElement('p')
+// 利用JavaScript内置对象的api
+var e = Object.create(null)
+var f = Object.assign({k1:3, k2:8}, {k3: 9})
+var g = JSON.parse('{}')
+// 利用装箱转换
+var h = Object(undefined), i = Object(null), k = Object(1), l = Object('abc'), m = Object(true)
+```
+
+## JavaScript 执行
+1. Js 运行机制
 > 宿主是指 js 的运行环境, 目前主流的 js 的主流运行环境有浏览器、 Node
+每个宏观任务中又包含一个微观任务队列, Promise 永远在队列尾部添加微观任务. setTimeOut 等宿主API, 会添加宏观任务
 - 首先分析有多少个宏任务
 - 在每个宏任务中，分析有多少个微任务
 - 根据调用次序，确定宏任务中的微任务执行次序
@@ -168,7 +185,7 @@ Js 的基础语言能力，主要由 Js 引擎支撑（v8/javascriptCore 等）�
 ***
 
 
-#### sleep 新特性async/await
+## promise && 新特性 async/await
 1. 
 ```
 function sleep(duration) {
