@@ -1,4 +1,4 @@
-# 百川业务数据平台  开发笔记笔记
+# 百川业务数据平台  开发笔记
 
 ## node端
 
@@ -12,6 +12,7 @@
 2. Vue CLI  
 组内前辈最近创建了一个种子项目，主要为了提高开发效率。该种子项目包括 node 服务以及前端框架，内置uc
 
-> 通过 npm install ad-fe-template -g 安装, 使用 yd-ad-fe-template 命令初始化项目，
+> 通过 npm install ad-fe-template -g 安装, 使用 yd-ad-fe-template 命令初始化项目
+
 
 
