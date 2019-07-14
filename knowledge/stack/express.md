@@ -148,11 +148,10 @@ app.use('/admin', admin);
 4. jsonp callback name
 
 5. trust proxy 涉及 X-Forwarded-Proto ([相关文档](http://www.expressjs.com.cn/4x/api.html#app.settings.table))
-  + req.hostname
-  + req.ip
-***
++ req.hostname
++ req.ip
 
-#### Request
+## Request
 1. If you follow the pattern in which you create a module that just exports a middleware function and require() it in your main file, **then the middleware can access the Express instance via req.app**
 
 2. req.body
@@ -169,7 +168,7 @@ var cookieParser = require('cookie-parser')
 var app = express()
 app.use(cookieParser())
 ```
-**Example**
+- 示例
 ```
 var express = require('express')
 var cookieParser = require('cookie-parser')
@@ -200,20 +199,17 @@ app.use('/admin', function(req, res, next) {  // GET 'http://www.example.com/adm
 
 5. req.xhr **X-Requested-With** header fields is 'XMLHttpRequest'
 
-**HTTP Header**
-
 6. req.accepts()
   + MIME type string
   + an extension name
   + a commma-delimited list
   + an array
-***
 
-#### Response
+## Response
 1. res.cookie(name, value [, options])
 
-2. res.format(object) 
-+ **Content-Type**
+2. res.format(object)  
+Content-Type
 ```
 res.format({
   text: function(){
@@ -230,14 +226,14 @@ res.format({
 });
 ```
 
-2. res.redirect([status,] path)
+3. res.redirect([status,] path)
 ```
 res.redirect(`${_config.loginUrl}/logout?callback=${_config.callbackUrl}`)
 ```
-3. res.send([body]) 
-  + The body parameter can be a Buffer object, a String, an object, or an Array.
 
-4. res.sendFile(path [, options] [, fn])
-  + res.sendFile(path.join(__dirname, '../public/index2.html'))
-***
+4. res.send([body]) 
++ The body parameter can be a Buffer object, a String, an object, or an Array.
+
+5. res.sendFile(path [, options] [, fn])
++ res.sendFile(path.join(__dirname, '../public/index2.html'))
 
