@@ -1,4 +1,4 @@
-#### POST
+# POST
 1. Post请求不能直接获取，获取post内容需要通过监听实现
 ```
 var http = require('http');

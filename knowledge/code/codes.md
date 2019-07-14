@@ -50,7 +50,6 @@ arr.reduce(callback, [initialValue])
 	- array 调用reduce的数组
 - initialValue 作为第一次调用 callback 的第一个参数
 
-## example
 1. dashboard 捏合三个数组
 ```
 let arr = ['cost', 'viewNum', 'ctr']
