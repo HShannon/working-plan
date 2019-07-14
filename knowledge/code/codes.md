@@ -1,6 +1,6 @@
 
-# 遍历对象
-1. 
+# 深度克隆
+1. typeof
 ```
 function clone(obj){
   var newobj = obj.constructor === Array ? [] : {};  // 用 instanceof 判断也可

@@ -1,7 +1,6 @@
-#### koa-body
-1. koa-body版本问题。koa-body v3和v4之前通过ctx.request.body捕获文件。而v3.v4终才是通过ctx.request.files.file进行获取。
-
-2. koa-body使用实例
+# koa-body
+koa-body版本问题。koa-body v3和v4之前通过ctx.request.body捕获文件。而v3.v4终才是通过ctx.request.files.file进行获取。
+1. koa-body使用实例  
 ```
 router.post('/file', async (ctx, next) => {
   console.log(ctx.request.files.file)
@@ -15,9 +14,8 @@ router.post('/file', async (ctx, next) => {
   ctx.body = '上传成功!'
 })
 ```
-***
 
-#### koa-compose
+# koa-compose
 1. 源码解读
 ```
 function compose (middleware) {
@@ -51,12 +49,9 @@ function compose (middleware) {
   }
 }
 ```
+![window](../../../public/image/compose.jpg "koa-compose")
 
-![window](../../public/image/compose.jpg "koa-compose")
-
-***
-
-#### koa-router
+# koa-router
 1. HelloWorld类
 ```
 var Koa = require('koa');
@@ -75,9 +70,7 @@ app
 ```
 ***
 
-#### koa-socket
-1. url.parse()
-
+# url.parse 方法
 - protocol: The protocol scheme of the URL (e.g. http:).
 - slashes: A boolean which indicates whether the protocol is followed by two forward slashes (//).
 - auth: Authentication information portion (e.g. username:password).
@@ -91,10 +84,9 @@ app
 - hash: The "fragment" portion of the URL including the pound-sign (#).
 - href: The full URL.
 
-#### koa2里获取请求参数
-##### 获取get请求数据
-[Koa2里获取请求数据](https://github.com/lensh/koa2-cet/issues/2)
-对于POST请求的处理，koa-bodyparser中间件可以把koa2上下文的formData数据解析到ctx.request.body中。
+# [Koa2里获取请求数据](https://github.com/lensh/koa2-cet/issues/2)
+1. 获取get请求数据
+2. 获取POST请求的处理，koa-bodyparser中间件可以把koa2上下文的formData数据解析到ctx.request.body中。
 
 
 
