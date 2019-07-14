@@ -4,7 +4,8 @@
 
 ![window](../../public/image/seed-project.jpg "seed project")
 
-1. Vuex plugin 插件, 当 mutation 修改 state 时, 控制台打印 log. 仅在开发环境中使用
+## Vuex
+plugin 插件: 当 mutation 修改 state 时, 控制台打印 log. 仅在开发环境中使用
 ```
 // debug 为 true 开启严格模式; 当为 false, 上线时关闭该模式  
 const debug = process.env.NODE_ENV !== 'production'
@@ -16,7 +17,7 @@ const store = new Vuex.Store({
 })
 ```
 
-2. [@vue/cli](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)  
+## [@vue/cli](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)  
 详情见stack/Vue/vue-cli
 
 
