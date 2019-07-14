@@ -20,7 +20,10 @@
 
 ## web架构
 1. 架构1
-![window](../../public/image/web_structure.jpg "web-structure") 主要包括DNS域名解析器, 负载均衡、web应用服务器、数据库服务器、cache 缓存、CDN 内容分发网络  
+
+![window](../../public/image/web_structure.jpg "web-structure") 
+
+主要包括DNS域名解析器, 负载均衡、web应用服务器、数据库服务器、cache 缓存、CDN 内容分发网络  
 + DNS域名解析器  
 + 负载均衡: 垂直、水平
 + web应用服务器: user's brower <----> web app server <----> 后端基础设备
@@ -31,6 +34,7 @@
 + CDN 内容分发网络
 
 2. 架构2
+
 ![window](../../public/image/web_structure1.jpg "web-sructure-by-bw")
 
 其中需要主要的时[反向代理服务](https://cloud.tencent.com/developer/article/1160241), 反向代理主要负责接受用户的接入请求，可以实现一下功能:
