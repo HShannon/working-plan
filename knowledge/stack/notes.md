@@ -49,16 +49,7 @@ Console.prototype.log = function() {
 
 
 
-28. [跨域](https://github.com/huanqingli/life-note/blob/master/%E5%89%8D%E7%AB%AF/HTTP/%E8%B7%A8%E5%9F%9F.md)
-- 跨域: 从一个域名的网页去请求另一个域名的资源
-- 同源策略: 浏览器会限制从脚本内发起的跨域HTTP请求，例如XMLHttpRequest 和 fetch(域名、协议和端口均相同就称为同源)
-- localhost 和 127.0.0.1 也是跨域
-- 解决方案
-	- 中间层过度(代理): 通过向后端请求，后端再去和其他域的后端通讯
-	- JSONP: 在页面上引入不同域上的js脚本文件却是可以的，JSONP 利用该原理。
-	- H5 window.postMessage: 可以使用它来向其它的window对象发送消息(于 iframe 沟通的好办法)。
-	- CORS: 思路就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
-	- [web sockets](https://github.com/huanqingli/life-note/blob/master/%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0/%E6%8A%80%E6%9C%AF%E7%B1%BB/WebSocket%E8%AF%A6%E8%A7%A3.md): 一种浏览器的API,建立持久化链接，没有同源策略。
+
 
 29. [权限认证 token vs cookie](https://github.com/huanqingli/life-note/blob/master/%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0/%E6%8A%80%E6%9C%AF%E7%B1%BB/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81(cookie-vs-token).md)
 - cookie
