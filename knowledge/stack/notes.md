@@ -26,20 +26,6 @@
 	+ [腾讯防水墙](https://007.qq.com/index.html?ADTAG=set.head)
 	+ [增加ProcessOn免费文件数](https://github.com/96chh/Upgrade-ProcessOn)
 
-20. web架构I
-![window](../../public/image/web_structure.jpg "koa-compose")
-	
-+ DNS域名解析器  
-+ 负载均衡  
-	垂直. 水平
-+ web应用服务器  
-	user's brower <----> web app server <----> 后端基础设备
-	+ 应用服务器的实现(Node.js)
-	+ 后端语言MVC框架(koa、express)
-+ 数据库服务器
-+ cache 缓存  
-	**redis**, Memcache
-+ CDN 内容分发网络
 
 
 
@@ -49,10 +35,8 @@
 
 
 
-24. 普通HTTP请求 && Ajax请求
-- Ajax请求(xmlHttpRequest)	
-	Ajax请求会多一个x-request-with: XMLHttpRequest
-- 普通HTTP请求(xmlHttpRequest)
+
+
 
 25. 打包
 
@@ -63,9 +47,7 @@ Console.prototype.log = function() {
 }
 ```
 
-27. 浏览器缓存
-- 旧的策略使用Expires配合Last-Modified（HTTP1.0），检查缓存是否过期文件是否更改
-- 新的策略使用Cache-control配合Etag（HTTP1.1）
+
 
 28. [跨域](https://github.com/huanqingli/life-note/blob/master/%E5%89%8D%E7%AB%AF/HTTP/%E8%B7%A8%E5%9F%9F.md)
 - 跨域: 从一个域名的网页去请求另一个域名的资源
