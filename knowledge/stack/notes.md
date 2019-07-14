@@ -51,32 +51,8 @@ Console.prototype.log = function() {
 
 
 
-29. [权限认证 token vs cookie](https://github.com/huanqingli/life-note/blob/master/%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0/%E6%8A%80%E6%9C%AF%E7%B1%BB/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81(cookie-vs-token).md)
-- cookie
-	- 输入用户名密码登陆
-	- 服务器拿到身份并验证后生成一个session 存到数据库
-	- sessionID 返回给客户端存成一个cookie保存sessionID
-	- 随后的请求会携带这个包含sessionID 的cookie
-	- 服务器拿到sessionID 找到对应session 认证用户是否有对应权限
-	- 退出登录后，服务端销毁session, 客户端销毁cookie
-- token
-	- 输入用户名密码登陆
-	- 服务器拿到身份并签发一个token
-	- 客户端拿到token存起来
-	- 随后的请求会携带token
-	- 服务器接收请求后拿到 token 并解析，拿解析的结果进行权限认证(token中可能已经携带权限信息,能被正常解析的 token 被认为是合法机构签发的) **Authorization**
-	- 登出后，在客户端销毁 token 即可
 
-30. 埋点
-- 手动埋点: 根据需要在任意地点任意场景进行数据采集，采集信息由业务放决定
-- 可视化埋点: 
-- 无埋点
 
-| 埋点方式  | 定义                                                                          | 优点                                   | 缺点                                 |
-| :------: | :--------------------------------------------------------------------------: | :-----------------------------------: | :----------------------------------: |
-| 手动埋点   | 需要调用埋点的业务方在需要采集数据的地方调用埋点的方法                               | 业务方根据需要在任意地方任意场景进行数据采集 | 写死方案                                |
-| 可视化埋点 | 数据埋点部门                                                                  | 业务方工作量小                          | 技术上推广和实现难                        |
-| 无埋点     | 前端自动采集全部事件，上报埋点数据，由后端来过滤和计算出有用的数据 | 前端只要加载埋点脚本 | 前端只要加载埋点脚本                     | 流量和采集的数据过于庞大，服务器性能压力山大 |
 
 31. MVC MVVC MVP
 - MVC
@@ -90,94 +66,11 @@ Console.prototype.log = function() {
 - MVVC  Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致, 唯一的区别是，它采用双向绑定(data-binding), View的变动，自动反映在 ViewModel
 [参考](https://www.zhihu.com/question/20148405)
 
-32. postcss
-[参考](https://segmentfault.com/a/1190000003909268)
-
-33. [SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
- @font-face 允许网页开发者为其网页制定在线字体
-- 基本用法
-  - 变量, SASS允许使用变量，所有变量以$开始
-  - 如果变量需要镶嵌在字符串之中，必须写在#{}中
-- 计算功能
-- 嵌套
-- 注释: /* comment */ || //comment // /*! comment */(重要注释)
-- 继承:  @extend
-- Mixin: 使用@mixin命令，定一个代码块。使用@include命令，调用mixin
-  ```
-  @minxin left {
-    float: left;
-    margin-left: 10px
-  } 
-
-  div {
-    @include left
-  }
-  ```
-  - 可以制定参数和缺省值
-  ```
-  @mixin left($value: 10px) {
-    float: left;
-    margin-left: $value;
-  }
-  ```
-- 颜色函数
-- 插入文件: @import
-- 条件语句
-  - @if: 不需要写括号
-  - @else
-  - @while
-  - @for
-- 自定义函数
-```
-@function double($n) {
-  @return $n * 2;
-}
-
-#sidebar {
-  width: double(5px);
-}
-```
-
-34. typeScript 使用了--strictNullChecks, 可选参数会被自动加上 | undefined
-```
-class C {
-    a: number;
-    b?: number;
-}
-let c = new C();
-c.a = 12;
-c.a = undefined; // error, 'undefined' is not assignable to 'number'
-c.b = 13;
-c.b = undefined; // ok
-c.b = null; // error, 'null' is not assignable to 'number | undefined'
-```
-
-35. tabindex 
-- tabindex 属性用于管理键盘焦点，决定元素是否能被选中，以及按下 tab 键过程中被选中的顺序
-- tabindex = 0: 如果你想让一个不能获取焦点的元素，比如 <span> 或 <div>，也被包含在 tab 键序列表中，那么设置 tabindex = 0 就可以使这些元素按其在源码中的顺序出现在 tab 键序中。
-- tabindex = -1: 可以使一个元素可由代码获取到焦点，但其本身并不在 tab 键序中
-- 避免设置 tabindex=1+
-
-36. webpack
-- http-proxy-middleware: 用于将请求转发到其他服务器的中间件
-- webpack-dev-middleware: 
-- webpack-hot-middleware: 
-- html-webpack-plugin: 用于将 webpack 编译打包后的产品文件注入到html模版中, 即自动在index.html里面加上 <link> 和 <script> 标签引用webpack打包后的文件
 
 
-36. 模块概念
-- CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数。由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
-- require && module.exports && export
-- 模块功能主要由两个命令构成: export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。
-```
-// 写法一
-export var m = 1
 
-// 写法二
-var m = 1
-export {m} // import {m} from ${path}
 
-// 写法三
-var n = 1;
-export {n as m}
-```
+
+
+
+
