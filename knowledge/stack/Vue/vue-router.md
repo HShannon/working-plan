@@ -57,7 +57,7 @@ app.use(historyApiFallback({ whiteList: ['/avatar'] }))
 ## 响应路由参数的变化
 当使用路由参数时，原来的组件实例会被复用，因为两个路由都渲染同一个组件，比起销毁再创建，复用则显得更加高效，这也意味着组件的生命周期钩子不会再被调用。
 
-- 复用组件时，**可以简单使用watch检测$route对象**
+1. 复用组件时，**可以简单使用watch检测$route对象**
 ```
 watch: {
   // 如果路由有变化，会再次执行该方法
@@ -67,10 +67,9 @@ watch: {
 }
 ```
 
-- 引入beforeRouteUpdate导航守卫
-***
+2. 引入 beforeRouteUpdate 导航守卫
 
-#### 导航守卫
+## 导航守卫
 1. 全局前置守卫 router.beforeEach
 - to: Route
 - from: Route
@@ -117,26 +116,25 @@ const Foo = {
 }
 ```
 
-#### 路由元信息
-routes 配置中的每个路由对象伟路由记录。一个路由匹配到的所有路由记录会暴露为 $route 对象 (还有在导航守卫中的路由对象) 的 $route.matched 数组。
+## 路由元信息
+routes 配置中的每个路由对象为路由记录。一个路由匹配到的所有路由记录会暴露为 $route 对象 (还有在导航守卫中的路由对象) 的 $route.matched 数组。
 
-#### 路由懒加载
-- 需求原因: 当打包构建应用时，JavaScript 包会变得非常大，影响页面加载。
-- 解决方案: 把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件
-  - 将异步组件定义为返回一个 Promise 的工厂函数
-  ```
-  const Foo = () => Promise.resolve({ /* 组件定义对象 */ })
-  ```
-  - 在 Webpack 2 中，我们可以使用动态 import语法来定义代码分块点 (split point)
-  ```
-  import('./Foo.vue') // 返回 Promise
-  ```
-  **结合两者**
+## 路由懒加载
+当打包构建应用时，JavaScript 包会变得非常大，影响页面加载。解决方案: 把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件
+1. 常用方法
+- 将异步组件定义为返回一个 Promise 的工厂函数
+```
+const Foo = () => Promise.resolve({ /* 组件定义对象 */ })
+```
+- 在 Webpack 2 中，我们可以使用动态 import 语法来定义代码分块点 (split point)
+```
+import('./Foo.vue') // 返回 Promise
+```
+最终结合两者
 ```
 const Foo = () => import('./Foo.vue')
 ```
-
-此外可结合webpack的require.ensure().同时将模块添加到一个分开的 chunk 当中。这个新的 chunk 会被 webpack 通过 jsonp 来按需加载。
+2. 结合 webpack 的 require.ensure(). 同时将模块添加到一个分开的 chunk 当中。这个新的 chunk 会被 webpack 通过 jsonp 来按需加载。
 ```
 require.ensure(dependencies: String[], callback: function(require), chunkName: String)
 // example routes对象
@@ -145,8 +143,7 @@ require.ensure(dependencies: String[], callback: function(require), chunkName: S
 }
 ```
 
-
-#### 路由对象属性
+## 路由对象属性
 - $route.path
 - $route.params [路由参数](https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8C%B9%E9%85%8D)
 - $route.query URL 查询参数
