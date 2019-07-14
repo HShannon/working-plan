@@ -16,7 +16,8 @@ const store = new Vuex.Store({
 })
 ```
 
-2. @vue/cli
+2. [@vue/cli](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)  
+详情见stack/Vue/vue-cli
 
 
 
