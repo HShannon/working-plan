@@ -21,7 +21,7 @@ vue add @vue/eslint
 ```
 
 ## DllPlugin && DllReferencePlugin
-在项目中, 引入了较多的第三方库, 导致项目大, 而每次修改，都不会去修改到这些库, 构建却都要再打包这些库, 浪费了不少时间。所以把这些不常变动的第三方库都提取出来，下次打包时不再构建这些库，这样既可大大缩短构建时间。可以利用 webpack 插件 DllPlugin 和 DllReferencePlugin 来实现。DllPlugin 可以把我们需要打包的第三方库打包成一个 js 文件和一个 json 文件，这个 json 文件中会映射每个打包的模块地址和 id, DllReferencePlugin 通过读取这个json文件来使用打包的这些模块
+在项目中, 引入了较多的第三方库, 导致项目大, 而每次修改，都不会去修改到这些库, 构建却都要再打包这些库, 浪费了不少时间。所以把这些不常变动的第三方库都提取出来，下次打包时不再构建这些库，这样既可大大缩短构建时间。可以利用 webpack 插件 DllPlugin 和 DllReferencePlugin 来实现，配合使用AddAssetHtmlPlugin。DllPlugin 可以把我们需要打包的第三方库打包成一个 js 文件和一个 json 文件，这个 json 文件中会映射每个打包的模块地址和 id, DllReferencePlugin 通过读取这个json文件来使用打包的这些模块
 1. 在根目录中新建webpack.dll.config.js, 配置如下
 ```
 const path = require("path"

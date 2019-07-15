@@ -149,4 +149,4 @@ require.ensure(dependencies: String[], callback: function(require), chunkName: S
 - $route.query URL 查询参数
 - $route.hash 当前路由的 hash 值 (带 #, 所以通常需要$route.hash.slice(1))
 - $route.fullPath
-- $route.matched 
+- $route.matched
