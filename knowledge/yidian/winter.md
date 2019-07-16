@@ -238,13 +238,23 @@ cycle()
   - 标识符列表, 函数中用到的未声明的变量
 - 表达式部分， 函数体
 
-
 2. 执行上下文, Js 执行的运行环境, 运行环境主要包括三类，分别包括:
 - 全局执行上下文/作用域：js代码的默认执行环境（只有一个）
 - 函数执行上下文/作用域：每个函数对应的执行环境（无限多个）
 - eval代码执行上下文：使用eval执行的脚步的执行环境  
 全局作用域中的方法、变量，可以被其它任何函数作用域所访问，函数作用域中的方法变量，在子函数作用域中可以访问，外部无法直接访问  
 **通过函数返回的子函数去访问函数作用域的私有变量，也就形成了闭包**
+
+3. 执行上下文: 执行的基础设施  
+在es2018中, 执行文变为
+- lexical environment: 词法环境，当获取变量或者 this 值时使用
+- variable environment: 环境变量，当申明变量时使用
+- code evaluation state: 用于恢复代码执行位置
+- Function: 执行的任务是函数时使用，表示正在被执行的函数。
+- ScriptOrModule: 执行的任务是脚本或者模块时使用，表示正在被执行的代码。
+- Realm: 使用的基础库和内置对象实例。
+- Generator: 仅生成器上下文有这个属性，表示当前生成器。
+
 
 ## 函数
 1. es2018 中, 函数有普通函数, 箭头函数, 在 class 中定义的函数, 生成器函数, 普通函数、箭头函数和生成器函数上 async 关键字。用 class 定义的类，实际上也是函数
@@ -296,8 +306,25 @@ showThis(); // undefined
 o.showThis(); // o
 ```
 
-3. this 关键字的机制
-在 js 标准中, 为函数规定了用来保存定义时上下文的私有属性为[[Environment]]
+3. this 关键字的机制  
+在 js 标准中, 为函数规定了用来保存定义时上下文的私有属性为[[Environment]], 当函数执行时，会创造一条新的执行环境记录，记录的外层语法环境（outer lexical environment）会被设置成函数[[environment]。当函数调用时, 会入栈一个新的执行上下文, 函数调用结束时, 执行上下文被推出。函数创造新的执行上下文中的词法环境记录时， 会根据[[thisMode]]来标记新纪录的[[ThisBindingStatus]]私有属性。代码遇到 this 时，会逐层检查当前词法环境记录中的[[ThisBindingStatus]]，当找到有 this 的环境记录时获取 this 的值
+在 js 标准中, 定义了[[thisMode]]私有属性, [[thisMode]]私有属性有三个取值
+- lexical: 从上下文中找 this, 对应了箭头函数
+- global: 当 this 为 undefined 时，取全局对象，对应了普通函数
+- strict: 当严格模式时, this 严格按照调用时传入的值， 可能为 undefined 或 null, 对应方法的行为
+
+4. 操作 this 的内置函数  
+Function.prototype.call 和 Function.prototype.apply, 两者区别如下。此外 Function.prototype.bind 可以生成一个绑定过的函数，这个函数的 this 值固定了一个参数
+```
+function foo(a, b, c){
+  console.log(this)
+  console.log(a, b, c)
+}
+foo.call({}, 1, 2, 3)
+foo.apply({}, [1, 2, 3])
+foo.bind({}, 1, 2, 3)()
+```
+call, bind, apply 用于不接受 this 的参数类型如箭头、class 都不会报错，可以实现传参数
 
 #### HTML
 
