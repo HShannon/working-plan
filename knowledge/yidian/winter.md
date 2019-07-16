@@ -274,8 +274,30 @@ function *foo(){
 // 
 ```
 2. this 关键字的行为  
-this 是执行上下文中重要的一个组成部分，同一个函数调用方式不同，得到的this值也不同
+this 是执行上下文中重要的一个组成部分，同一个函数调用方式不同，得到的this值也不同。普通函数的this值是由“调用它所使用的引用”决定。Reference 类型由两部分组成，一个对象和属性。针对如下的例子，Reference 中的对象是 o, 属性是showThis. 调用函数时使用的引用，决定了函数执行时刻的 this 值。
+```
+function showThis(){ console.log(this) }
+let o = {showThis: showThis}
 
+showThis() // global
+o.showThis() // o
+```
+在箭头函数中, 不论用什么引用来调用它，都不影响它的 this 值。在类中情况又不一样, 不难验证出, 生成器函数】异步生成器函数和异步普通函数跟普通函数行为一致，异步箭头函数跟箭头函数行为一致
+```
+class C {
+    showThis() {
+        console.log(this);
+    }
+}
+var o = new C();
+var showThis = o.showThis;
+
+showThis(); // undefined
+o.showThis(); // o
+```
+
+3. this 关键字的机制
+在 js 标准中, 为函数规定了用来保存定义时上下文的私有属性为[[Environment]]
 
 #### HTML
 
