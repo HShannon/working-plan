@@ -279,9 +279,7 @@ clss class(){
 // 生成器函数
 function *foo(){
 
-}
-
-// 
+} 
 ```
 2. this 关键字的行为  
 this 是执行上下文中重要的一个组成部分，同一个函数调用方式不同，得到的this值也不同。普通函数的this值是由“调用它所使用的引用”决定。Reference 类型由两部分组成，一个对象和属性。针对如下的例子，Reference 中的对象是 o, 属性是showThis. 调用函数时使用的引用，决定了函数执行时刻的 this 值。
@@ -307,8 +305,9 @@ o.showThis(); // o
 ```
 
 3. this 关键字的机制  
-在 js 标准中, 为函数规定了用来保存定义时上下文的私有属性为[[Environment]], 当函数执行时，会创造一条新的执行环境记录，记录的外层语法环境（outer lexical environment）会被设置成函数[[environment]。当函数调用时, 会入栈一个新的执行上下文, 函数调用结束时, 执行上下文被推出。函数创造新的执行上下文中的词法环境记录时， 会根据[[thisMode]]来标记新纪录的[[ThisBindingStatus]]私有属性。代码遇到 this 时，会逐层检查当前词法环境记录中的[[ThisBindingStatus]]，当找到有 this 的环境记录时获取 this 的值
-在 js 标准中, 定义了[[thisMode]]私有属性, [[thisMode]]私有属性有三个取值
+在 js 标准中, 为函数规定了用来保存定义时上下文的私有属性为[[Environment]], 当函数执行时，会创造一条新的执行环境记录，记录的外层语法环境（outer lexical environment）会被设置成函数[[environment]  
+当函数调用时, 会入栈一个新的执行上下文, 函数调用结束时, 执行上下文被推出。  
+函数创造新的执行上下文中的词法环境记录时， 会根据[[thisMode]]来标记新纪录的[[ThisBindingStatus]]私有属性。代码遇到 this 时，会逐层检查当前词法环境记录中的[[ThisBindingStatus]]，当找到有 this 的环境记录时获取 this 的值. 在 js 标准中, 定义了[[thisMode]]私有属性, [[thisMode]]私有属性有三个取值
 - lexical: 从上下文中找 this, 对应了箭头函数
 - global: 当 this 为 undefined 时，取全局对象，对应了普通函数
 - strict: 当严格模式时, this 严格按照调用时传入的值， 可能为 undefined 或 null, 对应方法的行为
