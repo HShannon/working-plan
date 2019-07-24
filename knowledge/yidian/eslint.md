@@ -189,3 +189,6 @@ module.exports = {
 ## 参考
 1. [eslint-plugin-vue-question](https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq)
 2. [网上参考](https://nice.lovejade.cn/zh/article/beautify-vue-by-eslint-and-prettier.html#%E9%9B%86%E6%88%90-eslint-prettier)
+3. [webpack引入eslint详解](https://segmentfault.com/a/1190000012936029)
+4. [使用EsLint&Prettier美化Vue代码](https://nice.lovejade.cn/zh/article/beautify-vue-by-eslint-and-prettier.html#%E6%B7%BB%E5%8A%A0%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE)
+5. [参考2](https://juejin.im/post/5b79a52651882543025ac6d7#heading-7)
