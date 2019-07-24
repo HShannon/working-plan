@@ -281,6 +281,7 @@ function *foo(){
 
 } 
 ```
+
 2. this 关键字的行为  
 this 是执行上下文中重要的一个组成部分，同一个函数调用方式不同，得到的this值也不同。普通函数的this值是由“调用它所使用的引用”决定。Reference 类型由两部分组成，一个对象和属性。针对如下的例子，Reference 中的对象是 o, 属性是showThis. 调用函数时使用的引用，决定了函数执行时刻的 this 值。
 ```
@@ -324,6 +325,9 @@ foo.apply({}, [1, 2, 3])
 foo.bind({}, 1, 2, 3)()
 ```
 call, bind, apply 用于不接受 this 的参数类型如箭头、class 都不会报错，可以实现传参数
+
+5. 在 JavaScript 标准中
+- [[environment]]: 保存函数规定义时上下文的私有属性
 
 #### HTML
 
