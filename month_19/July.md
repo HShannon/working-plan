@@ -34,6 +34,28 @@
   - [x] 刘恒 —— 合并保量与品牌     已上线
   - [x] 新增开屏SDK流量来源分类    已上线
   - [ ] 外部流量结算报表新增流量方公司、自定义列新增二级账户来源之类   已提测
+  - 最近发现了一个问题，就是 GET 请求改成 POST 请求
+    - /report/billing
+    - /account_report/user_source
+    - /flow_funnel/dropdown_list
+    - /flow_funnel/stock
+    - /flow_funnel/fail_reason
+    - /flow_funnel/app
+    - /flow_funnel/report
+    - /flow_funnel/cf_report
+    - /report/infoflow_impression
+    - /dsp_report/report
+    - /dp/settlement_earn
+    - /earn/analysis
+    - /detail_report/ads_position
+    - /detail_report/ads_download
+    - /detail_report/download
+    - /account_report/consume
+    - /account_report/user_source
+    - /account_report/account_hourly
+    - /agent_report/province_agent
+    - /report/audience_analyze
+    - /ads_info/report
 
 2. 学习
 3. 思考
