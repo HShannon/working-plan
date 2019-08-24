@@ -71,3 +71,5 @@
 2. 学习
 
 3. 思考
+- sentry 服务
+- vue ssr template
