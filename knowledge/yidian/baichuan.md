@@ -7,6 +7,7 @@
 1. 需求文档不确定的地方要及时跟产品沟通, 先入为主容易走弯路
 2. 后端评审要认真听, 设计文档要仔细看, 不合理的, 给前端带来麻烦的点要及时提出
 3. null undefined 判断, 否则代码报错
-4. elementUI 中所用的组件要了解清楚.  
-- input 输入框可以通过 prefix-icon 和 suffix-icon 属性在 input 组件尾部和首部增加显示图标, 也可以通过slot 放置图标
-- form 表单 validate 的校验规则, 以 mixin 混入
+4. elementUI 中所用的组件要了解清楚
+    - input 输入框可以通过 prefix-icon 和 suffix-icon 属性在 input 组件尾部和首部增加显示图标, 也可以通过slot 放置图标
+    - form 表单 validate 的校验规则, 以 mixin 混入
+5. 开发排期要评估好, 坚持自己的看法, 不要跟产品妥协
