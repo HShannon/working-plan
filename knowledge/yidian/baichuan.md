@@ -12,7 +12,9 @@
     - input 输入框可以通过 prefix-icon 和 suffix-icon 属性在 input 组件尾部和首部增加显示图标, 也可以通过slot 放置图标
     - form 表单 validate 的校验规则, 以 mixin 混入
 5. 开发排期要评估好, 坚持自己的看法, 不要跟产品妥协
-6. 正如爸爸所说, 个人有点马虎, 一定要细心细心再细心!!!
+6. **正如爸爸所说, 个人有点马虎, 一定要细心细心再细心!!!**
+7. Array, Number, isNaN
+
 ***
 
 ## ToDO
