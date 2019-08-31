@@ -263,7 +263,52 @@ cycle()
 
 4. Lexical Environments (词法环境)  
 在 es5 中，Lexical Environments（词法环境）和四个类型的代码结构相对应，分别为 global、函数、eval、with、 catch.
+
 ![window](../../public/image/environment.jpg "lexical environment")
+
+- Lexical Environments: Environment Records && outer, outer 是指包含本词法环境的外部词法环境
+```
+function LexicalEnvironment() {
+  this.EnvironmentRecord = undefined
+  this.outer = undefined
+}
+```
+- Environment Records includes declarative environment recodes(function, catch) and  Object environment records(with, global).
+```
+function EnvironmentRecord(obj) {
+  if(isObject(obj)) {
+    this.bindings = {};
+    this.type = 'Object';
+  }
+  this.bindings = new Map();
+  this.type = 'Declarative';
+}
+
+EnvironmentRecord.prototype.register = function(name) {
+  if (this.type === 'Declarative') this.bindings.set(name,undefined)
+  this.bindings[name] = undefined;
+}
+
+EnvironmentRecord.prototype.initialize = function(name,value) {
+  if (this.type === 'Declarative') this.bindings.set(name,value);
+  this.bindings[name] = value;
+}
+
+EnvironmentRecord.prototype.getValue = function(name) {
+  if (this.type === 'Declarative') return this.bindings.get(name);
+  return this.bindings[name];
+}
+```
+
+- 全局环境(Global Environment)
+```
+let GlobalEnvironment = new LexicalEnvironment()
+GlobalEnvironment.outer = null
+GlobalEnvironment.EnvironmentRecord = new EnvironmentRecord(globalobject)
+```
+
+5. Execution Contexts
+> 在 Execution Contexts (执行上下文) Lexical Environments EnvironmentRecord 
 
 ## 函数
 1. es2018 中, 函数有普通函数, 箭头函数, 在 class 中定义的函数, 生成器函数, 普通函数、箭头函数和生成器函数上 async 关键字。用 class 定义的类，实际上也是函数
