@@ -261,8 +261,9 @@ cycle()
 - Realm: 使用的基础库和内置对象实例。
 - Generator: 仅生成器上下文有这个属性，表示当前生成器。
 
-4. Lexical Environments (词法环境)
-
+4. Lexical Environments (词法环境)  
+在 es5 中，Lexical Environments（词法环境）和四个类型的代码结构相对应，分别为 global、函数、eval、with、 catch.
+![window](../../public/image/environment.jpg "lexical environment")
 
 ## 函数
 1. es2018 中, 函数有普通函数, 箭头函数, 在 class 中定义的函数, 生成器函数, 普通函数、箭头函数和生成器函数上 async 关键字。用 class 定义的类，实际上也是函数
