@@ -308,7 +308,19 @@ GlobalEnvironment.EnvironmentRecord = new EnvironmentRecord(globalobject)
 ```
 
 5. Execution Contexts
-> 在 Execution Contexts (执行上下文) Lexical Environments EnvironmentRecord 
+> 在 Execution Contexts (执行上下文): LexicalEnvironments, VariableEnvironment(regist var, let and function), ThisBinding(this)
+```
+function ExecutionContext() {
+    this.LexicalEnvironment = undefined;
+    this.VariableEnvironment =  undefined;
+    this.ThisBinding = undefined;
+}
+```
+创建 Execution Contexts 的三种情况: global code, function code, eval code
+
+![window](../../public/image/execution.jpg "execution contexts")
+
+
 
 ## 函数
 1. es2018 中, 函数有普通函数, 箭头函数, 在 class 中定义的函数, 生成器函数, 普通函数、箭头函数和生成器函数上 async 关键字。用 class 定义的类，实际上也是函数
