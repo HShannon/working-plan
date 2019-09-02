@@ -308,7 +308,10 @@ GlobalEnvironment.EnvironmentRecord = new EnvironmentRecord(globalobject)
 ```
 
 5. Execution Contexts
-> 在 Execution Contexts (执行上下文): LexicalEnvironments, VariableEnvironment(regist var, let and function), ThisBinding(this)
+> 在 Execution Contexts (执行上下文, 执行所需的所有信息): LexicalEnvironments, VariableEnvironment(regist var, let and function), ThisBinding(this)
+- lexivalEnvironment 词法环境，当获取变量时使用
+- variableEnvironment 变量环境，申明变量时使用
+- this value this 值
 ```
 function ExecutionContext() {
     this.LexicalEnvironment = undefined;
@@ -320,7 +323,7 @@ function ExecutionContext() {
 
 ![window](../../public/image/execution.jpg "execution contexts")
 
-
+> 在es2018中, lexicalEnvironment, variableEnvironment, code evaluation state(用于恢复代码执行位置), function(执行任务是函数时使用，表示正在被执行的函数), scriptOrModule(执行的任务是脚本或者模块，表示正在被执行的代码), realm(使用的基础库和内置对象实例), 仅生成器上下文有这个属性，表示当前生成器
 
 ## 函数
 1. es2018 中, 函数有普通函数, 箭头函数, 在 class 中定义的函数, 生成器函数, 普通函数、箭头函数和生成器函数上 async 关键字。用 class 定义的类，实际上也是函数
