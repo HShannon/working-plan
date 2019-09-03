@@ -360,6 +360,7 @@ let o = {showThis: showThis}
 showThis() // global
 o.showThis() // o
 ```
+
 在箭头函数中, 不论用什么引用来调用它，都不影响它的 this 值。在类中情况又不一样, 不难验证出, 生成器函数】异步生成器函数和异步普通函数跟普通函数行为一致，异步箭头函数跟箭头函数行为一致
 ```
 class C {
@@ -376,7 +377,7 @@ o.showThis(); // o
 
 3. this 关键字的机制  
 在 js 标准中, 为函数规定了用来保存定义时上下文的私有属性为[[Environment]], 当函数执行时，会创造一条新的执行环境记录，记录的外层语法环境（outer lexical environment）会被设置成函数[[environment]  
-当函数调用时, 会入栈一个新的执行上下文, 函数调用结束时, 执行上下文被推出。  
+> 当函数调用时, 会入栈一个新的执行上下文, 函数调用结束时, 执行上下文被推出。
 函数创造新的执行上下文中的词法环境记录时， 会根据[[thisMode]]来标记新纪录的[[ThisBindingStatus]]私有属性。代码遇到 this 时，会逐层检查当前词法环境记录中的[[ThisBindingStatus]]，当找到有 this 的环境记录时获取 this 的值. 在 js 标准中, 定义了[[thisMode]]私有属性, [[thisMode]]私有属性有三个取值
 - lexical: 从上下文中找 this, 对应了箭头函数
 - global: 当 this 为 undefined 时，取全局对象，对应了普通函数
@@ -390,13 +391,32 @@ function foo(a, b, c){
   console.log(a, b, c)
 }
 foo.call({}, 1, 2, 3)
-foo.apply({}, [1, 2, 3])
+foo.apply({}, [1, 2, 3])  // Array
 foo.bind({}, 1, 2, 3)()
 ```
 call, bind, apply 用于不接受 this 的参数类型如箭头、class 都不会报错，可以实现传参数
 
-5. 在 JavaScript 标准中
-- [[environment]]: 保存函数规定义时上下文的私有属性
+# try, catch, finally
+1. try, catch, finally
+```
+try {
+  // tryCode - 尝试执行代码块
+}
+catch(err) {
+  // catchCode - 捕获错误的代码块
+} 
+finally {
+  // finallyCode - 无论 try / catch 结果如何都会执行的代码块
+}
+```
+
+2. Completion Record 用于描述异常、跳出等语句执行过程，有三个字段  
+- [[type]] 完成的类型，有 break, continue, return, throw, normal
+- [[value]] 语句返回值，如果语句没有，则是empty
+- [[target]] 语句的目标，通常是一个 JavaScript 标签
+
+3. 语句分类
+
 
 #### HTML
 
