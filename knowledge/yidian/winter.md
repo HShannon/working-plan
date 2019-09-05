@@ -428,8 +428,27 @@ finally {
 
 1. 穿透是指去上一层的作用域或者控制语句找可以消费break，continue的执行环境，消费是指在这一层就执行了这个break或者continue
 
-# JavaScript 文法
-文法是编译原理中对语法写法的一种规定，文法分为词法和语法两种， 词法规定了语言的最小语义单元 token
+2. 文法是编译原理中对语法写法的一种规定，文法分为词法和语法两种， 词法规定了语言的最小语义单元 token
+
+## JavaScript 脚本和模块
+> JavaScript 有两种源文件，分别为脚本和模块，脚本可以由浏览器或者 node 环境引入执行，模块只能有 JavaScript 代码用 import 引入执行。脚本具有主动性的 JavaScript 代码段，是控制宿主完成一定任务的代码；而模块是被动性的 JavaScript 代码段，是等待被调用的库
+
+👉  script 标签引入模块或者脚本，如果引入模块，必须给 script 标签添加 type = 'module',如果不添加 type 值，默认我们加载的文件是脚本而非模块，在脚本中写 export 会报错
+1. JavaScript 程序
+- 脚本
+    - 语句
+- 模块
+    - import 声明
+    - export 声明
+    - 语句
+
+2. JavaScript 语法的全局机制, 预处理呵指令序言
+- 预处理过程会提前处理var, 函数声明, class, const, let
+- 指令序言, JavaScript 标准中规定的唯一一种指令序言, 设计指令序言的目的是，留给 JavaScript 的引擎和实现者一些统一的表达方式，在静态扫描时制定 JavaScript 代码的一些特性
+
+3. 
+
+
 
 
 #### HTML
