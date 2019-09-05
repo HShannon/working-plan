@@ -397,7 +397,7 @@ foo.bind({}, 1, 2, 3)()
 call, bind, apply 用于不接受 this 的参数类型如箭头、class 都不会报错，可以实现传参数
 
 # try, catch, finally
-1. try, catch, finally
+## try, catch, finally
 ```
 try {
   // tryCode - 尝试执行代码块
@@ -410,12 +410,26 @@ finally {
 }
 ```
 
-2. Completion Record 用于描述异常、跳出等语句执行过程，有三个字段  
+## Completion Record 用于描述异常、跳出等语句执行过程，有三个字段  
 - [[type]] 完成的类型，有 break, continue, return, throw, normal
 - [[value]] 语句返回值，如果语句没有，则是empty
 - [[target]] 语句的目标，通常是一个 JavaScript 标签
 
-3. 语句分类
+## 语句分类
+- 普通语句
+    - 声明类语句: var, const, let, 函数, 类
+    - 表达式语句
+    - 空语句
+    - with 语句
+    - debugger 语句
+- 语句块: 大括号括起来的一组语句
+- 控制型语句: if, switch, for, while, continue, break, return, throw, try
+- 带标签的语句
+
+1. 穿透是指去上一层的作用域或者控制语句找可以消费break，continue的执行环境，消费是指在这一层就执行了这个break或者continue
+
+# JavaScript 文法
+文法是编译原理中对语法写法的一种规定，文法分为词法和语法两种， 词法规定了语言的最小语义单元 token
 
 
 #### HTML
