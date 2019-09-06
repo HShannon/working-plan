@@ -450,7 +450,7 @@ finally {
 
 ![window](../../public/image/JavaScript.jpg "JavaScript 语句")
 
-4. 
+4. 表达式
 - 表达式语句实际上就是一个表达式，它是由运算符连接变量或者直接量构成的
 - AssignmentExpression 赋值表达式
 ```
