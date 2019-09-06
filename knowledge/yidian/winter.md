@@ -446,7 +446,9 @@ finally {
 - 预处理过程会提前处理var, 函数声明, class, const, let
 - 指令序言, JavaScript 标准中规定的唯一一种指令序言, 设计指令序言的目的是，留给 JavaScript 的引擎和实现者一些统一的表达方式，在静态扫描时制定 JavaScript 代码的一些特性
 
-3. 
+3. JavaScript 分为声明与语句
+
+![window](../../public/image/JavaScript.jpg "JavaScript 语句")
 
 
 
