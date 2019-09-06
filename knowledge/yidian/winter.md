@@ -451,7 +451,22 @@ finally {
 ![window](../../public/image/JavaScript.jpg "JavaScript 语句")
 
 4. 
+- 表达式语句实际上就是一个表达式，它是由运算符连接变量或者直接量构成的
+- AssignmentExpression 赋值表达式
+```
+a = b = c = d   <=>  a = (b = (c = d))
+```
+- 移位表达式
+```
+<<  左移 n 位相当于乘以2的 n 次方
+>>  左移 n 位相当于除以2的取整 n 次
+>>> 无符号向右移位
+```
 
+5. 相等表达式 EqualityExpression, 类型不同的变量比较时 == 运算
+- undefined 与 null 相等
+- **字符串和 boolean 都转为数字再比较**
+- 对象转换成 primitive 类型再比较
 
 # HTML
 
