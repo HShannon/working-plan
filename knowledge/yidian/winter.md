@@ -470,6 +470,39 @@ a = b = c = d   <=>  a = (b = (c = d))
 
 # HTML
 
+## 替换型元素
+
+
+1. script  
+👉  一种直接把脚本代码写到 script 标签之间，另一种把代码放到独立的 js 文件中，用 src 属性引入. script 标签既可以作为替换型标签，又可以不作为替换标签
+```
+<script type="text/javascript">
+console.log("Hello world!");
+</script>
+
+<script type="text/javascript" src="my.js"></script>
+```
+
+2. img  
+👉  script 标签作为非替换标签，必须用 src 属性才有意义
+```
+<img src='data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/></svg>'/>
+```
+- img 标签可以使用 width 和 height 指定宽度和高度
+- **alt 属性对于视障用户非常重要**
+- srcset, sizes 属性作用于在不同屏幕的大小和特性下，使用不同的图片源，  
+
+3. picture 元素可以根据屏幕的条件为其中的 img 元素提供不同的源
+```
+<picture>
+  <source srcset="image-wide.png" media="(min-width: 600px)">
+  <img src="image-narrow.png">
+</picture>
+
+```
+
+4. 此外, video, audio, iframe 标签同样会引入一个外部资源来进入页面，替换掉自身的位置. 引入方式有 src 属性, srcset 属性, source 标签, srcdoc 属性
+
 # CSS
 
 # 前端工程实践
