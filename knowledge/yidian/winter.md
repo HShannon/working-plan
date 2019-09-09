@@ -501,7 +501,7 @@ console.log("Hello world!");
 
 4. 此外, video, audio, iframe 标签同样会引入一个外部资源来进入页面，替换掉自身的位置. 引入方式有 src 属性, srcset 属性, source 标签, srcdoc 属性
 
-## data url
+## data uri
 
 # CSS
 
