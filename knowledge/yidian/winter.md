@@ -471,8 +471,6 @@ a = b = c = d   <=>  a = (b = (c = d))
 # HTML
 
 ## 替换型元素
-
-
 1. script  
 👉  一种直接把脚本代码写到 script 标签之间，另一种把代码放到独立的 js 文件中，用 src 属性引入. script 标签既可以作为替换型标签，又可以不作为替换标签
 ```
@@ -502,6 +500,8 @@ console.log("Hello world!");
 ```
 
 4. 此外, video, audio, iframe 标签同样会引入一个外部资源来进入页面，替换掉自身的位置. 引入方式有 src 属性, srcset 属性, source 标签, srcdoc 属性
+
+## data url
 
 # CSS
 
