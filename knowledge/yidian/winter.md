@@ -470,6 +470,53 @@ a = b = c = d   <=>  a = (b = (c = d))
 
 # HTML
 
+## 语义
+1. ruby 标签: 定义 ruby 注释(中文注音或字符). <ruby> 元素由一个或多个需要解释/发音的字符和一个提供该信息的 <rt> 元素组成，还包括可选的 <rp> 元素，定义当浏览器不支持 "ruby" 元素时显示的内容
+```
+<ruby>
+  王 <rt> wang </rt>
+  字 <rp>(</rp><rt>zi</rt><rp>)</rp>
+</ruby>
+```
+
+2. hgroup 标签
+```
+<hgroup>
+<h1>JavaScript 对象 </h1>
+<h2> 我们需要模拟类吗？</h2>
+</hgroup>
+```
+3. section 语义标签
+
+4. 整体结构的语义类标签
+```
+<body>
+  <header>
+    <nav>
+      ......
+    </nav>
+  </header>
+  <aside>
+    <nav>
+      ......
+    </nav>
+  </aside>
+  `......
+  <section>......</section>
+  <section>......</section>
+  ......
+  <article>
+    <header>......</header>
+    <section>......</section>
+    <section>......</section>
+    <footer>......</footer>
+  </article>
+  <footer>
+    <address>......</address>
+  </footer>
+</body>
+```
+
 ## 替换型元素
 1. script  
 👉  一种直接把脚本代码写到 script 标签之间，另一种把代码放到独立的 js 文件中，用 src 属性引入. script 标签既可以作为替换型标签，又可以不作为替换标签
@@ -510,6 +557,7 @@ img src="images/image.png"/
 ```
 
 # CSS
+
 
 # 前端工程实践
 
