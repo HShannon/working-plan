@@ -1,8 +1,11 @@
 # Docker
 
 ## 常用指令
-- docker ps 列出容器的各种属性
-- docker rm 移除容器
+- docker ps 
 - docker run 
+- docker ps | grep 'dashboard'
+- docker exec -it 'ad-dashboard-test141' /bin/bash
+- docker stop ad-dashboard-normal 
+- docker rm ad-dashboard-normal
 
 
