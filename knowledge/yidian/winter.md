@@ -579,6 +579,37 @@ img src="images/image.png"/
 
 # CSS
 
+CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称为 at-rule, 另一种是 qualified rule 
+- at-rule: 关键字和后续的区块组成，分号结束
+- qualified rule: 普通 CSS 规则
+
+## at-rule
+
+| 规则 | 说明 |
+| :--: | :--: |
+| @charset | 提示 CSS 文件使用的字符编码方式, 如果使用必须在最前面 |
+| @import | 引入 CSS 文件 |
+| @media | 对设备类型做判断 |
+| @page | 分页媒体 |
+| <mark>@counter-style</mark> | 产生一种数据, 用于定义列表项的表现 |
+| @key-frames | 定义动画关键帧 |
+| <mark>@fontface</mark> | 定义一种字体 |
+| @support | 检查环境的特性 |
+| @namespace | 表示内部的 CSS 选择器全都带上特定命名空间 |
+| @viewport | 设置视口的一些特性，多数被 HTML 的 meta 代替 |
+
+除此之外，还有 @color-profile, @document, @font-feature-values
+
+## qualified rule
+
+- 选择器
+- 声明列表
+  - 属性
+  - 值
+    - 值的类型
+    - 函数
+
+
 
 # 前端工程实践
 
