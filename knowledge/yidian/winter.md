@@ -517,10 +517,26 @@ a = b = c = d   <=>  a = (b = (c = d))
 </body>
 ```
 
-5. 引述相关的标签: blockquote, q, cite
-6. 文中图片, 与主文章相关的图片、figure, figcaption
-7. 
+5. 语义化标签总结
 
+| 标签 | 说明 |
+| :--: | :--: | :--: |
+| blockquote, q, cite | 引述相关 |
+| figure, figcaption | 文中图片, 与主文章相关的图片 |
+| small | 字体缩小的废弃标签, 表示补充评论 |
+| s | 划线, 打折的错误内容 |
+| i | 斜体, 读的时候变调 |
+| b | 黑体, 关键字 |
+| u | 下划线, 避免歧义 |
+| data | 类似time, 机器阅读 |
+| var | 变量, 机器阅读 |
+| sub | 上标 |
+| sup | 下标 |
+| bdi, bdo | 用于多语言混合时，制定语言或者书写方向. bdo => rtl |
+| mark | 高亮 |
+| wbr | 单词可换行的地方 |
+| dd, dl, dt | 术语定义 |
+| main | 页面主要内容, 独特的 div |
 
 ## 替换型元素
 1. script  
