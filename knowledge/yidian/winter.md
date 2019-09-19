@@ -517,6 +517,11 @@ a = b = c = d   <=>  a = (b = (c = d))
 </body>
 ```
 
+5. 引述相关的标签: blockquote, q, cite
+6. 文中图片, 与主文章相关的图片、figure, figcaption
+7. 
+
+
 ## 替换型元素
 1. script  
 👉  一种直接把脚本代码写到 script 标签之间，另一种把代码放到独立的 js 文件中，用 src 属性引入. script 标签既可以作为替换型标签，又可以不作为替换标签
