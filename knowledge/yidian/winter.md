@@ -600,7 +600,7 @@ CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称�
 
 除此之外，还有 @color-profile, @document, @font-feature-values
 
-## qualified rule
+## Qualified rule
 
 - 选择器
 - 声明列表
