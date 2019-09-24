@@ -579,11 +579,12 @@ img src="images/image.png"/
 
 # CSS
 
+## at-rule && qualified rule
 CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称为 at-rule, 另一种是 qualified rule 
 - at-rule: 关键字和后续的区块组成，分号结束
 - qualified rule: 普通 CSS 规则
 
-## at-rule
+1. at-rule
 
 | 规则 | 说明 |
 | :--: | :--: |
@@ -600,16 +601,13 @@ CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称�
 
 除此之外，还有 @color-profile, @document, @font-feature-values
 
-## Qualified rule
-
-- 选择器
+2. Qualified rule
+- [选择器](https://www.w3.org/TR/selectors-4/)
 - 声明列表
   - 属性
   - 值
     - 值的类型
     - 函数
-
-## [选择器](https://www.w3.org/TR/selectors-4/)
 
 ## 
 
