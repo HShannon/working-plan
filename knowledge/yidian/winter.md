@@ -610,7 +610,7 @@ CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称�
     - 函数
 
 ## HTML 元信息类标签
-元信息是指描述自身的信息,元信息类标签, 就是HTML用来描述文档自身的一类标签, 通常在 head 标签中; 元信息多数是给李兰奇、搜索引擎等机器阅读的
+元信息是指描述自身的信息,元信息类标签, 就是HTML用来描述文档自身的一类标签, 通常在 head 标签中; 元信息多数是给浏览器、搜索引擎等机器阅读的
 
 | 标签 | 说明 |
 | :--: | :--: |
@@ -619,9 +619,41 @@ CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称�
 | base | 给页面上所有的 URL 提供一个基础 |
 | meta | 键值对, 由 name 和 content | 
 
-1. 具有 charset 属性的 meta
+1. 具有 charset 属性的 meta, 描述文档自身的编码形式
+```
+<meta charset="UTF-8" >
+```
 
+2. 具有 http-equiv 描述的 meta, 表示执行一个命令
+```
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+```
+- content-language 指定内容
+- default-style 指定默认样式表
+- refresh 刷新
+- set-cookie 模拟 http 头 set-cookie, 设置 cookie
+- x-ua-compatible 模拟 http 头 x-ua-compatible, 指定网页的兼容性模式设置
+```
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  
+// 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。
+```
+- content-security-policy 模拟 http 头 content-security-policy, 声明内容安全策略
 
+3. name 为 viewport 的 meta. 没有在 HTML 标准中定义, 却是移动端开发的事实标准. content 是个复杂结构, 使用逗号分隔键值对(key = value)
+```
+<meta name="viewport" content="width=500, initial-scale=1">
+```
+- width: 页面宽度(device-width, 与页面同宽)
+- height: 页面高度(device-height, 与页面同高)
+- initial-scale: 初始缩放比例
+- minimum-scale: 最小缩放比例
+- maxinum-scale: 最大缩放比例
+- user-scalable: 是否允许用户缩放
+
+已经做好了移动端适配的网页, 应该把用户缩放功能禁止掉, 宽度设为设备宽度
+```
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+```
 
 # 前端工程实践
 
