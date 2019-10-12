@@ -14,10 +14,10 @@
 ## 项目属性
 | 项目属性 | 说明 |
 | :--: | :--: |
-| order: <integer> |定义项目的排列顺序, 数值越小, 排列越靠前, 默认为0 |
-| flex-grow: <number> | 项目的放大比例 |
-| flex-shrink: <number>| 缩小比例 |
-| flex-basis: <length>, auto | 分配多余空间之前，项目占据的主轴空间(main size) |
+| order: integer |定义项目的排列顺序, 数值越小, 排列越靠前, 默认为0 |
+| flex-grow: number | 项目的放大比例 |
+| flex-shrink: number| 缩小比例 |
+| flex-basis: </length/>, auto | 分配多余空间之前，项目占据的主轴空间(main size) |
 | flex | flex-grow, flex-shrink 和 flex-basis的简写 |
 | align-self: auto, flex-start, flex-end, center, baseline, stretch | 分配多余空间之前，项目占据的主轴空间(main size) |
 
