@@ -556,7 +556,16 @@ console.log("Hello world!");
 ```
 - img 标签可以使用 width 和 height 指定宽度和高度
 - **alt 属性对于视障用户非常重要**
-- srcset, sizes 属性作用于在不同屏幕的大小和特性下，使用不同的图片源，  
+- srcset, sizes 属性作用于在不同屏幕的大小和特性下，使用不同的图片源
+```
+<img srcset="elva-fairy-320w.jpg 320w,
+             elva-fairy-480w.jpg 480w,
+             elva-fairy-800w.jpg 800w"
+     sizes="(max-width: 320px) 280px,
+            (max-width: 480px) 440px,
+            800px"
+     src="elva-fairy-800w.jpg" alt="Elva dressed as a fairy">
+```
 
 3. picture 元素可以根据屏幕的条件为其中的 img 元素提供不同的源
 ```
@@ -575,6 +584,120 @@ console.log("Hello world!");
 img src="images/image.png"/
 
 <img src='data:image/svg+xml;charset=utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/></svg>'/>
+```
+
+## HTML 链接
+链接主要分为, 超链接型标签, 外部资源链接
+
+1. link 标签  
+link 标签可生成超链接或外部资源链接。超链接不会像 a 标签那样现实在网页中。对于大多数浏览器 link 标签不起作用, 但是 link 标签能够被搜索引擎和一些浏览器插件识别. 作为外部资源链接可以将外部的资源链接到文档中. 常见的用 link 标签引入样式表
+```
+<link rel="XX">
+```
+- 超链接 link: 
+
+| 属性 | 说明 |
+| :--: | :--: |
+| canonical | 提示搜索引擎保留哪个 URL |
+| alternate | 当前网页内容的不同格式、不同语言或者不同的设备设计的版本 |
+| pre, next | 序列 |
+| author | 作者 |
+| help | 帮助页 |
+| license | 版权信息页 |
+| search | 搜索页面 |
+
+- 外部资源类 link: 
+
+| 类型 | 说明 |
+| :--: | :--: |
+| icon | 页面的 icon 型 link, 只有 icon 型 link 有有效的 size 属性, HTML 标准允许一个页面出现多个 icon 型 link, 并且用 size 指定它适合的 icon 尺寸 |
+| dns-prefetch, preconnect, prefetch, preload, prerender | 预处理类型 |
+| modulepreload | 预先家在一个 JavaScript 模块， 可以保证 Js 模块不必等到执行时才加载 |
+| stylesheet | <link rel="stylesheet" href="xxx.css" type="text/css"> type 属性可以没有, 如果有, 必须是“text/css”才会生效 |
+| pingback | 表示本网页被引用时，应该使用 pingback 地址 |
+
+2. a 标签  
+a 标签其实同时充当了链接和目标地的角色, 当 a 标签有 href 属性时, 它是链接. 当它有 name 时, 它是链接的目的地. rel 属性主要包括: 
+- alternate 当前网页内容的不同格式、不同语言或者不同的设备设计的版本
+- author 作者
+- help 帮助页
+- license 版权信息
+- next, prev 序列
+- search 搜索页面
+- tag 本网页所属的标签
+- bookmark 到上级张杰的链接
+- nofollow 词链接不会被搜索引擎检索
+- noopener 此链接打开的网页无法使用 opener 来获取当前页面的窗口
+- noreferrer 此链接打开的网页无法使用 referrer 来获取当前页面的 url
+- opener 打开的网页可以使用 window.opener 来访问当前页面的 window 对象, 这是 a 标签的默认行为
+
+3. area 标签  
+如果想再图片的某个区域产生超级链接，那么就要用到另一种标签 —— area 标签。 area 支持三种热区, 分别为
+- 圆形: circle(circ), x,y and r
+- 矩形: rect(rectangle, 对角顶点 x1, y2 and x2, y2)
+- 多边形: poly（polygon), 至少包括6个值
+
+## HTML 元信息类标签
+元信息是指描述自身的信息,元信息类标签, 就是HTML用来描述文档自身的一类标签, 通常在 head 标签中; 元信息多数是给浏览器、搜索引擎等机器阅读的
+
+| 标签 | 说明 |
+| :--: | :--: |
+| head | html 标签中的第一个标签, 他的内容必须包含一个title, 最多只能包含一个 base |
+| title | 文档标题 |
+| base | 给页面上所有的 URL 提供一个基础 |
+| meta | 键值对, 由 name 和 content, name 表示元信息的名, content 则用于表示元信息的值 | 
+
+1. 具有 charset 属性的 meta, 描述文档自身的编码形式
+```
+<meta charset="UTF-8" >
+```
+
+2. 具有 http-equiv 描述的 meta, 表示执行一个命令
+```
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+```
+- content-language 指定内容
+- default-style 指定默认样式表
+- refresh 刷新
+- set-cookie 模拟 http 头 set-cookie, 设置 cookie
+- x-ua-compatible 模拟 http 头 x-ua-compatible, 指定网页的兼容性模式设置
+```
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  
+// 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。
+```
+- content-security-policy 模拟 http 头 content-security-policy, 声明内容安全策略
+
+3. name 为 viewport 的 meta. 没有在 HTML 标准中定义, 却是移动端开发的事实标准. content 是个复杂结构, 使用逗号分隔键值对(key = value)
+```
+<meta name="viewport" content="width=500, initial-scale=1">
+```
+- width: 页面宽度(device-width, 与页面同宽)
+- height: 页面高度(device-height, 与页面同高)
+- initial-scale: 初始缩放比例
+- minimum-scale: 最小缩放比例
+- maxinum-scale: 最大缩放比例
+- user-scalable: 是否允许用户缩放
+
+已经做好了移动端适配的网页, 应该把用户缩放功能禁止掉, 宽度设为设备宽度
+```
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+```
+
+4. base 标签
+```
+<head>
+<base href="http://www.w3school.com.cn/i/" />
+<base target="_blank" />
+</head>
+```
+- href: 规定页面中所有相对连接的基准URL
+- target: 在何处打开网页中所有的链接
+
+5. title 标签
+```
+<head>
+  <title>XHTML Tag Reference</title>
+</head>
 ```
 
 # CSS
@@ -679,72 +802,104 @@ CSS 的顶层样式表由两种规则组成的规则列表构成, 一种被称�
 - 行内属性的优先级高于CSS规则, 浏览器提供了在选择器前加上 “!import”
 - 同一优先级的选择器遵循“后面的覆盖前面的”原则
 
-3. 伪元素
+3. 伪元素  
+伪元素的语法与伪类相似, 但是实际产生的效果是把不存在的元素硬选出来, 这一点和伪类不太一样. 两个伪元素所在的 CSS 规则必须指定 content 属性才会生效
+- ::first-line
+- ::first-letter 元素的第一个字母
+- ::before
+- ::after
+```
+<p class="special">I'm real element</p>
 
+p.special::before {
+  display: block;
+  content: "pseudo! ";
+}
+```
+Tip: 伪元素清除浮动
 
+## CSS排版
+正常流的行为: 依次排列, 排不下了换行。
+1. float 使得盒子占据了正常流需要的空间, vertical-align 相关规则规定了如何在垂直方向对齐盒。
+top => text-top => middle => baseline => text-bottom => bottom
 
-## HTML 元信息类标签
-元信息是指描述自身的信息,元信息类标签, 就是HTML用来描述文档自身的一类标签, 通常在 head 标签中; 元信息多数是给浏览器、搜索引擎等机器阅读的
+2. margin: 一个元素规定了自身周围至少需要的空间
 
-| 标签 | 说明 |
-| :--: | :--: |
-| head | html 标签中的第一个标签, 他的内容必须包含一个title, 最多只能包含一个 base |
-| title | 文档标题 |
-| base | 给页面上所有的 URL 提供一个基础 |
-| meta | 键值对, 由 name 和 content, name 表示元信息的名, content 则用于表示元信息的值 | 
+3. 正常流的原理   
+在 CSS 标准中， 规定了如何拍不每一个文字或者盒的算法, 这个算法依赖一个排版的“当前状态”, CSS 把这个当前状态成为“格式上下文(formatting context)”
 
-1. 具有 charset 属性的 meta, 描述文档自身的编码形式
+> 格式化上下文 + 盒 / 文字 = 位置
+
+👉 行内元素和块级元素的区别
+- 行内元素水平排列，块级元素垂直排列
+- 行内元素不能包含块级元素，只能包含文本或者其他行内元素，块级元素可以包含行内元素和块级元素
+- 行内元素设置 width 无效, 行内元素设置 width 无效, height 无效(可以设置line-height), margin 上下无效，padding 上下无效
+
+👉 overflow 当一个元素的内容太大而无法适应块级格式上下文时
+- visible
+- hidden
+- scroll
+- auto
+
+👉 会在期内部创建新的块级格式化上下文
+- 浮动元素(float 不为 none)
+- 绝对定位元素(position 为 absolute 或 fixed)
+- 非块级但仍能包含块级元素的容器(inline-blocks, tbale-cells, table-captions)
+- 块级元素能包含块级元素的容器, 且属性 overflow 不为 visible
+
+4. 等分布局问题
 ```
-<meta charset="UTF-8" >
+<div class="outer">
+	<div class="inner"></div>
+	<div class="inner"></div>
+	<div class="inner"></div>
+</div>
+.inner {
+	width:33.33%;
+	height:300px;
+	display:inline-block;
+	outline:solid 1px blue;
+}
+```
+效果预期: 每个 div 并非紧挨, 中间有空白, 解决办法是改变 outer 中的字号为 0
+```
+.inner {
+    width:33.33%;
+    height:300px;
+    display:inline-block;
+    outline:solid 1px blue;
+    font-size:30px;
+}
+.outer {
+    font-size:0;
+}
 ```
 
-2. 具有 http-equiv 描述的 meta, 表示执行一个命令
+5. 自适应宽
 ```
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-```
-- content-language 指定内容
-- default-style 指定默认样式表
-- refresh 刷新
-- set-cookie 模拟 http 头 set-cookie, 设置 cookie
-- x-ua-compatible 模拟 http 头 x-ua-compatible, 指定网页的兼容性模式设置
-```
-<meta http-equiv="X-UA-Compatible" content="IE=edge">  
-// 以上代码告诉IE浏览器，IE8/9及以后的版本都会以最高版本IE来渲染页面。
-```
-- content-security-policy 模拟 http 头 content-security-policy, 声明内容安全策略
+<div class="outer">
+	<div class="fixed"></div>
+	<div class="auto"></div>
+</div>
 
-3. name 为 viewport 的 meta. 没有在 HTML 标准中定义, 却是移动端开发的事实标准. content 是个复杂结构, 使用逗号分隔键值对(key = value)
-```
-<meta name="viewport" content="width=500, initial-scale=1">
-```
-- width: 页面宽度(device-width, 与页面同宽)
-- height: 页面高度(device-height, 与页面同高)
-- initial-scale: 初始缩放比例
-- minimum-scale: 最小缩放比例
-- maxinum-scale: 最大缩放比例
-- user-scalable: 是否允许用户缩放
-
-已经做好了移动端适配的网页, 应该把用户缩放功能禁止掉, 宽度设为设备宽度
-```
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+.fixed {
+	display:inline-block;
+	vertical-align:top;
+}
+.auto {
+	margin-left:-200px;
+	padding-left:200px;
+	box-sizing:border-box;
+	width:100%;
+	display:inline-block;
+	vertical-align:top;
+}
 ```
 
-4. base 标签
-```
-<head>
-<base href="http://www.w3school.com.cn/i/" />
-<base target="_blank" />
-</head>
-```
-- href: 规定页面中所有相对连接的基准URL
-- target: 在何处打开网页中所有的链接
+## FLEX
 
-5. title 标签
-```
-<head>
-  <title>XHTML Tag Reference</title>
-</head>
-```
+CSS 三大经典问题： 垂直剧中、凌烈登高问题，自适应宽问题
+
 
 # 前端工程实践
 
