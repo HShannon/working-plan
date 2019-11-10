@@ -7,5 +7,4 @@
 - docker exec -it 'ad-dashboard-test141' /bin/bash
 - docker stop ad-dashboard-normal 
 - docker rm ad-dashboard-normal
-
-
+- docker ps -a 显示所有的容器, 包括未运行的

@@ -900,6 +900,29 @@ top => text-top => middle => baseline => text-bottom => bottom
 
 CSS 三大经典问题： 垂直剧中、凌烈登高问题，自适应宽问题
 
+## CSS 动画与交互
+css 中跟动画相关的属性包括: animation 和 transition
+
+1. animation
+| 名称 | 说明 |
+| :--: | :--: |
+| animation-name | 动画的名称 |
+| animation-duration| 动画时长 |
+| animation-timing-function | 动画的时间曲线 |
+| animation-delay | 动画开始前的延迟 |
+| animation-iteration-count | 动画的播放次数 |
+| animation-direction | 动画的方向 |
+
+2. transition
+| 名称 | 说明 |
+| :--: | :--: |
+| transition-property | 要更换的属性 |
+| transition-duration | 变换的时长 |
+| transition-timing-function | 时间曲线 |
+| transition-delay | 延迟 |
+
+
+
 
 # 前端工程实践
 
