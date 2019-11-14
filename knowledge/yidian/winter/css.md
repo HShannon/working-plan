@@ -195,7 +195,6 @@ top => text-top => middle => baseline => text-bottom => bottom
 ```
 
 ## FLEX
-
 CSS 三大经典问题： 垂直剧中、凌烈登高问题，自适应宽问题
 
 ## CSS 动画与交互
@@ -218,3 +217,24 @@ css 中跟动画相关的属性包括: animation 和 transition
 | transition-duration | 变换的时长 |
 | transition-timing-function | 时间曲线 |
 | transition-delay | 延迟 |
+
+## CSS 渲染: CSS 是如何绘制颜色的
+1. RGB - 红黄蓝, 0——255
+2. CMYK — 品红,黄,青
+3. HSL - 色相(H),纯度(S),明度(L)
+4. RGBA — red, green, blue, alpha
+css 内置了大量的140种颜色名称
+5. 渐变 line-gradient
+
+## 用代码挖掘 CSS
+```
+Object.keys(document.body.style)
+// 在 chrome 浏览器中去掉 webkit 前缀
+Object.keys(document.body.style).filter(e => !e.match(/^webkit/))
+```
+
+## ARIA
+ARIA 全称 Accessible Rich Internet Applications， ARIA 角色
+- [Widget](https://time.geekbang.org/column/article/93777)
+- Structure
+- Window
