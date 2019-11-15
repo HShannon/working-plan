@@ -23,7 +23,8 @@
   - status code, 状态码
   - status text, 状态文本
 
-2. HTTP Method 方法 
+2. HTTP Method 方法
+
 | 名称 | 说明 |
 | :--: | :--: |
 | GET | 浏览器通过地址栏访问页面 |

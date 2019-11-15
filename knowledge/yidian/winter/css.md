@@ -201,6 +201,7 @@ CSS 三大经典问题： 垂直剧中、凌烈登高问题，自适应宽问题
 css 中跟动画相关的属性包括: animation 和 transition
 
 1. animation
+
 | 名称 | 说明 |
 | :--: | :--: |
 | animation-name | 动画的名称 |
@@ -211,6 +212,7 @@ css 中跟动画相关的属性包括: animation 和 transition
 | animation-direction | 动画的方向 |
 
 2. transition
+
 | 名称 | 说明 |
 | :--: | :--: |
 | transition-property | 要更换的属性 |
