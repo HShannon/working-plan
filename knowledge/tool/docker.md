@@ -20,3 +20,4 @@ failed to register layer: devmapper: Thin Pool has 162317 free data blocks which
 1. 查看镜像 docker images || docker image ls
 2. 清除镜像 docker rmi [image] || docker image rm [image]
 ```
+
