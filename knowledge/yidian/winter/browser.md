@@ -7,121 +7,27 @@
 - 最后根据 CSS 属性对元素逐个进行渲染，得到内存中的位图
 - 一个可选的步骤是对位图进行合成，这会极大地增加后续绘制的速度
 - 合成之后, 再绘制到界面上
-从 HTTP 请求回来的, 就产生了流式的数据, 流式处理
 
-## HTTP 协议
-### HTTP 协议格式
-1. request
-  - request line
-    - method, 请求方式
-    - path， 请求路径
-    - version, 版本
-  - head
-  - body
-2. response
-  - response line
-    - version, 状态
-    - status code, 状态码
-    - status text, 状态文本
-  - head
-  - body
-
-### HTTP Method 方法
-
-| 名称 | 说明 |
-| :--: | :--: |
-| GET | 浏览器通过地址栏访问页面 |
-| POST | 表单提交 |
-| PUT | 添加资源 |
-| DELETE | 删除资源 |
-| CONNECT | 多用于 HTTPS 的 WebSocket |
-| OPTIONS | 调试, 线上服务不支持 |
-| TRACE | 调试, 线上服务不支持 |
-
-### HTTP Status code （状态码） 和 Status text (状态文本)
-1. 1xx: 临时回应, 表示客户端请继续
-2. 2xx: 请求成功
-  - 200: 请求成功
-3. 3xx: 表示请求的目标有变化，喜欢客户端进一步处理
-  - 301&302: 永久性与临时性跳转
-  - 304: 客户端缓存没有更新
-4. 4xx: 客户端请求错误
-  - 403: 无权限
-  - 404: Not Found
-  - 418: teapot
-5. 5xx: 服务端请求错误
-  - 500: 服务端错误
-  - 503: 服务端暂时性错误
-
-👉 304 状态产生的前提, 客户端本地已经有缓存的版本, 并且在 Request 中告诉了服务器(If Modified Since), 当服务端通过时间或者 tag, 发现没有更新的时候, 就会返回一个不含 body 的 304 状态
-
-### HTTP Head
-我们可以自由定义 HTTP 头和值, 不过在 HTTP 规范中，规定了一些特殊的 HTTP 头
-
-1. Request Header
-
-| 名称 | 说明 | 具体取值 |
-| :--: | :--: | :--: |
-| Accept | 浏览器端接受的格式 |  |
-| Accept-Encoding | 浏览器端接收的编码方式 |  |
-| Accept-Language | 浏览器端接受的语言, 用于服务端判断多语言 |  |
-| Cache-Control | 控制缓存的有效性 |  |
-| Connection | 连接方式 | keep-alive, 且服务端支持, 则会复用连接; close 表明客户端或服务器想要关闭该网络连接 |
-| Host | HTTP 访问使用的域名 |  |
-| If-Modified-Since | 上次访问时的更改时间, 如果服务器认为此时间后自己没有更新, 则会给出 304 响应 |  |
-| If-None-Match | 首次访问时使用 E-Tag, 通常是页面的信息摘要, 这个比更改时间更准确一点 |  |
-| User-Agent | 客户端识别 |  |
-| Cookie | 客户端存储的 cookie 字符串 |  |
-
-2. Response Header
-
-| 名称 | 说明 |
-| :--: | :--: |
-| Cache-Control | 缓存控制, 用于通知各级缓存保存的时间 |
-| Connection | 连接方式, Keep-Alive 表示复用连接 |
-| Content-Encoding | 内容编码方式, 通常是gzip |
-| Content-Length | 内容的长度，有利于浏览器判断内容是否已经结束 |
-| Content-Type | 内容类型, 所有请求网页的都是text/html |
-| Date | 当前的服务器日期 |
-| ETag | 页面的信息摘要, 用于半段下次请求是否需要到服务端取回页面 |
-| Expires | 过期时间, 用于判断下次请求是否需要到服务端取回页面 |
-| Keep-Alive | 保持连接连接不断时需要的一些信息 |
-| Last-Modified | 页面上次修改的时间 |
-| Server | 服务端软件的类型 |
-| Set-Cookie | 设置 cookie, 可以存在多个 |
-| Via | 服务端的请求链路, 对一些调试场景至关重要的一个头 |
-
-每种 key, 对应 value 值可上网查询或看实例
-
-### HTTP Request Body
-HTTP 请求的 body 主要用于提交表单场景
-
-| 名称 | 说明 |
-| :--: | :--: |
-| application/json |  |
-| application/x-www-form-urlencoded | form 标签提交 |
-| multipart/form-data | 有文件上传 |
-| text/xml |  |
-
-详情可参考[MIME 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
-
-### HTTPS
-1. HTTPS(又称 TLS协议)
-  - 确定请求的目标服务端身份, 防止身份被冒充
-  - 使用加密通道来传输 HTTP 的内容， HTTPS 首先与服务端建立一条 TLS 加密通道。保证传输的数据不会被网络中间节点窃听或者篡改
-
-2. HTTP 2
-  - 服务端推送。服务端能够在客户端发送第一个请求到服务端时, 提前吧一部分内容推送给客户端, 放入缓存当中, 这可以避免客户端请求顺序到来的并行度不高，从而导致的性能问题
-  - 支持 TCP 连接复用。同一个 tcp 连接能够传输多个 HTTP 请求, 避免了 TCP 连接建立时的三次握手开销。
-
-## 浏览器是如何工作的？ 
-1. 解析代码: 将字符流, 通过状态机拆成词(token)
-2. 构建 DOM 树
-3. 浏览器的排版方案
-  - 正常流排版, 文本排版，包含了顺次排布盒折行等规则
-  - 元素, 盒模型
-  - 在正常流的基础上, 浏览器还支持两类元素: 绝对定位元素和浮动元素
-    - 绝对定位: 从正常流抽离, 直接由 top 和 left 等属性确定自身的位置，不参加排版计算, 也不影响其他元素。绝对定位元素由 position 属性控制
-    - 浮动元素: 在正常流的位置向左向右移动到边界, 并且占据一块排版空间。浮动元素由 float 属性控制
+## 浏览器 - 阶段五
+- 渲染: 模型变成位图，自元素不会渲染到位图上(二维表格)
+- 合成: 性能考虑, 把一部分子元素渲染到合成的位图上面
+- 绘制: 把位图最终绘制到屏幕上，变成肉眼可见的图像
     
+## 浏览器 - API
+1. DOM API（Document Object Module)，用来描述文档，使用对象这种概念来描述 HTML，大致分为 4 部分
+- 节点: DOM 树形结构中国呢的节点相关的 API
+- 事件: 触发和监听相关 API
+- Range: 操作文字范围相关 API
+- 遍历: 遍历 DOM 需要的 API
 
+2. 节点   
+- 节点类型如下,除了 Document 和 DocumentFragment, 都有与之对应的 HTML 写法:
+  - **Element** 元素型节点，跟标签相对应
+  - **Document** 文档根节点
+  - CharacterData 字符数据
+    - **Text** 文本节点
+    - Comment 注释
+    - ProcessingInstruction 处理信息
+  - DocumentFragment 文档片段
+  - DocumentType 文档类型
+- 
