@@ -14,13 +14,14 @@
 - 绘制: 把位图最终绘制到屏幕上，变成肉眼可见的图像
     
 ## 浏览器 - API
-1. DOM API（Document Object Module)，用来描述文档，使用对象这种概念来描述 HTML，大致分为 4 部分
+### DOM API（Document Object Module)
+DoM API 用来描述文档，使用对象这种概念来描述 HTML，大致分为 4 部分
 - 节点: DOM 树形结构中国呢的节点相关的 API
 - 事件: 触发和监听相关 API
 - Range: 操作文字范围相关 API
 - 遍历: 遍历 DOM 需要的 API
 
-2. 节点   
+### 节点   
 - 节点类型如下,除了 Document 和 DocumentFragment, 都有与之对应的 HTML 写法:
   - **Element** 元素型节点，跟标签相对应
   - **Document** 文档根节点
@@ -30,4 +31,91 @@
     - ProcessingInstruction 处理信息
   - DocumentFragment 文档片段
   - DocumentType 文档类型
-- 
+```
+Element: <tagname>...</tagname>
+Text: text
+Comment: <!-- comments -->
+DocumentType: <!Doctype html>
+ProcessingInstruction: <?a 1?>
+```
+
+### Node
+定义了 DOM节点在 DOM 树上的操作
+1. 在 DOM 树上的操作
+- parentNode
+- childNode
+- firstChild
+- lastChild
+- nextSibling
+- previousSibling
+
+2. 操作 DOM 树的 API, 所有几个修改型的 API, 全都是在父元素上操作的，
+- appendChild
+- insertBefore
+- removeChild
+- replaceChild
+❓ 没有 insertAfter, 可以利用 insertBefore, appendChild. 主要考虑元素是否有 nextSibling
+```
+const insertAfter = (newEl, targetEl) => {
+  let parentEl = targetEl.parentNode;
+  if(parentEl.lastChild == targetEl) {
+    parentEl.appendChild(newEl);
+  } else {
+    parentEl.insertBefore(newEl,targetEl.nextSibling);
+  }            
+}
+```
+
+3. 高级 API
+- compareDocumentPosition 比较两个节点中关系的函数
+- contains 检查一个节点是否包含另一个节点的函数
+- isEqualNode 检查两个节点是否完全相同
+- isSameNode 检查两个节点是否是同一个节点
+- cloneNode 复制一个节点，传入参数 true 会连同子元素做深拷贝
+
+4. 如何创造节点
+```
+createElement
+creatTextNode
+createCDATASection
+createcomment
+createProcessingInstruction
+createDocumentFragment
+createDocumentType
+```
+
+5. Element && Attribute 把元素的 Attribute 当作字符串来看待: getAttribute, setAttribute, removeAttribute 与 hasAttribute. 还可以使用 attribute 对象, document.body.attributes.class = "a" 等效于 document.body.setAttribute('class', 'a')
+
+6. 查找元素
+- querySelector
+- querySelectAll
+- getElementById
+- getElementByName
+- getElementByTagName
+- getElementByClassName
+其中，getElementById, getElementByName, getElementByTagName, getElementByClassName 这几个 API 性能高于 querySelector
+
+## 遍历
+DOM API 中还提供了 NodeIterator 和 TreeWalker 来遍历树
+- NodeIterator
+```
+var iterator = document.createNodeIterator(document.body, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT, null, false);
+var node;
+while(node = iterator.nextNode())
+{
+  console.log(node);
+}
+```
+- TreeWalker
+```
+var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT, null, false)
+var node;
+while(node = walker.nextNode())
+{
+    if(node.tagName === "p")
+        node.nextSibling();
+    console.log(node);
+}
+```
+
+## Range
