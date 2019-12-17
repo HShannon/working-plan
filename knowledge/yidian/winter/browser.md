@@ -1,4 +1,4 @@
-# 浏览器实现远离与 API
+# 浏览器实现与 API
 
 ## 浏览器到底如何工作
 - 浏览器首先使用 HTTP 协议或者 HTTPS 协议, 向服务端请求页面
@@ -64,6 +64,16 @@ const insertAfter = (newEl, targetEl) => {
     parentEl.insertBefore(newEl,targetEl.nextSibling);
   }            
 }
+
+// 优化代码
+const insertAfter = (newEl, targetEl) => {
+  let parentEl = targetEl.parentNode;
+  if(parentEl.lastChild == targetEl) {
+    parentEl.insertBefore(newEl, null);
+  } else {
+    parentEl.insertBefore(newEl,targetEl.nextSibling);
+  }            
+}
 ```
 
 3. 高级 API
@@ -118,4 +128,70 @@ while(node = walker.nextNode())
 }
 ```
 
-## Range
+# CSSOM
+CSSOM 是 CSS 的对象模型, 包含两个部分: 表述样式表和规则等 CSS 的模型部分(CSSOM) 和 CSSOM view。 
+
+## CSSOM
+创建样式表也都是使用 HTML 标签来做, 用 style 标签 和 link 标签创建
+```
+<style title="Hello">
+a {
+  color:red;
+}
+</style>
+<link rel="stylesheet" title="x" href="data:text/css,p%7Bcolor:blue%7D">
+```
+- document.styleSheets 表示文档中所有的样式表，只读列表
+
+## CSSOM View
+CSSOM view 这部分的 API, 可以视为 DOM API 的拓展, 在原本的 Element 接口上, 
+1. 窗口 API  
+- moveTo(x, y) 窗口移动到屏幕的特定坐标
+- moveBy(x, y) 窗口移动特定距离
+- resizeTo(x, y) 改变窗口大小到特定尺寸
+- resizeBy(x, y) 改变窗口大小特别定尺寸
+
+2. 视口滚动 API  
+- scrollX 视口的属性, 表示 X 方向上的当前滚动距离, 有别名 pageXOffset
+- scrollY 视口的属性, 表示 Y 方向上的当前滚动距离, 有别名 pageYOffset
+- scroll(x,y) 使得页面滚动到特定的位置, scrollTo
+- scrollBy(x,y) 使得页面滚动特定的距离
+
+3. 元素滚动的 API
+- scrollTop 元素的属性, 表示 Y 方向上的当前滚动距离
+- scrollLeft 元素的属性, 表示 X 方向上的当前滚动距离
+- scrollWidth 元素的属性, 表示元素内部的滚动内容的宽度
+- scrollHeight 元素的属性, 表示元素内部的滚动内容的高度
+- scroll(x,y) 使得元素滚动到特定的位置, scrollTo
+- scrollBy(x,y) 使得元素滚动特定的距离
+
+4. 全局尺寸信息， window.innerHeight, window.innerWidth 这两个属性表示视口的大小。 window.outerWidth, window.outerHeight 这两个属性表示浏览器窗口占据的大小，很多浏览器都没有实现
+
+# 浏览器事件
+
+1. 事件来自输入设备, 输入设备有三种: 键盘, 鼠标, 触摸屏。触摸屏和鼠标都是 pointer 设备, 是指它的输入最终会被抽象成屏幕上面的一个点。在一个事件发生时，捕获过程跟冒泡过程是先后发生的。默认使用冒泡模式，当开发组件时，遇到需要父元素控制子元素的行为，可以使用捕获机制。
+```
+document.body.addEventListener(eventName, handleFunction, optionObject)
+// eventName 事件名称
+
+// handleFunction 事件处理， 函数，或者是具有handleEvent 
+let o = {
+  handleEvent: event => console.log(event)
+}
+
+//  optionObject
+{
+  // 只执行一次
+  once,
+  // 承诺此事件监听不会调用 preventDefault
+  passive,
+  // 是否捕获（是否冒泡）
+  useCapture
+}
+```
+
+2. 浏览器 API 还提供了 API 来操作焦点
+- document.body.focus
+- document.body.blur
+
+
