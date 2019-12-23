@@ -1,5 +1,71 @@
 # ([webpack](http://vuejs-templates.github.io/webpack/))
 
+## webpack 构建的代码类型
+在使用 webpack 构建的典型应用程序或站点中，有三种主要的类型:
+- 团队编写的源代码
+- 源代码依赖的任何
+- webpack 的 runtime 和 manifest, 管理所有代码的交互
+
+1. runtime, 在浏览器运行过程中，webpack 用来连接模块化应用程序所需的所有代码
+2. manifest, 当 compiler 开始执行、解析和映射应用程序时，它会保留所有模块的详细要点。这个数据集合称为 "manifest"，当完成打包并发送到浏览器时，runtime 会通过 manifest 来解析和加载模块。无论你选择哪种 模块语法，那些 import 或 require 语句现在都已经转换为 __webpack_require__ 方法，此方法指向模块标识符(module identifier)。通过使用 manifest 中的数据，runtime 将能够检索这些标识符，找出每个标识符背后对应的模块。   
+
+❕如果你决定通过使用浏览器缓存来改善项目的性能，理解这一过程将突然变得极为重要。
+
+## 常用的Plug插件
+1. HtmlWebpackPlugin    
+依赖一个简单的index.html模版，生成一个自动引用你打包后的JS 文件的新index.html
+```
+new HtmlWebpackPlugin({
+  filename: 'index2.html',
+  template: 'index.html',
+  inject: true
+}),
+```
+
+2. DefinePlugin    
+生成全局变量，对开发模式和生产模式的构建允许不同的行为非常有用。注意，因为这个插件直接执行文本替换，给定的值必须包含字符串本身内的实际引号。通常，有两种方式来达到这个效果，使用 '"production"', 或者使用 JSON.stringify('production')
+```
+new webpack.DefinePlugin({
+  "process.env.NODE_ENV": JSON.stringify("process.env.NODE_ENV")
+}),
+``` 
+
+3. CommonsChunkPlugin   
+用于创建一个独立文件(又称作 chunk)的功能，通过将公共模块拆出来，最终合成的文件能够在最开始的时候加载一次便存到缓存中供后续使用
+
+4. UglifyJsPlugin 压缩文件    
+- sourceMap(boolean), 在压缩代码时是否启动 source map, 警告是否能够找到对应正确的代码行
+- warning(boolean)
+
+5. webpack-dev-server     
+能够用于快速开发应用程序
+
+## 使用Source map
+为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码
+```
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+module.exports = {
+  entry: {
+    app: './src/index.js',
+    print: './src/print.js'
+  },
++   devtool: 'inline-source-map',
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      title: 'Development'
+    })
+  ],
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+
 ## 代理(API Proxying During Development)
 ```
 // config/index.js
@@ -45,11 +111,7 @@ webpack({
 ## [devtool](https://webpack.docschina.org/configuration/devtool/)
 便于开发环境调试
 
-## 常用的Plug插件
-- webpack.BannerPlugin
-- HtmlWebpackPlugin 依赖一个简单的index.html模版，生成一个自动引用你打包后的JS 文件的新index.html
-- UglifyJsPlugin 压缩文件
-- DefinePlugin: You can enable some codes only in development enviroment with environment flags
+
 
 
 ## webpack 模块
