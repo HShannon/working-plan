@@ -66,6 +66,9 @@ module.exports = {
 };
 ```
 
+## loader
+loader 是导出为一个函数的 node 模块, 该函数在 loader 转换资源的时候使用，给定的函数调用 loader API, 并通过 this 上下文访问
+
 ## 代理(API Proxying During Development)
 ```
 // config/index.js
@@ -107,22 +110,27 @@ webpack({
     - module 和 chunk 信息
   - 方法 toString [Stats](https://www.webpackjs.com/configuration/stats/)
 
-
 ## [devtool](https://webpack.docschina.org/configuration/devtool/)
 便于开发环境调试
 
 
-
-
 ## webpack 模块
 模块主要包括一下几种:  
--  ES2015 import语句
-- CommonJs require()语句
-- AMD define require 语句
+- ES6 import语句
+- CommonJs require()语句, 同步
+- AMD define require 语句， 同步
 - css/sass/less文件中的@import语句
 - 样式(url(...))或 HTML 文件(<img src=...>)中的图片链接(image url)
-CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数。由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
+- CommonJs, Node.js 同步加载, require 语句, module.exports = {}
 
+1. CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数。由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
+
+2. CommonJs 与 CommonJs 模块的差异
+
+| # | 说明 |
+| :--: | :--: |
+| 1 | CommonJs 模块输出的是一个值的拷贝，es6 模块输出的是值的引用 |
+| 2 | CommonJs 模块是运行时加载，es6 模块是编译时输出接口 |
 
 ## [阮一峰](https://github.com/ruanyf/webpack-demos#demo03-babel-loader-source)
 1.  you have to use two loaders to transform CSS file. First is CSS-loader to read CSS file, and another one is Style-loader to insert <style> tag into HTML page.  
@@ -143,7 +151,6 @@ module.exports = {
   }
 };
 ```
-
 
 2. 对于url-loader, 当图片的大小小于设置的大小时，会转换为DataUrl,否则会被转换为normal URL。DataUrl 是个什么？在DataUrl协议中，图片被转换成base64编码的字符串形式，并存储在URL中。DataUrl 的优点？相较于传统的外部资源引用方式，访问外部资源很麻烦或受限时，图片是在服务器端用程序动态生成，每个访问用户显示都不同; 当图片的体积太小，占用一个HTTP不是很值; DataUrl 的缺点？体积大、图片会被浏览器缓存
 
