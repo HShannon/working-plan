@@ -1,4 +1,4 @@
-# ([webpack](http://vuejs-templates.github.io/webpack/))
+# [webpack](http://vuejs-templates.github.io/webpack/)
 
 ## webpack 构建的代码类型
 在使用 webpack 构建的典型应用程序或站点中，有三种主要的类型:
