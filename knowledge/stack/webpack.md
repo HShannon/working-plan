@@ -122,15 +122,36 @@ webpack({
 - 样式(url(...))或 HTML 文件(<img src=...>)中的图片链接(image url)
 - CommonJs, Node.js 同步加载, require 语句, module.exports = {}
 
-1. CommonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。AMD规范则是非同步加载模块，允许指定回调函数。由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
-
-2. CommonJs 与 CommonJs 模块的差异
+### 1 CommonJs 与 CommonJs 模块的差异
+- CommonJS 规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。
+- AMD规范则是非同步加载模 块，允许指定回调函数。
+由于Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以CommonJS规范比较适用。但是，如果是浏览器环境，要从服务器端加载模块，这时就必须采用非同步模式，因此浏览器端一般采用AMD规范。
 
 | # | 说明 |
 | :--: | :--: |
 | 1 | CommonJs 模块输出的是一个值的拷贝，es6 模块输出的是值的引用 |
 | 2 | CommonJs 模块是运行时加载，es6 模块是编译时输出接口 |
 
+### 3 模块方法
+1. import && export ，通过静态的方式，倒入另一个通过 export 导出的模块
+```
+import myModule from './my-module.js'
+import { nameExport } from './other-module.js'
+
+export const count = 5
+export multiply = (a, b) => {
+  return a * b
+}
+
+export default = {
+ // data ...
+}
+```  
+
+2. import(), 动态加载模块，被请求的模块和它饮用的所有子模块，会分离到一个单独的 chunk 中
+3. 如果想正常解析 es2015 特性，确保在 webpack load 系统中使用了 babel 或 buble 的 transpiler
+
+ 
 ## [阮一峰](https://github.com/ruanyf/webpack-demos#demo03-babel-loader-source)
 1.  you have to use two loaders to transform CSS file. First is CSS-loader to read CSS file, and another one is Style-loader to insert <style> tag into HTML page.  
 使用CSS-loader预处理CSS文件时，需要用到两个loader
