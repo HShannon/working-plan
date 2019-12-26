@@ -113,7 +113,6 @@ webpack({
 ## [devtool](https://webpack.docschina.org/configuration/devtool/)
 便于开发环境调试
 
-
 ## webpack 模块
 模块主要包括一下几种:  
 - ES6 import语句
@@ -209,4 +208,54 @@ webpack-dev-server的刷新模式分别为iframe mode 和 inline mode模式，�
 3. webpack-dev-middlemare
 [参考](https://segmentfault.com/a/1190000014141798)
 
+## webpack4.0 splitChunks
+Webpack 4.0 引入了 SplitChunksPlugin 插件来替代之前版本的 CommonsChunksPlugin 插件。webpack 总共有三种方法来实现 code splitting, 分别为
+- 入口配置
+- 抽取公用代码
+- 动态加载
+
+1. splitChunks 的默认配置
+```
+odule.exports = {
+  //...
+  optimization: {
+    splitChunks: {
+      // This indicates which chunks will be selected for optimization. When a string is provided, valid values are all, async, and initial. 顾名思义，async针对异步加载的chunk做切割，initial针对初始chunk，all针对所有chunk。
+      chunks: 'async',
+      // 我们切割完要生成的新chunk要>30kb，否则不生成新chunk
+      minSize: 30000,
+      maxSize: 0,
+      // 共享该module的最小chunk数
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+}
+```
+
+2. 
+
+## bundle && module && chunk
+1. 我们编写的任何文件，对于 Webpack 来说，都是一个个模块; Chunk 是Webpack打包过程中，一堆 module 的集合; Chunk是过程中的代码块，Bundle是结果的代码块,一个Chunk是一些模块的封装单元。Chunk在构建完成就呈现为bundle。
+> A Chunk is a unit of encapsulation for Modules.
+> Chunks are "rendered" into bundles that get emitted when the build completes.
+
+2. 产生 chunk 的三种途径
+- entry 入口
+- 异步加载模块
+- 代码分割 
 
