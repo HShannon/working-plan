@@ -12,8 +12,8 @@
 ❕如果你决定通过使用浏览器缓存来改善项目的性能，理解这一过程将突然变得极为重要。
 
 ## 常用的Plug插件
-1. HtmlWebpackPlugin    
-依赖一个简单的index.html模版，生成一个自动引用你打包后的JS 文件的新index.html
+### 1. HtmlWebpackPlugin    
+如果更改了一个入口起点的名称，甚至添加一个新的入口，会在构建时重新命名生成的 bundle，但是 index.html 文件仍然沿用旧的名称，需要用到 HtmlWebpackPlugin 来解决。 依赖一个简单的index.html模版，生成一个自动引用你打包后的JS 文件的新index.html
 ```
 new HtmlWebpackPlugin({
   filename: 'index2.html',
@@ -21,8 +21,9 @@ new HtmlWebpackPlugin({
   inject: true
 }),
 ```
+[配置详情](https://github.com/jantimon/html-webpack-plugin#options)
 
-2. DefinePlugin    
+### 2. DefinePlugin    
 生成全局变量，对开发模式和生产模式的构建允许不同的行为非常有用。注意，因为这个插件直接执行文本替换，给定的值必须包含字符串本身内的实际引号。通常，有两种方式来达到这个效果，使用 '"production"', 或者使用 JSON.stringify('production')
 ```
 new webpack.DefinePlugin({
@@ -30,15 +31,28 @@ new webpack.DefinePlugin({
 }),
 ``` 
 
-3. CommonsChunkPlugin   
+### 3. CommonsChunkPlugin   
 用于创建一个独立文件(又称作 chunk)的功能，通过将公共模块拆出来，最终合成的文件能够在最开始的时候加载一次便存到缓存中供后续使用
 
-4. UglifyJsPlugin 压缩文件    
+### 4. UglifyJsPlugin 压缩文件    
 - sourceMap(boolean), 在压缩代码时是否启动 source map, 警告是否能够找到对应正确的代码行
 - warning(boolean)
 
-5. webpack-dev-server     
+### 5. webpack-dev-server     
 能够用于快速开发应用程序
+
+### 6. cleaWebpackPlugin
+在每次构建清理 /dist 文件夹，这样只会生成用到的文件。在练习中发现了一个有意思的问题，报错
+```
+TypeError: CleanwebpackPlugin is not a constructor
+```
+解决方案
+```
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+plugins: [
+  new CleanWebpackPlugin()
+]
+```
 
 ## 使用Source map
 为了更容易地追踪错误和警告，JavaScript 提供了 source map 功能，将编译后的代码映射回原始源代码
@@ -68,6 +82,8 @@ module.exports = {
 
 ## loader
 loader 是导出为一个函数的 node 模块, 该函数在 loader 转换资源的时候使用，给定的函数调用 loader API, 并通过 this 上下文访问
+1. 加载 images 图像，处理图像使用 file-loader, 压缩和优化图像，需要使用 image-webpack-loader 和 url-loader，可以增强加载处理图像功能
+2. 加载 fonts 字体，处理字体资源，使用 file-loader 和 url-loader 可以接收并加载任何文件
 
 ## 代理(API Proxying During Development)
 ```
@@ -280,3 +296,14 @@ odule.exports = {
 - 异步加载模块
 - 代码分割 
 
+## 选择一个开发工具
+webpack 提供集中可选方式，帮助开发者在代码发生变化后自动编译代码
+1. watch mode 观察模式，指示 webpack "watch" 依赖图中所有文件的更改，如果其中一个文件被更改，如果其中一个文件被更新，代码将重新编译。配置 npm script
+```
+"script": {
+  "watch": "webpack --watch"
+}
+```
+但缺点是需要手动刷新浏览器，若想浏览器能够自动刷新，需要使用 webpack-dev-server 实现此功能
+
+2. webpack-dev-server 提供简单的 web server，并且具有 live reloading 实时重新加载的功能，[详细配置](https://webpack.docschina.org/configuration/dev-server) 
