@@ -381,4 +381,23 @@ optimization: {
 ```
 
 ### 动态导入
-webpack 提供了两种方案  
+webpack 提供了两种方案
+- import() 方法引入
+- require.ensure()引入 
+
+## 混存
+1. ERROR: Cannot use [chunkhash] or [contenthash] for chunk in '[name].[contenthash].js' (use [hash] instead) ，解决方法
+```
+output: {
+  // filename: '[name].[contenthash].js'
+  // =>
+  filename: '[name].[hash].js'
+}
+``` 
+
+2. 模块标识符
+- main，bundle 会随着自身的新增内容的修改，而发生变化
+- vendor，bundle 会随着自身的 module.id 的变化而变化
+- manifest， bundle 会因为现在包含一个新的模块的引用而变化
+第一个和最后一个符合预期，使用 HashedModuleIdsPlugin, NamedModulesPlugin
+ 
