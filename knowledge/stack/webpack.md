@@ -306,4 +306,29 @@ webpack 提供集中可选方式，帮助开发者在代码发生变化后自动
 ```
 但缺点是需要手动刷新浏览器，若想浏览器能够自动刷新，需要使用 webpack-dev-server 实现此功能
 
-2. webpack-dev-server 提供简单的 web server，并且具有 live reloading 实时重新加载的功能，[详细配置](https://webpack.docschina.org/configuration/dev-server) 
+2. webpack-dev-server 提供简单的 web server，并且具有 live reloading 实时重新加载的功能，[详细配置](https://webpack.docschina.org/configuration/dev-server)
+
+3. webpack-dev-middleware，可以把 webpack 处理过的文件发送到一个 server. webpack-dev-middleware 可自定义服务
+```
+const webpack = require('webpack')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const express = require('express');
+const app = express();
+
+const config = require('./webpack.config.js');
+const compiler = webpack(config)
+
+app.use(webpackDevMiddleware(compiler, {
+  pulicPathL config.output.publicPath
+}));
+
+app.listen(3000, function(){
+  console.log('Example app listening on port 30000!')
+})
+```
+
+## 模块热替换
+模块热替换(hot module replacement) 不适用于生产环境。如果在技术选型中使用了 webpack-dev-middleware，则使用 webpack-hot-middleware 包，使用了 webpack-dev-server，只需更新 webpack-dev-server 配置
+
+1. 通过 Node.js API
+ 
