@@ -344,6 +344,7 @@ if(module.hot) {
 在 Node.js API 中使用 webpack dev server 时，不要将 dev server 选项放在 webpack 配置对象中，而是，在创建时，将其作为第二个参数传递
 ```
 new webpackDevServer(compiler, options)
+```
 
 ### 2. HMR记载样式
 借助于 style-loader, 使用模块热替换加载 css 实际上方便。此 loader 在幕后使用了 module.hot.accept， 在 css 依赖模块更新之后，会将其 patch 到标签中
@@ -377,4 +378,7 @@ optimization: {
     chunks: 'all'
   ]
 }
-```  
+```
+
+### 动态导入
+webpack 提供了两种方案  
