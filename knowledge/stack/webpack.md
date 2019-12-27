@@ -328,7 +328,53 @@ app.listen(3000, function(){
 ```
 
 ## 模块热替换
-模块热替换(hot module replacement) 不适用于生产环境。如果在技术选型中使用了 webpack-dev-middleware，则使用 webpack-hot-middleware 包，使用了 webpack-dev-server，只需更新 webpack-dev-server 配置
+模块热替换(hot module replacement) 不适用于生产环境。如果在技术选型中使用了 webpack-dev-middleware，则使用 webpack-hot-middleware 包，使用了 webpack-dev-server，只需更新 webpack-dev-server 配置。如果已经通过 HotModuleReplacementPlugin 启用了 HMR，接口将暴露在 module.hot 属性下，通常，用户要先检查这个接口是否可访问，然后在开始使用
+```
+if(module.hot) {
+  module.hot.accept(
+    // 可以是一个字符串或字符串数组
+    dependencies,
+    // 用于在模块更新后触发的函数
+    callback
+  )
+}
+```
 
-1. 通过 Node.js API
- 
+### 1. 通过 Node.js API  
+在 Node.js API 中使用 webpack dev server 时，不要将 dev server 选项放在 webpack 配置对象中，而是，在创建时，将其作为第二个参数传递
+```
+new webpackDevServer(compiler, options)
+
+### 2. HMR记载样式
+借助于 style-loader, 使用模块热替换加载 css 实际上方便。此 loader 在幕后使用了 module.hot.accept， 在 css 依赖模块更新之后，会将其 patch 到标签中
+
+## tree shaking
+通常用于描述移除 JavaScript 上下文中的未引用的代码
+
+## 生产环境
+development 和 production 构建目标存在巨大差异
+- 开发环境，需要强大的 source map 和有着 live reloading 和 hot module replacement 能力的 local server
+- 压缩 bundle, 更轻量的 source map, 资源优化等方式，改善加载时间。由于需要分割逻辑，需要为每个环境编写独立的 webpack 配置
+理论上: 保留基本的配置，无需在特定环境中编写配置重复的代码
+
+1. 指定 mode, 从 webpack V4 开始，指定 mode 会自动地配置 DefinePlugin. 使用 process.env.NODE_ENV
+
+## 代码分离
+常用的代码分离有三种方法
+- 入口起点：使用 entry 配置手动地分离代码
+- 防止重复：使用 SplitChunksPlugin 去重和分离 chunk
+- 动态导入： 通过模块中的内联函数调用分离代码
+
+### 入口起点(entry points)
+非常直观的、简单的代码分离。但存在一些问题：
+- 重复的模块被引入到各个 bundle 中
+- 方法不灵活，不能够动态地将核心应用程序逻辑中的代码拆分出来
+
+### 防止重复
+```
+optimization: {
+  splitChunks: [
+    chunks: 'all'
+  ]
+}
+```  
