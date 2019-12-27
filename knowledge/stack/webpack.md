@@ -148,7 +148,7 @@ webpack({
 | 1 | CommonJs 模块输出的是一个值的拷贝，es6 模块输出的是值的引用 |
 | 2 | CommonJs 模块是运行时加载，es6 模块是编译时输出接口 |
 
-### 3 模块方法
+### 2 模块方法
 1. import && export ，通过静态的方式，倒入另一个通过 export 导出的模块
 ```
 import myModule from './my-module.js'
@@ -165,8 +165,8 @@ export default = {
 ```  
 
 2. import(), 动态加载模块，被请求的模块和它饮用的所有子模块，会分离到一个单独的 chunk 中
-3. 如果想正常解析 es2015 特性，确保在 webpack load 系统中使用了 babel 或 buble 的 transpiler
 
+3. 如果想正常解析 es2015 特性，确保在 webpack load 系统中使用了 babel 或 buble 的 transpiler
  
 ## [阮一峰](https://github.com/ruanyf/webpack-demos#demo03-babel-loader-source)
 1.  you have to use two loaders to transform CSS file. First is CSS-loader to read CSS file, and another one is Style-loader to insert <style> tag into HTML page.  
@@ -283,8 +283,6 @@ odule.exports = {
   }
 }
 ```
-
-2. 
 
 ## bundle && module && chunk
 1. 我们编写的任何文件，对于 Webpack 来说，都是一个个模块; Chunk 是Webpack打包过程中，一堆 module 的集合; Chunk是过程中的代码块，Bundle是结果的代码块,一个Chunk是一些模块的封装单元。Chunk在构建完成就呈现为bundle。
