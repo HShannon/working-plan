@@ -1,5 +1,4 @@
 # vue-router
-
 ## 创建router
 ```
 import VueRouter from 'vue-router'
@@ -21,19 +20,19 @@ new Vue({
 }).$mount('#app')
 
 ```
+
 2. 通过注入路由器，我们可以访问它this.$router以及this.$route任何组件内部的当前路由
 - $route 为当前 router 跳转对象里面可以获取name、path、query、params等
 - $router 为 VueRouter实例，想要导航到不同URL，则使用$router.push方法
 
 
 ## history 和 hash 模式
-1. hash  
+### 1. hash  
 当hash变化时，会触发hashchange事件，不会刷新页面(在页面中点击带有锚点的a标签，不会刷新页面)
 
-2. history  
+### 2. history  
 利用 history.pushState 来完成URL跳转而不需要重新加载页面。一般都需要服务器配置或支持SSR， 否则服务器返回有问题
 - 若后台没有正确的配置，当用户直接访问 url 会返回404。解决方案: 在服务端增加一个覆盖所有情况的候选资源，当url匹配不到任何静态资源，则会返回同一个index.html，推荐使用 connect-history-api-fallback
-
 - 对于所有的路径都会返回index.html文件。解决方案: 在 Vue 应用里面覆盖所有的路由情况，然后在给出一个 404 页面; 如果你使用 Node.js 服务器，你可以用服务端路由匹配到来的 URL，并在没有匹配到路由的时候返回 404，以实现回退。
 ```
 const router = new VueRouter({
@@ -43,20 +42,19 @@ const router = new VueRouter({
   ]
 })
 ```
-3. connect-history-api-fallback 
+
+### 3. connect-history-api-fallback 
 Middleware to proxy requests through a specified index page, useful for Single Page Applications that utilise the HTML5 History API. 原作者的插件默认会将所有的请求都指向到index.html, 会导致项目内其他所有路由也被指向到index.html。为了兼容koa, 采用 koa2-connect-history-api-fallback, 具体使用方法示例: 
 ```
 const koa = require('koa')
 const app = new koa()
 
 const historyApiFallback = require('koa2-connect-history-api-fallback')
-
 app.use(historyApiFallback({ whiteList: ['/avatar'] }))
 ```
 
 ## 响应路由参数的变化
-当使用路由参数时，原来的组件实例会被复用，因为两个路由都渲染同一个组件，比起销毁再创建，复用则显得更加高效，这也意味着组件的生命周期钩子不会再被调用。
-
+当使用路由参数时，原来的组件实例会被复用，因为两个路由都渲染同一个组件，比起销毁再创建，复用则显得更加高效，这也意味着组件的生命周期钩子不会再被调用.
 1. 复用组件时，**可以简单使用watch检测$route对象**
 ```
 watch: {
@@ -94,6 +92,7 @@ const router = new VueRouter({
   ]
 })
 ```
+
 5.  组件内的守卫  
 ```
 const Foo = {
@@ -134,6 +133,7 @@ import('./Foo.vue') // 返回 Promise
 ```
 const Foo = () => import('./Foo.vue')
 ```
+
 2. 结合 webpack 的 require.ensure(). 同时将模块添加到一个分开的 chunk 当中。这个新的 chunk 会被 webpack 通过 jsonp 来按需加载。
 ```
 require.ensure(dependencies: String[], callback: function(require), chunkName: String)

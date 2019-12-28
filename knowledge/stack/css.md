@@ -1,5 +1,4 @@
 # CSS
-
 ## dateset
 HTMLElement.dataset 属性允许无论是在读取模式和写入模式下访问在 HTML 或 DOM中的元素上设置的所有自定义数据属性(data-*)集
 
@@ -26,17 +25,21 @@ for(var i = 0; i < lis.length ; i++){
 ## 弹性布局
 flex布局，子元素的float、clear和vertical-align属性会失效
 
-
 ## postcss
 [参考](https://segmentfault.com/a/1190000003909268)
 
 ## [SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
 @font-face 允许网页开发者为其网页制定在线字体
 1. 变量, SASS允许使用变量，所有变量以$开始; 如果变量需要镶嵌在字符串之中，必须写在#{}中
+
 2. 计算功能
+
 3. 嵌套
+
 4. 注释: /* comment */ || //comment // /*! comment */(重要注释)
+
 5. 继承:  @extend
+
 6. Mixin: 使用@mixin命令，定一个代码块。使用@include命令，调用mixin
 ```
 @minxin left {
@@ -54,20 +57,24 @@ float: left;
 margin-left: $value;
 }
 ```
+
 7. 颜色函数
+
 8. 插入文件: @import
+
 9. 条件语句
 - @if: 不需要写括号
 - @else
 - @while
 - @for
+
 10. 自定义函数
 ```
 @function double($n) {
   @return $n * 2;
 }
 
-#sidebar {
+11. sidebar {
   width: double(5px);
 }
 ```

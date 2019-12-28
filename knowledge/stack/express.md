@@ -1,5 +1,4 @@
 # Express
-
 ## Express托管静态文件([express.static](http://www.expressjs.com.cn/4x/api.html))
 ```
 函数	express.static(root, [options])，
@@ -20,7 +19,7 @@ app.use('/static', express.static(path.join(__dirname, 'public')))
 | res.sendFile()   | 	Send a file as an octet stream.   |
 
 ## express.Router
-create a router file named birds.js in the app directory
+1. create a router file named birds.js in the app directory
 ```
 var express = require('express')
 var router = express.Router()
@@ -49,7 +48,8 @@ router.get('/about', function (req, res) {
 
 module.exports = router
 ```
-load the router module in the app
+
+2. load the router module in the app
 ```
 var birds = require('./birds')
 
@@ -59,7 +59,7 @@ app.use('/birds', birds)
 ```
 
 ## middleware
-app.use()
+1. app.use()
 ```
 var myLogger = function (req, res, next) {
   console.log('LOGGED')
@@ -68,11 +68,9 @@ var myLogger = function (req, res, next) {
 
 app.use(myLogger)
 ```
-***
 
 ## 使用模版引擎
 > Define: A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client. 
-
 
 简而言之，模版引擎 通过模版引擎函数把数据塞入。有名的模版引擎有: Pug、Mustache、EJS、Jade，常用的模版引擎([资料](https://segmentfault.com/a/1190000000502743))。 使用的示例
 ```
@@ -84,8 +82,8 @@ app.set('views', [
 ```
 
 ## Application
-1. app.locals
-+ Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
+### 1. app.locals
+Once set, **the value of app.locals properties persist throughout the life of the application**, in contrast with res.locals properties that are valid only for the lifetime of the request. **As well as application-level data. Local variables are available in middleware via req.app.locals**
 ```
 router.get('/config', (req, res, next) => {
   res.json({
@@ -96,7 +94,7 @@ router.get('/config', (req, res, next) => {
 })
 ```
 
-2. app.mountpath
+### 2. app.mountpath
 ```
 var admin = express();
 
@@ -115,7 +113,7 @@ admin.use('/secr*t', secret); // load the 'secret' router on '/secr*t', on the '
 app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
 ```
 
-3. app.on('mount', callback(parent))  
+### 3. app.on('mount', callback(parent))  
 parent
 ```
 var admin = express();
@@ -132,24 +130,24 @@ admin.get('/', function (req, res) {
 app.use('/admin', admin);
 ```
 
-4. app.engine
+### 4. app.engine
 
 ## app settings table
-
 1. case sensitive routing
 
 2. env ([相关文档](https://juejin.im/post/5a4ed5306fb9a01cbc6e2ee2))
 
 3. ETag
-  + 服务器使用ETag HTTP标头传递验证令牌
-  + 验证令牌可实现高效的资源更新检查：资源未发生变化时不会传送任何数据。
+-  服务器使用ETag HTTP标头传递验证令牌
+- 验证令牌可实现高效的资源更新检查：资源未发生变化时不会传送任何数据。
+
 ![window](../../public/image/etag.jpg "etag流程图")
 
 4. jsonp callback name
 
 5. trust proxy 涉及 X-Forwarded-Proto ([相关文档](http://www.expressjs.com.cn/4x/api.html#app.settings.table))
-+ req.hostname
-+ req.ip
+- req.hostname
+- req.ip
 
 ## Request
 1. If you follow the pattern in which you create a module that just exports a middleware function and require() it in your main file, **then the middleware can access the Express instance via req.app**
@@ -168,7 +166,7 @@ var cookieParser = require('cookie-parser')
 var app = express()
 app.use(cookieParser())
 ```
-- 示例
+ 示例
 ```
 var express = require('express')
 var cookieParser = require('cookie-parser')
@@ -200,10 +198,10 @@ app.use('/admin', function(req, res, next) {  // GET 'http://www.example.com/adm
 5. req.xhr **X-Requested-With** header fields is 'XMLHttpRequest'
 
 6. req.accepts()
-  + MIME type string
-  + an extension name
-  + a commma-delimited list
-  + an array
+- MIME type string
+- an extension name
+- a commma-delimited list
+- an array
 
 ## Response
 1. res.cookie(name, value [, options])
@@ -231,9 +229,9 @@ res.format({
 res.redirect(`${_config.loginUrl}/logout?callback=${_config.callbackUrl}`)
 ```
 
-4. res.send([body]) 
-+ The body parameter can be a Buffer object, a String, an object, or an Array.
+4. res.send([body]), The body parameter can be a Buffer object, a String, an object, or an Array.
 
 5. res.sendFile(path [, options] [, fn])
-+ res.sendFile(path.join(__dirname, '../public/index2.html'))
-
+```
+res.sendFile(path.join(__dirname, '../public/index2.html'))
+```

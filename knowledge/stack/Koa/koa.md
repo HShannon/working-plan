@@ -68,7 +68,6 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 ```
-***
 
 # url.parse 方法
 - protocol: The protocol scheme of the URL (e.g. http:).
@@ -87,6 +86,3 @@ app
 # [Koa2里获取请求数据](https://github.com/lensh/koa2-cet/issues/2)
 1. 获取get请求数据
 2. 获取POST请求的处理，koa-bodyparser中间件可以把koa2上下文的formData数据解析到ctx.request.body中。
-
-
-

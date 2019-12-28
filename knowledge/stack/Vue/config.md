@@ -1,5 +1,5 @@
 # [全局配置](https://cli.vuejs.org/zh/config/#lintonsave)
-配置示例
+## 配置示例
 ```
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const path = require('path')

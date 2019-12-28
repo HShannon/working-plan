@@ -1,20 +1,21 @@
 # [VueCLI](https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create)
-
 ## VueCLI 常见指令
 1. 创建新项目
 ```
 vue create
 ```
+
 2. 使用图形化界面
 ```
 vue ui
 ```
+
 3. 拉取 2.x 模版
 ```
 npm install -g @vue/cli-init
-# `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同
 vue init webpack my-project
 ```
+
 4. 每个 CLI 插件都会包含一个 (用来创建文件的) 生成器和一个 (用来调整 webpack 核心配置和注入命令的) 运行时插件。在已经创建好的项目中安装一个插件
 ```
 vue add @vue/eslint
