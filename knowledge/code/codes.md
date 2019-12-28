@@ -1,4 +1,3 @@
-
 # 深度克隆
 1. typeof
 ```
@@ -21,7 +20,6 @@ function clone(obj){
 - string => string
 - boolean => boolean
 - number => number
-***
 
 2. json 序列化
 ```
@@ -44,10 +42,10 @@ console.log(arr2) // ["shannon", "tuwanqiong", "wangdacheng"]
 # [reduce](https://segmentfault.com/a/1190000010731933)  
 arr.reduce(callback, [initialValue])
 - callback
-	- previousValue 上次调用返回的值，或者是提供的初始化值(initialValue)
-	- currentValue 数组中当前被处理的元素
-	- index 当前元素在数组中的索引
-	- array 调用reduce的数组
+  - previousValue 上次调用返回的值，或者是提供的初始化值(initialValue)
+  - currentValue 数组中当前被处理的元素
+  - index 当前元素在数组中的索引
+  - array 调用reduce的数组
 - initialValue 作为第一次调用 callback 的第一个参数
 
 1. dashboard 捏合三个数组
@@ -75,5 +73,15 @@ let flatten = (arr) => {
   return arr.reduce((preVal, curVal, index, arr) => {
     return preVal.concat(Array.isArray(curVal) ? flatten(curVal) : curVal)
   },[])
+}
+```
+
+# 数字 money 表示法
+```
+const commaFormat = (value = 0) => {
+  value += '';
+  let arr = value.split(',');
+  
+  return arr[0].replace(/\B(?=(?:\d{3})+$)/g, ',') + (arr[1] ? '.' + arr[1] : '') 
 }
 ```

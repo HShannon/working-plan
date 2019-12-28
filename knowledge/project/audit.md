@@ -1,6 +1,5 @@
-### auth 学习笔记
-
-#### tracer
+# auth 学习笔记
+## tracer
 [tracer](https://github.com/baryon/tracer)
 ```
 const tracer = require('tracer');
@@ -23,12 +22,8 @@ const logger = tracer.colorConsole({
   - folder: file's parent folder
   - method: method name of caller
   - stack: call stack message
-***
 
-
-
-
-#### 浏览器缓存
+## 浏览器缓存
 - HTTP1.0: Expires 配合 Last-Modefied
   - 相关字段
     - Date: 服务器响应的时间
@@ -44,9 +39,8 @@ const logger = tracer.colorConsole({
       - no-cache: 浏览器缓存
       - no-store: 浏览器不缓存
       - max-age: 缓存有效时间段
-***
 
-##### 参考
+## 参考
 1. [vue-router](https://router.vuejs.org/zh/guide/essentials/history-mode.html#%E8%AD%A6%E5%91%8A)
 2. [浅谈web中前后端模版引擎的使用](https://github.com/lessfish/underscore-analysis/issues/25)
   - [MVC模式](http://www.ruanyifeng.com/blog/2007/11/mvc.html)
@@ -56,15 +50,8 @@ const logger = tracer.colorConsole({
   - fs.extname() 返回path 的扩展名
 5. [HTTP缓存](http://shaolianbo.github.io/web/2016/01/22/http-cache)
 
-
-
-
-
-
-
-##### Question
-
-#### Q1
+## Question
+### Q1
 ```
 if (ctx.lxsession) {}
   lxsession = ctx.lxsession;
@@ -75,7 +62,7 @@ if (ctx.lxsession) {}
 }
 ```
 
-#### Q2
+### Q2
 ```
 if (whiteList.includes(params.platform)) {
   delete params.platform

@@ -1,7 +1,6 @@
-### weChat-server 学习笔记
-
-#### log4js
-+ 日志分级, 级别由低到高
+# weChat-server 学习笔记
+## log4js
+1. 日志分级, 级别由低到高
 ```
 {
   ALL: new Level(Number.MIN_VALUE, "ALL"),
@@ -16,9 +15,9 @@
 }
 ```
   
-+ 日志分类 Logger 实例的类型，区分日志的维度, **getLogger()的参数**
+2. 日志分类 Logger 实例的类型，区分日志的维度, **getLogger()的参数**
 
-+ 日志落盘 Appender, 默认打印到控制台
+3. 日志落盘 Appender, 默认打印到控制台
 ```
 let log4js = require('log4js');
 log4js.configure({
@@ -32,7 +31,7 @@ logger.debug("Time:", new Date())
 ```
 提供的其他的appender: DateFile、 STMP、 MailGun、levelFilter(通过level过滤)
 
-+ DateFile 注意log4js.config()的配置数据格式，详情见官网([官网](https://github.com/log4js-node/log4js-node))
+4. ateFile 注意log4js.config()的配置数据格式，详情见官网([官网](https://github.com/log4js-node/log4js-node))
 ```
 const log4js = require('log4js')
 log4js.configure({
@@ -48,10 +47,9 @@ log4js.configure({
 var logger = log4js.getLogger('DateFile')
 logger.info('this is datefile')
 ```
-+ Layout
-	+ messagePassThrough: 仅仅输出日志的内容
-	+ basic: 在日志的内容前面会加上时间、日志的级别和类别，通常日志的默认 layout
-	+ colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
-	+ pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
-***
 
+5. Layout
+- messagePassThrough: 仅仅输出日志的内容
+- basic: 在日志的内容前面会加上时间、日志的级别和类别，通常日志的默认 layout
+- colored/coloured: 在 basic 的基础上给日志加上颜色，appender Console 默认使用的就是这个 layout
+- pattern: 这是一种特殊类型,可以通过它来定义任何你想要的格式
