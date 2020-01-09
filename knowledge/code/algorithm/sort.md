@@ -9,7 +9,7 @@
 ## Bubble sort
 ```
 const bubbleSort = (arrList, arrLength) => {
-  if(arrList.length === 0) return
+  if(arrLength <= 1) return
   for(let i = 0; i < arrLength; i++){
     let isExchange = false
     for(let j = 0; j < arrLength - i - 1 ; j++){
@@ -39,6 +39,17 @@ const bubbleSort = (arrList, arrLength) => {
 首先将数组中的数据分为两个区间，已排序区间和为排序区间
 ```
 const InsertSort = (arrList, arrLength) => {
-  if()
+  if(arrLength <= 1) return
+  for(let i = 1; i < arrLength; i++){
+    let value = arrList[i]
+    for(var j = i - 1; j >= 0; j--){
+      if(arrList[j] > value) {
+        arrList[j + 1] = arrList[j]
+      } esle {
+        break
+      }
+    }
+    arrList[j + 1] = value
+  }
 }
 ```
