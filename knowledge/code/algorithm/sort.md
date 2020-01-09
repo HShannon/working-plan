@@ -29,7 +29,7 @@ const bubbleSort = (arrList, arrLength) => {
 2. 仅当相邻两个元素相等时，不交换，稳定算法
 3. 时间复杂度
 - 最好情况: o(n)
-- 最坏的情况: o(n * n)
+- 最坏的情况: o(n<sup>2</sup>)
 - 对于包含 n 个数据的数组，有 n! 种排序方法；有序度是数组中具有有序关系的元素对的个数；完全有序的数组的有序度成为满有序度；逆序度正好于有序度相反；有序度 = 满有序度 - 有序度
 > 对于长度为 n 的数组，满有序度为 n * (n-1) / 2
 在冒泡算法中，需要交换的次数等于逆序度，即 n * (n -1) / 2 - 最初的有序度
@@ -57,4 +57,35 @@ const InsertSort = (arrList, arrLength) => {
 3. 时间复杂度
 - 最好情况: o(n)
 - 最坏的情况: o(n<sup>2</sup>)
+- 平均时间复杂度: o(n<sup>2</sup>)
+
+## Selection sort
+从未排序区间挑选最小的元素，将其放到已排期间末尾
+```
+const SelectionSort = (arrList, arrLength) => {
+  if(arrLength <= 1) return
+  for(let i = 0; i < arrLength; i++) {
+    let min = arrList[i]
+    let minIndex = i
+    for(var j = i + 1; j < arrLength; j++) {
+      if(arrList[j] <  min){
+	min = arrList[j]
+      }
+    }
+    let temp = arrList[i]
+    arrList[i] = min
+    arrList[minIndex] = temp
+  }
+}
+```
+1. 选择排序是原地排序算法
+2. 选择排序不是稳定的排序方法
+3. 时间复杂度
+- 最好情况: o(n<sup>2</sup>)
+- 最坏情况: o(n<sup>2</sup>)
+- 平均时间复杂度: o(n<sup>2</sup>)
+
+## 资料中插入排序比冒泡排序受欢迎
+冒泡排序与插入排序都是原地排序算法 时间复杂度都为o(n<sup>2</sup>)，元素交换的次数和移动的次数都为原始数据的逆序度，但冒泡排序的数据交换要比插入排序的数据移动要复杂，冒泡排序需要 3 个赋值操作，而插入排序只需要 1 个。插入排序有种优化方案希尔排序
+
 
