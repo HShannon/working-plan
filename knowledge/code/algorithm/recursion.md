@@ -58,3 +58,22 @@ int f(int n){
   return ret
 }
 ```
+
+## 练习
+1. 编程实现斐波那契数列求值 f(n) = f(n-1) + f(n-2)
+```
+const fibonacci = (n) => {
+  if(n === 1 || n === 2) return 1
+  return fibonacci(n - 1) + fibonacci(n - 2)
+}
+```
+2. 编程实现求阶乘 n!
+```
+const factorial = n => {
+  if(n === 1) return 1
+  return n * factorial(n - 1)
+}
+```
+3. 编程实现一组数据集合的全排列
+```
+```
