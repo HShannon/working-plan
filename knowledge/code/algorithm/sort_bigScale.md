@@ -35,4 +35,29 @@ const merge = (left, right) => {
 4. 归并排序算法不是原地排序算法，需要借助额外的存储空间，空间复杂度 o(n)
 
 ## Quick Sort
+```
+递推公式: quick_sort(p...r) = quick_sort(p...q-1) + quick_sort(q+1...r)
+终止条件: p >= r
+```
+1. 算法
+```
+const quickSort = (arrList) => {
+  if(arrList.length <= 1) return arrList
+  let pivotIndex = Math.floor(arrList.length / 2)
+  let pivot = arrList.splice(pivotIndex, 1)[0]
+  
+  let left = []
+  let right = []
+  for(let i = 0; i < arrList.length; i++){
+    if(arrList[i] < pivot) {
+      left.push(arrList[i])
+    }esle{
+      right.push(arrList[i])
+    }
+  }
+  return quickSort(left).concat([arrList[pivotIndex]], quickSort(right))
+}
+```
+2. 性能分析
+- 时间复杂度: 在大部分情况下的时间复杂度都可以做到 O(nlogn)，只有在极端情况下，才会退化到 o(n<sup>2</sup>)
 
