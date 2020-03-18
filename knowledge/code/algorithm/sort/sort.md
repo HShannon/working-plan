@@ -12,7 +12,7 @@ const bubbleSort = (arrList, arrLength) => {
   if(arrLength <= 1) return
   for(let i = 0; i < arrLength; i++){
     let isExchange = false
-    for(let j = 0; j < arrLength - i - 1 ; j++){
+    for(let j = i; j < arrLength - i - 1 ; j++){
       if(arrList[j] > arrList[j + 1]){
         let temp = arrList[j + 1]
         arrList[j + 1] = arrList[j]
