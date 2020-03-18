@@ -35,7 +35,7 @@ const bubbleSort = (arrList, arrLength) => {
 在冒泡算法中，需要交换的次数等于逆序度，即 n * (n -1) / 2 - 最初的有序度
 
 ## Insert sort
-首先将数组中的数据分为两个区间，已排序区间和为排序区间
+首先将数组中的数据分为两个区间，未排序区间和为排序区间
 ```
 const InsertSort = (arrList, arrLength) => {
   if(arrLength <= 1) return
@@ -44,7 +44,7 @@ const InsertSort = (arrList, arrLength) => {
     for(var j = i - 1; j >= 0; j--){
       if(arrList[j] > value) {
         arrList[j + 1] = arrList[j]
-      } esle {
+      } else {
         break
       }
     }
@@ -70,6 +70,7 @@ const SelectionSort = (arrList, arrLength) => {
     for(var j = i + 1; j < arrLength; j++) {
       if(arrList[j] <  min){
 	min = arrList[j]
+        minIndex = j
       }
     }
     let temp = arrList[i]
