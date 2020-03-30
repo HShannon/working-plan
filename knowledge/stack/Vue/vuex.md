@@ -1,3 +1,5 @@
+# vuex
+
 ## 创建store
 ```
 import Vuex from 'Vuex'
@@ -62,3 +64,25 @@ export default {
 }
 ```
 1. mapState 函数返回的是一个对象。我们如何将它与局部计算属性混合使用呢？通常，我们需要使用一个工具函数将多个对象合并为一个，以使我们可以将最终对象传给 computed 属性。
+
+## 开发中的注意点
+1. 由于 store 中的数据存储在内存中，因此当页面刷新时， vuex.state 存入的数据会初始化, 为解决这个问题，可使用 localStorage 或者 sessionStorage 
+```
+export default {
+  name: 'App',
+  created(){
+    if(sessionStorage.getItem('store')){
+       this.$store.replace(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem('store'))))
+    }
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('store', JSON.stringify(this.$store.state))
+    })
+  }
+}
+```
+- window 对象
+- EventTarget.addEventListener(type, listener, optin)
+ - type 监听事件的类型
+ - listener
+ - options: capture, once, passive. 其中若 capture 为 true, 在捕获阶段调用事件处理程序, 反之在冒泡阶段调用事件处理程序
+
