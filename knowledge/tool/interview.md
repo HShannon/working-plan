@@ -138,6 +138,53 @@
 ```
 
 3. 双飞翼布局 —— margin 负值
+
 4. 圣杯布局
+
 5. Flex, 参考文档[flex](https://zhuanlan.zhihu.com/p/25303493)
- 
+- flex 容器
+```
+.container {
+  display: flex | inline-flex
+}
+```
+
+- 设置在容器上的六种属性
+  - flex-direction: row | row-reverse | column | column-reverse 决定主轴的方向
+  - flex-wrap: nowrap | wrap | wrap-reverse 决定容器内项目是否可换行
+  - flex=flow: <flex-direction> || <flex-wrap>
+  - justify-conten: flex-start | flex-end | center | space-between | space-around 定义了项目在主轴的对其方式
+  - align-items: flex-start | flex-end | center | baseline | stretch 定义项目在交叉轴上的对其方式
+  - align-content: flex-start | flex-end | center | space-between | space-around  定义了多根轴线的对其方式，如果项目只有一根轴线，那么该属性将不起作用
+
+- 运用在 item 项目上的属性
+  - order: <integer> 项目在容器中的排列顺序，数值越小，排列越靠前， 默认值为 0
+  - flex-basis: <length> | auto 定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间
+  - flex-grow: <number> 定义项目的放大比例
+  - flex-shrink: <number> 定义了项目的缩小比例
+  - flex: none | [ <'flex-grow'> <'flex-shrink'> ? ] || <'flex-basis'>
+  - align-self: auto | flex-start | flex-end | center | baseline | stretch 允许单个项目有与其他项目不一样的对齐方式
+
+6. table 布局
+
+7. 绝对定位布局
+
+
+#### 常用选择器以及优先级，常用组合方式
+1. 基础选择器
+- 通用选择器
+```
+*{font-size: 16px}
+```
+- 标签选择器
+- class 选择器
+```
+.className{font-weight: bold}
+```
+- id 选择器
+```
+#idName{font-size: 16px}
+
+
+```
+
