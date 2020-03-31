@@ -97,4 +97,42 @@
   - display: inline-block | table-cells | flex
   - overflow 除了 visible 以外的值（hidden，auto, scroll）
 
+- BFC 特性及应用
+  - 同一个 BFC 下外边距会发生折叠，如果想要避免外边距的重叠，可以将其放在不同的容器中
+  - BFC 可以包含浮动的元素，清除浮动
 
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+	.left {
+	    float: left;
+	    height: 200px;
+	    width: 100px;
+	    margin-right: 20px;
+	    background-color: red;
+	}
+	.right {
+	    width: 200px;
+	    height: 200px;
+	    float: right;
+	    margin-left: 20px;
+	    background-color: blue;
+	}	
+	.main {
+	    height: 200px;
+	    overflow: hidden;
+	    background-color: green;
+	}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="main"></div>
+    </div>
+</body>
+</html>
+```
