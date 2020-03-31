@@ -202,5 +202,33 @@ p{font-size: 16px}
 3. 属性选择器
 
 | 选择器 | 含义 |
- 
- 
+| E[attr] | 匹配所有具有 attr 属性的元素 |
+| E[attr = val] | 匹配所有属性 attr 属性等于 "val" 的 E 元素 |
+| E[attr ~= val] | 匹配所有 attr 属性具有多个空格分割的值，其中一个值等于 val 的元素 |
+| E[attr |= val] | 匹配所有 attr 属性具有多个空格分割的值，其中一个值以 val 开头的元素 | 
+
+4. 伪类选择器
+
+| 选择器 | 含义 |
+| E:first-child | 匹配父元素 E 下的第一个子元素 |
+| E:link | 匹配所有未被点击的链接 |
+| E:visited | 匹配所有已被点击的链接 |
+| E:active | 匹配鼠标已经按下、还没有释放的元素 E |
+| E:hover | 匹配鼠标悬停的 E 元素 |
+| E:focus | 匹配获得当前焦点的 E 元素 |
+| E:lang(c) | 匹配 lang 属性等于 c 的 E 元素 |
+
+5. 伪元素
+- E:first-line 匹配 E 元素的第一行
+- E:first-letter 匹配 E 元素的第一个字母
+- E:before 在 E 元素之前插入生成的内容
+```
+.className{
+  content: '';
+  display: block;
+  width: 100px;
+  height: 200px;
+}
+```
+- E:after 在 E 元素之后插入生成的内容
+
