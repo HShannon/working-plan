@@ -89,6 +89,7 @@
 2. BFC（Blocking Formatting Contexts）
 
 > 具有 BFC 特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性
+
 只要元素满足任一条件即可触发 BFC
 - body 根元素
 - 浮动元素: float 除 none 以外的值
