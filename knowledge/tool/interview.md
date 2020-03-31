@@ -206,7 +206,7 @@ p{font-size: 16px}
 | E[attr] | 匹配所有具有 attr 属性的元素 |
 | E[attr = val] | 匹配所有属性 attr 属性等于 "val" 的 E 元素 |
 | E[attr ~= val] | 匹配所有 attr 属性具有多个空格分割的值，其中一个值等于 val 的元素 |
-| E[attr |= val] | 匹配所有 attr 属性具有多个空格分割的值，其中一个值以 val 开头的元素 | 
+| E[attr \|= val] | 匹配所有 attr 属性具有多个空格分割的值，其中一个值以 val 开头的元素 | 
 
 4. 伪类选择器
 
