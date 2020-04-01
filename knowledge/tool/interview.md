@@ -311,3 +311,37 @@ p{font-size: 16px}
      
   </style>
 ```
+
+#### BFC 的概念和触发条件（设置独立容器解决边距重叠等）
+- BFC（blockubg formatting contexts）可以看作是隔离的独立容器，容器里面的元素不会在布局上影响外面的元素
+- body 根元素、浮动元素、绝对定位元素、display、overflow元素
+- 设置独立容器解决重叠
+```
+// 样式
+  <div class="container">
+    <div class="item1"></div>
+  </div>
+  <div class="container">
+    <div class="item2"></div>
+  </div>
+
+// html
+    .container{
+      overflow: hidden;
+    }
+    .item1{
+      width: 50px;
+      height: 50px;
+      background: #909399;
+      border-radius: 25px;
+      margin-bottom: 100px;
+    }
+    .item2{
+      width: 50px;
+      height: 50px;
+      background: #909399;
+      border-radius: 25px;
+      margin-top: 100px
+    }
+```
+
