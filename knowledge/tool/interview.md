@@ -241,3 +241,73 @@ p{font-size: 16px}
 - 权值较大的优先级越高
 - 权值相同的，后定义的优先级较高
 - 样式值含有 !important 优先级最高
+
+#### 请解释一下 flexbox, 以及适用场景，写出 3 点和 4 点的布局方式
+1. 3 点
+```
+// html 结构
+<div class="container">
+  <div class="item1"></div>
+  <div class="item2"></div>
+  <div class="item3"></div>
+</div>
+ 
+ // 样式
+  <style>
+    .container{
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+    }
+    .item1{
+      background: #409EFF;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      align-self: flex-end
+    }
+    .item2{
+      background: #67C23A;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      align-self: center
+    }
+    .item3{
+      background: #E6A23C;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+    }
+  </style>
+```
+
+2. 4 点
+```
+ // html 结构
+  <div class="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  // 样式
+  <style>
+    .container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 140px;
+      height: 200px;
+      justify-content: space-around;
+    }
+    .item{
+      width: 50px;
+      height: 50px;
+      background: #909399;
+      border-radius: 25px;
+    }
+     
+  </style>
+```
