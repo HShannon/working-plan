@@ -345,3 +345,8 @@ p{font-size: 16px}
     }
 ```
 
+#### 纯 CSS 做个滑块选择器(开关)
+1. outline 和 border 的区别
+- border 占用空间，outline 不占用空间, 不会影响元素的尺寸和位置
+- border 可应用于几乎所有有形的 html 元素，而 outline 是针对链接、表单控件和 imageMap 等元素设计
+
