@@ -352,4 +352,41 @@ p{font-size: 16px}
 
 2. [参考](https://github.com/caistrong/Blog/issues/66)
 
-3. 
+3. [参考](https://www.cnblogs.com/xinxinxiangrong7/p/9545349.html)    
+原理: 使用 checkbox 的 checked 属性改变 css 样式，一定要使用 -webkit-appearance: none; 先清除 checkbox 默认样式，否则写其他的样式不起作用
+```
+<input type="checkbox" class="checked"></input>
+
+<style>
+    .checked{
+      position: relative;
+      -webkit-appearance: none;
+      width: 90px;
+      height: 44px;
+      background: #eee;
+      border-radius: 30px;
+      line-height: 44px;
+      outline: none
+    }
+    .checked:before{
+      position: absolute;
+      left: 0;
+      background: #DCDFE6;
+      content: '';
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0px 0px 5px #ddd;
+      transition: all 0.2s linear;
+    }
+    .checked:checked{
+      background: #909399;
+    }
+    .checked:checked:before{
+      left: 46px;
+      transition: all 0.2s linear;
+    }
+</style>
+
+```
+
