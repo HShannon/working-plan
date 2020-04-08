@@ -56,6 +56,7 @@ function preOrder()
 
 2. 若完全二叉树的节点为 n, 计算书的高度是多少
 >  数的层数 = 数的高度 + 1
+
 n > 2<sup>0</sup> + 2<sup>1</sup> + 2<sup>2</sup> + ... + 2<sup>L - 2</sup> + 1
 
 n < 2<sup>0</sup> + 2<sup>1</sup> + 2<sup>2</sup> + ... + 2<sup>L - 2</sup> + 2<sup>L - 1</sup>
