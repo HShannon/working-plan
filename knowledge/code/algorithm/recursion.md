@@ -67,6 +67,7 @@ const fibonacci = (n) => {
   return fibonacci(n - 1) + fibonacci(n - 2)
 }
 ```
+
 2. 编程实现求阶乘 n!
 ```
 const factorial = n => {
@@ -74,6 +75,21 @@ const factorial = n => {
   return n * factorial(n - 1)
 }
 ```
+
 3. 编程实现一组数据集合的全排列
 ```
 ```
+
+4. 1 个细胞的生命周期是 3 小时，1 小时分裂一次。求 n 小时后，容器内有多少细胞？
+```
+function cell(n){
+  if( n <= 0 ) return 1
+  if( n == 1) return 2
+  if( n == 2) return 4
+  return 2 * cell(n -1) - cell(n - 4)
+}
+
+console.log(cell(5))
+``` 
+核心思路
+- 第 n 个小时生命周期刚开始的细胞个数等于第 n - 1 个小时细胞的个数
