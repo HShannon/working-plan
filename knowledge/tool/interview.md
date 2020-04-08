@@ -410,3 +410,163 @@ body::after {
 }
 ```
 
+## 二. js
+#### 引用类型和值类型的区别
+1. 值类型主要包括: 字符串(string), 数值(number), 字符串(string), 布尔值(boolean), undefined, null, symbol。引用类型主要包括 Object, Array, Function
+2. 基本类型不可变，引用类型可变
+3. 基本类型按值访问，引用类型按引用访问。基本类型的比较是值的比较，引用类型的比较引用的比较
+
+#### 说明“==”和“===”之间的区别,两个对象怎么判断相等
+== 会先进行类型转换，然后在用严格相等。两个对象指向同一个内存块，则相等
+
+#### 创建对象的几种方式，实现继承
+1. 字面量
+
+2. 工厂模式
+```
+function createCar(){
+  var oTemp = new Object();
+  oTemp.name = arguments[0];
+  oTemp.age = arguments[1];
+  oTemp.showName = function(){
+    console.log(this.name)
+  }
+  return oTemp
+}
+
+var myHonda = createCar('shannon', 5)
+myHonda.showName()
+```
+
+3. 构造函数法
+```
+function Person(name, age, sex){
+  this.name = name;
+  this.age = age;
+  this.sex = sex;
+  this.getName = function(){
+    return this.name
+  }
+}
+let person = new Person('shannon', 18, 'female')
+personName = person.getName()
+console.log(personName)
+```
+有优化点，构造函数添加方法应当避免重复构造函数对象
+```
+function Person(name, age, sex){
+  this.name = name;
+  this.age = age;
+  this.sex = sex;
+  this.getName = getName
+}
+ function getName(){
+  return this.name
+}
+let person = new Person('shannon', 18, 'female')
+personName = person.getName()
+console.log(personName)
+```
+工厂模式和构造函数的不同，构造函数创造出的对象 constructor 属性指向该构造函数，工厂模式的 constructor 指向 new 
+
+4. 原型模式
+```
+function Car(){} 
+//用空构造函数设置类名
+Car.prototype.color = "blue";//每个对象都共享相同属性
+Car.prototype.doors = 3;
+Car.prototype.drivers = new Array("Mike","John");
+Car.prototype.showColor = function(){        
+  alert(this.color);
+};//每个对象共享一个方法版本，省内存。
+//构造函数的原型属性可以通过字面量来设置，别忘了通过 Object.defineProperty()设置 constructor 为该构造函数
+function Car(){} 
+Car.prototype = {
+  color:"blue",
+  doors:3,
+  showColor:function(){        
+    alert(this.color);
+  }
+}
+Object.defineProperty(Car.prototype, "constructor", { enumerable:false, value:Car })
+//(不设置 constructor 会导致 constructor 不指向构造函数，直接设置 constructor 会导致 constructor 可枚举)
+```
+
+5. Object.create(), 传入要创建对象实例的原型对象
+```
+function object(o){
+  function F(){};
+  F.prototype = o;
+  return new F()
+}
+```
+
+6. 混合模式
+7. class 方式
+
+#### 继承的方式
+- 1. 原型链，实例的原型对象是另一组的实例对象
+```
+function Super(){
+  this.val = 1;
+  this.arr = [1];
+}
+function Sub(){
+  // ...
+}
+Sub.prototype = new Super(); 
+```
+
+- 2.组合继承模式
+```
+function Super(value){
+  // 只在此处声明基本属性和引用属性
+  this.val = value;
+  this.arr = [1];
+}
+//  在此处声明函数
+Super.prototype.fun1 = function(){};
+Super.prototype.fun2 = function(){};
+//Super.prototype.fun3...
+function Sub(value){
+  Super.call(this,value);   // 核心
+  // ...
+}
+Sub.prototype = new Super();    // 核心
+```
+
+- 3.
+```
+  // 只在此处声明基本属性和引用属性
+  this.val = value;
+  this.arr = [1];
+}
+//  在此处声明函数
+Super.prototype.fun1 = function(){};
+Super.prototype.fun2 = function(){};
+//Super.prototype.fun3...
+function Sub(value){
+  Super.call(this,value);   // 核心
+  // ...
+}
+Sub.prototype = Object.create(Super.prototype);
+
+// Object.create() 给原型链上添加一环，否则 Sub 和 Super 的原型就重叠了。
+Sub.prototype.constructor = Sub;
+// 不加这句 Sub.constructor 就等于 Super 了
+```
+
+#### 变量提升
+进行编译阶段然后才是执行阶段
+- 函数提升: 函数声明在编译阶段会添加到词法环境中，当引擎碰到函数时，会从词法环境中找到函数并执行。函数表达式声明并不会产生变量提升
+- var 变量的提升
+```
+var i = 1
+=> var i 声明变量
+=> i = 1 赋值
+```
+第一阶段会进行变量提升，赋值不会
+- let const 不会进行变量提升
+
+
+
