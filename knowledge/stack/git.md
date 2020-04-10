@@ -21,6 +21,10 @@ git push -u origin maste
 ```
 git pull --rebase origin master 
 ```
+- 删除
+```
+rm -rf .git
+```
 
 ## 3. 工作区 => 暂存区 => 版本库 => 远程仓库
 👉  [Mr.Li 参考](https://github.com/huanqingli/life-note/blob/master/%E7%A7%AF%E7%B4%AF%E4%B8%8E%E6%94%B6%E8%97%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E8%AF%86/git.md)
