@@ -33,6 +33,15 @@ beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestro
 9. 销毁完毕
 > destroyed
 
-# MVVM 模型
+# MVVM 模型 && Vue.js
 Model, View, ViewModel
+1. Observe，数据监听器，能够对数据对象的所有属性进行监听，如有变动可拿到最新值并通知订阅者，内部采用 Object.defineProperty 的 getter 和 setter 来实现
+
+2. Compile，指令解析器，对每个元素节点的指令进行扫描和解析，根据指令模版替换数据，已经绑定相应的更新函数
+
+3. Watcher 订阅着， 作为连接 Observer 和 Compile 的桥梁，能够订阅并收到每个属性变动的通知，执行指令绑定的相应回调函数
+
+4. Dep 消息订阅器，内部维护了一个数组，用来收集订阅者（Watcher），数据变动触发notify 函数，再调用订阅者的 update
+方法
+3. Watcher 订阅这
 
