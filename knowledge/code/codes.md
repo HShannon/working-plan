@@ -85,3 +85,21 @@ const commaFormat = (value = 0) => {
   return arr[0].replace(/\B(?=(?:\d{3})+$)/g, ',') + (arr[1] ? '.' + arr[1] : '') 
 }
 ```
+
+# 动态规划相关
+1. 入门索引
+```
+function money(n){
+    let f = [];
+    f[0] = 0
+    let cost = null
+    for(let i = 1; i <= n; i++){
+        cost = Infinity;
+        if(i - 1 >= 0) cost = Math.min(cost, f[i - 1] + 1);
+        if(i - 5 >= 0) cost = Math.min(cost, f[i - 5] + 1);
+        if(i - 11 >= 0) cost = Math.min(cost, f[i - 11] + 1);
+        f[i] = cost
+        console.log(`f[${i}]: ${f[i]}`)
+    }
+}
+```
