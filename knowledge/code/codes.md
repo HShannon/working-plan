@@ -103,3 +103,6 @@ function money(n){
     }
 }
 ```
+DP(动态规划，dynamic programming): 将一个问题拆成几个子问题，分别求解这些子问题
+
+
