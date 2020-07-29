@@ -57,15 +57,13 @@ function insertSort(a){
 function selectSort(a){
   if(a.length <= 1) return
   for(let i=0;i<a.length;++i){
-    let min_value=a[i]
     let min_index=i
     for(let j=i+1;j<a.length;++j){
-      if(a[j]<min_value){
-        min_value=a[j]
+      if(a[j]<a[min_index]){
         min_index=j
       }
     }
-    if(i !== min_value){
+    if(i !== min_index){
       swap(a, i, min_index)
     }
   }
@@ -97,6 +95,34 @@ function merge(left, right){
   while(left.length){result.push(left.shift())}
   while(right.length){result.push(right.shift())}
   return result
+}
+
+function mergeSort2(arr){
+  if(arr.length <=1) return 
+  merge_sort_c(arr, 0, arr.length-1)
+}
+
+function merge_sort_c(arr, p, r){
+  if(p>=r) return
+  let mid = parseInt(p + ((r - p) >> 1));
+  merge_sort_c(arr, p, mid);
+  merge_sort_c(arr, mid+1,r);
+  let temp = [];
+  let i = 0;
+  let p1 = p;
+  let p2 = mid+1
+  while(p1 <= mid && p2 <= r){
+    temp[i++]=arr[p1] < arr[p2] ? arr[p1++] : arr[p2++]
+  }
+  while(p1 <= mid){
+    temp[i++]=arr[p1++]
+  }
+  while(p2 <= r){
+    temp[i++]=arr[p2++]
+  }
+  for(let i=0;i<temp.length;++i){
+    arr[p+i]=temp[i]
+  }
 }
 
 /**
@@ -156,5 +182,3 @@ function partition2(arr, low, high){
   arr[low] = pivot;
   return low
 }
-
-console.log(quickSort2(arr, 0, arr.length-1))
