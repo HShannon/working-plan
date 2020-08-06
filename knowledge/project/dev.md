@@ -34,5 +34,23 @@ Refused to display 'https://m.sohu.com/a/199672605_389447' in a frame because it
 
 > X-Frame-Options HTTP 响应头是用来给浏览器指示允许一个页面可否在标签 frame, iframe 或者 object 中展现的标记。网站可以使用此功能，来确保自己网站的内容没有被嵌到别人的网站中去，也从而避免了点击劫持 (clickjacking) 的攻击。
 
+## HTML 实体化
+1. [实体化详解]()
+2. HTML 与实体相互之间的转化
+```
+// 将HTML转义为实体
+function escape(html){
+    var elem = document.createElement('div')
+    var txt = document.createTextNode(html)
+    elem.appendChild(txt)
+    return elem.innerHTML;
+}
+// 将实体转回为HTML
+function unescape(str) {
+    var elem = document.createElement('div')
+    elem.innerHTML = str
+    return elem.innerText || elem.textContent
+}
+```
 
 
