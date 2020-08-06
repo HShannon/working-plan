@@ -27,5 +27,11 @@ Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML
 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36
 ```
 
+## X-Frame-Option
+```
+Refused to display 'https://m.sohu.com/a/199672605_389447' in a frame because it set 'X-Frame-Options' to 'sameorigin'.
+```
+> X-Frame-Options HTTP 响应头是用来给浏览器指示允许一个页面可否在标签 frame, iframe 或者 object 中展现的标记。网站可以使用此功能，来确保自己网站的内容没有被嵌到别人的网站中去，也从而避免了点击劫持 (clickjacking) 的攻击。
+
 
 
