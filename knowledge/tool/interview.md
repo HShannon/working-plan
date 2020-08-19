@@ -389,6 +389,17 @@ p{font-size: 16px}
 </style>
 ```
 
+#### 清除浮动的几种方法
+1. 父级 div 定义 height
+2. 最后一个浮动元素后面加空 div 标签 并添加样式 clear: both
+3. 最后一个浮动元素后面通过伪元素 :after 清除浮动
+4. 浮动元素的父标签添加样式 overflow 为 hidden 或 auto
+5. 父级 div 定义 zoom
+当元素设置浮动后，该元素的 display 值默认变为
+```
+display: block
+```
+
 #### 纯 CSS 做个顶端页面滚动指示器(偏脑筋急转弯)
 线性渐变
 ```
