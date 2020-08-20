@@ -399,6 +399,10 @@ p{font-size: 16px}
 ```
 display: block
 ```
+#### png jpg gif webp
+1. png(portable network graphics) 便携式网络图形 支持无损压缩d的位图图形格式
+2. jpg() 失真压缩 破坏性压缩 在色调及颜色平滑b变化做的不错
+3. gif(Graphics interchange format) 位图文件格式 支持动图效果 
 
 #### 纯 CSS 做个顶端页面滚动指示器(偏脑筋急转弯)
 线性渐变
