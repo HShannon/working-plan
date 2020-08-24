@@ -217,4 +217,41 @@ function partitionK(arr, low, high){
   return low;
 }
 let arrK = [4,2,3,6];
-console.log(findK(arrK,0, arrK.length-1, 4))
+// console.log(findK(arrK,0, arrK.length-1, 4))
+
+/**
+ * 计数排序
+ */
+function countingSort(arr){
+  if(arr.length<=1) return;
+  // 查找数据中数据的范围 Math.max()
+  let max=arr[0];
+  for(let i=1;i<arr.length;++i){
+    if(arr[i]>max){
+      max=arr[i];
+    }
+  }
+  // 初始化数组 Array.prototype.fill(0)
+  let c=[];
+  for(let i=0;i<=max;++i){
+    c[i]=0
+  }
+  for(let i=0;i<arr.length;++i){
+    c[arr[i]]++
+  }
+  for(let i=1;i<=max;++i){
+    c[i]=c[i-1]+c[i];
+  }
+  let r = []
+  for(let i=arr.length-1;i>=0;--i){
+    let index=c[arr[i]]-1;
+    r[index]=arr[i];
+    c[arr[i]]--;
+  }
+  for(let i=0;i<arr.length;++i){
+    arr[i]=r[i]
+  }
+}
+let arrCounting = [2,5,3,0,2,3,0,3];
+countingSort(arrCounting);
+console.log(arrCounting)
