@@ -182,3 +182,39 @@ function partition2(arr, low, high){
   arr[low] = pivot;
   return low
 }
+
+/**
+ * ：O(n) 时间复杂度内求无序数组中的第 K 大元素。
+ */
+function findK(arr, low, high, k){
+  if(low<=high){
+    let pivotK=partitionK(arr, low, high)
+    let cnt = pivotK-low+1;
+    if(k===cnt){
+      return arr[pivotK];
+    }else if(k<cnt){
+      return findK(arr, low, pivotK-1, k);
+    }else if(k>cnt){
+      return findK(arr, pivotK+1, high, k-cnt)
+    }
+  }
+  return 0;
+}
+
+function partitionK(arr, low, high){
+  let pivot=arr[low];
+  while(low<high){
+    while(low<high && arr[high]>pivot){
+      --high;
+    }
+    arr[low]=arr[high];
+    while(low<high && arr[low]<=pivot){
+      ++low;
+    }
+    arr[high]=arr[low];
+  }
+  arr[low]=pivot;
+  return low;
+}
+let arrK = [4,2,3,6];
+console.log(findK(arrK,0, arrK.length-1, 4))
