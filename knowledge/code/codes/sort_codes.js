@@ -1,10 +1,8 @@
-
 function swap(arr, i, j){
   let temp = arr[i]
   arr[i] = arr[j]
   arr[j] = temp
 }
-
 let arr = [4,5,6,1,3,2,11,23,123,32]
 /** 
  * 冒泡排序
