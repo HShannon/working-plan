@@ -125,6 +125,6 @@ function bsearch_last_above_equal(arr, value){
   }
   return -1
 }
-let arr_above_equal=[3,4,6,7,10];
-let value_above_equal=5
-console.log(bsearch_last_above_equal(arr_above_equal, value_above_equal));
+// let arr_above_equal=[3,4,6,7,10];
+// let value_above_equal=5
+// console.log(bsearch_last_above_equal(arr_above_equal, value_above_equal));
