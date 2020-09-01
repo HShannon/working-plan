@@ -1,0 +1,41 @@
+
+#1 查看所有的数据库
+
+show databases； 
+
+#2 选择需要操作的数据库
+
+use xx  # xx 为我需要操作的数据库
+
+#3 查看刚刚选择库的所有表
+
+show tables;
+
+#4 开始操作之前一定要打开事务， 事务的好处就是如果操作完一条数据， 符合自己的预期，那么就提交这条操作，
+# 如果刚刚操作的不符合自己的预期， 就回滚刚刚的操作， 数据就会回到操作之前的样子
+
+begin # 这个是开始事务的标识
+
+#5 开始操作数据库， 比如，我们要插入一条数据
+
+#5.1 首先查看当前是什么样的， 我们查看最后几条数据
+# xx1 是你要操作的表， xx2是你要操作的数据库，    从xx2数据库的xx1表选最后三条数据
+select * from uc_role order by role_id desc  limit 3 \G;
+
+# 5.2 插入我们当前要插入的数据,  
+# 插入一条数据， name='小明', age=18
+INSERT INTO uc_role(`sys_id`, `parent_id`, `role_name`, `permission_info`, `creator_id`) VALUES(37, 362, "乐视",  '{"role":[1000], "userApp":"leshi"}', 702213728);
+
+# 5.3 查看我们刚刚插入的数据是否符合我们的预期
+# 还是查看最后三条
+select * from uc_role order by role_id desc  limit 3 \G;
+
+# 5.4 如果符合我们的预期， 则提交我们的操作
+commit;
+
+# 5.5 如果不符合我们的预期， 则回滚我们刚刚的操作
+
+
+
+
+\
