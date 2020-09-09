@@ -236,6 +236,11 @@ cycle()
 4. 宏观任务 && 微观任务
 由 JavaScript 引擎发起 还是 由宿主发起，分为宏观任务和微观任务
 
+5. 常见的宏观任务和微观任务   
+- macro-task: script, setTimeout, setinterval, setImmediate, I/O, UI rending
+- micro-task: process.nextTick, Promise, Object.observe, MutationObserver
+> process.nextTick() > Promise.then() > setTimeout > setImmediate
+
 ## 闭包和执行上下文到底是什么
 1. 闭包  
 闭包是指绑定了执行环境的函数。古典闭包的定义由两部分组成，分别为环境部分和表达式部分，在 JavaScript 的标准中，
