@@ -20,3 +20,34 @@
 5. show global variables like 'validate_pass%' // 展示能够匹配 validate_pass% 的全局变量
 6. alter user 'root'@'localhost' identified with mysql_native_password by '12345678'; // 更新全局密码
 7. mysql -uroot -p
+
+## 利用 mysql 包
+```
+/**
+ * npm install mysql
+ * use for mysql
+ */
+const mysql=require('mysql');
+const connection = mysql.createConnection({
+	// host: '10.126.153.140',
+	// user: 'root',
+	// database: 'UC_User',
+	// port: '3306',
+  
+	host: 'localhost',
+	user: 'root',
+	database: 'test',
+	port: '3306',
+	password: '12345678',
+	socketPath: '/tmp/mysql.sock'
+});
+connection.connect();
+connection.query('SELECT * FROM classMembers', function(err, results){
+	if(err){
+		console.log('[SELECT ERROR] - ', err.message);
+		return;
+	}
+	console.log(results);
+});
+connection.end();
+```
