@@ -103,8 +103,37 @@ function rectCover(number)
 
 // 负数用补码
 // 原码，反码（正数的反码为本身, 负数反码为符号位不变，其他位取反），补码（正数补码为本身，负数为反码加1）
-function NumberOf1(n)
+// 括号的优先级
+function NumberOf11(n)
 {
     // write code here
-    
+    if(n === null || n === 0){
+      return 0;
+    }
+    let count = 0;
+    let flag = 1;
+    while(flag !== 0){
+      if((flag & n) !== 0){
+        count++
+      }
+      flag = flag << 1
+    }
+    return count
+}
+
+function NumberOf11(n)
+{
+    // write code here
+    if(n === null || n === 0){
+      return 0;
+    }
+    let count = 0;
+    let flag = 1;
+    while(flag !== 0){
+      if((flag & n) !== 0){
+        count++
+      }
+      flag = flag << 1
+    }
+    return count
 }
