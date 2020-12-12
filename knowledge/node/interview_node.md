@@ -20,3 +20,16 @@
 错误优先的回调函数是用于传递错误和数据，第一个参数是错误对象。用于检测程序是否出现错误，其余参数用于传递数据
 
 ## 什么是事件循环
+
+## Node 核心内置类库
+1. 网络
+```
+var http = require('http');
+http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('<meta charset="UTF-8"><h1>我是标题啊！</h1><font color="red">这么原生，初级的服务器，下辈子能用着吗?!</font>');
+  res.end();
+}).listen(3000);
+```
+
+2. 
