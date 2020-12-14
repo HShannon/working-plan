@@ -3,7 +3,7 @@
 ## 1. 盒子模型
 ## 2. BFC
 
-## 3. CSS 选择器
+## 3. 清楚浮动的方法
 - 浮动元素后面的元素用 clear: left | right | both | none, 消除浮动
 ```
 <style>
@@ -222,6 +222,66 @@ overflow: hidden;
 - 修改属性后，是否会重新渲染
 
 > 重构(repaint || redraw) 回流 (reflow)
+
+## 9 CSS 预处理器
+> 为什么会有预处理器
+> 1. 语法不够强大
+> 2. 没有变量可以维护, 合理的样式复用机制
+
+- Less
+- sass
+- Stylus
+
+## 10. 响应式设计，响应式设计的基本原理
+- 根据媒体查询检测不同的设备屏幕尺寸做处理，需要在顶部申明
+```
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+```
+```
+/* iphone6 7 8 */
+body {
+  background-color: yellow;
+}
+/* iphone 5 */
+@media screen and (max-width: 320px) {
+  body {
+    background-color: red;
+  }
+}
+/* iphoneX */
+@media screen and (min-width: 375px) and (-webkit-device-pixel-ratio: 3) {
+  body {
+    background-color: #0FF000;
+  }
+}
+/* iphone6 7 8 plus */
+@media screen and (min-width: 414px) {
+  body {
+    background-color: blue;
+  }
+}
+/* ipad */
+@media screen and (min-width: 768px) {
+  body {
+    background-color: green;
+  }
+}
+/* ipad pro */
+@media screen and (min-width: 1024px) {
+  body {
+    background-color: #FF00FF;
+  }
+}
+/* pc */
+@media screen and (min-width: 1100px) {
+  body {
+    background-color: black;
+  }
+}
+```
+- 响应式设计与自适应设计的区别
+  - 响应式设计：开发一套界面，通过检测视口分辨率，展现不同的布局和内容
+  - 自适应设计：开发多套界面，通过检测视口分辨率，返回不同的页面
 
 ## 参考资料
 - [10分钟学习BFC](https://zhuanlan.zhihu.com/p/25321647)
