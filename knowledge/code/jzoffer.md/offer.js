@@ -137,3 +137,109 @@ function NumberOf11(n)
     }
     return count
 }
+
+function Power(base, exponent)
+{
+    // write code here
+    if(base === 0 && exponent < 0){
+      return null
+    }
+    if(exponent === 0){
+      return 1;
+    }
+    let result = PowerCore(base, Math.abs(exponent));
+    if(exponent < 0){
+      result = 1 / result;
+    }
+    return result
+}
+
+function PowerCore(base, exponent){
+  if(exponent === 1){
+    return base
+  }
+  let res = PowerCore(base, exponent >> 1)
+  res *= res
+  // 若为偶数
+  if(exponent & 1 !== 0){
+    res = res * base
+  }
+  return res;
+}
+
+
+function reOrderArray(array)
+{
+    // write code here
+    if(array === null || array.length <=0){
+      return [];
+    }
+    let arr1 = [];
+    let arr2 = [];
+    array.forEach((item) => {
+      if((item & 1) === 0){
+        arr1.push(item)
+      }else {
+        arr2.push(item)
+      }
+    })
+    return arr2.concat(arr1);
+}
+
+/*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+function FindKthToTail(head, k)
+{
+    // write code here
+    if(head === null || k <= 0){
+      return null
+    }
+    let pNode = head;
+    let pLength = 0;
+    while(pNode !== null){
+      pNode = pNode.next;
+      pLength++  
+    }
+    if(k > pLength){
+      return null;
+    }
+    let p1 = head;
+    let p2 = head;
+    let index = 0;
+    while((index < k-1) && (p1.next !== null)){
+      p1 = p1.next;
+      index++;
+    }
+    while(p1.next !== null){
+      p1 = p1.next;
+      p2 = p2.next;
+    }
+    return p2
+}
+
+/*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+function ReverseList(pHead)
+{
+    // write code here
+    if(pHead === null){
+      return null;
+    }
+    let pReverseHead = new ListNode('head');
+    let currentNode = pHead;
+    let preNode = null;
+    while(currentNode !== null){
+      let tempNode = currentNode.next
+      if(currentNode.next === null){
+        pReverseHead = currentNode;
+      }
+      currentNode.next = preNode;
+      preNode = currentNode;
+      currentNode = tempNode;
+    }
+    return pReverseHead;
+}
