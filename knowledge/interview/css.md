@@ -116,7 +116,53 @@
   - 内联元素不可设置 width, height, 上下内边距, 上下外边距; 块级元素可设置 width, height, 上下内边距, 上下外边距。
   - 内联元素的内不可嵌套块级元素，只可嵌套文本或者其他内联元素；块级元素
   - 块级元素独占一行
-- 
-
+- 将元素设置为 display: table-cell 后, 元素的特点
+  - 对高度宽度敏感
+  - 对 margin 无效
+  - 响应 padding 属性
+- display: table-cell 的应用场景
+  - 元素两端对齐
+  - 自动划分每个小模块，使其一行显示
+  - 图片垂直居中于元素（**类似于文本居中**）
+  - 两 Box 实现等高居中 (左侧 box 宽度限定，右侧 box 设置 display: table-cell)
+  ```
+  <div class="content">
+    <div class="img-box">
+      ![logo](http://upload-images.jianshu.io/upload_images/1432546-53d1c7f44dc6e873.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    </div>
+    <div class="text-box">
+      <span>
+          王尼玛和陈尼玛都是年轻有为的骚年，有一天他们相遇了，然后发现都对对方一见钟情后，所以就愉快的生活在了一起。。。。。王尼玛和陈尼玛都是年轻有为的骚年，有一天他们相遇了，然后发现都对对方一见钟情后，所以就愉快的生活在了一起。。。。。王尼玛和陈尼玛都是年轻有为的骚年，有一天他们相遇了，然后发现都对对方一见钟情后，所以就愉快的生活在了一起。。。。。王尼玛和陈尼玛都是年轻有为的骚年，有一天他们相遇了，然后发现都对对方一见钟情后，所以就愉快的生活在了一起。。。。。王尼玛和陈尼玛都是年轻有为的骚年，有一天他们相遇了，然后发现都对对方一见钟情后，所以就愉快的生活在了一起。。。。。王尼玛和陈尼玛都是年轻有为的骚年，有一天他们相遇了，然后发现都对对方一见钟情后，所以就愉快的生活在了一起。。。。。
+      </span>
+    </div>
+  </div>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  .content{
+    border:1px solid #06c;
+    padding:15px 15px;
+    max-width: 1000px;
+    margin:10px auto;
+    min-width:320px;
+    width:100%;
+  }
+  .img-box{
+    height:150px;
+    width:100px;
+    border:1px solid red;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #4679bd;
+  }
+  .text-box{
+    display: table-cell;
+    border: border:1px solid #ddd;
+    padding:10px;
+  }
+  </style>
+  ```
 ## 参考资料
 - [10分钟学习BFC](https://zhuanlan.zhihu.com/p/25321647)
