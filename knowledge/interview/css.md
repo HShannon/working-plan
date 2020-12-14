@@ -4,6 +4,49 @@
 ## 2. BFC
 
 ## 3. CSS 选择器
+- 浮动元素后面的元素用 clear: left | right | both | none, 消除浮动
+```
+<style>
+  .topDiv {
+      width: 500px;
+      border: 2px solid black;
+      /* overflow: hidden; */
+  }
+  .floatDiv {
+      width: 100px;
+      height: 100px;
+      border: 2px dotted red;
+      color: red;
+      margin: 4px;
+      float: left;
+  }
+  .bottomDiv {
+      width: 500px;
+      height: 100px;
+      margin: 5px 0;
+      border: 2px dotted black;
+  }
+  .textDiv {
+      color: blue;
+      border: 2px solid blue;
+      clear: both; // 两侧都不能有浮动元素
+      /* overflow: hidden; */ // 左右排列
+  }
+</style>
+
+<body>
+ <div class="topDiv">
+    <div class="floatDiv">float left</div>
+    <div class="textDiv">...</div>
+ </div>
+ <div class="bottomDiv">...</div>
+</body>
+```
+- 利用伪元素清除浮动
+浮动元素的容器用 ::after 创建一个块级子元素，消除浮动对容器带来的影响
+
+- 利用 overflow: hidden
+浮动元素的容器用 overflow: hidden 消除浮动
 
 ## 4. 布局
 - 块级元素垂直居中
@@ -67,6 +110,13 @@
     }
   <style>
   ```
+
+## 5. dispaly
+- 内联元素，块级元素的区别
+  - 内联元素不可设置 width, height, 上下内边距, 上下外边距; 块级元素可设置 width, height, 上下内边距, 上下外边距。
+  - 内联元素的内不可嵌套块级元素，只可嵌套文本或者其他内联元素；块级元素
+  - 块级元素独占一行
+- 
 
 ## 参考资料
 - [10分钟学习BFC](https://zhuanlan.zhihu.com/p/25321647)
