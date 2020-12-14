@@ -8,6 +8,19 @@
   - data
   - origin
   - source
+```
+//获取iframe元素
+iFrame = document.getElementById('myframe')
+iFrame.onload = function(){
+  iFrame.contentWindow.postMessage('MessageFromIndex1','*');
+}
+```
+```
+window.addEventListener('message', receiveMessage, false)
+function receiveMessage(event){
+  console.log( 'receiveMessage', event )
+}
+```
 
 ## 2. 可拖拽
 ```
