@@ -177,7 +177,51 @@
 > - z-index 遵从父原则
 
 ## 7. CCS3 新特性
-- 
+- box-shadow: x-offset y-offset blur-radius spread-radius color
+- text-shadow: x-offset y-offset blur-radius color
+- border-radius
+  - 圆形: 高度宽度一致，半径是宽度的一半
+  - 半圆
+  ```
+  <body>
+    <div class="odiv3"></div>
+  </body>
+  <style>
+    .odiv3{
+      background: lightblue;
+      width: 100px;
+      height: 50px;
+      border-radius: 0px 0px 50px 50px;
+    }
+  </style>
+  ```
+  - 扇形
+  ```
+  <body>
+    <div class="odiv3"></div>
+  </body>
+  <style>
+    .odiv3{
+      background: lightblue;
+      width: 100px;
+      height: 100px;
+      border-radius: 100px 0px 0px 0px;
+    }
+  </style>
+  ```
+- 文本相关的 css
+```
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+```
+
+## 8. display: none 和 visibility: hidden 的区别
+- 是否占据空间。 display: none 不会占据任何文档流空间，visibility: hidden 仍会占据空间
+- 是否继承属性。前者的子元素不可见，后者的子元素若将visibility 属性改为 visible 可见
+- 修改属性后，是否会重新渲染
+
+> 重构(repaint || redraw) 回流 (reflow)
 
 ## 参考资料
 - [10分钟学习BFC](https://zhuanlan.zhihu.com/p/25321647)
