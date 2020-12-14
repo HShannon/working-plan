@@ -173,8 +173,8 @@
 - sticky
 
 > z-index 相关的东西
-- z-index 只有 position 为 relative ｜ absolute | fixed 元素， z-index 起作用
-- z-index 遵从父原则
+> - z-index 只有 position 为 relative ｜ absolute | fixed 元素， z-index 起作用
+> - z-index 遵从父原则
 
 ## 7. CCS3 新特性
 - 
