@@ -243,3 +243,84 @@ function ReverseList(pHead)
     }
     return pReverseHead;
 }
+
+/*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+function Merge1(pHead1, pHead2)
+{
+    // write code here
+    if(pHead1 === null) return pHead2;
+    if(pHead2 === null) return pHead1;
+    let pHead = null
+    if(pHead1.val < pHead2.val){
+      pHead = pHead1
+      pHead.next = Merge(pHead1.next, pHead2) 
+    } else {
+      pHead = pHead2
+      pHead.next = Merge(pHead1, pHead2.next)
+    }
+    return pHead
+}
+
+function Merge(pHead1, pHead2)
+{
+  if(pHead1 === null && pHead2 === null){
+    return null;
+  }
+  let pMergeHead = new ListNode('head');
+  let pNode = pMergeHead
+  let p1 = pHead1;
+  let p2 = pHead2;
+  while(p1 !== null && p2 !== null){
+    if(p1.val < p2.val){
+      pNode.next = new ListNode(p1.val);
+      p1 = p1.next;
+    } else {
+      pNode.next = new ListNode(p2.val);
+      p2 = p2.next;
+    }
+    pNode = pNode.next;
+  }
+  if(p1 !== null) pNode.next = p1;
+  if(p2 !== null) pNode.next = p2;
+  return pMergeHead.next
+}
+
+// {8,8,#,9,#,2,#,5},{8,9,#,2}
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+function HasSubtree(pRoot1, pRoot2)
+{
+    // write code here
+    let result = false;
+    if(pRoot1 !== null && pRoot2 !== null){
+      if(pRoot1.val === pRoot2.val){
+        result = HasSubtreeCore(pRoot1, pRoot2)
+      }
+      if(!result){
+        result = HasSubtree(pRoot1.left, pRoot2);
+      }
+      if(!result){
+        result = HasSubtree(pRoot1.right, pRoot2);
+      }
+    }
+    return result
+}
+
+function HasSubtreeCore(pRoot1, pRoot2){
+  if(pRoot2 === null){
+    return true;
+  }
+  if(pRoot1 === null){
+    return false;
+  }
+  if(pRoot1.val !== pRoot2.val){
+    return false;
+  }
+  return HasSubtreeCore(pRoot1.left, pRoot2.left) && HasSubtreeCore(pRoot1.right, pRoot2.right)
+}

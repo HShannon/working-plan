@@ -63,6 +63,20 @@ x-request-with: XMLHttpRequest
 跨域是指从一个域名的网页去请求另一个域名的资源。根据同源策略，即域名、协议和端口均相同。浏览器会限制从脚本内发起的跨域 HTTP 请求，例如 XMLHTTRequest 和 fetch。值得注意的是 localhost 和 127.0.0.1 也是跨域。解决方案有: 
 - 中间层过度(代理): 通过向后端请求，后端再去和其他域的后端通讯
 - JSONP: 在页面上引入不同域上的js脚本文件，JSONP 利用该原理。
+```
+<script type="text/javascript" src="http://localhost/Service.ashx?callback=jsonpCallback" />
+  //回调函数
+  function jsonpCallback(content){
+    alert(content); 
+  } 
+</script>
+<!--   运行的结果显示test jsonp,可以看出整个过程： -->
+<!--   script标签设置src属性为请求的地址，并判断回调函数作为参数服务端构建JS脚本，传递返回给客户端的数据客户端在回调函数中解析服务器生成的数据 -->
+```
 - H5 window.postMessage: 可以使用它来向其它的window对象发送消息(与 iframe 沟通的好办法)。
 - CORS: 思路就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
+```
+Access-Control-Allow-Origin: * // 该资源可以被任意外域访问
+Access-Control-Allow-Origin: http://foo.example // 该资源仅允许来自 http://foo.example 的访问 
+```
 - [web sockets](https://github.com/huanqingli/life-note/blob/master/%E5%8E%9F%E5%88%9B%E6%96%87%E7%AB%A0/%E6%8A%80%E6%9C%AF%E7%B1%BB/WebSocket%E8%AF%A6%E8%A7%A3.md): 一种浏览器的API,建立持久化链接，没有同源策略。
