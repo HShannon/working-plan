@@ -74,7 +74,7 @@ x-request-with: XMLHttpRequest
 <!--   script标签设置src属性为请求的地址，并判断回调函数作为参数服务端构建JS脚本，传递返回给客户端的数据客户端在回调函数中解析服务器生成的数据 -->
 ```
 - H5 window.postMessage: 可以使用它来向其它的window对象发送消息(与 iframe 沟通的好办法)。
-- CORS: 思路就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。
+- CORS: 思路就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败
 ```
 Access-Control-Allow-Origin: * // 该资源可以被任意外域访问
 Access-Control-Allow-Origin: http://foo.example // 该资源仅允许来自 http://foo.example 的访问 

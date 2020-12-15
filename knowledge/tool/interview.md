@@ -586,5 +586,29 @@ var i = 1
 第一阶段会进行变量提升，赋值不会
 - let const 不会进行变量提升
 
-
-
+## XMLHttpRequest 对象
+```
+function createXHR(){
+  if(typeof XMLHttpRequest !== 'undefined'){
+    return new XMLHttpRequest()
+  } else {
+    if(typeof ActiveXObject !== 'undefined){
+      // ....
+    }
+    return new ActiveXObject(arguments.callee)
+  }
+}
+let xhr = createXHR()
+xhr.open('get', 'example.text', false);
+xhr.send();
+xhr.onreadystatechange = function(){
+  if(xhr.readystate === 4) {
+    if((xhr.status >= 200 && shr.status <=300) || xhr.status === 304){
+      console.log(xhr.responseText);
+    } else {
+      console.log('error')
+    }
+  }
+}
+```
+1. 毒瘤 IE 浏览器, XMLHttpRequest 对象， ActiveXObject 对象
