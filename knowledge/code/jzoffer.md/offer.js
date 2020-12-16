@@ -324,3 +324,67 @@ function HasSubtreeCore(pRoot1, pRoot2){
   }
   return HasSubtreeCore(pRoot1.left, pRoot2.left) && HasSubtreeCore(pRoot1.right, pRoot2.right)
 }
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+function Mirror(root)
+{
+    // write code here
+    if(root === null){
+      return;
+    }
+    if(root.left === null && root.right === null){
+      return;
+    }
+    let tempNode = root.left;
+    root.left = root.right;
+    root.right = tempNode;
+    if(root.left !== null) Mirror(root.left)
+    if(root.right !== null) Mirror(root.right)
+}
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+function Mirror(root)
+{
+    // write code here
+    if(!root){
+        return
+    }
+    if(!root.left  && !root.right){
+        return;
+    }
+    let tempTree = root.right;
+    root.right = root.left;
+    root.left = tempTree;
+    if(root.left){
+        Mirror(root.left);
+    }
+    if(root.right){
+        Mirror(root.right);
+    }
+}
+
+
+function push(node)
+{
+    // write code here
+}
+function pop()
+{
+    // write code here
+}
+function top()
+{
+    // write code here
+}
+function min()
+{
+    // write code here
+}
