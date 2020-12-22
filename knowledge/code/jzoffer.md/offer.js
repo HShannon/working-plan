@@ -371,20 +371,76 @@ function Mirror(root)
     }
 }
 
-
+let min_stack = [];
+let data_stack = [];
 function push(node)
 {
     // write code here
+    data_stack.push(node);
+    if(min_stack.length === 0 || node < min()){
+        min_stack.push(node)
+    }else{
+        min_stack.push(min())
+    }
 }
 function pop()
 {
     // write code here
+    min_stack.pop()
+    data_stack.pop()
 }
 function top()
 {
     // write code here
+    return data_stack[data_stack.length-1]
 }
 function min()
 {
     // write code here
+    return min_stack[min_stack.length -1]
 }
+
+let arr = [5,4,3,2,1]
+function bubbleSort(arr){
+  if(!arr || arr.length <= 0){
+    return []
+  }
+  for(let i =0;i<arr.length;i++){
+    let flag = false;
+    for(let j = 0; j < arr.length -1 - i;j++){
+      if(arr[j] > arr[j+1]){
+        let temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] =temp;
+        flag = true; 
+      }
+    }
+    if(!flag){
+      break;
+    }
+  }
+  return arr
+}
+// console.log(bubbleSort(arr))
+
+function InsertSort(arr){
+  if(!arr || arr.length <= 0){
+    return [];
+  }
+  for(let i = 1;i<arr.length;i++){
+    let val = arr[i];
+    let j = i-1
+    for(;j>=0;j--){
+      if(val < arr[j]){
+        arr[j+1]=arr[j]
+      }else {
+        break;
+      }
+    }
+    arr[j+1] = val;
+  }
+  return arr;
+}
+
+// console.log(InsertSort(arr))
+ 
