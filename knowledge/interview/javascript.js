@@ -5,7 +5,6 @@ function myNew(fn, ...args){
   return typeof result === 'object' ? result : instance;
 }
 
-
 function myNewSencond(){
   const obj = new Object();
   Constructor = Array.prototype.shift.call(arguments);
@@ -14,8 +13,19 @@ function myNewSencond(){
   return typeof ret === 'object'? ret : obj;
 }
 
-
 function Student(name, age){
   this.name = name;
   this.age = age;
+}
+
+// 手写 instanceof
+function myInstanceof(left, right){
+  let proto = Object.getPrototypeOf(left);
+  while(proto){
+    if(proto === right.prototype){
+      return true
+    }
+    proto = Object.getPrototypeOf(proto)
+  }
+  return false
 }
