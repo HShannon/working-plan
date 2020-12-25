@@ -29,3 +29,37 @@ function myInstanceof(left, right){
   }
   return false
 }
+
+// 手写 call
+Function.prototype.myCall = function(context, ...arguments){
+  context = context || window;
+ let key = Symbol();
+ context[key] =this;
+ let result = context[key](...arguments);
+ delete context[key];
+ return result;
+}
+
+// 手写 apply
+Function.prototype.myApply = function(context, arugments){
+ context = context || window;
+ let key = Symbol();
+ context[key] = this;
+ let result = context[key](...arugments);
+ delete context[key];
+ return result;
+}
+
+Function.prototype.myBind = function(context){
+ if(typeof this !== 'function'){
+   throw new Error(
+     "Function.prototype.bind - what is trying to be bound is not callable"
+   );
+ }
+ let self = this;
+ let args = Array.prototype.slice.call(arguments, 1);
+ return function(){
+   let innerArgs = Array.prototype.slice.call(arguments);
+   return self.apply(context, args.concat(innerArgs))
+ }
+}
