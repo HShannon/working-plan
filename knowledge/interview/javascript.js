@@ -63,3 +63,39 @@ Function.prototype.myBind = function(context){
    return self.apply(context, args.concat(innerArgs))
  }
 }
+
+// 面经题
+function Counter(){
+  var start = Date.now();
+  this.num = 0;
+  this.timer1 = setInterval(function(){
+    this.num++
+    var gap = Date.now() - start;
+    console.log('timer1', this.num, gap);
+  }, 996)
+  JSON.parse('{"desc":"..."}')
+  this.timer2 = setTimeout(() => {
+    this.num++;
+    var gap = Date.now() - start;
+    console.log('timer2', this.num, gap);
+  }, 0)
+}
+
+// JSONP: 函数还有一些需要优化的地方 https://juejin.cn/post/6844904151369908232#heading-39
+function jsonp({
+  url,
+  params = {},
+  callbackKey = 'cb',
+  callback
+}){
+  const callbackName = 'JsonpCallback'
+  params[callbackKey] = callbackName;
+  window[callbackName] = callback;
+  const paramstring = Object.keys(params).keys.map(item => {
+    `${item}=${encodeURIComponent(params[item])}`
+  }).join('&')
+  const oScript = document.createElement('script');
+  oScript.setAttribute('type', 'text/javascript');
+  oScript.setAttribute('src', `${url}?${paramstring}`);
+  document.body.appendChild(oScript);
+}
