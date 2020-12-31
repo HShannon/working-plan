@@ -101,4 +101,21 @@ function jsonp({
 }
 
 // 立即执行函数
-console.log(module.paths)
+// console.log(module.paths)
+
+let promiseArr = [1, 2, 4];
+function aysncPrint(promiseArr) {
+  promiseArr.reduce((pre, cur) => {
+    return pre.then(() => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(console.log(cur)), 1000)
+      })
+    })
+  }, Promise.resolve())
+}
+
+// 获取 cookie
+function getCookie(name){
+  let match = document.cookie.match(new RegExp('(^| )' + name + '([^;]*)'));
+  if(match) return unescape(match[2]);
+}
