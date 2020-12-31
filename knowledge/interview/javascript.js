@@ -99,3 +99,6 @@ function jsonp({
   oScript.setAttribute('src', `${url}?${paramstring}`);
   document.body.appendChild(oScript);
 }
+
+// 立即执行函数
+console.log(module.paths)
