@@ -119,3 +119,54 @@ function getCookie(name){
   let match = document.cookie.match(new RegExp('(^| )' + name + '([^;]*)'));
   if(match) return unescape(match[2]);
 }
+
+// 文档片段
+let element = document.createElement('ul');
+let fragment = document.createDocumentFragment();
+var fruit = ['apple', 'watermeol', 'pineapple']
+fruit.forEach(item => {
+  let oli = document.createElement('li');
+  oli.textContent = item;
+  fragment.appendChild(oli)
+})
+element.appendChild(fragment)
+
+// 防抖：时间被触发 n 秒后再执行回调，如果在 n 秒内又被触发，则重新计时
+function debounce(fn, delay){
+  let timer = null;
+  return function(){
+    let context = this;
+    let args = arguments
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      fn.apply(context, args)
+    }, delay)
+  }
+}
+window.addEventListener('resize', debounce(foo, 2000));
+
+// 节流：规定在一个单位时间内，只能触发一次函数，如果在单位时间内触发多次函数，只有一次生效
+function throttle1(fn, delay){
+  let prev = Date.now();
+  return function(){
+    let context = this;
+    let args = arguments;
+    let now = Date.now();
+    if(now - prev >= delay){
+      fn.apply(context, args);
+      prev = Date.now();
+    }
+  }
+}
+
+function throttle2(fn, delay){
+  let canRun = true;
+  return function(){
+    if(!canRun) return;
+    canRun = false;
+    setTimeout(() => {
+      fn.apply(this, arguments);
+      canRun = true;
+    }, delay)
+  }
+}
