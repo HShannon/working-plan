@@ -444,3 +444,89 @@ function InsertSort(arr){
 
 // console.log(InsertSort(arr))
  
+function Convert(pRootOfTree)
+{
+    // write code here
+    if(!pRootOfTree){
+      return null;
+    }
+    ConvertCore(pRootOfTree);
+    while(pRootOfTree.left){
+      pRootOfTree = pRootOfTree.left
+    }
+    return pRootOfTree
+}
+function ConvertCore(node, last){
+  if(node.left){
+    last = ConvertCore(node.left, last)
+  }
+  node.left = last;
+  if(last){
+    last.right = node;
+  }
+  last = node;
+  if(node.right){
+    last = ConvertCore(node.right, last)
+  }
+  return last
+}
+
+function Permutation(str)
+{
+    // write code here
+    let result = [];
+    if(str){
+      let queue = str.split('');
+      let temp = '';
+      let currentStr = '';
+      PermutationCore(queue, temp, currentStr, result);
+    }
+    result.sort();
+    result = [...new Set(result)]
+    return result
+}
+
+function PermutationCore(queue, temp, currentStr, result){
+  currentStr += temp;
+  if(queue.length === 0){
+    result.push(currentStr);
+    return;
+  }
+  for(let i = 0;i < queue.length;i++){
+    temp = queue.shift();
+    PermutationCore(queue, temp, currentStr, result)
+    queue.push(temp)
+  }
+}
+
+// console.log(Permutation('abc'))
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+  let result = [];
+  if(nums && nums.length > 0){
+    currentArr = [];
+    permuteCore(nums,  currentArr, result)
+  }
+  return result
+};
+
+var permuteCore = function(nums, currentArr, result){
+  if(currentArr.length === nums.length){
+    result.push([...currentArr])
+  }
+  for(let i =0;i<nums.length;i++){
+    if(currentArr.includes(nums[i])) continue
+    currentArr.push(nums[i])
+    permuteCore(nums, currentArr, result);
+    console.log("=>", currentArr)
+    currentArr.pop()
+  }
+}
+// console.log(permute([1,2,3]))
+
+
+
