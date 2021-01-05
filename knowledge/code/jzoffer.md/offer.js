@@ -522,7 +522,6 @@ var permuteCore = function(nums, currentArr, result){
     if(currentArr.includes(nums[i])) continue
     currentArr.push(nums[i])
     permuteCore(nums, currentArr, result);
-    console.log("=>", currentArr)
     currentArr.pop()
   }
 }
