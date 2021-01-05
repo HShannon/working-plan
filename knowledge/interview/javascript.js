@@ -121,15 +121,15 @@ function getCookie(name){
 }
 
 // 文档片段
-let element = document.createElement('ul');
-let fragment = document.createDocumentFragment();
-var fruit = ['apple', 'watermeol', 'pineapple']
-fruit.forEach(item => {
-  let oli = document.createElement('li');
-  oli.textContent = item;
-  fragment.appendChild(oli)
-})
-element.appendChild(fragment)
+// let element = document.createElement('ul');
+// let fragment = document.createDocumentFragment();
+// var fruit = ['apple', 'watermeol', 'pineapple']
+// fruit.forEach(item => {
+//   let oli = document.createElement('li');
+//   oli.textContent = item;
+//   fragment.appendChild(oli)
+// })
+// element.appendChild(fragment)
 
 // 防抖：时间被触发 n 秒后再执行回调，如果在 n 秒内又被触发，则重新计时
 function debounce(fn, delay){
@@ -143,7 +143,7 @@ function debounce(fn, delay){
     }, delay)
   }
 }
-window.addEventListener('resize', debounce(foo, 2000));
+// window.addEventListener('resize', debounce(foo, 2000));
 
 // 节流：规定在一个单位时间内，只能触发一次函数，如果在单位时间内触发多次函数，只有一次生效
 function throttle1(fn, delay){
@@ -174,8 +174,24 @@ function throttle2(fn, delay){
 // meta 响应式设计
 // <meta name="viewport" content="width=device-width,initial-scale=1.maximum-scale=1,user-scalable=no" />
 
-/* function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-} */
+// es6 代理
+let obj = {
+  a: 1,
+  b: 2,
+}
+const p = new Proxy(obj, {
+  get(target, key, value) {
+    if (key === 'c') {
+      return '我是自定义的一个结果';
+    } else {
+      return target[key];
+    }
+  },
+  set(target, key, value) {
+    if (value === 4) {
+      target[key] = '我是自定义的一个结果';
+    } else {
+      target[key] = value;
+    }
+  }
+})
