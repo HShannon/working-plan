@@ -170,3 +170,12 @@ function throttle2(fn, delay){
     }, delay)
   }
 }
+
+// meta 响应式设计
+// <meta name="viewport" content="width=device-width,initial-scale=1.maximum-scale=1,user-scalable=no" />
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
