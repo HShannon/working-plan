@@ -179,7 +179,7 @@ let obj = {
   a: 1,
   b: 2,
 }
-const p = new Proxy(obj, {
+const p1 = new Proxy(obj, {
   get(target, key, value) {
     if (key === 'c') {
       return '我是自定义的一个结果';
@@ -194,4 +194,61 @@ const p = new Proxy(obj, {
       target[key] = value;
     }
   }
+})
+
+let user = {
+  _name: 'Guest',
+  get name(){
+    return this._name
+  }
+}
+let userProxy = new Proxy(user, {
+  get(target, prop, receiver){
+    return Reflect.get(target, prop, receiver)
+  }
+})
+let admin = Object.create(userProxy);
+admin._name = 'Admin'
+// console.log(admin.name)
+
+
+let data = { foo: 'foo', bar: { key: 1 }, ary: ['a', 'b'] }
+let p = new Proxy(data, {
+  get(target, key, receiver) {
+    console.log('get value:', key)
+    return Reflect.get(target, key, receiver)
+  },
+  set(target, key, value, receiver) {
+    console.log('set value:', key, value)
+    return Reflect.set(target, key, value, receiver)
+  }
+})
+
+var arr = [1,2,3];
+arr.push = function(item){
+  arr[arr.length] = 'push'
+}
+arr.push(4);
+// console.log(arr)
+
+const arrProto = Array.prototype;
+const arrayMethods = Object.create(arrProto);
+[
+  'push', 
+  'pop', 
+  'shift', 
+  'unshift',
+  'splice',
+  'reverse',
+  'sort'
+].forEach(function(method){
+  const original = arrProto[method];
+  Object.defineProperty(arrayMethods, method, {
+    val: function(...args){
+      return original.apply(this, ...args);
+    },
+    enumerable: false,
+    writable: false,
+    configurable: true
+  })
 })
