@@ -224,11 +224,11 @@ let p = new Proxy(data, {
   }
 })
 
-var arr = [1,2,3];
-arr.push = function(item){
-  arr[arr.length] = 'push'
-}
-arr.push(4);
+let arr = [1,2,3];
+// arr.push = function(item){
+//   arr[arr.length] = 'push'
+// }
+// arr.push(4);
 // console.log(arr)
 
 const arrProto = Array.prototype;
@@ -244,11 +244,14 @@ const arrayMethods = Object.create(arrProto);
 ].forEach(function(method){
   const original = arrProto[method];
   Object.defineProperty(arrayMethods, method, {
-    val: function(...args){
-      return original.apply(this, ...args);
+    value: function(...args){
+      console.log('listening to the method', method)
+      return original.apply(this, args);
     },
     enumerable: false,
     writable: false,
     configurable: true
   })
 })
+arr.__proto__ = arrayMethods
+arr.push(4)
