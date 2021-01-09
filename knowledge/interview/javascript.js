@@ -297,3 +297,16 @@ xhr.onreadyStatechange = function(){
   }
 }
 xhr.send();
+
+fetch(url, {
+  credentials: 'same-origin'  // include, same-origin, omit
+}).then(function(response){
+  return response.json() // parse reponse to json
+}).then(function(response){
+  if(response.ok){
+    return response.json()
+  }
+  // do something
+}).catch(function(err){
+  // do something
+})

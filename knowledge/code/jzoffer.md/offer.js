@@ -528,4 +528,41 @@ var permuteCore = function(nums, currentArr, result){
 // console.log(permute([1,2,3]))
 
 
+function MoreThanHalfNum_Solution(numbers)
+{
+    // write code here
+    if(numbers === null || numbers.length === 0){
+      return 0;
+    }
+    let time = 1;
+    let target = numbers[0];
+    for(let index =1; index<numbers.length;index++){
+      if(numbers[index] === target){
+        time++
+      }else {
+        time--
+        if(time === 0){
+          target = numbers[index];
+          time = 1;
+        }
+      }
+    }
+    let count = 0;
+    for(let i =0;i<numbers.length;i++){
+      if(target === numbers[i]){
+        count++
+      }
+    }
+    if(count <= (numbers.length >> 1)){
+      return 0
+    } else {
+      return target
+    }
+}
+// console.log(MoreThanHalfNum_Solution([1,2,3,2,2,2,5,4,2]))
 
+function GetLeastNumbers_Solution(input, k)
+{
+    // write code here
+    
+}
