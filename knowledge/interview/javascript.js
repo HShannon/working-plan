@@ -230,6 +230,7 @@ let arr = [1,2,3];
 // }
 // arr.push(4);
 // console.log(arr)
+// document.getElementsByTagName
 
 const arrProto = Array.prototype;
 const arrayMethods = Object.create(arrProto);
@@ -254,4 +255,45 @@ const arrayMethods = Object.create(arrProto);
   })
 })
 arr.__proto__ = arrayMethods
-arr.push(4)
+// arr.push(4)
+
+
+// setTimeout(function() {
+//   console.log('timeout')
+// })
+// process.nextTick(function(){
+//   console.log('nextTick 1')
+// })
+// new Promise(function(resolve){
+//   console.log('Promise 1')
+//   resolve();
+//   console.log('Promise 2')
+// }).then(function(){
+//   console.log('Promise Resolve')
+// })
+// process.nextTick(function(){
+//   console.log('nextTick 2')
+// })
+// fd 
+function Person (){
+
+}
+Person.prototype.showAge = function(){
+  let vm = this;
+  return this
+}
+let person1 = new Person();
+// console.log(person1.showAge().showAge())
+
+let xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://www.baidu.com');
+xhr.onreadyStatechange = function(){
+  if(xhr.readyState === 4){
+    if(xhr.status === 200){
+      console.log(xhr.responseText)
+    } else {
+      console.log('HTTP error:', xhr.status, xhr.statusText)
+    }
+  }
+}
+xhr.send();
