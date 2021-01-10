@@ -564,5 +564,96 @@ function MoreThanHalfNum_Solution(numbers)
 function GetLeastNumbers_Solution(input, k)
 {
     // write code here
-    
+    if(input === null || input.length <=0 || k <=0 || k > input.length){
+        return [];
+    }
+    if(input.length === k){
+      return input.sort()
+    }
+    let left = 0;
+    let right = input.length-1;
+    let partitionIndex = partition(input, left, right);
+    let result = []
+    while(partitionIndex !== k-1){
+        if(partitionIndex < k-1){
+            left = partitionIndex + 1;
+            partitionIndex = partition(input, left ,right);
+        }else {
+            right = partitionIndex - 1;
+            partitionIndex = partition(input, left ,right);
+        }
+    }
+    for(let i = 0; i <= partitionIndex; i++){
+        result.push(input[i])
+    }
+    result.sort();
+    return result
 }
+
+function partition(input, left, right){
+    let pivot = left;
+    let index = pivot + 1;
+    for(let i = index; i <= right; i++){
+        if(input[i] < input[pivot]){
+            swap(input , i, index);
+            index++
+        }
+    }
+    swap(input, pivot, index-1);
+    return index-1;
+}
+
+function swap(arr, i, j){
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+// console.log(GetLeastNumbers_Solution([4,5,1,6,2,7,3,8], 4));
+
+function FindGreatestSumOfSubArray(array)
+{
+    // write code here
+    if(array === null || array.length <= 0){
+      return null;
+    }
+    let currentSum = array[0];
+    let maxSum = array[0];
+    for(let index = 1;index<array.length;index++){
+      if(currentSum < 0){
+        currentSum = array[index];
+      }else {
+        currentSum += array[index];
+      }
+      if(currentSum > maxSum){
+        maxSum = currentSum
+      }
+    }
+    return maxSum
+}
+// console.log(FindGreatestSumOfSubArray([1,-2,3,10,-4,7,2,-5]))
+
+function NumberOf1Between1AndN_Solution(n)
+{
+    // write code here
+    let count = 0;
+      let i = 1;
+      let high = low = current = level = 0;
+      let length = n.toString().length;
+      while (i <= length) {
+        level = Math.pow(10, i - 1); //第i位数位于什么量级 1 10 100 ...
+        high = parseInt(n / (level * 10));
+        low = n % level;
+        current = parseInt(n / level) % 10;
+        if (current === 0) {
+          count += (high * level);
+        } else if (current === 1) {
+          count += (high * level + low + 1);
+        } else {
+          count += ((high + 1) * level);
+        }
+        i++;
+      }
+      return count;
+}
+
