@@ -657,3 +657,212 @@ function NumberOf1Between1AndN_Solution(n)
       return count;
 }
 
+function InversePairs(data)
+{
+    // write code here
+    if(data === null || data.length <= 0){
+      return 0;
+    }
+    return mergeSort(data, 0, data.length -1) % 1000000007
+}
+
+function mergeSort(data, l, r){
+  if(l>=r) return 0;
+  let mid = parseInt(l + ((r-l) >> 1))
+  let lNum = mergeSort(data, l, mid)
+  let rNum = mergeSort(data, mid+1, r)
+  let mNum = merge(data, l, mid, r)
+  return lNum + rNum + mNum;
+}
+
+function merge(data, l, mid, r){
+  let temp = [];
+  let p1 = mid;
+  let p2 = r;
+  let i = r-l;
+  let count = 0;
+  while(p1>=l && p2 >= mid+1){
+    if(data[p1]>data[p2]){
+      count += p2-mid;
+      temp[i--] = data[p1--]
+    }else{
+      temp[i--] = data[p2--];
+    }
+  }
+  while(p1 >= l){
+    temp[i--] = data[p1--]
+  }
+  while(p2 >= mid+1){
+    temp[i--] = data[p2--]
+  }
+  for(let i = 0;i<temp.length; ++i){
+    data[l+i] = temp[i]
+  }
+  return count
+}
+
+function FindFirstCommonNode(pHead1, pHead2)
+{
+    // write code here
+    let nLength1 = getListLength(pHead1);
+    let nLength2 = getListLength(pHead2);
+    let longListHead = pHead1;
+    let shortListHead = pHead2;
+    let nLengthDis = nLength1 - nLength2;
+    if(nLength2 > nLength1){
+      longListHead = pHead2;
+      shortListHead = pHead1;
+      nLengthDis = nLength2 - nLength1;
+    }
+    for(let i =0;i<nLengthDis;i++){
+      longListHead = longListHead.next
+    }
+    while(longListHead && shortListHead && longListHead.val !== shortListHead.val){
+      longListHead = longListHead.next;
+      shortListHead = shortListHead.next;
+    }
+    let firtcommonNode = longListHead
+    return firtcommonNode
+}
+
+function getListLength(pHead){
+  let nLength = 0;
+  let pNode = pHead;
+  while(pNode){
+    nLength++;
+    pNode = pNode.next
+  }
+  return nLength
+}
+
+function TreeDepth(pRoot)
+{
+    // write code here
+    if(pRoot === null){
+      return 0;
+    }
+    let left = TreeDepth(pRoot.left)
+    let right = TreeDepth(pRoot.right)
+    return left > right ? (left + 1) : (right + 1);
+}
+
+function FindNumsAppearOnce(array)
+{
+    // write code here
+    // return list, 比如[a,b]，其中ab是出现一次的两个数字
+    if(array === null || array.length < 2){
+      return;
+    }
+    let exclusive = 0;
+    for(let i =0;i<array.length;i++){
+      exclusive ^= array[i]
+    }
+    let index = getFitstBite(exclusive)
+    let result1 = 0;
+    let result2 = 0;
+    for(let i =0;i<array.length;i++){
+      if(isBite(array[i], index)){
+        result1 ^= array[i]
+      }else {
+        result2 ^= array[i]
+      }
+    }
+    return [result1, result2];
+}
+
+function getFitstBite(exclusive){
+  let index = 0;
+  while(((exclusive & 1) === 0) && (index < 64)){
+    exclusive = exclusive >> 1
+    index++;
+  }
+  return index;
+}
+
+function isBite(number, index){
+  number = number >> index;
+  return (number & 1)
+}
+
+
+function FindContinuousSequence(sum)
+{
+    // write code here
+    let start = 1;
+    let end = 2;
+    let currentSum = 0;
+    let result = [];
+    while(start < end){
+      currentSum = ((start + end) * (end-start+1)) >> 1;
+      if(currentSum > sum){
+        start++
+      }else if(currentSum < sum){
+        end++
+      }else {
+        let res = []
+        for(let i =start;i<=end;i++){
+          res.push(i)
+        }
+        result.push(res);
+        start++
+      }
+    }
+    return result
+}
+
+function FindNumbersWithSum(array, sum)
+{
+    // write code here
+    if(array === null || array.length <= 0){
+        return []
+    }
+    let start = 0;
+    let end = array.length - 1;
+    let currentSum = 0;
+    let result = [];
+    let min = null;
+    while(start < end){
+        currentSum = array[start] + array[end];
+        if(currentSum < sum){
+            end++
+        }else if(currentSum > sum){
+            start++
+        }else {
+            result = [array[start], array[end]]
+            break;
+        }
+    }
+    return result
+}
+
+function IsContinuous(numbers)
+{
+    // write code here
+    if(numbers === null || numbers.length <= 0){
+      return false;
+    }
+    numbers = numbers.sort()
+    let index = numbers.findIndex(item => item !== 0)
+    let startIndex = index === -1 ? 0 : index
+    let num = index
+    if(index > 4) return;
+    let p = numbers.length - 1;
+    while(p>startIndex && num >= 0){
+      let gap = numbers[p] - numbers[p-1]
+      // 如果有重复的话
+      if(gap === 0){
+        return false
+      }else if( gap === 1){
+        p--
+      } else {
+        let needGap = gap -1
+        if(needGap <= num){
+          p--;
+          num = num - needGap
+        } else {
+          return false
+        }
+      }
+    }
+    return true
+}
