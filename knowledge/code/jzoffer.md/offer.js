@@ -866,3 +866,28 @@ function IsContinuous(numbers)
     }
     return true
 }
+
+function LastRemaining_Solution(n, m)
+{
+    // write code here
+    if(n === null || m === null || m <= 0 || n <= 0){
+      return -1;
+    }
+    if(n === 1){
+      return 0
+    }
+    let array = [];
+    for(let i =0;i<n;i++){
+      array.push(i)
+    }
+    while(array.length > 1){
+      let deleteIndex = m % array.length;
+      console.log(deleteIndex)
+      let arr1 = array.slice(0, deleteIndex).reverse();
+      let arr2 = array.slice(deleteIndex).reverse();
+      array = arr1.concat(arr2)
+      array.reverse().pop()
+    }
+    return array[0]
+}
+LastRemaining_Solution(5,3)
