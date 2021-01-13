@@ -1063,3 +1063,157 @@ function scanUnsignInteger(s, index){
     }
     return index
 }
+
+function isNumeric(s){
+  if(s === null){
+    return false;
+  }
+  let index = 0;
+  let index_ = scanInteger(s, index);
+  let isNumber = index_ > index ? true : false
+  index = index_
+  if(s[index] == '.'){
+    index++
+    index_ = scanInteger(s, index);
+    isNumber = index_ > index || isNumber;
+    index = index_
+  }
+  if(s[index] == 'e' || s[index] == 'E'){
+    index++;
+    index_ = scanInteger(s, index);
+    isNumber = index_ > index && isNumber
+    index = index_
+  }
+  return isNumber && index == s.length
+}
+
+function scanInteger(s, index){
+  if(s[index] === '-' || s[index] === '+'){
+    index++
+  }
+  return scanUnsignInteger(s, index);
+}
+
+function scanUnsignInteger(s, index){
+  while(index < s.length && s[index] >=0 && s[index] <= 9){
+    index++
+  }
+  return index;
+}
+
+//Init module if you need
+let hashTable = {}
+function Init()
+{
+    // write code here
+    hashTable = {}
+}
+//Insert one char from stringstream
+function Insert(ch)
+{
+    // write code here
+    if(hashTable[ch] === undefined){
+        hashTable[ch] = 1
+    }else {
+        hashTable[ch] = hashTable[ch] +1
+    }
+}
+//return the first appearence once char in current stringstream
+function FirstAppearingOnce()
+{
+    // write code here
+    for (let key in hashTable){
+        if(hashTable[key] === 1){
+            return key
+        }
+    }
+    return '#'
+}
+
+/*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+function EntryNodeOfLoop(pHead)
+{
+    // write code here
+    if(pHead === null || pHead.next === null || pHead.next.next === null){
+      return null;
+    }
+    let pNode1 = pHead.next;
+    let pNode2 = pHead.next.next;
+    while(pNode1 && pNode2){
+      if(pNode1 == pNode2){
+        break
+      }else {
+        pNode1 = pNode1.next;
+        pNode2 = pNode2.next;
+        if(pNode2.next){
+          pNode2 = pNode2.next;
+        }
+      }
+    }
+    if(pNode1 == null || pNode2 == null){
+      return null;
+    }
+    let pNode1 = pHead;
+    while(pNode1 !== pNode2){
+      pNode1 = pNode1.next;
+      pNode2 = pNode2.next;
+    }
+    return pNode2
+}
+
+function deleteDuplication(pHead)
+{
+    // write code here
+    if(pHead === null || pHead.next === null){
+        return pHead;
+    }
+    let head = new ListNode('head');
+    head.next = pHead;
+    let preNode = head;
+    let curNode = head.next
+    while(curNode !== null){
+        if(curNode.next !== null && curNode.next.val == curNode.val){
+            while(curNode.next && curNode.val === curNode.next.val){
+                curNode = curNode.next;
+            }
+            preNode.next = curNode.next;
+            curNode = curNode.next
+        }else {
+            preNode = preNode.next;
+            curNode = curNode.next;
+        }
+    }
+    return head.next
+}
+
+/*function ListNode(x){
+    this.val = x;
+    this.next = null;
+}*/
+function deleteDuplication(pHead)
+{
+    // write code here
+    if(pHead === null || pHead.next === null){
+      return pHead
+    }
+    let head = new ListNode('head');
+    head.next = pHead;
+    let preNode = head;
+    let curNode = head.next;
+    while(curNode){
+      if(curNode.next !== null && curNode.val === curNode.next.val){
+        while( curNode.next && curNode.val == curNode.next.val){
+          curNode = curNode.next
+        }
+        preNode.next = curNode.next;
+        curNode = curNode.next;
+      }else{
+        preNode = preNode.next;
+        curNode = curNode.next;
+      }
+    }
+    return head.next
+}
