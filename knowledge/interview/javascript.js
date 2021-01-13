@@ -171,6 +171,18 @@ function throttle2(fn, delay){
   }
 }
 
+function throttle3(fn, delay){
+  let canRun = true;
+  return function(){
+    if(!canRun) return
+    canRun = false
+    setTimeout(() => {
+      fn.apply(this, arguments)
+      canRun = true;
+    }, delay)
+  }
+}
+
 // meta 响应式设计
 // <meta name="viewport" content="width=device-width,initial-scale=1.maximum-scale=1,user-scalable=no" />
 
@@ -310,3 +322,4 @@ fetch(url, {
 }).catch(function(err){
   // do something
 })
+

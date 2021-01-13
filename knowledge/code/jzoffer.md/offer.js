@@ -890,4 +890,176 @@ function LastRemaining_Solution(n, m)
     }
     return array[0]
 }
-LastRemaining_Solution(5,3)
+
+function StrToInt(str)
+{
+    // write code here
+    if(str === null || str.length <= 0){
+      return 0
+    }
+    let first = str[0];
+    let result = 0
+    if(first >= 0 && first <= 9){
+      result = Number(first)
+    }else if(first !== '-' && first !== '+'){
+      return 0
+    }
+    for(let i =1;i<str.length;i++){
+      if(str[i] >= 0 && str[i]<=9){
+        result = result * 10 + Number(str[i])
+      } else {
+        return 0
+      }
+    }
+    return first == '-' ? (-1 * result) : result
+}
+
+function duplicate(numbers, duplication)
+{
+    // write code here
+    //这里要特别注意~找到任意重复的一个值并赋值到duplication[0]
+    //函数返回True/False
+    if(numbers === null || numbers.length <= 0){
+      return false;
+    }
+    for(let i =0;i<numbers.length;i++){
+      if(numbers.lastIndexOf(numbers[i]) !== i){
+        duplication[0] = numbers[i]
+        return true
+      }
+    }
+    return false
+}
+
+function multiply(array)
+{
+    // write code here
+    if(array === null || array.length <= 1){
+      return []
+    };
+    let arr1 = [];
+    let arr2 = [];
+    arr1[0] = 1;
+    arr2[array.length-1] =1;
+    for(let i =1;i<array.length;i++){
+      arr1[i] = arr1[i-1] * array[i-1]
+    }
+    for(let i = array.length -2;i>=0;i--){
+      arr2[i] = arr2[i+1] * array[i+1];
+      result[i] = arr1[i] * arr2[i]
+    }
+    result[array.length-1] = arr1[array.length-1] * arr2[array.length-1]
+    return result
+}
+
+// 请实现一个函数用来匹配包括'.'和'*'的正则表达式。模式中的字符'.'表示任意一个字符，而'*'表示它前面的字符可以出现任意次（包含0次）。 在本题中，匹配是指字符串的所有字符匹配整个模式。例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
+//s, pattern都是字符串
+function match(s, pattern)
+{
+    // write code here
+}
+
+//s, pattern都是字符串
+// function match(s, pattern)
+// {
+//     // write code here
+//     if(s === null || pattern === null){
+//         return false;
+//     }
+// //     if(s.length = 1 && pattern === '.') return true;
+// //     if(s.length >1 && pattern === '.*') return  true;
+//     return matchCore(s, pattern, 0,0)
+// }
+
+// function matchCore(s, pattern, i, j){
+//     if(i === s.length && j === pattern.length){
+//         return true;
+//     }
+//     if(i !== s.length && j === pattern.length){
+//         return false;
+//     }
+//     if(pattern[j +1] === '*'){
+//         if(pattern[j] === s[i] || (pattern[j] === '.' && i !== s.length)){
+//             return matchCore(s, pattern, i, j+2) || matchCore(s, pattern, i+1, j) || matchCore(s, pattern, i+1, j+2)
+//         }else {
+//             return matchCore(s, pattern, i, j+2)
+//         }
+//     }  
+//     if(pattern[j] === s[i] || (pattern[j] === '.' && i !== s.length)){
+//         return matchCore(s, pattern, i+1, j+1)
+//     }
+//     return false
+// }
+
+function match(s, pattern){
+  if(s === null || pattern === null){
+    return false;
+  }
+  return matchCore(s, pattern, 0, 0)
+}
+
+function matchCore(s, pattern, i, j){
+  if(i == s.length && j == pattern.length){
+    return true
+  }
+  if(i !== s.length && j === pattern.length){
+    return false
+  }
+  if(pattern[j+1] === '*'){
+    if(pattern[j] == s[i] || (pattern[j] == '.' && i !== s.length)){
+      return matchCore(s, pattern, i, j+2) || matchCore(s, pattern, i+1, j) || matchCore(s, pattern, i+1,j+2)
+    }else {
+      return matchCore(s, pattern, i, j+2)
+    }
+  }
+  if(pattern[j] === s[i] || (pattern[j] == '.' && i !== s.length)){
+    return matchCore(s, pattern, i+1, j+1)
+  }
+  return false
+}
+
+//s字符串
+function isNumeric(s)
+{
+    // write code here
+}
+
+function isNumeric(s)
+{
+    // write code here
+    if(s === null){
+        return false;
+    }
+    let index = 0
+    let index_ = scanInteger(s, index)
+    let isNumber = index_ > index ? true : false;
+    index = index_
+    if(s[index] === '.'){
+        index++;
+        index_ = scanUnsignInteger(s, index);
+        isNumber = index_ > index  || isNumber
+        index = index_
+    }
+    if(s[index] === 'e' || s[index] === 'E'){
+        index++;
+        index_ = scanInteger(s, index);
+        isNumber = isNumber && index_ > index;
+        index = index_
+    }
+    return isNumber && index === s.length
+}
+
+function scanInteger(s, index){
+    if(s[index] === '-' || s[index] === '+'){
+        index++
+    }
+    return scanUnsignInteger(s, index)
+}
+
+function scanUnsignInteger(s, index){
+    // let initialIndex = index;
+    while(index < s.length && s[index] >=0 && s[index] <=9){
+        index++
+    }
+    return index
+}
