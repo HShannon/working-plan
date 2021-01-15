@@ -1431,9 +1431,21 @@ function Deserialize(s)
 function KthNode(pRoot, k)
 {
     // write code here
-    if(){
-      
+    if(pRoot === null || k<=0){
+      return null
     }
+    let arr = [];
+    KthNodeCore(pRoot, arr);
+    return arr[k-1]
+}
+
+function KthNodeCore(pRoot, arr){
+  if(!pRoot){
+    return;
+  }
+  KthNodeCore(pRoot.left, arr)
+  arr.push(pRoot);
+  KthNodeCore(pRoot.right, arr)
 }
 
 // function KthNode(pRoot, k)
