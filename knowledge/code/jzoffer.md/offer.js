@@ -1465,3 +1465,108 @@ function KthNodeCore(pRoot, arr){
 //   arr.push(pRoot);
 //   KthNodeCore(pRoot.right, arr);
 // }
+
+let arr =[]
+function Insert(num)
+{
+    // write code here
+    arr.push(num);
+    for(let i = arr.length - 2;arr[i]>num;i--){
+      [arr[i], arr[i+1]] = [arr[i+1], arr[i]]
+    }
+}
+function GetMedian(){
+  // write code here
+  if(arr.length <= 0) return;
+  // 奇数
+  if((arr.length & 1) == 1){
+    return arr[arr.length >> 1]
+  }else {
+    return (arr[arr.length >> 1] + arr[(arr.length >> 1) - 1]) / 2
+  }
+}
+
+function maxInWindows(num, size)
+{
+    // write code here
+    if(num === 0 || num.length <= 0 || size <=0){
+      return []
+    }
+    let p1 = 0;
+    let p2 = 0;
+    let result = [];
+    for(let i =0;i<size-1;i++){
+      p2++
+    }
+    while(p2 <= num.length-1){
+      result.push(Math.max(...num.slice(p1,p2+1)))
+      p1++;
+      p2++;
+    }
+    return result
+}
+// console.log(maxInWindows([2,3,4,2,6,2,5,1], 3))
+
+// "ABCESFCSADEE",3,4,"ABCCED"
+// function hasPath(matrix, rows, cols, path) {
+//   const flag = new Array(matrix.length).fill(false);
+//   for (let i = 0; i < rows; i++) {
+//     for (let j = 0; j < cols; j++) {
+//       if (hasPathCore(matrix, i, j, rows, cols, path, flag, 0)) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+// function hasPathCore(matrix, i, j, rows, cols, path, flag, k) {
+//   const index = i * cols + j;
+//   if (i < 0 || j < 0 || i >= rows || j >= cols || matrix[index] != path[k] || flag[index]) {
+//     return false;
+//   }
+//   if (k === path.length - 1) {
+//     return true;
+//   }
+//   flag[index] = true;
+//   if (hasPathCore(matrix, i + 1, j, rows, cols, path, flag, k + 1) ||
+//     hasPathCore(matrix, i - 1, j, rows, cols, path, flag, k + 1) ||
+//     hasPathCore(matrix, i, j + 1, rows, cols, path, flag, k + 1) ||
+//     hasPathCore(matrix, i, j - 1, rows, cols, path, flag, k + 1)) {
+//     return true;
+//   }
+//   flag[index] = false;
+//   return false;
+// }
+
+function hasPath(matrix, rows, cols, path){
+  const flag = new Array(matrix.length).fill(false);
+  for(let i = 0;i<rows;i++){
+    for(let j = 0;j<cols;j++){
+      if(hasPathCore(matrix, i, j, rows, cols, path, flag, 0)){
+        return true
+      }
+    }
+  }
+  return false
+}
+
+function hasPathCore(matrix, i, j, rows, cols, path, flag, k){
+  const index = i * cols + j;
+  if(i < 0 || j < 0 || i >= rows || j >= cols || matrix[index] !== path[k] || flag[index]){
+    return false;
+  }
+  if(k === path.length -1){
+    return true;
+  }
+  flag[index] = true;
+  if(hasPathCore(matrix, i+1, j, rows, cols, path, flag, k+1) || 
+    hasPathCore(matrix, i-1, j, rows, cols, path, flag, k+1) ||
+    hasPathCore(matrix, i, j+1, rows, cols, path, flag, k+1) ||
+    hasPathCore(matrix, i, j-1, rows, cols, path, flag, k+1)){
+      
+      return true
+  }
+  flag[index] = false
+  return false;
+}
