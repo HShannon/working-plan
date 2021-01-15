@@ -1197,23 +1197,259 @@ function deleteDuplication(pHead)
 {
     // write code here
     if(pHead === null || pHead.next === null){
-      return pHead
+      return pHead;
     }
     let head = new ListNode('head');
     head.next = pHead;
     let preNode = head;
-    let curNode = head.next;
-    while(curNode){
-      if(curNode.next !== null && curNode.val === curNode.next.val){
-        while( curNode.next && curNode.val == curNode.next.val){
-          curNode = curNode.next
+    let currentNode = head.next;
+    while(currentNode){
+      if(currentNode.next && currentNode.val === currentNode.next.val){
+        while(currentNode.next && currentNode.val === currentNode.next.val){
+          currentNode = currentNode.next;
         }
-        preNode.next = curNode.next;
-        curNode = curNode.next;
-      }else{
-        preNode = preNode.next;
-        curNode = curNode.next;
+        preNode.next = currentNode.next;
+        currentNode = currentNode.next;
+      } else {
+        preNode = preNode.next; 
+        currentNode = currentNode.next;
       }
     }
     return head.next
 }
+
+/*function TreeLinkNode(x){
+    this.val = x;
+    this.left = null;
+    this.right = null;
+    this.next = null;
+}*/
+function GetNext(pNode)
+{
+    // write code here
+    if(pNode === null){
+      return
+    }
+    let pNext = null;
+    if(pNode.right){
+      let pRight = pNode.right;
+      while(pRight.left){
+        pRight = pRight.left
+      }
+      pNext = pRight
+    }else if(pNode.next){
+      let currentNode = pNode
+      let parentNode = pNode.next;
+      while(parentNode !== null && currentNode === parentNode.right){
+        currentNode = parentNode;
+        parentNode = parentNode.next;
+      }
+      pNext = parentNode
+    }
+    return pNext
+}
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+function isSymmetrical(pRoot)
+{
+    // write code here
+    return isSymmetricalCore(pRoot, pRoot);
+}
+
+function isSymmetricalCore(pRoot1, pRoot2){
+  if(pRoot1 === null && pRoot2 === null){
+    return true;
+  }
+  if(pRoot1 === null || pRoot2 === null){
+    return false;
+  }
+  if(pRoot1.val !== pRoot2.val){
+    return false
+  }
+  return isSymmetricalCore(pRoot1.left, pRoot2.right) && isSymmetricalCore(pRoot1.right, pRoot2.left)
+}
+
+// 之字打印
+// {8,6,10,5,7,9,11}
+// [[8],[10,6],[5,7,9,11]]
+
+function Print(pRoot)
+{
+    // write code here
+    if(pRoot === null){
+      return []
+    }
+    let stack1 = [];
+    let stack2 = [];
+    let result = []
+    stack1.push(pRoot)
+    while(stack1.length || stack2.length){
+      let res1 = []
+      while(stack1.length !== 0){
+        let popNode = stack1.pop();
+        res1.push(popNode.val);
+        if(popNode.left !== null){
+          stack2.push(popNode.left)
+        }
+        if(popNode.right !== null){
+          stack2.push(popNode.right)
+        }
+      }
+      if(res1.length !==0) {result.push(res1)}
+      let res2 = []
+      while(stack2.length !== 0){
+        let popNode = stack2.pop();
+        res2.push(popNode.val);
+        if(popNode.right !== null){
+          stack1.push(popNode.right)
+        }
+        if(popNode.left !== null){
+          stack1.push(popNode.left)
+        }
+      }
+      if(res2.length !==0) {result.push(res2)}
+    }
+    return result
+}
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+function Print(pRoot)
+{
+    // write code here
+    if(!pRoot){
+      return []
+    }
+    let stack1 = [];
+    let stack2 = [];
+    let result = [];
+    stack1.push(pRoot);
+    while(stack1.length || stack2.length){
+      let res1 = [];
+      while(stack1.length){
+        let popNode = stack1.shift();
+        res1.push(popNode.val)
+        if(popNode.left){
+          stack2.push(popNode.left)
+        }
+        if(popNode.right){
+          stack2.push(popNode.right)
+        }
+      }
+      if(res1.length){
+        result.push(res1)
+      }
+      let res2 = []
+      while(stack2.length){
+        let popNode = stack2.shift();
+        res2.push(popNode.val);
+        if(popNode.left){
+          stack1.push(popNode.left)
+        }
+        if(popNode.right){
+          stack1.push(popNode.right)
+        }
+      }
+      if(res2.length){
+        result.push(res2)
+      }
+    }
+    return result
+}
+
+let sArr = []
+function Serialize(pRoot)
+{
+    // write code here
+    if(pRoot === null){
+      sArr.push('#')
+      return
+    }
+    sArr.push(pRoot.val)
+    Serialize(pRoot.left);
+    Serialize(pRoot.right);
+}
+function Deserialize(s)
+{
+    // write code here
+    if(sArr.length <= 0) return null;
+    let val = sArr.shift();
+    let treeNode = null;
+    if(typeof val === 'number') {
+      treeNode = new TreeNode(val)
+      treeNode.left = Deserialize(sArr)
+      treeNode.right = Deserialize(sArr)
+    }
+    return treeNode
+}
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+let strArr = []
+function Serialize(pRoot)
+{
+    // write code here
+    if(pRoot === null){
+      strArr.push('#')
+      return
+    }
+    strArr.push(pRoot.val)
+    Serialize(pRoot.left)
+    Serialize(pRoot.right)
+}
+function Deserialize(s)
+{
+    // write code here
+    if(strArr.length <= 0) return null;
+    let val = strArr.shift();
+    let treeNode = null;
+    if(typeof val === 'number'){
+      treeNode = new TreeNode(val);
+      treeNode.left = Deserialize(strArr)
+      treeNode.right = Deserialize(strArr)
+    }
+    return treeNode
+}
+
+/* function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+} */
+// {5,3,7,2,4,6,8},3
+// 二叉搜索树通过中序遍历树，从小到大排序
+function KthNode(pRoot, k)
+{
+    // write code here
+    if(){
+      
+    }
+}
+
+// function KthNode(pRoot, k)
+// {
+//     // write code here
+//     if(pRoot === null || k <=0){
+//       return null
+//     }
+//     let arr = []
+//     KthNodeCore(pRoot, arr);
+//     return arr[k-1];
+// }
+
+// function KthNodeCore(pRoot, arr){
+//   if(pRoot === null) return;
+//   KthNodeCore(pRoot.left, arr);
+//   arr.push(pRoot);
+//   KthNodeCore(pRoot.right, arr);
+// }

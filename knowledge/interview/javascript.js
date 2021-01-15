@@ -323,3 +323,13 @@ fetch(url, {
   // do something
 })
 
+// 全局注册相关
+// Vue.component = function (id, definition) {
+//   if (!definition) {
+//     return this.options['components'][id];
+//   }
+//   definition = this.options._base.extend(definition);
+//   this.options['components'][id] = definition;
+//   return definition;
+// }  
+
