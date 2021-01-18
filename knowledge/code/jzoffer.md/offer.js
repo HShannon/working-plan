@@ -1570,3 +1570,82 @@ function hasPathCore(matrix, i, j, rows, cols, path, flag, k){
   flag[index] = false
   return false;
 }
+
+function movingCount(threshold, rows, cols) {
+  const flag = createArray(rows, cols);
+  let count = 0;
+  if (rows > 0 && cols > 0) {
+    count = movingCountCore(0, 0, threshold, rows, cols, flag);
+  }
+  return count;
+}
+
+function movingCountCore(i, j, threshold, rows, cols, flag) {
+  if (i < 0 || j < 0 || i >= rows || j >= cols) {
+    return 0;
+  }
+  if (flag[i][j] || condition(i, j, threshold)) {
+    flag[i][j] = true;
+    return 0;
+  }
+  flag[i][j] = true;
+  return 1 + movingCountCore(i - 1, j, threshold, rows, cols, flag) +
+    movingCountCore(i + 1, j, threshold, rows, cols, flag) +
+    movingCountCore(i, j - 1, threshold, rows, cols, flag) +
+    movingCountCore(i, j + 1, threshold, rows, cols, flag);
+}
+
+function condition(i, j, threshold) {
+  let temp = i + '' + j;
+  let sum = 0;
+  for (let i = 0; i < temp.length; i++) {
+    sum += temp.charAt(i) / 1;
+  }
+  return sum > threshold;
+}
+
+function createArray(rows, cols) {
+  const result = [];
+  for (let i = 0; i < rows; i++) {
+    result[i] = new Array(cols).fill(false);
+  }
+  return result;
+}
+
+function cutRope(number)
+{
+    // write code here
+    if(number < 2){
+        return 0
+    }
+    if(number === 2){
+        return 1
+    }
+    if(number === 3){
+        return 2
+    }
+    let product = [];
+    product[0] = 0;
+    product[1] = 1;
+    product[2] =1;
+    // product[3] = 2;
+    for(let i =3;i<=number;i++){
+      for(let j =1;j<= i/2;j++){
+        product[i]  = Math.max(product[i], j * (i - j), j * product[i - j])
+      }
+    }
+    return product[number]
+}
+console.log(cutRope(18))
+
+var cuttingRope = function (n) {
+  // dp 对应绳子为 n 的最优解，dp[0] 无意义
+  let dp = new Array(n + 1).fill(1);
+  // 自底向上递推
+  for (let i = 3; i <= n; i++) {
+      for (let j = 1; j < i; j++) {
+          dp[i] = Math.max(dp[i], j * (i - j), j * dp[i - j]);
+      }
+  }
+  return dp[n]
+};
