@@ -1672,23 +1672,3 @@ var validateStackSequences = function(pushed, popped) {
   }
   return stack.length === 0
 };
-
-// function IsPopOrder(pushV, popV)
-// {
-//     // write code here
-//     if(pushV.length === 0){
-//         return false;
-//     }
-//     let stack = [];
-//     let pushIndex =0;
-//     let popIndex = 0;
-//     while(pushIndex < pushV.length){
-//         stack.push(pushV[pushIndex])
-//         while(stack.length && stack[stack.length -1] === popV[popIndex]){
-//             popIndex++;
-//             stack.pop();
-//         }
-//         pushIndex++
-//     }
-//     return stack.length === 0;
-// }

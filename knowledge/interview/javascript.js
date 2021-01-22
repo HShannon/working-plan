@@ -331,5 +331,17 @@ fetch(url, {
 //   definition = this.options._base.extend(definition);
 //   this.options['components'][id] = definition;
 //   return definition;
-// }  
+// }
+
+// 创建隐藏表单处理
+function downloadFile(){
+  var form = document.createElement('form');
+  form.setAttribute('action', 'http://action.com');
+  form.setAttribute('method', 'get');
+  form.setAttribute('target', '_blank');
+  form.setAttribute('style', 'display:none')
+  document.body.appendChild(form);
+  form.submit;
+  document.body.removeChild(form)
+}
 
