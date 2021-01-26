@@ -345,3 +345,12 @@ function downloadFile(){
   document.body.removeChild(form)
 }
 
+
+// 通过 element.getBoundingClientRect() 进行图片懒加载
+const viewVisible = el => {
+  const { top, bottom, left, right } = el.getBoundingClentRect();
+  const h = window.innerHeight || document.documentElement.clientHeight;
+  const w = window.innerWidth || document.documentElement.clientWidth;
+  return top < h && top + height >= 0 && left < w && left + width >= 0
+}
+
