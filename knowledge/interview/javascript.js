@@ -42,26 +42,26 @@ Function.prototype.myCall = function(context, ...arguments){
 
 // 手写 apply
 Function.prototype.myApply = function(context, arugments){
- context = context || window;
- let key = Symbol();
- context[key] = this;
- let result = context[key](...arugments);
- delete context[key];
- return result;
+  context = context || window;
+  let key = Symbol();
+  context[key] = this;
+  let result = context[key](...arugments);
+  delete context[key];
+  return result;
 }
 
 Function.prototype.myBind = function(context){
- if(typeof this !== 'function'){
-   throw new Error(
-     "Function.prototype.bind - what is trying to be bound is not callable"
-   );
- }
- let self = this;
- let args = Array.prototype.slice.call(arguments, 1);
- return function(){
-   let innerArgs = Array.prototype.slice.call(arguments);
-   return self.apply(context, args.concat(innerArgs))
- }
+  if(typeof this !== 'function'){
+    throw new Error(
+      "Function.prototype.bind - what is trying to be bound is not callable"
+    );
+  }
+  let self = this;
+  let args = Array.prototype.slice.call(arguments, 1);
+  return function(){
+    let innerArgs = Array.prototype.slice.call(arguments);
+    return self.apply(context, args.concat(innerArgs))
+  }
 }
 
 // 面经题
