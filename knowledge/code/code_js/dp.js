@@ -161,3 +161,42 @@ var flatten = function(root) {
   }
   p.right = right
 };
+
+// 讲递归反转
+// ListNode reverse(ListNode head) {
+//   if (head.next == null) return head;
+//   ListNode last = reverse(head.next);
+//   head.next.next = head;
+//   head.next = null;
+//   return last;
+// }
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function(head) {
+  if(head === null){
+      return null
+  }
+  let pHead = new ListNode('head');
+  let currentNode = head;
+  let preNode = null;
+  while(currentNode){
+      if(!currentNode.next){
+          pHead = currentNode;
+      }
+      let temp = currentNode.next;
+      currentNode.next = preNode;
+      preNode = currentNode
+      currentNode = temp
+  }
+  return pHead
+};
