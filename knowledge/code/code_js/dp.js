@@ -248,3 +248,73 @@ var reverseList = function(head){
 //     head.next = successor;
 //     return last;
 // }
+// 反转链表前 N 个节点
+let successor = null;
+var reverseN = function(head, n){
+  // base case
+  if(n == 1) {
+    successor = head.next;
+    return head;
+  }
+  let last = reverseN(head.next, n-1);
+  head.next.next = head;
+  head.next = successor;
+  return last;
+}
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} m
+ * @param {number} n
+ * @return {ListNode}
+ */
+var reverseBetween = function(head, m, n) {
+  // 用来记住整个链表的头节点位置
+  let res = new ListNode(0)
+  res.next = head
+  // 找到需要反转的位置
+  let pre = res
+  for(let i = 1; i < m; ++i){
+      pre = pre.next
+  }
+  // 将head指向要反转的链表部分的头部
+  head = pre.next
+  for(let i = m; i < n; ++i){
+      let nxt = head.next
+      // nxt 节点要被放到反转部分的头部，所以将head的next指向它的下下个节点
+      head.next = head.next.next
+      // 将nxt放到头部，pre.next指向的是反转部分的头部节点
+      nxt.next = pre.next
+      // 重新将pre指向反转部分的头部
+      pre.next = nxt
+  }
+  return res.next
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} left
+ * @param {number} right
+ * @return {ListNode}
+ */
+var reverseBetween = function(head, left, right) {
+  if(head === null) return null
+  let pHead = new ListNode('head');
+  pHead.next = head;
+  let preNode = phead;
+  
+};
