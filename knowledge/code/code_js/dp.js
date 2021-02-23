@@ -318,3 +318,131 @@ var reverseBetween = function(head, m, n) {
   tail.next=cur//重新接上第二刀
   return node.next
 }
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} left
+ * @param {number} right
+ * @return {ListNode}
+ */
+var reverseBetween = function(head, left, right) {
+  let pre, cur, front, tail
+  let p = node = new ListNode();
+  p.next = head;
+  for(let i=1;i<m;i++){
+    p = p.next;
+  }
+  front = p;
+  pre = tail = p.next;
+  cur = pre.next;
+  for(let i = m; i < n;i++){
+    let next = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = next;
+  }
+  front.next = pre;
+  tail.next = cur;
+  return node.next
+};
+
+// 反转函数 reverse 函数反转一个区间内的元素
+function reverse(a){
+  let pre, cur, nxt;
+  pre = null;
+  cur = a;
+  nxt = a;
+  while(cur !== null){
+    nxt = cur.next;
+    // zhuge fan
+    cur.next = pre;
+    // 更新指针位置
+    pre = cur;
+    cur = nxt;
+  }
+  return pre;
+}
+
+// 反转 a 到 b 之间的大小
+function reverseN(a, b){
+  let pre, cur, nxt;
+  pre = null;
+  cur = a;
+  nxt = a;
+  while(cur !== b){
+    nxt = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = nxt;
+  }
+  return pre;
+}
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ */
+const reverse = (head, tail) => {
+  let prev = tail.next;
+  let p = head;
+  while(prev !== tail){
+      let next = p.next;
+      p.next = prev;
+      prev = p;
+      p = next;
+  }
+  return [tail, head]
+}
+var reverseKGroup = function(head, k) {
+  const hair = new ListNode(0);
+  hair.next = head;
+  let pre = hair;
+  while(head){
+      let tail = pre;
+      for(let i = 0; i < k; i++){
+          tail = tail.next;
+          if(!tail){
+              return hair.next
+          }
+      }
+      const nex = tail.next;
+      [head, tail] = reverse(head, tail);
+      pre.next = head;
+      tail.next = nex;
+      pre = tail;
+      head = pre.next
+  }
+  return hair.next;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ */
+var reverseKGroup = function(head, k) {
+
+};
