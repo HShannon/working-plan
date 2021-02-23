@@ -298,23 +298,23 @@ var reverseBetween = function(head, m, n) {
   return res.next
 };
 
-/**
- * Definition for singly-linked list.
- * function ListNode(val, next) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.next = (next===undefined ? null : next)
- * }
- */
-/**
- * @param {ListNode} head
- * @param {number} left
- * @param {number} right
- * @return {ListNode}
- */
-var reverseBetween = function(head, left, right) {
-  if(head === null) return null
-  let pHead = new ListNode('head');
-  pHead.next = head;
-  let preNode = phead;
-  
-};
+var reverseBetween = function(head, m, n) {
+  let pre,cur,front
+  let p=node=new ListNode()
+  p.next=head
+  for(let i=1;i<m;i++){
+      p=p.next
+  }
+  front=p//第一刀的左边用front保存起来也是第一段不需要反转的最后一个点
+  pre=tail=p.next//那么它的下一个第一刀的右边也就是需要反转的第一个点用tail保存起来，反转之后他将会是第二刀的左边
+  cur=pre.next
+  for(let i=m;i<n;i++){
+      let next=cur.next
+      cur.next=pre
+      pre=cur
+      cur=next
+  }
+  front.next=pre//重新接上第一刀
+  tail.next=cur//重新接上第二刀
+  return node.next
+}
