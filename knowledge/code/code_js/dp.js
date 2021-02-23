@@ -385,7 +385,6 @@ function reverseN(a, b){
   return pre;
 }
 
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -444,5 +443,54 @@ var reverseKGroup = function(head, k) {
  * @return {ListNode}
  */
 var reverseKGroup = function(head, k) {
+  if(head === null) return null;
+  let a = b = head;
+  for(let i = 0;i<k;i++){
+    if(b === null) return head;
+    b = b.next;
+  }
+  let newHead = reverse(a, b);
+  a.next = reverseKGroup(b, k);
+  return newHead
+};
 
+// reverse 函数
+function reverse(a, b){
+  let pre, cur, nxt;
+  pre = null;
+  cur = a;
+  nxt = a;
+  while(cur !== b){
+    nxt = cur.next;
+    cur.next = pre;
+    pre = cur;
+    cur = nxt;
+  }
+  return pre;
+}
+
+// 二叉树的最大深度
+var maxDepth = function(root) {
+  // base case
+  if(root === null) return 0
+  let left = maxDepth(root.left);
+  let right = maxDepth(root.right);
+  return left > right ? left + 1 : right + 1;
+};
+
+// 二叉树的节点个数
+function count(root){
+  if(root === null) return 0;
+  return 1 + count(root.left) + count(root.right);
+}
+
+// 二叉树的反转
+var invertTree = function(root) {
+  if(root === null) return null;
+  let temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+  invertTree(root.left);
+  invertTree(root.right);
+  return root
 };
