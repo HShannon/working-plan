@@ -494,3 +494,5 @@ var invertTree = function(root) {
   invertTree(root.right);
   return root
 };
+
+// 扯平二叉树
