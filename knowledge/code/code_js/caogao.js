@@ -115,7 +115,7 @@ var buildTree = function(preorder, inorder) {
       maxIndex = i;
     }
   }
-  root.left = buildTree(preorder.slice(1, maxIndex), inorder.slice(0, maxIndex));
+  root.left = buildTree(preorder.slice(1, maxIndex+1), inorder.slice(0, maxIndex));
   root.right = buildTree(preorder.slice(maxIndex+1), inorder.slice(maxIndex+1))
   return root;
 };
