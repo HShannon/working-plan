@@ -105,5 +105,34 @@ var constructMaximumBinaryTreeCore = function(arr, l, r){
  * @return {TreeNode}
  */
 var buildTree = function(preorder, inorder) {
+  // base case
+  if(preorder.length <= 0 || inorder.length <= 0) return null;
+  let root = new TreeNode(preorder[0]);
+  // 获取到最大值
+  let maxIndex = 0;
+  for(let i =0;i<inorder.length;i++){
+    if(inorder[i] === preorder[0]){
+      maxIndex = i;
+    }
+  }
+  root.left = buildTree(preorder.slice(1, maxIndex), inorder.slice(0, maxIndex));
+  root.right = buildTree(preorder.slice(maxIndex+1), inorder.slice(maxIndex+1))
+  return root;
+};
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {number[]} inorder
+ * @param {number[]} postorder
+ * @return {TreeNode}
+ */
+var buildTree = function(inorder, postorder) {
 
 };
