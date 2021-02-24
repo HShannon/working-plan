@@ -120,6 +120,7 @@ var buildTree = function(preorder, inorder) {
   return root;
 };
 
+// 根据前序遍历和后序遍历确定
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -134,5 +135,14 @@ var buildTree = function(preorder, inorder) {
  * @return {TreeNode}
  */
 var buildTree = function(inorder, postorder) {
-
+  if(inorder.length == 0 || postorder == 0){
+    return null;
+  }
+  let root = new TreeNode(postorder[postorder.length-1]);
+  // 获取跟节点在 inorder 中的索引值
+  let index = inorder.indexOf(postorder[postorder.length-1]);
+  // 重构左右子树
+  root.left = buildTree(inorder.slice(0, index), postorder.slice(0, index));
+  root.right = buildTree(inorder.slice(index+1), postorder.slice(index, postorder.length-1));
+  return root
 };
