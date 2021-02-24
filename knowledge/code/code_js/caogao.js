@@ -146,3 +146,5 @@ var buildTree = function(inorder, postorder) {
   root.right = buildTree(inorder.slice(index+1), postorder.slice(index, postorder.length-1));
   return root
 };
+
+
