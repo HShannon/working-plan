@@ -546,5 +546,86 @@ var findDuplicateSubtrees = function(root) {
  * @return {number}
  */
 var kthSmallest = function(root, k) {
+  let res = 0;
+  let rank = 0;
+  traverse(root, k);
+  return res
 
+  function traverse(root, k){
+    if(root === null) return;
+    traverse(root.left, k);
+    rank++;
+    if(rank === k) {
+      res = root.val;
+      return;
+    }
+    traverse(root.right, k);
+  }
+};
+
+var kthSmallest = function(root, k) {
+  let res = 0;
+  traverse(root);
+  return res
+
+  function traverse(root){
+    if(root === null) return;
+    traverse(root.left);
+    k--
+    if(k === 0) {
+      res = root.val;
+      return;
+    }
+    traverse(root.right);
+  }
+};
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var convertBST = function(root) {
+  let sum = 0;
+  traverse(root);
+  return root
+  function traverse(root){
+    if(root) return ;
+    traverse(root.right);
+    sum += root.val;
+    root.val = sum;
+    traverse(root.left);
+  }
+};
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+
+var isValidBSTCore = function(root, min, max){
+  if(root === null) return true;
+  if(min !== null && root.val <= min.val) return false;
+  if(max !== null && root.val >= max.val) return false;
+  return isValidBSTCore(root.left, min, root) && isValidBSTCore(root.right, root, max)
+}
+
+var isValidBST = function(root) {
+  return isValidBSTCore(root, null, null)
 };
