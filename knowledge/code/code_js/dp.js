@@ -495,4 +495,38 @@ var invertTree = function(root) {
   return root
 };
 
-// 扯平二叉树
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode[]}
+ */
+var findDuplicateSubtrees = function(root) {
+  let result = [];
+  let map = new Map();
+  find(root);
+  return result;
+  function find(root){
+      if(root===null){
+          return "#"
+      }
+      let left = find(root.left);
+      let right = find(root.right);
+      let subTree = left + ',' + right + ',' + root.val;
+      if(map.get(subTree)){
+          map.set(subTree,map.get(subTree)+1)
+      }else{
+          map.set(subTree,1)
+      }
+      if(map.get(subTree)===2){
+          result.push(root);
+      }
+      return subTree;
+  }
+};
