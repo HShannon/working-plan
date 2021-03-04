@@ -349,3 +349,24 @@ var detectCycle = function(head) {
     }
     return slow
 };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var middleNode = function(head) {
+  let slow = head;
+  let quick = head;
+  while(quick !== null && quick.next !== null){
+    slow = slow.next;
+    quick = quick.next.next;
+  }
+  return slow;
+};
