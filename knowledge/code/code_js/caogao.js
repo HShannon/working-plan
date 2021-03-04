@@ -185,5 +185,107 @@ var countNodes = function(root) {
  * @return {number}
  */
 var minEatingSpeed = function(piles, H) {
+  let l = 1;
+  let r = Math.max(...piles);
+  let res = 0;
+  while(l <= r){
+    let mid = parseInt(l + (r - l) / 2);
+    if(canFinish(piles, mid, H)){
+      res = mid
+      r = mid-1;
+    }else {
+      l = mid+1
+    }
+  }
+  return res
+};
 
+function canFinish(piles, mid, H){
+  let time = 0;
+  for(let i = 0; i < piles.length; i++){
+    time += Math.ceil(piles[i] / mid)
+  }
+  return time <= H
+}
+
+// console.log(minEatingSpeed([30,11,23,4,20], 6))
+
+
+/**
+ * @param {number[]} weights
+ * @param {number} D
+ * @return {number}
+ */
+var shipWithinDays = function(weights, D) {
+  let l = Math.min(...weights);
+  let r = getSum(weights);
+  // console.log(11, l, r)
+  let res = 0;
+  while(l <= r){
+    let mid = parseInt(l + (r - l) / 2)
+    if(canFinishWeight(weights, D, mid)){
+      r = mid - 1;
+      res = mid
+    }else{
+      l = mid + 1;
+    }
+  }
+  return res;
+};
+
+var getSum = function(weights){
+  let sum = 0;
+  for(let i =0;i<weights.length;i++){
+    sum += weights[i]
+  }
+  return sum
+}
+
+var canFinishWeight = function(weights, D, mid){
+  let index = 0
+  for(let i = 0;i<D;i++){
+    let maxWeight = mid;
+    while((maxWeight -= weights[index]) >= 0){
+      index++;
+      if(index === weights.length){
+        return true
+      }
+    }
+  }
+  return false
+}
+
+// let weights = [1,2,3,4,5,6,7,8,9,10]
+// let D = 5
+// console.log(shipWithinDays(weights, D))
+
+
+// 快慢指针法
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+var hasCycle = function(head) {
+  // 环至少要有三个指针
+  if (head == null || head.next == null) {
+      return false;
+  }
+  let slow = head;
+  let fast = head.next;
+  while (fast !== null && fast.next !== null) {
+      slow = slow.next;
+      fast = fast.next.next;
+      if (fast === slow) {
+          return true;
+      }
+  }
+  return false;
 };
