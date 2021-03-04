@@ -289,3 +289,63 @@ var hasCycle = function(head) {
   }
   return false;
 };
+
+var detectCycle = function(head) {
+  if (head === null) {
+      return null;
+  }
+  let slow = head, fast = head;
+  while (fast !== null) {
+      slow = slow.next;
+      if (fast.next !== null) {
+          fast = fast.next.next;
+      } else {
+          return null;
+      }
+      if (fast === slow) {
+          let ptr = head;
+          while (ptr !== slow) {
+              ptr = ptr.next;
+              slow = slow.next;
+          }
+          return ptr;
+      }
+  }
+  return null;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var detectCycle = function(head) {
+    if(head == null || head.next == null){
+      return null;
+    }
+    let slow = head;
+    let quick = head;
+    while(quick !== null && quick.next !== null){
+      slow = slow.next;
+      quick = quick.next.next;
+      if(quick == slow){
+        break;
+      }
+    }
+    if(quick == null || quick.next == null){
+      return null
+    }
+    slow = head;
+    while(slow !== quick){
+      slow = slow.next;
+      quick = quick.next;
+    }
+    return slow
+};
