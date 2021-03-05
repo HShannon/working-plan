@@ -370,3 +370,59 @@ var middleNode = function(head) {
   }
   return slow;
 };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function(head, n) {
+  let fast = slow = head;
+  while(n-- > 0){
+    fast = fast.next;
+  }
+  if(fast === null){
+    return head.next
+  }
+  while(fast !== null){
+    fast = fast.next;
+    slow = slow.next;
+  }
+  slow.next = slow.next.next
+  return head;
+};
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function(head, n) {
+  let dummy = new ListNode(0)
+  dummy.next = head
+  let first = dummy
+  let second = dummy
+  for(let i = 1; i <= n + 1; i++){
+      first = first.next
+  }
+  while(first !== null){
+      second = second.next
+      first = first.next
+  }
+  second.next = second.next.next
+  return dummy.next
+};
