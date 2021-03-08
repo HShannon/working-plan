@@ -466,3 +466,58 @@ var reverseString = function(s) {
   }
   return s
 };
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {string}
+ */
+var minWindow = function(s, t) {
+  let need = {};
+  let window = {};
+  let start = 0;
+  let len = Number.MAX_SAFE_INTEGER
+  let valid = 0
+  for(let i = 0;i<t.length;i++){
+    if(typeof need[t[i]] == 'undefined'){
+      need[t[i]] = 1;
+    }else {
+      need[t[i]]++
+    }
+  }
+  let left = 0;
+  let right = 0;
+  while(right < s.length){
+    let c = s[right];
+    right++;
+    if(typeof need[c] == 'number' && need[c] !== 0){
+      if(typeof window[c] == 'undefined'){
+        window[c] = 1;
+      }else{
+        window[c]++
+      }
+      if(window[c] == need[c]){
+        valid++;
+      }
+    }
+    while(valid == Object.keys(need).length){
+      if(right - left < len){
+        start = left;
+        len = right - left;
+      }
+      let d = s[left];
+      left++;
+      if(typeof need[d] == 'number' && need[d] !== 0){
+        if(window[d] == need[d]){
+          valid--;
+        }
+        window[d]--;
+      }
+    }
+  }
+  return len == Number.MAX_SAFE_INTEGER ? '' : s.substr(start, len)
+};
+
+let s = "ADOBECODEBANC"
+let t = 'ABC'
+console.log(minWindow(s, t))
