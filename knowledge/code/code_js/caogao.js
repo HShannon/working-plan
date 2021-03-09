@@ -885,3 +885,30 @@ var removeElement = function(nums, val) {
 };
 // let nums =[3,2,2,3];
 // console.log(removeElement(nums,3))
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+  let index = moveElement(nums, 0);
+  for(;index < nums.length;index++){
+    nums[index] = 0
+  }
+  return nums
+};
+
+var moveElement = function(nums, val){
+  let slow = 0;
+  let fast = 0;
+  while(fast < nums.length){
+    if(nums[fast] != val){
+      nums[slow] = nums[fast];
+      slow++;
+    }
+    fast++
+  }
+  return slow;
+}
+let nums = [0,1,0,3,12]
+console.log(moveZeroes(nums))
