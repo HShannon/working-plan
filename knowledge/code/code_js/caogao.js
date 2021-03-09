@@ -841,3 +841,27 @@ var removeDuplicates = function(nums) {
 // let nums = [0,0,1,1,1,2,2,3,3,4]
 // console.log(removeDuplicates(nums))
 
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function(head) {
+  let slow = head;
+  let fast = head;
+  while(fast !== null){
+    if(fast.val !== slow.val){
+      slow.next = fast;
+      slow = slow.next;
+    }
+    fast = fast.next;
+  }
+  slow.next = null;
+  return head;
+};
