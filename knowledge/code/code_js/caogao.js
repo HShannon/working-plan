@@ -865,3 +865,12 @@ var deleteDuplicates = function(head) {
   slow.next = null;
   return head;
 };
+
+/**
+ * @param {number[]} nums
+ * @param {number} val
+ * @return {number}
+ */
+var removeElement = function(nums, val) {
+  
+};
