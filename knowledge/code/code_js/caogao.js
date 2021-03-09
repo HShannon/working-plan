@@ -571,6 +571,59 @@ var checkInclusion = function(s1, s2) {
   return false;
 };
 
-let s1 = "ab";
-let s2 = "eidbaooo";
-console.log(checkInclusion(s1, s2))
+// let s1 = "ab";
+// let s2 = "eidbaooo";
+// console.log(checkInclusion(s1, s2))
+
+/**
+ * @param {string} s
+ * @param {string} p
+ * @return {number[]}
+ */
+var findAnagrams = function(s, p) {
+  let need = {};
+  let window = {};
+  let left = 0;
+  let right = 0;
+  let valid = 0;
+  let res = [];
+  for(let i = 0;i<p.length;i++){
+    if(typeof need[p[i]] == 'undefined'){
+      need[p[i]] = 1;
+    }else {
+      need[p[i]]++;
+    }
+  }
+  while(right < s.length){
+    let c = s[right];
+    right++
+    if(typeof need[c] == 'number'){
+      if(typeof window[c] == 'undefined'){
+        window[c] = 1
+      }else {
+        window[c]++
+      }
+      if(window[c] == need[c]){
+        valid++
+      }
+    }
+
+    while(right - left >= p.length){
+      if(valid == Object.keys(need).length){
+        res.push(left);
+      }
+      let d = s[left];
+      left++
+      if(typeof need[d] == 'number'){
+        if(window[d] == need[d]){
+          valid--
+        }
+        window[d]--;
+      }
+    }
+  }
+  return res;
+};
+let s = "cbaebabacd";
+let p = "abc"
+console.log(findAnagrams(s, p))
