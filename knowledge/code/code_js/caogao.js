@@ -661,7 +661,8 @@ var lengthOfLongestSubstring = function(s) {
  * Initialize your data structure here.
  */
 var RandomizedSet = function() {
-
+  this.valToIndex = {};
+  this.nums = [];
 };
 
 /**
@@ -670,7 +671,12 @@ var RandomizedSet = function() {
  * @return {boolean}
  */
 RandomizedSet.prototype.insert = function(val) {
-
+  if(this.valToIndex[val] !== undefined){
+    return false;
+  }
+  this.valToIndex[val] = this.nums.length;
+  this.nums.push(val);
+  return true;
 };
 
 /**
@@ -679,7 +685,19 @@ RandomizedSet.prototype.insert = function(val) {
  * @return {boolean}
  */
 RandomizedSet.prototype.remove = function(val) {
-
+  if(this.valToIndex[val] == undefined){
+    return false;
+  }
+  // step 1: get the index of the val adn erase the index of element
+  let index = this.valToIndex[val];
+  // step 2: this 
+  this.valToIndex[this.nums[this.nums.length -1]] = index;
+  delete this.valToIndex[val]
+  let temp = this.nums[this.nums.length-1];
+  this.nums[this.nums.length-1] = val;
+  this.nums[index] = temp;
+  this.nums.pop();
+  return true;
 };
 
 /**
@@ -687,7 +705,7 @@ RandomizedSet.prototype.remove = function(val) {
  * @return {number}
  */
 RandomizedSet.prototype.getRandom = function() {
-
+  return this.nums[Math.random() * this.nums.length]
 };
 
 /**
@@ -697,3 +715,22 @@ RandomizedSet.prototype.getRandom = function() {
  * var param_2 = obj.remove(val)
  * var param_3 = obj.getRandom()
  */
+
+var RandomizedSet = function() {
+  this.h = {}, this.a = []
+};
+
+RandomizedSet.prototype.insert = function(val) {
+  return this.h[val] === undefined && (this.a.push(val), this.h[val] = this.a.length - 1, true)
+};
+
+RandomizedSet.prototype.remove = function(val) {
+  return this.h[val] !== undefined && (
+    [this.a[this.h[val]], this.a[this.a.length - 1]] = [this.a[this.a.length - 1], this.a[this.h[val]]], 
+    this.h[this.a[this.h[val]]] = this.h[val], 
+    this.a.pop(), delete(this.h[val]), true)
+};
+
+RandomizedSet.prototype.getRandom = function() {
+  return this.a[Math.random() * this.a.length | 0]
+};
