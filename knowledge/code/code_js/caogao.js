@@ -518,6 +518,59 @@ var minWindow = function(s, t) {
   return len == Number.MAX_SAFE_INTEGER ? '' : s.substr(start, len)
 };
 
-let s = "ADOBECODEBANC"
-let t = 'ABC'
-console.log(minWindow(s, t))
+// let s = "ADOBECODEBANC"
+// let t = 'ABC'
+// console.log(minWindow(s, t))
+
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {boolean}
+ */
+var checkInclusion = function(s1, s2) {
+  let need = {};
+  let window = {};
+  let valid = 0;
+  let left = 0;
+  let right = 0;
+  for(let i = 0;i<s1.length;i++){
+    if(typeof need[s1[i]] == 'undefined'){
+      need[s1[i]] = 1
+    }else {
+      need[s1[i]]++
+    }
+  }
+  // console.log(Object.keys(need).length)
+  while(right < s2.length){
+    let c = s2[right];
+    right++
+    if(typeof need[c] == 'number'){
+      if(typeof window[c] == 'undefined'){
+        window[c] = 1
+      }else {
+        window[c]++
+      }
+      if(window[c] == need[c]){
+        valid++
+      }
+    }
+    while(right - left >= s1.length){
+      if(valid == Object.keys(need).length){
+        return true
+      }
+      let d = s2[left];
+      left++;
+      if(typeof need[d] == 'number'){
+        if(window[d] == need[d]){
+          valid--
+        }
+        window[d]--;
+      }
+    }
+  }
+  return false;
+};
+
+let s1 = "ab";
+let s2 = "eidbaooo";
+console.log(checkInclusion(s1, s2))
