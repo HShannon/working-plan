@@ -624,6 +624,76 @@ var findAnagrams = function(s, p) {
   }
   return res;
 };
-let s = "cbaebabacd";
-let p = "abc"
-console.log(findAnagrams(s, p))
+// let s = "cbaebabacd";
+// let p = "abc"
+// console.log(findAnagrams(s, p))
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+  let left = 0;
+  let right = 0;
+  let res = 0;
+  let window = {}
+  while(right < s.length){
+    let c = s[right];
+    right++;
+    if(typeof window[c] == 'undefined'){
+      window[c] = 1;
+    }else {
+      window[c]++
+    }
+    while(window[c] > 1){
+      let d = s[left];
+      left++;
+      window[d]--
+    }
+    res = Math.max(res, right - left)
+  }
+  return res
+};
+// let s = 'pwwkew'
+// console.log(lengthOfLongestSubstring(s))
+
+/**
+ * Initialize your data structure here.
+ */
+var RandomizedSet = function() {
+
+};
+
+/**
+ * Inserts a value to the set. Returns true if the set did not already contain the specified element. 
+ * @param {number} val
+ * @return {boolean}
+ */
+RandomizedSet.prototype.insert = function(val) {
+
+};
+
+/**
+ * Removes a value from the set. Returns true if the set contained the specified element. 
+ * @param {number} val
+ * @return {boolean}
+ */
+RandomizedSet.prototype.remove = function(val) {
+
+};
+
+/**
+ * Get a random element from the set.
+ * @return {number}
+ */
+RandomizedSet.prototype.getRandom = function() {
+
+};
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * var obj = new RandomizedSet()
+ * var param_1 = obj.insert(val)
+ * var param_2 = obj.remove(val)
+ * var param_3 = obj.getRandom()
+ */
