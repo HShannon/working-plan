@@ -910,5 +910,26 @@ var moveElement = function(nums, val){
   }
   return slow;
 }
-let nums = [0,1,0,3,12]
-console.log(moveZeroes(nums))
+// let nums = [0,1,0,3,12]
+// console.log(moveZeroes(nums))
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+  let hashTable = {};
+  for(let i = 0;i<nums.length;i++){
+    hashTable[nums[i]] = i;
+  }
+  for(let i =0;i<nums.length;i++){
+    let other = target - nums[i];
+    if(hashTable[other] !== undefined && hashTable[other] != i){
+      return [i, hashTable[other]]
+    }
+  }
+  return [-1, -1];
+};
+let nums = [2,7,11,15]; let target = 9;
+console.log(twoSum(nums, target))
