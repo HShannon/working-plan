@@ -931,5 +931,38 @@ var twoSum = function(nums, target) {
   }
   return [-1, -1];
 };
-let nums = [2,7,11,15]; let target = 9;
-console.log(twoSum(nums, target))
+// let nums = [2,7,11,15]; let target = 9;
+// console.log(twoSum(nums, target))
+let res = [];
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+  // 记录路径（已做的选择）
+  let track = []
+  premuteCore(nums, track)
+  return res 
+};
+
+var premuteCore = function(nums, track){
+  // 结束条件
+  if(track.length === nums.length){
+    res.push([...track]);
+    return;
+  }
+  // 选择列表
+  for(let i = 0;i < nums.length;i++){
+    // 已存在不添加
+    if(track.includes(nums[i])){
+      continue
+    }
+    // 不存在路径中 则添加
+    track.push(nums[i])
+    // 进入下一层决策树
+    premuteCore(nums, track)
+    // 取消选择
+    track.pop();
+  }
+}
+console.log(permute([1,2,3]))
