@@ -788,3 +788,41 @@ var removeDuplicateLetters = function(s) {
 };
 // let s = "cbacdcbc";
 // console.log(removeDuplicateLetters(s));
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var smallestSubsequence = function(s) {
+  let inStack = new Array(256).fill(0);
+  let count = new Array(256).fill(0);
+  for(let i = 0;i<s.length;i++){
+    count[s[i].charCodeAt()]++
+  };
+  let sb = new Array();
+  for(let i = 0;i<s.length;i++){
+    count[s[i].charCodeAt()]--;
+    if(inStack[s[i].charCodeAt()]){
+      continue;
+    }
+    while(sb.length > 0 && sb[sb.length - 1] > s[i]){
+      if(count[sb[sb.length -1].charCodeAt()] == 0){
+        break
+      }
+      inStack[sb.pop().charCodeAt()] = 0;
+    }
+    sb.push(s[i]);
+    inStack[s[i].charCodeAt()] = 1
+  }
+  return sb.join('')
+};
+// let s = "cbacdcbc";
+// console.log(smallestSubsequence(s))
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+
+};
