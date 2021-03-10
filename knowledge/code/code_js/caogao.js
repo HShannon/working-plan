@@ -1079,3 +1079,32 @@ var combineCore = function(n, k, start, track, res){
 
 // let n = 4, k = 2;
 // console.log(combine(n,k))
+
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+ var generateParenthesis = function(n) {
+  if(n == 0) return [];
+  let res = [];
+  let track = [];
+  generateParenthesisCore(n, n, track, res);
+  return res;
+};
+
+var generateParenthesisCore = function(left, right, track, res){
+  if(right < left) return;
+  if(left < 0 || right < 0) return;
+  if(left == 0 && right == 0){
+    res.push([...track].join(''));
+    return;
+  }
+  track.push('(');
+  generateParenthesisCore(left-1, right, track, res);
+  track.pop();
+
+  track.push(')');
+  generateParenthesisCore(left, right-1, track, res);
+  track.pop();
+}
+console.log(generateParenthesis(3))
