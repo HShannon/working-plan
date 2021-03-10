@@ -965,7 +965,7 @@ var premuteCore = function(nums, track){
     track.pop();
   }
 }
-console.log(permute([1,2,3]))
+// console.log(permute([1,2,3]))
 
 // N 皇后
 /**
@@ -978,11 +978,11 @@ var solveNQueens = function(n) {
   for(let i =0;i<n;i++){
     board[i] = new Array(n).fill('.');
   }
-  backtrack(board, 0, res)
+  solveNQueensCore(board, 0, res)
   return res;
 };
 
-var backtrack = function(board, row, res){
+var solveNQueensCore = function(board, row, res){
   // 触发结束条件
   if(row === board.length){
     res.push(board);
@@ -996,8 +996,7 @@ var backtrack = function(board, row, res){
     // 做选择
     board[row][col] = 'Q';
     // 进入下一层决策
-    backtrack(board, row++, res);
-    // 取消选择
+    solveNQueensCore(board, row+1, res);
     board[row][col] = '.'
   }
 }
@@ -1011,7 +1010,17 @@ var isValid = function(board, row, col){
     }
   }
   // 检查右上方是否有皇后互相冲突
-  for(let i = row -1, j = col+1; i >= 0 && j ){
-
+  for(let i = row -1, j = col+1; i >= 0 && j < n; i-- ,j++){
+    if(board[row][col] == 'Q'){
+      return false
+    }
   }
+  // 检查左上方是否有皇后互相冲突
+  for(let i = row - 1,j = col - 1;i>= 0 && j >= 0 ;i--,j--){
+    if(board[row][col] == 'Q'){
+      return false
+    }
+  }
+  return true;
 }
+console.log(solveNQueens(4))
