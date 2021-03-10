@@ -1145,3 +1145,11 @@ var generateParenthesisCore = function(left, right, track, res){
   return depth
 };
 
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+ var isPowerOfTwo = function(n) {
+
+};
+
