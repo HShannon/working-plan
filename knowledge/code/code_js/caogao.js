@@ -1023,4 +1023,28 @@ var isValid = function(board, row, col){
   }
   return true;
 }
-console.log(solveNQueens(4))
+// console.log(solveNQueens(4))
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function(nums) {
+  let res = [];
+  let track = [];
+  subsetsCore(nums, 0, track, res);
+  return res
+};
+
+var subsetsCore = function(nums, start, track, res){
+  res.push([...track]);
+  for(let i = start; i < nums.length;i++){
+    // 做选择
+    track.push(nums[i]);
+    // 回溯
+    subsetsCore(nums, i+1,track, res);
+    // 撤销选择
+    track.pop(nums[i])
+  }
+}
+// console.log(subsets([1,2,3]))
