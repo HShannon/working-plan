@@ -966,3 +966,12 @@ var premuteCore = function(nums, track){
   }
 }
 console.log(permute([1,2,3]))
+
+// N 皇后
+/**
+ * @param {number} n
+ * @return {string[][]}
+ */
+var solveNQueens = function(n) {
+
+};
