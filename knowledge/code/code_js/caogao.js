@@ -973,5 +973,45 @@ console.log(permute([1,2,3]))
  * @return {string[][]}
  */
 var solveNQueens = function(n) {
-
+  let res = []
+  let board = new Array(n)
+  for(let i =0;i<n;i++){
+    board[i] = new Array(n).fill('.');
+  }
+  backtrack(board, 0, res)
+  return res;
 };
+
+var backtrack = function(board, row, res){
+  // 触发结束条件
+  if(row === board.length){
+    res.push(board);
+    return;
+  }
+  let n = board[row].length;
+  for(let col = 0;col<n;col++){
+    if(!isValid(board, row, col)){
+      continue
+    }
+    // 做选择
+    board[row][col] = 'Q';
+    // 进入下一层决策
+    backtrack(board, row++, res);
+    // 取消选择
+    board[row][col] = '.'
+  }
+}
+
+var isValid = function(board, row, col){
+  let n = board.length;
+  // 检查列是否有皇后互相冲突
+  for(let i = 0;i<n;i++){
+    if(board[i][col] == 'Q'){
+      return false;
+    }
+  }
+  // 检查右上方是否有皇后互相冲突
+  for(let i = row -1, j = col+1; i >= 0 && j ){
+
+  }
+}
