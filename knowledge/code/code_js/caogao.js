@@ -1048,3 +1048,34 @@ var subsetsCore = function(nums, start, track, res){
   }
 }
 // console.log(subsets([1,2,3]))
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number[][]}
+ */
+var combine = function(n, k) {
+  let res = [];
+  let track = [];
+  combineCore(n, k, 1, track, res)
+  return res;
+};
+
+var combineCore = function(n, k, start, track, res){
+  // 触发结束条件
+  if(track.length == k){
+    res.push([...track]);
+    return;
+  }
+  for(let i = start; i <= n;i++){
+    // 做选择
+    track.push(i);
+    // 回溯
+    combineCore(n, k, i + 1, track, res);
+    // 取消选择
+    track.pop(i);
+  }
+}
+
+// let n = 4, k = 2;
+// console.log(combine(n,k))
