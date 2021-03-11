@@ -1154,3 +1154,60 @@ var generateParenthesisCore = function(left, right, track, res){
   return (n & (n - 1)) == 0 
 };
 
+
+/**
+ * @param {number} K
+ * @return {number}
+ */
+ var preimageSizeFZF = function(K) {
+  return right_bound(K) -  left_bound(K) + 1;
+};
+
+var right_bound = function(K){
+  let l = 0;
+  let r = Number.MAX_SAFE_INTEGER
+  while(l < r){
+    let mid = parseInt(l + (r - l) / 2);
+    if(trailingZeroes(mid) < K){
+      l = mid + 1;
+    } else if(trailingZeroes(mid) > K){
+      r = mid;
+    } else {
+      l = mid+1;
+    }
+  }
+  return l-1
+}
+
+var left_bound = function(K){
+  let l = 0;
+  let r = Number.MAX_SAFE_INTEGER
+  while(l < r){
+    let mid = parseInt(l + (r - l) / 2);
+    if(trailingZeroes(mid) < K){
+      l = mid + 1;
+    } else if(trailingZeroes(mid) > K){
+      r = mid;
+    } else {
+      r = mid;
+    }
+  }
+  return l
+}
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+ var trailingZeroes = function(n) {
+  let res = 0;
+  let divisor = 5;
+  while(divisor <= n){
+    res += Math.floor(n / divisor);
+    divisor *= 5
+  }
+  return res
+};
+// console.log(trailingZeroes(8))
+
+console.log(preimageSizeFZF(0))
