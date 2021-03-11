@@ -1209,5 +1209,55 @@ var left_bound = function(K){
   return res
 };
 // console.log(trailingZeroes(8))
+// console.log(preimageSizeFZF(0))
 
-console.log(preimageSizeFZF(0))
+/**
+ * @param {number} n
+ * @return {number}
+ */
+// 如果一个数如果只能被 1 和它本身整除，那么这个数就是素数。
+var countPrimes = function(n) {
+  let isPrim = new Array(n).fill(true);
+  for(let i = 2; i < n;i++){
+    if(isPrim[i]){
+      for(let j = 2 * i; j < n;j += i){
+        isPrim[j] = false;
+      }
+    }
+  }
+  let count = 0;
+  for(let i = 2;i < n;i++){
+    if(isPrim[i]) count++
+  }
+  return count
+};
+
+// console.log(countPrimes(10))
+const base = 1337
+/**
+ * @param {number} a
+ * @param {number[]} b
+ * @return {number}
+ */
+ var superPow = function(a, b) {
+  // base case 
+  if(b.length === 0){
+    return 1
+  }
+  let last = b.pop();
+  let part1 = mypow(a, last);
+  let part2 = mypow(superPow(a, b), 10)
+  return (part1 *  part2 ) % base
+};
+
+var mypow = function(a, b){
+  a %= base;
+  let res = 1;
+  for (let i = 0; i < b; i++) {
+      res *= a;
+      res %= base;
+  }
+  return res;
+}
+
+console.log(superPow(2147483647,[2,0,0]));
