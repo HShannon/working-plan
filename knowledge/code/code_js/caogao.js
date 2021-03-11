@@ -1314,3 +1314,12 @@ var findDisappearedNumbers = function(nums) {
 };
 
 // console.log(findErrorNums([1,1]))
+
+// 石头个数
+/**
+ * @param {number[]} piles
+ * @return {boolean}
+ */
+ var stoneGame = function(piles) {
+  return true;
+};
