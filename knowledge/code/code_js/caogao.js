@@ -1260,4 +1260,16 @@ var mypow = function(a, b){
   return res;
 }
 
-console.log(superPow(2147483647,[2,0,0]));
+// console.log(superPow(2147483647,[2,0,0]));
+
+var mypow_optimize = function(a, b) {
+  if(b == 0) return 1;
+  if(b % 2 === 1){
+    return a * mypow_optimize(a, b-1);
+  }else {
+    let sub = mypow_optimize(a, b / 2);
+    return sub * sub
+  }
+}
+
+console.log(mypow_optimize(3,2))
