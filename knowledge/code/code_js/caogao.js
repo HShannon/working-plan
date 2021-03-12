@@ -1323,3 +1323,63 @@ var findDisappearedNumbers = function(nums) {
  var stoneGame = function(piles) {
   return true;
 };
+
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+// 前缀和
+ var subarraySum1 = function(nums, k) {
+  let sum = new Array(nums.length+1);
+  sum[0] = 0
+  for(let i =0;i<nums.length;i++){
+    sum[i+1] = sum[i] + nums[i]
+  }
+  let res = 0;
+  for(let i = 1;i <= nums.length; i++){
+    for(let j = 0; j < i;j++){
+      if(sum[i] - sum[j] == k){
+        res++
+      }
+    }
+  }
+  return res
+};
+// let nums = [1,2,3]
+// let k = 3
+// console.log(subarraySum(nums, k))
+
+var subarraySum2 = function(nums, k) {
+  const mp = new Map();
+  mp.set(0, 1);
+  let count = 0, pre = 0;
+  for (const x of nums) {
+      pre += x;
+      if (mp.has(pre - k)) {
+          count += mp.get(pre - k);
+      }
+      if (mp.has(pre)) {
+          mp.set(pre, mp.get(pre) + 1);
+      } else {
+          mp.set(pre, 1);
+      }
+  }
+  return count;
+};
+
+var subarraySum3 = function(nums, k) {
+  let count = 0;
+  for(let i = 0;i<nums.length;i++){
+      let sum = 0;
+      for(let j = i;j>= 0;j--){
+          sum += nums[j]
+          if(sum == k){
+              count++
+          }
+      }
+  }
+  return count
+};
+// console.log(subarraySum3([1,2,3], 3))
